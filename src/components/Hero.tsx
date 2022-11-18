@@ -23,7 +23,7 @@ export default function Hero({...about}){
         : window.btoa(str);
     return (
         <article className='flex items-center justify-between layout mb-8'>
-            <div className="pr-4 sm:pr-8">
+            <div className="sm:pr-8">
                 <h2 className='text-2xl font-bold text-gray-900 sm:text-5xl dark:text-white' data-fade='1'>
                 Hi!
                 </h2>
