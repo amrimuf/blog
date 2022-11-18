@@ -22,9 +22,9 @@ export default function FeaturedPost({...post}:PostType) {
   <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
       <linearGradient id="g">
-          <stop stop-color="#333" offset="20%" />
-          <stop stop-color="#222" offset="50%" />
-          <stop stop-color="#333" offset="70%" />
+        <stop stop-color="#dd7a5d"" offset="20%" />
+        <stop stop-color="#5ddd66" offset="50%" />
+        <stop stop-color="#dd5ddb" offset="70%" />
       </linearGradient>
       </defs>
       <rect width="${w}" height="${h}" fill="#333" />
