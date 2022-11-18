@@ -22,12 +22,12 @@ export default function FeaturedPost({...post}:PostType) {
   <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
       <linearGradient id="g">
-        <stop stop-color="#dd7a5d"" offset="20%" />
-        <stop stop-color="#5ddd66" offset="50%" />
-        <stop stop-color="#dd5ddb" offset="70%" />
+        <stop stop-color="#eee" offset="20%" />
+        <stop stop-color="#ccc" offset="50%" />
+        <stop stop-color="#eee" offset="70%" />
       </linearGradient>
       </defs>
-      <rect width="${w}" height="${h}" fill="#333" />
+      <rect width="${w}" height="${h}" fill="#eee" />
       <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
       <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
       </svg>`;
