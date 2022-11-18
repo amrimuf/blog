@@ -7,7 +7,9 @@ type ProjectInfoType = {
     author: string;
     description:string;
     technology:string[];
-    link:string;
+    post: {
+        slug: string
+    }
     thumbnail: {
         url:string
     }

@@ -5,7 +5,7 @@ const graphqlAPI:string = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT!;
 export const getPosts = async () => {
     const query = gql `
     query Posts {
-        posts {
+        posts(where: {isBlog: true}) {
             category
             content {
                 html
@@ -18,6 +18,7 @@ export const getPosts = async () => {
             slug
             featured
             headline
+            isBlog
             thumbnail {
                 url
             }
@@ -40,6 +41,7 @@ export const getPost = async (slug:string) => {
         category
         headline
         title
+        isBlog
         createdAt
         thumbnail {
             url
@@ -58,7 +60,9 @@ export const getProjects = async() => {
     projects {
         title,
         description,
-        link,
+        post {
+            slug
+        },
         thumbnail {
         url
         }

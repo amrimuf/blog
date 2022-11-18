@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import React from 'react';
 
 import Layout from '../components/Layout';
 import PostMetaTitle from '../components/PostMetaTitle';
 import Seo from '../components/Seo';
 import { getPost } from '../../services';
+import Link from 'next/link';
 
 type Post = {
     post: {
@@ -13,6 +15,7 @@ type Post = {
         createdAt:string,
         slug:string,
         headline:string,
+        isBlog:boolean,
         content: {
             html:string
         }
@@ -25,6 +28,8 @@ type Post = {
 export default function Detail({ post }: Post) {
     const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
     const content = post.content.html
+
+    const url = post.isBlog != false ? 'blog' : 'projects'
 
     React.useEffect(() => {
 		// Updating a state causes a re-render
@@ -54,11 +59,16 @@ export default function Detail({ post }: Post) {
                     />
                 </div>
 
-                <Image src={post.thumbnail.url} alt={post.title} width={500} height={500} className="w-full rounded mb-6" />
+                <Image src={post.thumbnail.url} alt={post.title} width={500} height={500} className="object-contain h-64 w-full rounded mb-6" />
             
             </div>
             <div className="lg:w-10/12 w-full mx-auto leading-relaxed">
                 <div className='wysiwyg lg:wysiwyg-xl dark:wysiwyg-dark' dangerouslySetInnerHTML={{ __html: content }}></div>
+                
+                <Link className='inline-flex items-center justify- space-x-2 text-sm lg:text-lg font-semibold rounded px-4 py-2 mt-4 border border-2 border-gray-400 rounded dark:border-white-300 dark:hover:border-white hover:border-gray-600 mt-12' href={`/${url}`}>
+                <i className='bi bi-arrow-left'></i>
+                <p>Back to {url}</p>
+            </Link>
             </div>
         </Layout>
     );

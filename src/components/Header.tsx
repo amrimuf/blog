@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTheme } from "next-themes";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // import { SITE_NAME } from '../utils/constants';
 
@@ -19,11 +20,11 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-20 py-2 bg-white dark:bg-black">
-      <div className="container px-4 mx-auto lg:max-w-4xl flex items-center justify-between">
+      <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
         <button
             aria-label="Toggle Dark Mode"
             type="button"
-            className="w-10 h-10 p-3 rounded focus:outline-none"
+            className="w-10 h-10 rounded focus:outline-none lg:pl-2"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           >
             {mounted && (
@@ -61,19 +62,7 @@ export default function Header() {
               }`}>
                 Home{" "}
               {router.asPath === "/" && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-arrow-down inline-block h-3 w-3"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
-                  />
-                </svg>
+                <i className="bi bi-arrow-down inline-block h-3 w-3" style={{ fontSize: 14 }}></i>
               )}
           </Link>
           <Link href="/blog" className={`text-base  ${
@@ -83,19 +72,7 @@ export default function Header() {
               }`}>
               Blog{" "}
               {router.asPath === "/blog" && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-arrow-down inline-block h-3 w-3"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
-                  />
-                </svg>
+                <i className="bi bi-arrow-down inline-block h-3 w-3" style={{ fontSize: 14 }}></i>
               )}
           </Link>
           <Link href="/projects" className={`text-base  ${
@@ -105,19 +82,7 @@ export default function Header() {
               }`}>
               Projects{" "}
               {router.asPath === "/projects" && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-arrow-down inline-block h-3 w-3"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
-                  />
-                </svg>
+                <i className="bi bi-arrow-down inline-block h-3 w-3" style={{ fontSize: 14 }}></i>
               )}
           </Link>
           <Link href="/about" className={`text-base  ${
@@ -127,19 +92,7 @@ export default function Header() {
               }`}>
               About{" "}
               {router.asPath === "/about" && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-arrow-down inline-block h-3 w-3"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
-                  />
-                </svg>
+                <i className="bi bi-arrow-down inline-block h-3 w-3" style={{ fontSize: 14 }}></i>
               )}
           </Link>
         </div>
