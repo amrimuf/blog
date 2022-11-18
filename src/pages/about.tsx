@@ -76,8 +76,18 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                         <div className="wysiwyg lg:wysiwyg-xl dark:wysiwyg-dark" dangerouslySetInnerHTML={{ __html: content }}></div>
                     </div>
                 </div>
-
+                
             </div>
+            <style>
+            {`
+                .link {
+                    font-weight:normal;
+                }
+                .link:hover {
+                    color:#2563eb;
+                }
+            `}
+            </style>
         </Layout>
     );
 }
