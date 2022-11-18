@@ -9,14 +9,14 @@ export default function PostCard({ post }: any) {
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
         <linearGradient id="g">
-            <stop stop-color="#333" offset="20%" />
-            <stop stop-color="#222" offset="50%" />
-            <stop stop-color="#333" offset="70%" />
+            <stop stop-color="#dd7a5d"" offset="20%" />
+            <stop stop-color="#5ddd66" offset="50%" />
+            <stop stop-color="#dd5ddb" offset="70%" />
         </linearGradient>
         </defs>
         <rect width="${w}" height="${h}" fill="#333" />
         <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-        <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+        <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="10s" repeatCount="indefinite"  />
     </svg>`;
 
     const toBase64 = (str:string) =>
@@ -28,7 +28,7 @@ export default function PostCard({ post }: any) {
         <article className='-mx-4 lg:items-center items-start'>
             <Link href={`/${post.slug}`} >
                 <Image src={newImageSrc} alt={post.title} width={500} height={500} className="w-full rounded-t mb-4 object-cover h-48" blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            convertImage(700, 475))}`} placeholder='blur'/>
+                convertImage(700, 475))}`} placeholder='blur'/>
             </Link>
             <div className="w-full px-4">
                 <PostInfo

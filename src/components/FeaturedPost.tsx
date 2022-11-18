@@ -17,6 +17,7 @@ type PostType = {
 
 export default function FeaturedPost({...post}:PostType) {
   const newImageSrc = post.thumbnail.url.toString().replace(/[()]/g, '');
+  console.log(newImageSrc)
   const convertImage = (w:number, h:number) => `
   <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
@@ -41,7 +42,7 @@ export default function FeaturedPost({...post}:PostType) {
       <div className=" -mx-4 lg:items-center items-start">
           <Link href={`/${post.slug}`}>
               <Image 
-              src={newImageSrc} 
+              src={post.thumbnail.url} 
               alt={`thumbnail ${post.title}`} 
               width={500} 
               height={500} 
