@@ -6,7 +6,7 @@ import Seo from "../components/Seo";
 import SearchList from "../components/SearchList";
 import { getPosts } from '../../services';
 
-export default function blog({ posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Blog({ posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [searchField, setSearchField] = useState("");
 
     const filteredPosts = posts.filter(
