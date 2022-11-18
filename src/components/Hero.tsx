@@ -2,6 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero({...about}){
+    const newImageSrc = about.image.url.toString().replace(/[()]/g, '');
+    const convertImage = (w:number, h:number) => `
+    <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+        <linearGradient id="g">
+            <stop stop-color="#333" offset="20%" />
+            <stop stop-color="#222" offset="50%" />
+            <stop stop-color="#333" offset="70%" />
+        </linearGradient>
+        </defs>
+        <rect width="${w}" height="${h}" fill="#333" />
+        <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+        <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+        </svg>`;
+
+        const toBase64 = (str:string) =>
+        typeof window === 'undefined'
+        ? Buffer.from(str).toString('base64')
+        : window.btoa(str);
     return (
         <article className='flex items-center justify-between layout mb-8'>
             <div className="pr-4 sm:pr-8">
@@ -36,7 +55,8 @@ export default function Hero({...about}){
                     ><Link href='/about'>Learn more about me</Link></button>
                 </div>
             </div>
-            <Image alt={about.title} width={250}height={250} src={about.image.url} className="hidden sm:block border-2 rounded-lg border-sky-500 p-3"/>
+            <Image alt={about.title} width={250}height={250} src={newImageSrc}
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(700, 475))}`} placeholder='blur' className="hidden sm:block border-2 rounded-lg border-sky-500 p-3"/>
         </article>
     )
 }  
