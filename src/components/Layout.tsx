@@ -1,4 +1,5 @@
 import React from "react";
+import BackToTop from "./BackToTop";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -12,6 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="container max-w-4xl mx-auto antialiased pt-6">{children}</div>
       </main>
       <Footer />  
+      <BackToTop />
     </div>
   );
 }

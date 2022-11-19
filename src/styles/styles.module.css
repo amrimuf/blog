@@ -1,0 +1,19 @@
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 20px;
+    right: 25px;
+    font-size: 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    background-color: rgba(229, 229, 229, 0.3);
+    position: fixed;
+    color: var(--grey0);
+    border: none;
+    transition: 0.1s linear;
+}
+
+.top:hover {
+    background-color: rgba(229, 229, 229, 0.5);
+}
