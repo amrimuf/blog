@@ -54,9 +54,9 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
 
             <nav className="lg:w-10/12 mx-auto rounded-full hidden md:block bg-gray-100 px-2 dark:bg-gray-900/50 dark:text-gray-100">
             <ol className="list-reset flex">
-                <li><a href="/" className="text-sky-500 hover:font-semibold ">Home</a></li>
+                <li><Link href="/" className="text-sky-500 hover:font-semibold ">Home</Link></li>
                 <li><span className="text-gray-500 mx-2 ">/</span></li>
-                <li><a href={`/${prevUrl}`} className="text-sky-500 hover:font-semibold capitalize">{prevUrl}</a></li>
+                <li><Link href={`/${prevUrl}`} className="text-sky-500 hover:font-semibold capitalize">{prevUrl}</Link></li>
                 <li><span className="text-gray-500 mx-2">/</span></li>
                 <li className="text-gray-500 dark:text-gray-400">{post.title}</li>
             </ol>
