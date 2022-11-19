@@ -79,6 +79,7 @@ export const getAbout = async() => {
     const query = gql `
     query About {
         abouts {
+            headline
             content {
                 html
             }

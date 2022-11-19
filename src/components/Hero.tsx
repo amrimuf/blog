@@ -34,7 +34,7 @@ export default function Hero({...about}){
                 My name is <span className="underline underline-offset-4 sm:underline-offset-8 decoration-2 decoration-sky-500 decoration-wavy">Amri</span>
                 </h1>
                 <p className='mt-4 max-w-4xl text-gray-700 dark:text-gray-200 md:mt-6'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida neque convallis a cras semper auctor. Orci porta non pulvinar neque laoreet.
+                {about.headline}
                 </p>
                 <div
                 data-fade='5'

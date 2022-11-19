@@ -36,7 +36,7 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
                 Blog
             </h1>
             <p className='mt-2 text-gray-600 dark:text-gray-300 mb-6' data-fade='1'>
-            I've been programming for almost 6 years now. Throughout this year, I've worked with various technologies. I'm here to share just that.
+            Thoughts and tutorials about web development and programming.
             </p>
             <div className="relative w-full mb-4">
                 <input 

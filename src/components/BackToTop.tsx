@@ -27,7 +27,7 @@ const BackToTop: FC = () => {
         style={{ transform: showButton ? 'rotate(0deg)' : 'rotate(180deg)' }}
         aria-label='Back to top'
         >
-        <i className="bi bi-chevron-double-up mx-[16px] my-[10px]" style={{ fontSize:24 }}></i>
+        <i className="bi bi-chevron-double-up mx-[15px] my-[10px]" style={{ fontSize:18 }}></i>
         </button>
     </>
     )
