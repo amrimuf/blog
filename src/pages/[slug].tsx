@@ -5,27 +5,11 @@ import React from 'react';
 import Layout from '../components/Layout';
 import PostMetaTitle from '../components/PostMetaTitle';
 import Seo from '../components/Seo';
-import { getPost } from '../../services';
+import { getPost, getPosts } from '../../services';
 import Link from 'next/link';
+import { InferGetServerSidePropsType } from 'next';
 
-type Post = {
-    post: {
-        title: string,
-        category:string,
-        createdAt:string,
-        slug:string,
-        headline:string,
-        isBlog:boolean,
-        content: {
-            html:string
-        }
-        thumbnail: {
-            url:string
-        }
-    },
-}
-
-export default function Detail({ post }: Post) {
+export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetServerSidePropsType<typeof getServerSideProps>) {
     const newImageSrc = post.thumbnail.url.toString().replace(/[()]/g, '');
     const convertImage = (w:number, h:number) => `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -49,7 +33,7 @@ export default function Detail({ post }: Post) {
     const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
     const content = post.content.html
 
-    const url = post.isBlog != false ? 'blog' : 'projects'
+    const prevUrl = post.isBlog != false ? 'blog' : 'projects'
 
     React.useEffect(() => {
 		// Updating a state causes a re-render
@@ -68,6 +52,16 @@ export default function Detail({ post }: Post) {
             description={post.headline}
             />
 
+            <nav className="lg:w-10/12 mx-auto rounded-full hidden md:block bg-gray-100 px-2 dark:bg-gray-900/50 dark:text-gray-100">
+            <ol className="list-reset flex">
+                <li><a href="/" className="text-sky-500 hover:font-semibold ">Home</a></li>
+                <li><span className="text-gray-500 mx-2 ">/</span></li>
+                <li><a href={`/${prevUrl}`} className="text-sky-500 hover:font-semibold capitalize">{prevUrl}</a></li>
+                <li><span className="text-gray-500 mx-2">/</span></li>
+                <li className="text-gray-500 dark:text-gray-400">{post.title}</li>
+            </ol>
+            </nav>
+            
             <div className="md:w-10/12 w-full mx-auto flex items-center flex-col">
                 <div className="flex justify-center -mx-4 flex-wrap mt-6">
                     <PostMetaTitle
@@ -83,13 +77,30 @@ export default function Detail({ post }: Post) {
             
             </div>
             <div className="lg:w-10/12 w-full mx-auto leading-relaxed">
-                <div className='wysiwyg lg:wysiwyg-xl dark:wysiwyg-dark' dangerouslySetInnerHTML={{ __html: content }}></div>
+                <div className='wysiwyg lg:wysiwyg-xl dark:wysiwyg-dark  mx-auto' dangerouslySetInnerHTML={{ __html: content }}></div>
                 
-                <Link className='inline-flex items-center justify- space-x-2 text-sm lg:text-lg font-semibold rounded px-4 py-2 mt-4 border border-2 border-gray-400 rounded dark:border-white-300 dark:hover:border-white hover:border-gray-600 mt-12' href={`/${url}`}>
-                <i className='bi bi-arrow-left'></i>
-                <p>Back to {url}</p>
-            </Link>
+                <div className='flex justify-between'>
+                    <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12' href={`/${prevSlug}`}>
+                        <i className='bi bi-chevron-left hover:text-sky-500 bi-hover-bold' ></i>
+                        <div className='w-[100px] sm:w-[300px]'>
+                            <div className='text-sky-500'>PREVIOUS</div> 
+                            <div className='truncate text-black/60 dark:text-white/60 '>{prevTitle}</div>
+                        </div>
+                    </Link>
+                    <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12 text-right' href={`/${nextSlug}`}>
+                        <div className='w-[100px] sm:w-[300px]'>
+                            <div className='text-sky-500'>NEXT</div>
+                            <div className='truncate text-black/60 dark:text-white/60'>{nextTitle}</div>
+                        </div>
+                        <i className='bi bi-chevron-right hover:text-sky-500  bi-hover-bold'></i>
+                    </Link>
+                </div>
             </div>
+            <style>{`
+                .bi-hover-bold:hover {
+                    -webkit-text-stroke: 1px;
+                }
+            `}</style>
         </Layout>
     );
 }
@@ -97,7 +108,19 @@ export default function Detail({ post }: Post) {
 
 export async function getServerSideProps({params}:any) {
     const post = await getPost(params.slug) || [] 
+    const posts = await getPosts()
+
+    const index = posts.findIndex(function(post:any) {
+        return post.slug === params.slug;
+    });
+
+    const len = posts.length
+    let prevSlug = posts[(index+len-1)%len].slug;
+    let prevTitle = posts[(index+len-1)%len].title;
+    let nextSlug = posts[(index+1)%len].slug;    
+    let nextTitle = posts[(index+1)%len].title;    
+
     return {
-        props: { post }
+        props: { post, prevSlug, prevTitle, nextSlug, nextTitle }
     }
 }
