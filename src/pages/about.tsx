@@ -49,7 +49,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             description='Amri Mufti is a web developer.'
             />
 
-            <div className="items-center md:items-start lg:-mx-4 flex  flex-col" >
+            <div className="items-center md:items-start lg:-mx-4 flex  flex-col lg:px-6" >
                 <h1 className="underline underline-offset-8 decoration-2 decoration-sky-500 text-2xl font-bold text-gray-900 lg:text-5xl dark:text-white mb-6">
                     {about.title}
                 </h1>
