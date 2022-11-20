@@ -7,7 +7,7 @@ import { getProjects, getTags } from "../../services";
 import {  useEffect, useState } from "react";
 import React from "react";
 
-export default function projects({projects, tags}:InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Projects({projects, tags}:InferGetServerSidePropsType<typeof getServerSideProps>) {
 
     const [filteredProjects, setFilteredProjects] = useState(() => [...projects])
 
