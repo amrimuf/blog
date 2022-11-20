@@ -30,10 +30,11 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
         ? Buffer.from(str).toString('base64')
         : window.btoa(str);
 
-    const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
     const content = post.content.html
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
+
+    const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
 
     React.useEffect(() => {
 		// Updating a state causes a re-render

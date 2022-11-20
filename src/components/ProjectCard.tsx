@@ -11,7 +11,7 @@ type ProjectInfoType = {
     slug: string;
     author: string;
     description:string;
-    technology:string[];
+    tags: string[]
     thumbnail: {
         url:string
     }

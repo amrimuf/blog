@@ -6,7 +6,7 @@ type ProjectInfoType = {
     slug: string;
     author: string;
     description:string;
-    technology:string[];
+    tags: string[]
     post: {
         slug: string
     }
@@ -24,8 +24,8 @@ export default function ProjectInfo({...projectInfo}: ProjectInfoType) {
             <div>
                 {projectInfo.description}
             </div>
-            <div className="flex space-x-4">
-                {projectInfo.technology.map((tech:any,index:any) => <div key={index} className="border-2 italic border px-2 rounded-3xl border-black dark:border-white">{tech}</div>)}
+            <div className="flex flex-wrap justify-start gap-2">
+                {projectInfo.tags.map((tech:any,index:any) => <div key={index} className="border-2 italic border px-2 rounded-3xl border-black dark:border-white">{tech.name}</div>)}
             </div>
         </div>
     );

@@ -1,7 +1,6 @@
 import PostCard from './PostCard';
 
 export default function SearchList({ filteredPosts }: any) {
-    console.log(filteredPosts)
     return (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 lg:gap-4 w-full">
         {filteredPosts.map((post:any) => (

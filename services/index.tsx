@@ -66,7 +66,9 @@ export const getProjects = async() => {
         thumbnail {
         url
         }
-        technology
+        tags {
+            name
+        }
     }
     }`
 
@@ -97,4 +99,15 @@ export const getAbout = async() => {
     return result.abouts
 }
 
+export const getTags = async() => {
+    const query = gql `
+    query Tags {
+        tags {
+            name
+        }
+    }`
 
+    const result = await request(graphqlAPI, query);
+
+    return result.tags
+}
