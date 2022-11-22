@@ -43,8 +43,8 @@ export default function FeaturedPost({...post}:PostType) {
               <Image 
               src={newImageSrc} 
               alt={`thumbnail ${post.title}`} 
-              width={500} 
-              height={500} 
+              width={800} 
+              height={800} 
               className="object-cover h-40 mb-4 rounded-t-lg"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(700, 475))}`}
               placeholder='blur'

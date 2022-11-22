@@ -53,7 +53,7 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
             description={post.headline}
             />
 
-            <nav className="lg:w-10/12 mx-auto rounded-full hidden md:block bg-gray-100/80 px-2 py-1 dark:bg-gray-900/40 dark:text-gray-100">
+            <nav className="lg:w-10/12 mx-auto rounded-full hidden text-sm sm:block bg-gray-100/80 px-2 py-1 dark:bg-gray-900/40 dark:text-gray-100">
             <ol className="list-reset flex">
                 <li><Link href="/" className="text-sky-500 hover:font-semibold ">Home</Link></li>
                 <li><span className="text-gray-500 mx-2 ">/</span></li>
@@ -77,8 +77,9 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                 <Image src={newImageSrc} alt={post.title} width={500} height={500} blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(700, 475))}`} placeholder='blur' className="object-contain h-64 w-full rounded mb-6" />
             
             </div>
-            <div className="lg:w-10/12 w-full mx-auto leading-relaxed">
-                <div className='wysiwyg lg:wysiwyg-xl dark:wysiwyg-dark  mx-auto' dangerouslySetInnerHTML={{ __html: content }}></div>
+
+            <div className="md:w-10/12 w-full mx-auto">
+                <article className='wysiwyg md:wysiwyg-lg lg:wysiwyg-xl dark:wysiwyg-dark mx-auto' dangerouslySetInnerHTML={{ __html: content }}></article>
                 
                 <div className='flex justify-between'>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12' href={`/${prevSlug}`}>
@@ -89,7 +90,7 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                         </div>
                     </Link>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12 text-right' href={`/${nextSlug}`}>
-                        <div className='w-[100px] sm:w-[300px]'>
+                        <div className='w-[100px] sm:w-[270px]'>
                             <div className='text-sky-500'>NEXT</div>
                             <div className='truncate text-black/60 dark:text-white/60'>{nextTitle}</div>
                         </div>

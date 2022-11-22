@@ -49,7 +49,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             description='Amri Mufti is a web developer.'
             />
 
-            <div className="items-center md:items-start lg:-mx-4 flex  flex-col lg:px-6" >
+            <div className="items-center md:items-start flex flex-col" >
                 <h1 className="underline underline-offset-8 decoration-2 decoration-sky-500 text-2xl font-bold text-gray-900 lg:text-5xl dark:text-white mb-6">
                     {about.title}
                 </h1>
@@ -72,9 +72,8 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                         <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
                         </Link>
                     </div>
-                    <div className="mt-6 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 sm:mr-6">
-                        <div className="wysiwyg lg:wysiwyg-xl dark:wysiwyg-dark" dangerouslySetInnerHTML={{ __html: content }}></div>
-                    </div>
+
+                    <div className="wysiwyg md:wysiwyg-lg lg:wysiwyg-xl  dark:wysiwyg-dark mt-6 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" dangerouslySetInnerHTML={{ __html: content }}></div>
                 </div>
                 
             </div>

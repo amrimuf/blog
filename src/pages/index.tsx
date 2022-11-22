@@ -18,8 +18,8 @@ export default function home({ posts, about }: InferGetServerSidePropsType<typeo
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-4 w-full">
             {posts.filter((posts: { featured: boolean; }) => posts.featured != false).map((post:any) => (
-            <div key={post.id} className=" w-full px-4 border-2 rounded-lg border-sky-500 pb-6">
-            <FeaturedPost {...post} />
+            <div key={post.id} className="w-full px-4 border-2 rounded-lg border-sky-500 pb-6 ">
+                <FeaturedPost {...post} />
             </div>
             ))}
         </div>
