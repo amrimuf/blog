@@ -74,7 +74,7 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
             </p>
             <div className="relative w-full mb-4">
                 <input 
-                className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 border-lime-500 border-black block w-full rounded-md bg-white dark:bg-black text-gray-900 dark:text-gray-100"
+                className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-md bg-white dark:bg-black text-gray-900 dark:text-gray-100"
                 type = "text" 
                 placeholder = "Search articles"
                 onChange = {handleChange} 
