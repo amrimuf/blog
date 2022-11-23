@@ -20,7 +20,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-20 py-2 bg-white shadow-md dark:bg-black dark:shadow-lime-700">
+    <header className="sticky top-0 z-20 py-2 bg-white shadow-md dark:bg-black dark:shadow-lime-700 backdrop-blur-xl">
       <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
         <button
             aria-label="Toggle Dark Mode"
