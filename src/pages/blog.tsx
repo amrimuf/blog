@@ -89,14 +89,15 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
                 </div>
                 ))}
             </div> : <SearchList filteredPosts={filteredPosts} />}
-            <Paginate
-                postsPerPage={postsPerPage}
-                totalPosts={blogPosts.length}
-                paginate={paginate}
-                previousPage={previousPage}
-                nextPage={nextPage}
-                currentPage={currentPage}
-            />
+                {currentPosts.length > 0 ? 
+                            <Paginate
+                            postsPerPage={postsPerPage}
+                            totalPosts={blogPosts.length}
+                            paginate={paginate}
+                            previousPage={previousPage}
+                            nextPage={nextPage}
+                            currentPage={currentPage}
+                        />: <div>Loading...</div>}
         </Layout>
     );
 }
