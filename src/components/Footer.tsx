@@ -6,7 +6,7 @@ export default function Footer() {
     return (
       <footer className="sm:pb-24 py-12 pb-12 bottom-0">
         <div className="max-w-4xl px-4 mx-auto text-gray-800 dark:text-white lg:px-0">
-          <div className="pb-8 mb-2 border-t-2 border-gray-300 dark:border-white-300"></div>
+          <div className="pb-8 mb-2 border-t-2 border-lime-500"></div>
           <div className="flex flex-col justify-between lg:flex-row items-center">
             <div>
               <p>Copyright &copy; {moment().format('y')}  Amri Mufti</p>
@@ -16,7 +16,7 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 target="_blank"
                 href='https://www.instagram.com/amri.4521'
-                className="text-base font-normal text-gray-600 dark:text-gray-300"
+                className="text-base font-normal text-gray-600 dark:text-gray-300 hover:text-lime-500 dark:hover:text-lime-500"
               >
                 <i className="bi bi-instagram h-5 w-5" style={{ fontSize: 18 }}></i>
               </Link>
@@ -24,7 +24,7 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 target="_blank"
                 href='https://www.twitter.com'
-                className="text-base font-normal text-gray-600 dark:text-gray-300"
+                className="text-base font-normal text-gray-600 dark:text-gray-300 hover:text-lime-500 dark:hover:text-lime-500"
               >
                 <i className="bi bi-twitter h-5 w-5" style={{ fontSize: 18 }}></i>
               </Link>
@@ -32,7 +32,7 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 target="_blank"
                 href='https://www.github.com/amrimuf'
-                className="text-base font-normal text-gray-600 dark:text-gray-300"
+                className="text-base font-normal text-gray-600 dark:text-gray-300 hover:text-lime-500 dark:hover:text-lime-500"
               >
                 <i className="bi bi-github h-5 w-5" style={{ fontSize: 18 }}></i>
               </Link>
@@ -40,7 +40,7 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 target="_blank"
                 href='https://www.linkedin.com/in/amrimufti/'
-                className="text-base font-normal text-gray-600 dark:text-gray-300"
+                className="text-base font-normal text-gray-600 dark:text-gray-300 hover:text-lime-500 dark:hover:text-lime-500"
               >
                 <i className="bi bi-linkedin h-5 w-5" style={{ fontSize: 18 }}></i>
               </Link>

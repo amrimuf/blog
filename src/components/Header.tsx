@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTheme } from "next-themes";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import styles from '../styles/styles.module.css'
 
 // import { SITE_NAME } from '../utils/constants';
 
@@ -19,7 +20,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-20 py-2 bg-white dark:bg-black">
+    <header className="sticky top-0 z-20 py-2 bg-white shadow-md dark:bg-black dark:shadow-lime-700">
       <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
         <button
             aria-label="Toggle Dark Mode"
@@ -57,42 +58,42 @@ export default function Header() {
         <div className="space-x-8 hidden md:block">
           <Link href="/" className={`text-base  ${
                 router.asPath === "/"
-                  ? "text-gray-800 font-bold dark:text-gray-400"
-                  : "text-gray-600 dark:text-gray-300 font-normal "
+                ? "text-black font-bold dark:text-white"
+                : "text-dark/60 dark:text-white/60 font-normal"
               }`}>
                 Home{" "}
               {router.asPath === "/" && (
-                <i className="bi bi-arrow-down inline-block h-3 w-3" style={{ fontSize: 14 }}></i>
+                <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
               )}
           </Link>
           <Link href="/blog" className={`text-base  ${
                 router.asPath === "/blog"
-                  ? "text-gray-800 font-bold dark:text-gray-400"
-                  : "text-gray-600 dark:text-gray-300 font-normal "
+                ? "text-black font-bold dark:text-white"
+                : "text-dark/60 dark:text-white/60 font-normal"
               }`}>
               Blog{" "}
               {router.asPath === "/blog" && (
-                <i className="bi bi-arrow-down inline-block h-3 w-3" style={{ fontSize: 14 }}></i>
+                <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
               )}
           </Link>
           <Link href="/projects" className={`text-base  ${
                 router.asPath === "/projects"
-                  ? "text-gray-800 font-bold dark:text-gray-400"
-                  : "text-gray-600 dark:text-gray-300 font-normal "
+                ? "text-black font-bold dark:text-white"
+                : "text-dark/60 dark:text-white/60 font-normal"
               }`}>
               Projects{" "}
               {router.asPath === "/projects" && (
-                <i className="bi bi-arrow-down inline-block h-3 w-3" style={{ fontSize: 14 }}></i>
+                <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
               )}
           </Link>
           <Link href="/about" className={`text-base  ${
                 router.asPath === "/about"
-                  ? "text-gray-800 font-bold dark:text-gray-400"
-                  : "text-gray-600 dark:text-gray-300 font-normal "
+                ? "text-black font-bold dark:text-white"
+                : "text-dark/60 dark:text-white/60 font-normal"
               }`}>
               About{" "}
               {router.asPath === "/about" && (
-                <i className="bi bi-arrow-down inline-block h-3 w-3" style={{ fontSize: 14 }}></i>
+                <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
               )}
           </Link>
         </div>
@@ -109,7 +110,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className={isNavOpen && theme==="dark" ? "showMenuNavDark" : isNavOpen && theme==="light"? "showMenuNav" : "hideMenuNav"}>
+        <div className={isNavOpen && theme==="dark" ? styles.showMenuNavDark : isNavOpen && theme==="light"? styles.showMenuNav : styles.hideMenuNav}>
           <div
             className="CROSS-ICON absolute top-0 right-0 px-8 py-8"
             onClick={() => setIsNavOpen(false)}
@@ -140,41 +141,6 @@ export default function Header() {
           </ul>
         </div>
       </div>
-
-      <style>{`
-      .hideMenuNav {
-        display: none;
-      }
-      .showMenuNav {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        background: white;
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-      }
-      .showMenuNavDark {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        background: black;
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-      }
-    `}</style>
-
     </header>
   )
 };

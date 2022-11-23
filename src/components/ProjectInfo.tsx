@@ -21,6 +21,7 @@ export default function ProjectInfo({...projectInfo}: ProjectInfoType) {
             <div className="">
                 <h1 className='font-bold text-3xl dark:text-white'>{projectInfo.title}</h1>
             </div>
+            <hr className="border-black/20 w-full mx-auto mt-10 md:hidden dark:border-white/20" />
             <div>
                 {projectInfo.description}
             </div>

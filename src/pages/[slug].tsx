@@ -10,25 +10,6 @@ import Link from 'next/link';
 import { InferGetServerSidePropsType } from 'next';
 
 export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const newImageSrc = post.thumbnail.url.toString().replace(/[()]/g, '');
-    const convertImage = (w:number, h:number) => `
-    <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-        <linearGradient id="g">
-            <stop stop-color="#333" offset="20%" />
-            <stop stop-color="#222" offset="50%" />
-            <stop stop-color="#333" offset="70%" />
-        </linearGradient>
-        </defs>
-        <rect width="${w}" height="${h}" fill="#333" />
-        <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-        <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-        </svg>`;
-
-        const toBase64 = (str:string) =>
-        typeof window === 'undefined'
-        ? Buffer.from(str).toString('base64')
-        : window.btoa(str);
 
     const content = post.content.html
 
@@ -53,11 +34,13 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
             description={post.headline}
             />
 
-            <nav className="lg:w-10/12 mx-auto rounded-full hidden text-sm sm:block bg-gray-100/80 px-2 py-1 dark:bg-gray-900/40 dark:text-gray-100">
+            <nav className="lg:w-10/12 mx-auto rounded-full hidden text-sm sm:block px-2 py-1 dark:text-gray-100">
             <ol className="list-reset flex">
-                <li><Link href="/" className="text-sky-500 hover:font-semibold ">Home</Link></li>
+                <li><Link href="/" className="text-lime-500 hover:underline">Home</Link></li>
                 <li><span className="text-gray-500 mx-2 ">/</span></li>
-                <li><Link href={`/${prevUrl}`} className="text-sky-500 hover:font-semibold capitalize">{prevUrl}</Link></li>
+                <li><Link href={`/${prevUrl}`} className="text-lime-500 hover:underline capitalize">{prevUrl}</Link></li>
+                <li><span className="text-gray-500 mx-2">/</span></li>
+                <li className="text-gray-500 dark:text-gray-400">{post.category}</li>
                 <li><span className="text-gray-500 mx-2">/</span></li>
                 <li className="text-gray-500 dark:text-gray-400">{post.title}</li>
             </ol>
@@ -74,8 +57,14 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                     />
                 </div>
 
-                <Image src={newImageSrc} alt={post.title} width={500} height={500} blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(700, 475))}`} placeholder='blur' className="object-contain h-64 w-full rounded mb-6" />
-            
+                <Image 
+                    src={post.thumbnail.url} 
+                    alt={post.title} 
+                    width={500} 
+                    height={500} 
+                    blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`} 
+                    placeholder='blur' 
+                    className="object-contain h-64 w-auto rounded mb-6" />
             </div>
 
             <div className="md:w-10/12 w-full mx-auto">
@@ -83,18 +72,18 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                 
                 <div className='flex justify-between'>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12' href={`/${prevSlug}`}>
-                        <i className='bi bi-chevron-left hover:text-sky-500 bi-hover-bold' ></i>
+                        <i className='bi bi-chevron-left hover:text-lime-500 bi-hover-bold' ></i>
                         <div className='w-[100px] sm:w-[300px]'>
-                            <div className='text-sky-500'>PREVIOUS</div> 
+                            <div className='text-lime-500'>PREVIOUS</div> 
                             <div className='truncate text-black/60 dark:text-white/60 '>{prevTitle}</div>
                         </div>
                     </Link>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12 text-right' href={`/${nextSlug}`}>
                         <div className='w-[100px] sm:w-[270px]'>
-                            <div className='text-sky-500'>NEXT</div>
+                            <div className='text-lime-500'>NEXT</div>
                             <div className='truncate text-black/60 dark:text-white/60'>{nextTitle}</div>
                         </div>
-                        <i className='bi bi-chevron-right hover:text-sky-500  bi-hover-bold'></i>
+                        <i className='bi bi-chevron-right hover:text-lime-500  bi-hover-bold'></i>
                     </Link>
                 </div>
             </div>

@@ -16,14 +16,20 @@ export default function home({ posts, about }: InferGetServerSidePropsType<typeo
             Featured Posts
         </h1>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-4 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
             {posts.filter((posts: { featured: boolean; }) => posts.featured != false).map((post:any) => (
-            <div key={post.id} className="w-full px-4 border-2 rounded-lg border-sky-500 pb-6 ">
+            <div key={post.id} className="w-full px-4 rounded-xl pb-6 bg-white shadow-md hover:shadow-lg hover:scale-[1.02] duration-300 ease-in-out dark:bg-black dark:shadow-lime-700">
                 <FeaturedPost {...post} />
             </div>
             ))}
         </div>
-        <Link href='/blog' className="inline-flex items-center w-full justify-center text-sm lg:text-lg font-semibold rounded px-4 py-2 mt-4 border border-2 border-gray-400 rounded dark:border-white-300 dark:hover:border-white hover:border-gray-600">View all posts</Link>
+
+        <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            className="flex mx-auto mt-6 px-6 py-2.5 bg-lime-500 text-white dark:text-black font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out"
+        ><Link href='/blog'>View all posts</Link></button>
         
     </Layout>
     );

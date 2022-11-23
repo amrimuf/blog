@@ -74,7 +74,7 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
             </p>
             <div className="relative w-full mb-4">
                 <input 
-                className="px-4 py-2 border border-gray-300 dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 block w-full rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 border-lime-500 border-black block w-full rounded-md bg-white dark:bg-black text-gray-900 dark:text-gray-100"
                 type = "text" 
                 placeholder = "Search articles"
                 onChange = {handleChange} 
@@ -82,22 +82,22 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
                 <svg className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
             {searchField === '' ?         
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 lg:gap-4 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
                 {currentPosts.map((post:any) => (
-                <div key={post.id} className="w-full px-4 border-2 rounded-lg border-sky-500 pb-6">
+                <div key={post.id} className="w-full px-4 rounded-xl pb-6 bg-white shadow-md hover:shadow-lg hover:scale-[1.02] duration-300 ease-in-out dark:bg-black dark:shadow-lime-700">
                     <PostCard post={post} />
                 </div>
                 ))}
             </div> : <SearchList filteredPosts={filteredPosts} />}
                 {currentPosts.length > 0 ? 
-                            <Paginate
-                            postsPerPage={postsPerPage}
-                            totalPosts={blogPosts.length}
-                            paginate={paginate}
-                            previousPage={previousPage}
-                            nextPage={nextPage}
-                            currentPage={currentPage}
-                        />: <div>Loading...</div>}
+                    <Paginate
+                    postsPerPage={postsPerPage}
+                    totalPosts={blogPosts.length}
+                    paginate={paginate}
+                    previousPage={previousPage}
+                    nextPage={nextPage}
+                    currentPage={currentPage}
+                />: <div>Loading...</div>}
         </Layout>
     );
 }

@@ -9,25 +9,6 @@ import Seo from "../components/Seo";
 import { getAbout } from "../../services";
 
 export default function About({about}:InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const newImageSrc = about.image.url.toString().replace(/[()]/g, '');
-    const convertImage = (w:number, h:number) => `
-    <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-        <linearGradient id="g">
-            <stop stop-color="#333" offset="20%" />
-            <stop stop-color="#222" offset="50%" />
-            <stop stop-color="#333" offset="70%" />
-        </linearGradient>
-        </defs>
-        <rect width="${w}" height="${h}" fill="#333" />
-        <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-        <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-        </svg>`;
-
-        const toBase64 = (str:string) =>
-        typeof window === 'undefined'
-        ? Buffer.from(str).toString('base64')
-        : window.btoa(str);
 
     const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
     const content = about.content.html
@@ -50,24 +31,23 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             />
 
             <div className="items-center md:items-start flex flex-col" >
-                <h1 className="underline underline-offset-8 decoration-2 decoration-sky-500 text-2xl font-bold text-gray-900 lg:text-5xl dark:text-white mb-6">
+                <h1 className="underline underline-offset-8 decoration-2 decoration-lime-500 text-2xl font-bold text-gray-900 lg:text-5xl dark:text-white mb-6">
                     {about.title}
                 </h1>
 
                 <div className="flex flex-col md:flex-row-reverse items-center md:justify-between md:items-start">
                     <div className="flex flex-col items-center">
                         <Image
-                            src={newImageSrc}
-                            blurDataURL={`data:image/svg+xml;base64,${toBase64(convertImage(700, 475))}`}
+                            src={about.image.url}
+                            blurDataURL={`/_next/image?url=${about.image.url}&w=16&q=1`}
                             placeholder='blur' 
                             alt="Profile"
                             priority={true}
-                            className="sm:block border-2 rounded-lg border-sky-500 p-3 mb-6"
+                            className="border-2 rounded-lg border border-lime-500 shadow-md dark:shadow-lime-700 p-3 mb-6"
                             width={250}
                             height={250}
-                            // placeholder="blur"
                         />
-                        <Link href='mailto:amrimuvti@gmail.com' className="w-8/12 flex items-center justify-center space-x-2  py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" >
+                        <Link href='mailto:amrimuvti@gmail.com' className="w-8/12 flex items-center justify-center space-x-2  py-2.5 bg-lime-500 text-white dark:text-black font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-outt" >
                         <p>Let's collaborate</p>
                         <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
                         </Link>
@@ -83,7 +63,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                     font-weight:normal;
                 }
                 .link:hover {
-                    color:#2563eb;
+                    color:#84cc16;
                 }
             `}
             </style>

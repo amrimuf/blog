@@ -8,20 +8,20 @@ const Paginate = ({ postsPerPage, totalPosts, previousPage, nextPage, paginate, 
     }
 
     return (
-            <ul className="flex flex-row gap-4 justify-center items-center mt-4">
+            <ul className="flex flex-row gap-4 justify-center items-center mt-8">
                 <li onClick={previousPage}>
-                    <i className="bi bi-caret-left-fill text-sky-500 text-2xl hover:text-sky-600 cursor-pointer"></i>
+                    <i className="bi bi-caret-left-fill text-lime-500 text-2xl hover:text-lime-600 cursor-pointer"></i>
                 </li>
                 {pageNumbers.map((number) => (
                 <li
                     key={number}
                     onClick={() => paginate(number)}
-                    className={` py-1 px-3 cursor-pointer ${currentPage === number ? ' rounded-full bg-sky-500 hover:bg-sky-600 text-white drop-shadow-lg' : ''}`}
+                    className={` py-1 px-3 cursor-pointer ${currentPage === number ? ' rounded-full bg-lime-500 hover:bg-lime-600 text-white drop-shadow-lg dark:text-black' : ''}`}
                 >{number}
                 </li>
                 ))}
                 <li onClick={nextPage} >
-                    <i className="bi bi-caret-right-fill text-sky-500 text-2xl hover:text-sky-600 cursor-pointer"></i>
+                    <i className="bi bi-caret-right-fill text-lime-500 text-2xl hover:text-lime-600 cursor-pointer"></i>
                 </li>
             </ul>
     );

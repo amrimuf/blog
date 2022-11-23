@@ -17,7 +17,7 @@ const BackToTop: FC = () => {
     return (
     <>
         <button
-        className={styles.top}
+        className={`${styles.top} dark:bg-black shadow-lime-400/20 dark:shadow-lime-700 shadow-lg`}
         onClick={() =>
             window.scrollTo({
             top: showButton ? 0 : document.body.scrollHeight,
@@ -27,7 +27,7 @@ const BackToTop: FC = () => {
         style={{ transform: showButton ? 'rotate(0deg)' : 'rotate(180deg)' }}
         aria-label='Back to top'
         >
-        <i className="bi bi-chevron-double-up mx-[15px] my-[10px]" style={{ fontSize:18 }}></i>
+        <i className="bi bi-chevron-double-up mx-[15px] my-[10px] text-lime-500" style={{ fontSize:18 }}></i>
         </button>
     </>
     )

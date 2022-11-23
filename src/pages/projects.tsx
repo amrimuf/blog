@@ -86,19 +86,19 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
                 <button 
                     key={index}
                     onClick={() => toggleTag(tag.name)}
-                    className={checkTagged(tag.name) ? "border-2 border px-2 rounded-3xl border-black bg-blue-600 text-white dark:border-white" : "border-2 border px-2 rounded-3xl border-black dark:border-white"}
+                    className={checkTagged(tag.name) ? "border-2 border px-2 rounded-3xl border-lime-500 bg-lime-500 text-white font-medium dark:text-black shadow-md dark:shadow-lime-700" : "border-2 border px-2 rounded-3xl border-black dark:border-white"}
                 >
                     {tag.name}
                 </button>
             ))}
             <button
                 onClick={() => clearSelectedFilter()}
-                className='bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-2xl px-4 py-2'
+                className='dark:bg-white bg-black hover:scale-[1.02] hover:shadow-lg shadow-md dark:shadow-white/20 text-white dark:text-black rounded-2xl px-4 py-2'
                 >Reset all filters</button>
         </div>
         
 
-        <div className="mt-4 flex flex-col space-y-4">
+        <div className="mt-4 flex flex-col gap-6">
         {filteredProjects.map((project:any) => (
                 <div key={project.id} className="w-full">
                     <ProjectCard {...project}/>
