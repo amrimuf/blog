@@ -42,7 +42,7 @@ export default function Hero({...about}){
                 height={200} 
                 src={about.image.url}
                 blurDataURL={`/_next/image?url=${about.image.url}&w=16&q=1`} placeholder='blur' 
-                className="absolute h-16 w-16 object-cover top-24 right-12 sm:static sm:h-80 sm:w-60 border-2 rounded-lg border border-lime-500 shadow-md dark:shadow-lime-700 p-3"/>
+                className="hidden sm:block object-cover sm:h-80 sm:w-60 border-2 rounded-lg border border-lime-500 sm:shadow-md dark:shadow-lime-700 p-0 sm:p-3"/>
         </article>
     )
 }  
