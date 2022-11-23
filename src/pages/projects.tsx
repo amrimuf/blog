@@ -47,7 +47,7 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
                 selectedFilter
                     .toLowerCase()
                     .split(' ')
-                    .every((tagf) => project.tags.some((tag:any) => tag.name === tagf)
+                    .some((tagf) => project.tags.some((tag:any) => tag.name === tagf)
                 )); 
             }
         )
