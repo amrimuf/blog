@@ -6,11 +6,11 @@ export default function Hero({...about}){
     return (
         <article className={`flex items-center justify-between layout mb-8 bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 -z-50 ${styles.handDrawnBorderHero}`}>
             <div className="sm:pr-8 text-gray-900 dark:text-gray-100">
-                <h2 className='text-2xl font-bold sm:text-5xl ' data-fade='1'>
+                <h2 className='text-3xl font-bold sm:text-5xl ' data-fade='1'>
                 Hi!
                 </h2>
                 <h1
-                className='mt-1 text-2xl sm:text-6xl font-gochi'
+                className='mt-1 text-4xl sm:text-6xl font-gochi'
                 data-fade='2'
                 >
                 My name is <span className={styles.highlight}>Amri</span>
