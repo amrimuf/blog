@@ -86,7 +86,7 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
                 <button 
                     key={index}
                     onClick={() => toggleTag(tag.name)}
-                    className={checkTagged(tag.name) ? "border-2 border px-2 rounded-3xl border-lime-500 bg-lime-500 text-white font-medium dark:text-black shadow-md dark:shadow-lime-700" : "border-2 border px-2 rounded-3xl border-black dark:border-white"}
+                    className={checkTagged(tag.name) ? "border-2 border px-2 rounded-3xl border-lime-500 bg-lime-500 text-white font-medium dark:text-black shadow-md dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
                 >
                     {tag.name}
                 </button>

@@ -43,7 +43,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                             placeholder='blur' 
                             alt="Profile"
                             priority={true}
-                            className="border-2 rounded-lg border border-lime-500 shadow-md dark:shadow-lime-700 p-3 mb-6"
+                            className="ring-1 ring-lime-500 rounded-md border border-lime-500 shadow-md dark:shadow-lime-700 p-3 mb-6"
                             width={250}
                             height={250}
                         />

@@ -26,7 +26,7 @@ export default function ProjectInfo({...projectInfo}: ProjectInfoType) {
                 {projectInfo.description}
             </div>
             <div className="flex flex-wrap justify-start gap-2">
-                {projectInfo.tags.map((tech:any,index:any) => <div key={index} className="border-2 italic border px-2 rounded-3xl border-black dark:border-white">{tech.name}</div>)}
+                {projectInfo.tags.map((tech:any,index:any) => <div key={index} className="ring-1 ring-lime-500 italic border px-2 rounded-3xl ">{tech.name}</div>)}
             </div>
         </div>
     );
