@@ -65,7 +65,7 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                     height={500} 
                     blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`} 
                     placeholder='blur' 
-                    className={`object-contain h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} />
+                    className={`object-cover h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} />
             </div>
 
             <div className="md:w-10/12 w-full mx-auto">
@@ -91,6 +91,12 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
             <style>{`
                 .bi-hover-bold:hover {
                     -webkit-text-stroke: 1px;
+                }
+                .link {
+                    font-weight:normal;
+                }
+                .link:hover {
+                    color:#84cc16;
                 }
             `}</style>
         </Layout>

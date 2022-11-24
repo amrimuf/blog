@@ -10,7 +10,7 @@ export default function Hero({...about}){
                 Hi!
                 </h2>
                 <h1
-                className='mt-1 text-4xl sm:text-6xl font-gochi'
+                className='mt-1 text-[32px] sm:text-6xl font-gochi'
                 data-fade='2'
                 >
                 My name is <span className={styles.highlight}>Amri</span>

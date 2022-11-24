@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default function Footer() {
     return (
-      <footer className="sm:pb-24 py-12 pb-12 bottom-0">
+      <footer className="sm:pb-24 py-12 pb-12 bottom-0 bg-white dark:bg-black">
         <div className="max-w-4xl px-4 mx-auto text-gray-600 dark:text-gray-400 lg:px-0">
           <div className="pb-8 mb-2 border-t-4 border-lime-500"></div>
           <div className="flex flex-col justify-between lg:flex-row items-center">
