@@ -76,13 +76,13 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                         <i className='bi bi-chevron-left hover:text-lime-500 bi-hover-bold' ></i>
                         <div className='w-[100px] sm:w-[300px]'>
                             <div className='text-lime-500'>PREVIOUS</div> 
-                            <div className='truncate text-black/60 dark:text-white/60 '>{prevTitle}</div>
+                            <div className='truncate text-gray-600 dark:text-gray-400 '>{prevTitle}</div>
                         </div>
                     </Link>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12 text-right' href={`/${nextSlug}`}>
                         <div className='w-[100px] sm:w-[270px]'>
                             <div className='text-lime-500'>NEXT</div>
-                            <div className='truncate text-black/60 dark:text-white/60'>{nextTitle}</div>
+                            <div className='truncate text-gray-600 dark:text-gray-400'>{nextTitle}</div>
                         </div>
                         <i className='bi bi-chevron-right hover:text-lime-500  bi-hover-bold'></i>
                     </Link>
