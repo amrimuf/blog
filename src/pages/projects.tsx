@@ -66,10 +66,10 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
         templateTitle='Projects'
         description='A few projects I have worked on recently.'
         />
-        <h1 className='text-2xl font-bold text-gray-900 lg:text-5xl dark:text-white' data-fade='0'>
+        <h1 className='text-2xl font-bold lg:text-5xl text-gray-900 dark:text-gray-100' data-fade='0'>
             Projects
         </h1>
-        <p className='mt-2 text-gray-600 dark:text-gray-300' data-fade='1'>
+        <p className='mt-2 text-gray-600 dark:text-gray-400' data-fade='1'>
             A few projects I have worked on recently.
         </p>
         <input

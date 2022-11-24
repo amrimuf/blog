@@ -5,7 +5,6 @@ import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 import SearchList from "../components/SearchList";
 import { getPosts } from '../../services';
-import PostCard from '../components/PostCard';
 import Paginate from "../components/Paginate";
 
 export default function Blog({ posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -66,15 +65,15 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
             templateTitle='Blog'
             description='Thoughts and tutorials about web development and programming.'
             />
-            <h1 className='text-2xl font-bold text-gray-900 lg:text-5xl dark:text-white' data-fade='0'>
+            <h1 className='text-2xl font-bold text-gray-900 lg:text-5xl dark:text-gray-100' data-fade='0'>
                 Blog
             </h1>
-            <p className='mt-2 text-gray-600 dark:text-gray-300 mb-6' data-fade='1'>
+            <p className='mt-2 text-gray-600 dark:text-gray-400 mb-6' data-fade='1'>
             Thoughts and tutorials about web development and programming.
             </p>
             <div className="relative w-full mb-4">
                 <input 
-                className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-md bg-white dark:bg-black text-gray-900 dark:text-gray-100"
+                className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white dark:bg-black text-gray-900 dark:text-gray-100"
                 type = "text" 
                 placeholder = "Search articles"
                 onChange = {handleChange} 

@@ -40,6 +40,9 @@ module.exports = {
           },
         };
       },
+      fontFamily: {
+        'gochi': ['Gochi Hand', 'sans-serif']
+      },
     },
   },
   plugins: [

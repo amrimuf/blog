@@ -20,7 +20,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-20 py-2 bg-white shadow-md dark:bg-black dark:shadow-lime-700 backdrop-blur-xl">
+    <header className="sticky top-0 z-20 py-2 bg-white shadow-lg dark:bg-black dark:shadow-lime-700 border-b-4 border-lime-500">
       <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
         <button
             aria-label="Toggle Dark Mode"
@@ -58,8 +58,8 @@ export default function Header() {
         <div className="space-x-8 hidden md:block">
           <Link href="/" className={`text-base  ${
                 router.asPath === "/"
-                ? "text-black font-bold dark:text-white"
-                : "text-dark/60 dark:text-white/60 font-normal"
+                ? "text-gray-900 dark:text-gray-100 font-bold"
+                : "text-gray-600 dark:text-gray-400 font-normal"
               }`}>
                 Home{" "}
               {router.asPath === "/" && (
@@ -68,8 +68,8 @@ export default function Header() {
           </Link>
           <Link href="/blog" className={`text-base  ${
                 router.asPath === "/blog"
-                ? "text-black font-bold dark:text-white"
-                : "text-dark/60 dark:text-white/60 font-normal"
+                ? "text-gray-900 dark:text-gray-100 font-bold"
+                : "text-gray-600 dark:text-gray-400 font-normal"
               }`}>
               Blog{" "}
               {router.asPath === "/blog" && (
@@ -78,8 +78,8 @@ export default function Header() {
           </Link>
           <Link href="/projects" className={`text-base  ${
                 router.asPath === "/projects"
-                ? "text-black font-bold dark:text-white"
-                : "text-dark/60 dark:text-white/60 font-normal"
+                ? "text-gray-900 dark:text-gray-100 font-bold"
+                : "text-gray-600 dark:text-gray-400 font-normal"
               }`}>
               Projects{" "}
               {router.asPath === "/projects" && (
@@ -88,8 +88,8 @@ export default function Header() {
           </Link>
           <Link href="/about" className={`text-base  ${
                 router.asPath === "/about"
-                ? "text-black font-bold dark:text-white"
-                : "text-dark/60 dark:text-white/60 font-normal"
+                ? "text-gray-900 dark:text-gray-100 font-bold"
+                : "text-gray-600 dark:text-gray-400 font-normal"
               }`}>
               About{" "}
               {router.asPath === "/about" && (
@@ -128,7 +128,7 @@ export default function Header() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </div>
-          <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
+          <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-gray-900 dark:text-gray-100">
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link href="/blog">Blog</Link>
             </li>

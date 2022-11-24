@@ -17,7 +17,7 @@ const BackToTop: FC = () => {
     return (
     <>
         <button
-        className={`${styles.top} dark:bg-black shadow-lime-400/20 dark:shadow-lime-700 shadow-lg bg-white bg-opacity-20  dark:bg-opacity-20`}
+        className={`dark:bg-black shadow-lime-400/20 shadow-lg bg-white opacity-50 hover:opacity-70 ring ring-4 ring-lime-500 ${styles.top}`}
         onClick={() =>
             window.scrollTo({
             top: showButton ? 0 : document.body.scrollHeight,

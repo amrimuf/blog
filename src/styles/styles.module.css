@@ -9,8 +9,6 @@
     cursor: pointer;
     position: fixed;
     color: var(--grey0);
-    border: solid;
-    border-weight: 20px;
     border-color: #84cc16;
     transition: 0.3s ease-in-out;
 }
@@ -45,4 +43,53 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
+}
+
+.handDrawnBorderHero {
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: solid 6px #84cc16;
+    overflow: hidden;
+}
+
+.handDrawnBorderImage {
+    border-radius: 255px 5px 255px 5px/5px 255px 5px 255px;
+    border: solid 4px #84cc16;
+    overflow: hidden;
+}
+
+.handDrawnBorderProjects {
+    border-radius: 15px 100px 15px 100px/255px 15px 225px 15px;
+    border: solid 4px #84cc16;
+    overflow: hidden;
+}
+
+.handDrawnBorderThree {
+    border-radius: 15px 15px 225px 255px/225px 225px 15px  15px;
+    border: solid 6px #84cc16;
+    overflow: hidden;
+}
+
+.handDrawnBorderPosts {
+    border-radius: 15px 100px 15px 100px/100px 15px 100px 15px;
+    border: solid 4px #84cc16;
+    overflow: hidden;
+}
+
+.highlight {
+    position: relative;
+}
+
+.highlight::before {
+    /* Highlight color */
+background-color: #84cc16;
+opacity: 0.5;
+
+content: "";
+position: absolute;
+width: calc(100%);
+height: 20%;
+left: -2px;
+bottom: 14px;
+z-index: -1;
+transform: rotate(-2deg);
 }

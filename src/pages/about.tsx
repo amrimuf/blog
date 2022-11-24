@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InferGetServerSidePropsType } from "next";
 import React from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import styles from '../styles/styles.module.css'
 
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
@@ -30,8 +31,8 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             description='Amri Mufti is a web developer.'
             />
 
-            <div className="items-center md:items-start flex flex-col bg-white p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black dark:shadow-lime-700" >
-                <h1 className="underline underline-offset-8 decoration-2 decoration-lime-500 text-2xl font-bold text-gray-900 lg:text-5xl dark:text-white mb-6">
+            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorder}`} >
+                <h1 className={`text-4xl font-bold lg:text-6xl text-gray-900  dark:text-gray-100 mb-6 font-gochi tracking-widest ${styles.highlight}`}>
                     {about.title}
                 </h1>
 
@@ -43,11 +44,11 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                             placeholder='blur' 
                             alt="Profile"
                             priority={true}
-                            className="ring-1 ring-lime-500 rounded-md border border-lime-500 shadow-md dark:shadow-lime-700 p-3 mb-6"
+                            className={`shadow-md dark:shadow-lime-700 mb-6 ${styles.handDrawnBorderImage}`}
                             width={250}
                             height={250}
                         />
-                        <Link href='mailto:amrimuvti@gmail.com' className="w-8/12 flex items-center justify-center space-x-2  py-2.5 bg-lime-500 text-white dark:text-black font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-outt" >
+                        <Link href='mailto:amrimuvti@gmail.com' className="w-8/12 flex items-center justify-center space-x-2  py-2.5 bg-lime-500 dark:text-gray-900 text-gray-100 font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out" >
                         <p>Let's collaborate</p>
                         <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
                         </Link>

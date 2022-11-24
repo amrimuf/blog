@@ -8,6 +8,7 @@ import Seo from '../components/Seo';
 import { getPost, getPosts } from '../../services';
 import Link from 'next/link';
 import { InferGetServerSidePropsType } from 'next';
+import styles from '../styles/styles.module.css'
 
 export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetServerSidePropsType<typeof getServerSideProps>) {
 
@@ -40,9 +41,9 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                 <li><span className="text-gray-500 mx-2 ">/</span></li>
                 <li><Link href={`/${prevUrl}`} className="text-lime-500 hover:underline capitalize">{prevUrl}</Link></li>
                 <li><span className="text-gray-500 mx-2">/</span></li>
-                <li className="text-gray-500 dark:text-gray-400">{post.category}</li>
+                <li className="text-gray-600 dark:text-gray-400">{post.category}</li>
                 <li><span className="text-gray-500 mx-2">/</span></li>
-                <li className="text-gray-500 dark:text-gray-400">{post.title}</li>
+                <li className="text-gray-600 dark:text-gray-400">{post.title}</li>
             </ol>
             </nav>
             
@@ -64,11 +65,11 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                     height={500} 
                     blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`} 
                     placeholder='blur' 
-                    className="object-contain h-64 w-auto rounded mb-6" />
+                    className={`object-contain h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} />
             </div>
 
             <div className="md:w-10/12 w-full mx-auto">
-                <article className='wysiwyg md:wysiwyg-lg lg:wysiwyg-xl dark:wysiwyg-dark mx-auto bg-white p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black dark:shadow-lime-700' dangerouslySetInnerHTML={{ __html: content }}></article>
+                <article className='wysiwyg md:wysiwyg-lg lg:wysiwyg-xl dark:wysiwyg-dark mx-auto bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700' dangerouslySetInnerHTML={{ __html: content }}></article>
                 
                 <div className='flex justify-between'>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12' href={`/${prevSlug}`}>
