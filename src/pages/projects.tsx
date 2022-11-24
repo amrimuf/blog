@@ -81,12 +81,12 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
         />
         
         <div className="flex flex-wrap space-x-4 mt-6 items-center justify-start space-y-2">
-                <span className=" text-sm text-gray-600 dark:text-gray-300">Filters:</span>
+                <span className=" text-sm text-gray-600 dark:text-gray-400">Filters:</span>
             {tags.map((tag:any, index:any) => (
                 <button 
                     key={index}
                     onClick={() => toggleTag(tag.name)}
-                    className={checkTagged(tag.name) ? "border-2 border px-2 rounded-3xl border-lime-500 bg-lime-500 text-white font-medium dark:text-black shadow-md dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
+                    className={checkTagged(tag.name) ? "border-2 border px-2 rounded-3xl border-lime-500 bg-lime-500 text-gray-100 dark:text-gray-900 font-medium shadow-md dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
                 >
                     {tag.name}
                 </button>
