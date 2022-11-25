@@ -22,7 +22,7 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
                 selectedFilters
                     .toLowerCase()
                     .split(' ')
-                    .some((selectedFilter) => project.tags.some((projectTag:any) => projectTag.name === selectedFilter)
+                    .some((selectedFilter) => project.tags.some((projectTag:any) => projectTag.name.toLowerCase() === selectedFilter)
                 )); 
             }
         )
@@ -68,8 +68,8 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
             {tags.map((tag:{name:string}, index:string) => (
                 <button 
                     key={index}
-                    onClick={() => toggleTag(tag.name)}
-                    className={isTagged(tag.name) ? "px-2 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
+                    onClick={() => toggleTag(tag.name.toLowerCase())}
+                    className={isTagged(tag.name.toLowerCase()) ? "px-2 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
                 >
                     {tag.name}
                 </button>
