@@ -14,18 +14,31 @@
     border-radius: 15px 100px 15px 100px/255px 15px 225px 15px;
     border: solid 4px #84cc16;
     overflow: hidden;
-}
-
-.handDrawnBorderThree {
-    border-radius: 15px 15px 225px 255px/225px 225px 15px  15px;
-    border: solid 6px #84cc16;
-    overflow: hidden;
+    transform: rotate(0.5deg);
 }
 
 .handDrawnBorderPosts {
-    border-radius: 15px 100px 15px 100px/100px 15px 100px 15px;
-    border: solid 4px #84cc16;
+    border-width: 5px 3px 3px 5px;
+    border-radius:4% 94% 3% 95%/95% 4% 97% 5%;
+    transform: rotate(-1deg);
+    border-color: #84cc16;
+    overflow:hidden;
+}
+
+.handDrawnLineTop {
+    border-radius: 25px 255px 0px 0px/5px 5px 0px 0px;
+    border-width: 5px 0px 0px 0px;
+    border-color: #84cc16;
     overflow: hidden;
+    transform: rotate(-0.3deg);
+}
+
+.handDrawnLineBot {
+    border-radius: 0px 0px 255px 255px/0px 0px 5px 5px;
+    border-width: 0px 0px 5px 0px;
+    border-color: #84cc16;
+    overflow: hidden;
+    transform: rotate(-0.2deg);
 }
 
 .highlight {

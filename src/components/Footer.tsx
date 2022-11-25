@@ -1,12 +1,13 @@
 import Link from "next/link";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import moment from 'moment';
+import styles from '../styles/styles.module.css'
 
 export default function Footer() {
     return (
       <footer className="sm:pb-24 py-12 pb-12 bottom-0 bg-white dark:bg-black">
         <div className="max-w-4xl px-4 mx-auto text-neutral-600 dark:text-neutral-400 lg:px-0">
-          <div className="pb-8 mb-2 border-t-4 border-lime-500"></div>
+          <div className={`pb-8 mb-2 ${styles.handDrawnLineTop}`}></div>
           <div className="flex flex-col justify-between lg:flex-row items-center">
             <div>
               <p>Copyright &copy; {moment().format('y')}  Amri Mufti</p>
