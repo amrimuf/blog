@@ -25,6 +25,12 @@
     overflow:hidden;
 }
 
+.handDrawnBorderCircle {
+    border-radius: 255px 225px 255px 255px/225px 255px 225px 255px;
+    border: solid 4px #84cc16;
+    overflow:hidden;
+}
+
 .handDrawnLineTop {
     border-radius: 25px 255px 0px 0px/5px 5px 0px 0px;
     border-width: 5px 0px 0px 0px;
