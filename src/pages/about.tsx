@@ -3,7 +3,8 @@ import Link from "next/link";
 import { InferGetServerSidePropsType } from "next";
 import React from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import styles from '../styles/styles.module.css'
+import styles from '../styles/styles.module.css';
+import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
 
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
@@ -52,9 +53,22 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                         <p>Let's collaborate</p>
                         <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
                         </Link>
+                        <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-xl">
+                            <SiGo/>
+                            <SiNodedotjs/>
+                            <SiExpress/>
+                            <SiDocker/>
+                            <SiKubernetes/>
+                            <SiPostgresql/>
+                            <SiMysql/>
+                            <SiLaravel />
+                            <SiNextdotjs/>
+                            <SiTailwindcss />
+                            <SiBootstrap/>
+                        </div>
                     </div>
 
-                    <div className="content mt-6 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" dangerouslySetInnerHTML={{ __html: content }}></div>
+                    <div className="content md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" dangerouslySetInnerHTML={{ __html: content }}></div>
                 </div>
                 
             </div>
