@@ -5,6 +5,7 @@ import React from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import styles from '../styles/styles.module.css';
 import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
+import {HiHeart} from 'react-icons/hi'
 
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
@@ -54,6 +55,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                         <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
                         </Link>
                         <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-xl">
+                            <HiHeart className="text-lime-500"/>
                             <SiGo/>
                             <SiNodedotjs/>
                             <SiExpress/>
