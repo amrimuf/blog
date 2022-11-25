@@ -18,7 +18,7 @@ export default function PostMetaTitle({ category, title, date, center, slug, fea
         <div className="lowercase">
           {category}
         </div>
-        <span className='text-lime-500 text-xl font-bold'>{featured ? <p>&#9830;</p> : <p className='text-[30px]'>&bull;</p>}</span>
+        <span className='text-lime-500 text-xl font-extrabold'>{featured ? <p>&#9885;</p> : <p className='text-[30px]'>&bull;</p>}</span>
         <div>
           {dateMoment}
         </div>
