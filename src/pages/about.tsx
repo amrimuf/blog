@@ -32,7 +32,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             />
 
             <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorder}`} >
-                <h1 className={`text-4xl font-bold lg:text-6xl text-neutral-900  dark:text-neutral-100 mb-6 font-gochi tracking-wider ${styles.highlight}`}>
+                <h1 className={`text-[48px] font-bold lg:text-6xl text-neutral-900  dark:text-neutral-100 mb-6 font-gochi tracking-[4px] ${styles.highlight}`}>
                     {about.title}
                 </h1>
 
