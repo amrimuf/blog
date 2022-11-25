@@ -33,7 +33,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             />
 
             <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorder}`} >
-                <h1 className={`text-[48px] font-bold lg:text-6xl text-neutral-900  dark:text-neutral-100 mb-6 font-gochi tracking-[4px] ${styles.highlight}`}>
+                <h1 className={`text-[48px] font-bold lg:text-6xl text-neutral-900  dark:text-neutral-100 mb-6 sm:m-0 font-gochi tracking-[4px] ${styles.highlight}`}>
                     {about.title}
                 </h1>
 
@@ -68,7 +68,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                         </div>
                     </div>
 
-                    <div className="content md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" dangerouslySetInnerHTML={{ __html: content }}></div>
+                    <div className="content mt-4 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" dangerouslySetInnerHTML={{ __html: content }}></div>
                 </div>
                 
             </div>
