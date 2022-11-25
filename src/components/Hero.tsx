@@ -4,7 +4,7 @@ import styles from '../styles/styles.module.css'
 
 export default function Hero({...about}){
     return (
-        <article className={`flex items-center justify-between layout mb-8 bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 -z-50 ${styles.handDrawnBorderHero}`}>
+        <article className={`flex items-center justify-center layout mb-8 bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderHero}`}>
             <div className="w-full sm:w-8/12 sm:pr-8 text-neutral-900 dark:text-neutral-100">
                 <h2 className='text-3xl font-bold sm:text-5xl ' data-fade='1'>
                 Hi!
