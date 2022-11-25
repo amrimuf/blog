@@ -93,7 +93,7 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
             ))}
             <button
                 onClick={() => clearSelectedFilter()}
-                className='dark:bg-white bg-black hover:scale-[1.02] hover:shadow-lg shadow-md dark:shadow-white/20 text-white dark:text-black rounded-2xl px-4 py-2'
+                className='dark:bg-white bg-black hover:scale-[1.02] hover:shadow-lg shadow-md dark:shadow-white/20 text-white dark:text-black rounded-full px-4 py-2'
                 >Reset all filters</button>
         </div>
         

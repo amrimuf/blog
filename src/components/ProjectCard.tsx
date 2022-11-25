@@ -24,7 +24,7 @@ type ProjectInfoType = {
 export default function ProjectCard({ ...projectInfo }: ProjectInfoType) {
     return (
         <Link href={`${projectInfo.post.slug}`}>
-            <article className={`flex bg-white/60 dark:bg-black/30 justify-center items-center px-6 space-x-6 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
+            <article className={`flex bg-white/60 dark:bg-black/30 justify-center items-center px-6 space-x-6 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
                 <Image
                 src={projectInfo.thumbnail.url}
                 blurDataURL={`/_next/image?url=${projectInfo.thumbnail.url}&w=16&q=1`}
