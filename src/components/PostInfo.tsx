@@ -8,6 +8,7 @@ export default function PostInfo({...postInfo}) {
         date={postInfo.createdAt}
         title={postInfo.title}
         slug={postInfo.slug}
+        featured={postInfo.featured}
       />
       <p className="text-neutral-600 mt-5 dark:text-neutral-400">
         {postInfo.headline}        

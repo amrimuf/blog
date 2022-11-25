@@ -46,6 +46,7 @@ export const getPost = async (slug:string) => {
         }
         createdAt
         isBlog
+        featured
         }
     }`
 

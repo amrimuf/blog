@@ -54,6 +54,7 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                     date={post.createdAt}
                     title={post.title}
                     slug={post.slug}
+                    featured={post.featured}
                     center
                     />
                 </div>

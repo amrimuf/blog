@@ -7,9 +7,10 @@ type PostMetaTitleType = {
   title: string;
   center?: boolean;
   slug:string;
+  featured:boolean;
 };
 
-export default function PostMetaTitle({ category, title, date, center, slug }: PostMetaTitleType) {
+export default function PostMetaTitle({ category, title, date, center, slug, featured }: PostMetaTitleType) {
   const dateMoment = moment(date).format("MMM DD, YYYY")
   return (
     <div className={`${center ? 'flex w-10/12 md:w-full flex-col items-center mb-6' : ''}`}>
@@ -17,7 +18,7 @@ export default function PostMetaTitle({ category, title, date, center, slug }: P
         <div className="lowercase">
           {category}
         </div>
-        <span className='text-lime-500'>&bull;</span>
+        <span className='text-lime-500 text-xl font-bold'>{featured ? <p>&#9830;</p> : <p className='text-[30px]'>&bull;</p>}</span>
         <div>
           {dateMoment}
         </div>
