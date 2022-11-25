@@ -8,7 +8,7 @@ const defaultMeta = {
     siteName: 'amrimuf.com',
     description:
         'An online portfolio and blog by Amri Mufti.',
-    url: 'https://amrimuf.com',
+    url: 'https://amri.tech',
     image: '/favicon/large-og.png',
     type: 'website',
     robots: 'follow, index',

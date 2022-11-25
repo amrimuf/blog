@@ -1,30 +1,16 @@
 import PostMetaTitle from './PostMetaTitle';
 
-type PostInfoType = {
-  category: string;
-  createdAt: string;
-  title: string;
-  headline: string;
-  slug: string;
-};
-
-export default function PostInfo({
-  category,
-  createdAt,
-  title,
-  headline,
-  slug,
-}: PostInfoType) {
+export default function PostInfo({...postInfo}) {
   return (
     <div className=''>
       <PostMetaTitle 
-        category={category} 
-        date={createdAt}
-        title={title}
-        slug={slug}
+        category={postInfo.category} 
+        date={postInfo.createdAt}
+        title={postInfo.title}
+        slug={postInfo.slug}
       />
       <p className="text-neutral-600 mt-5 dark:text-neutral-400">
-        {headline}        
+        {postInfo.headline}        
       </p>
     </div>
   );

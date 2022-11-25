@@ -6,25 +6,25 @@ export const getPosts = async () => {
     const query = gql `
     query Posts {
         posts(where: {isBlog: true}) {
+            id
             category
+            title
+            slug
+            headline
+            thumbnail {
+                url
+            }
             content {
                 html
             }
             createdAt
-            id
             publishedAt
-            title
             updatedAt
-            slug
             featured
-            headline
             isBlog
-            thumbnail {
-                url
-            }
-            }
-    }   
-    `
+        }
+    }`
+
     const result = await request(graphqlAPI, query);
 
     return result.posts;
@@ -34,18 +34,18 @@ export const getPost = async (slug:string) => {
     const query = gql `
     query Post ($slug: String!) {
         post(where: {slug: $slug}) {
-        content {
-            html
-        }
-        slug
         category
-        headline
         title
-        isBlog
-        createdAt
+        slug
+        headline
         thumbnail {
             url
         }
+        content {
+            html
+        }
+        createdAt
+        isBlog
         }
     }`
 
@@ -57,19 +57,19 @@ export const getPost = async (slug:string) => {
 export const getProjects = async() => {
     const query = gql `
     query Projects {
-    projects {
-        title,
-        description,
-        post {
-            slug
-        },
-        thumbnail {
-        url
+        projects {
+            title,
+            post {
+                slug
+            },
+            description,
+            thumbnail {
+                url
+            }
+            tags {
+                name
+            }
         }
-        tags {
-            name
-        }
-    }
     }`
 
     const result = await request(graphqlAPI, query);
@@ -81,13 +81,29 @@ export const getAbout = async() => {
     const query = gql `
     query About {
         abouts {
+            title
             headline
+            image {
+                url
+            }
             content {
                 html
             }
             githubLink
             linkedinLink
-            title
+        }
+    }`
+
+    const result = await request(graphqlAPI, query);
+
+    return result.abouts
+}
+
+export const getProfile = async() => {
+    const query = gql `
+    query Profile {
+        abouts {
+            headline
             image {
                 url
             }

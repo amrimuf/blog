@@ -27,13 +27,13 @@ export default function Hero({...about}){
                         type="button"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
-                        className="inline-block px-6 py-2.5 bg-lime-500 dark:text-neutral-900 text-neutral-100 font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out"
+                        className="btn-primary"
                     ><Link href='/blog'>Read the blog</Link></button>
                     <button
                         type="button"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
-                        className="inline-block px-6 py-2.5 bg-lime-500 dark:text-neutral-900 text-neutral-100 font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out"
+                        className="btn-primary"
                     ><Link href='/about'>Learn more about me</Link></button>
                 </div>
             </div>
@@ -43,7 +43,7 @@ export default function Hero({...about}){
                 height={200} 
                 src={about.image.url}
                 blurDataURL={`/_next/image?url=${about.image.url}&w=16&q=1`} placeholder='blur' 
-                className={`hidden sm:block object-cover sm:h-80 sm:w-60 sm:shadow-md dark:shadow-lime-700 ${styles.handDrawnBorderImage}`}/>
+                className={`hidden sm:block profile-image ${styles.handDrawnBorderImage}`}/>
         </article>
     )
 }  

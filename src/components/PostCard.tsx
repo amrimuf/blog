@@ -3,16 +3,29 @@ import Link from 'next/link';
 
 import PostInfo from './PostInfo';
 
-export default function PostCard({ post }: any) {
+type PostType = {
+    post: {
+        slug: string;
+        thumbnail: {
+            url: string
+        };
+        title: string;
+        category: string;
+        createdAt: string;
+        headline: string;
+    }
+}
+
+export default function PostCard({ post }: PostType) {
     return (
         <article className='-mx-4 lg:items-center items-start'>
             <Link href={`/${post.slug}`} >
                 <Image 
                 src={post.thumbnail.url} 
-                alt={post.title} 
+                alt={`${post.title} thumbnail`} 
                 width={500} 
                 height={500} 
-                className="w-full rounded-t mb-4 object-cover h-40"
+                className="thumbnail"
                 blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`}
                 placeholder='blur'/>
             </Link>

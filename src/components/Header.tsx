@@ -5,19 +5,19 @@ import { useTheme } from "next-themes";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import styles from '../styles/styles.module.css'
 
-// import { SITE_NAME } from '../utils/constants';
-
 export default function Header() {
   const router = useRouter();
-  console.log(router.asPath);
+
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const [isNavOpen, setIsNavOpen] = useState(false)
+  const [navOpen, setNavOpen] = useState(false)
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const navPaths =['', 'blog', 'projects', 'about']
 
   return (
     <header className="sticky top-0 z-20 py-2 bg-white shadow-lg dark:bg-black dark:shadow-lime-700 border-b-4 border-lime-500">
@@ -56,53 +56,25 @@ export default function Header() {
         </button>
 
         <div className="space-x-8 hidden md:block">
-          <Link href="/" className={`text-base  ${
-                router.asPath === "/"
-                ? "text-neutral-900 dark:text-neutral-100 font-bold"
-                : "text-neutral-600 dark:text-neutral-400 font-normal"
-              }`}>
-                Home{" "}
-              {router.asPath === "/" && (
-                <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
-              )}
-          </Link>
-          <Link href="/blog" className={`text-base  ${
-                router.asPath === "/blog"
-                ? "text-neutral-900 dark:text-neutral-100 font-bold"
-                : "text-neutral-600 dark:text-neutral-400 font-normal"
-              }`}>
-              Blog{" "}
-              {router.asPath === "/blog" && (
-                <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
-              )}
-          </Link>
-          <Link href="/projects" className={`text-base  ${
-                router.asPath === "/projects"
-                ? "text-neutral-900 dark:text-neutral-100 font-bold"
-                : "text-neutral-600 dark:text-neutral-400 font-normal"
-              }`}>
-              Projects{" "}
-              {router.asPath === "/projects" && (
-                <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
-              )}
-          </Link>
-          <Link href="/about" className={`text-base  ${
-                router.asPath === "/about"
-                ? "text-neutral-900 dark:text-neutral-100 font-bold"
-                : "text-neutral-600 dark:text-neutral-400 font-normal"
-              }`}>
-              About{" "}
-              {router.asPath === "/about" && (
-                <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
-              )}
-          </Link>
+          {navPaths.map((navPath, index) => 
+                  <Link key={index} href={`/${navPath}`} className={`text-base  ${
+                    router.asPath === `/${navPath}`
+                    ? "text-neutral-900 dark:text-neutral-100 font-bold"
+                    : "text-neutral-600 dark:text-neutral-400 font-normal"
+                  }`}>
+                    <span className='capitalize'>{navPath === '' ? 'Home' : navPath}</span>{" "}
+                  {router.asPath === `/${navPath}` && (
+                    <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
+                  )}
+              </Link>
+          )}
         </div>
 
         <div className='md:hidden flex space-x-4'>
-        <Link href="/">Home</Link>
+        <Link href="/" className='text-neutral-900 dark:text-neutral-100'>Home</Link>
           <div 
             className="HAMBURGER-ICON space-y-2 my-auto"
-            onClick={() => setIsNavOpen((prev) => !prev)}
+            onClick={() => setNavOpen((prev) => !prev)}
           >
             <span className="block h-0.5 w-8 bg-gray-600 dark:bg-gray-400"></span>
             <span className="block h-0.5 w-8 bg-gray-600 dark:bg-gray-400"></span>
@@ -110,10 +82,10 @@ export default function Header() {
           </div>
         </div>
 
-        <div className={isNavOpen && theme==="dark" ? styles.showMenuNavDark : isNavOpen && theme==="light"? styles.showMenuNav : styles.hideMenuNav}>
+        <div className={navOpen && theme==="dark" ? 'block absolute h-screen w-full top-0 left-0 bg-black z-10 flex flex-col items-center place-content-evenly' : navOpen && theme==="light" ? 'block absolute h-screen w-full top-0 left-0 bg-white z-10 flex flex-col items-center place-content-evenly' : 'hidden'}>
           <div
             className="CROSS-ICON absolute top-0 right-0 px-8 py-8"
-            onClick={() => setIsNavOpen(false)}
+            onClick={() => setNavOpen(false)}
           >
             <svg
               className="h-8 w-8 text-neutral-600"
@@ -129,13 +101,13 @@ export default function Header() {
             </svg>
           </div>
           <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-neutral-900 dark:text-neutral-100">
-            <li className="border-b border-gray-400 my-8 uppercase">
+            <li className="border-b-2 border-lime-500 my-8 uppercase">
               <Link href="/blog">Blog</Link>
             </li>
-            <li className="border-b border-gray-400 my-8 uppercase">
+            <li className="border-b-2 border-lime-400 my-8 uppercase">
               <Link href="/projects">Projects</Link>
             </li>
-            <li className="border-b border-gray-400 my-8 uppercase">
+            <li className="border-b-2 border-lime-400 my-8 uppercase">
               <Link href="/about">About</Link>
             </li>
           </ul>

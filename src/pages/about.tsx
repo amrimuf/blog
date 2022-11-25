@@ -44,17 +44,17 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                             placeholder='blur' 
                             alt="Profile"
                             priority={true}
-                            className={`shadow-md dark:shadow-lime-700 mb-6 ${styles.handDrawnBorderImage}`}
+                            className={`profile-image mb-6 ${styles.handDrawnBorderImage}`}
                             width={250}
                             height={250}
                         />
-                        <Link href='mailto:amrimuvti@gmail.com' className="w-8/12 flex items-center justify-center space-x-2  py-2.5 bg-lime-500 dark:text-neutral-900 text-neutral-100 font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out" >
+                        <Link href='mailto:amrimuvti@gmail.com' className=" flex mx-auto items-center gap-2 btn-primary" >
                         <p>Let's collaborate</p>
                         <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
                         </Link>
                     </div>
 
-                    <div className="wysiwyg md:wysiwyg-lg lg:wysiwyg-xl  dark:wysiwyg-dark mt-6 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" dangerouslySetInnerHTML={{ __html: content }}></div>
+                    <div className="content mt-6 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" dangerouslySetInnerHTML={{ __html: content }}></div>
                 </div>
                 
             </div>

@@ -69,7 +69,7 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
             </div>
 
             <div className="md:w-10/12 w-full mx-auto">
-                <article className='wysiwyg md:wysiwyg-lg lg:wysiwyg-xl dark:wysiwyg-dark mx-auto bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700' dangerouslySetInnerHTML={{ __html: content }}></article>
+                <article className='content mx-auto bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700' dangerouslySetInnerHTML={{ __html: content }}></article>
                 
                 <div className='flex justify-between'>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12' href={`/${prevSlug}`}>

@@ -1,6 +1,15 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const Paginate = ({ postsPerPage, totalPosts, previousPage, nextPage, paginate, currentPage }:any) => {
+type PaginationType = {
+    postsPerPage: number;
+    totalPosts: number;
+    previousPage: any;
+    nextPage: any;
+    paginate: any;
+    currentPage: number;
+}
+
+const Pagination = ({ postsPerPage, totalPosts, previousPage, nextPage, paginate, currentPage }:PaginationType) => {
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -27,4 +36,4 @@ const Paginate = ({ postsPerPage, totalPosts, previousPage, nextPage, paginate, 
     );
     };
 
-export default Paginate;
+export default Pagination;

@@ -1,7 +1,7 @@
 import PostCard from './PostCard';
 import styles from '../styles/styles.module.css'
 
-export default function SearchList({ filteredPosts }: any) {
+export default function PostList({ filteredPosts }: any) {
     if (filteredPosts.length === 0) {
         return <p>Sorry, not found :(</p> 
     } else {

@@ -1,13 +1,12 @@
-import { useState, FC, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import styles from '../styles/styles.module.css'
 
-const BackToTop: FC = () => {
-    const [showButton, setShowButton] = useState(false)
+export default function BackToTop() {
+    const [toTopButton, setToTopButton] = useState(false)
 
     useEffect(() => {
-    const toggleVisibility = () => {
-        setShowButton(window.pageYOffset > 200)
+        const toggleVisibility = () => {
+            setToTopButton(window.pageYOffset > 200)
     }
 
     window.addEventListener('scroll', toggleVisibility)
@@ -15,22 +14,17 @@ const BackToTop: FC = () => {
     }, [])
 
     return (
-    <>
         <button
-        className={`dark:bg-black shadow-lime-400/20 shadow-lg bg-white opacity-50 hover:opacity-70 ring ring-4 ring-lime-500 ${styles.top}`}
+        className={`flex justify-center items-center fixed bottom-[20px] right-[25px] rounded-full pointer-cursor dark:bg-black shadow-lime-400/20 shadow-lg bg-white opacity-50 hover:opacity-70 ring ring-4 ring-lime-500  transition-[opacity, transform] duration-300 ease-in-out ${toTopButton ? 'rotate-0': 'rotate-180'}`}
         onClick={() =>
             window.scrollTo({
-            top: showButton ? 0 : document.body.scrollHeight,
+            top: toTopButton ? 0 : document.body.scrollHeight,
             behavior: 'smooth',
             })
         }
-        style={{ transform: showButton ? 'rotate(0deg)' : 'rotate(180deg)' }}
         aria-label='Back to top'
         >
-        <i className="bi bi-chevron-double-up mx-[15px] my-[10px] text-lime-500" style={{ fontSize:18 }}></i>
+            <i className="bi bi-chevron-double-up mx-[15px] my-[10px] text-lime-500" style={{ fontSize:18 }}></i>
         </button>
-    </>
     )
 }
-
-export default BackToTop

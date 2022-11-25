@@ -1,23 +1,23 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { SetStateAction, useState } from "react";
 import { InferGetServerSidePropsType } from "next";
 
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
-import SearchList from "../components/SearchList";
+import PostList from "../components/PostList";
 import { getPosts } from '../../services';
-import Paginate from "../components/Paginate";
+import Pagination from "../components/Pagination";
 
 export default function Blog({ posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [searchField, setSearchField] = useState("");
-    const [blogPosts, setBlogPosts] = useState([]);
+
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(3); 
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = blogPosts.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-    const paginate = (pageNumber:any) => {
+    const paginate = (pageNumber:number) => {
         setCurrentPage(pageNumber);
     };
 
@@ -28,19 +28,10 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
     };
 
     const nextPage = () => {
-    if (currentPage !== Math.ceil(blogPosts.length / postsPerPage)) {
+    if (currentPage !== Math.ceil(posts.length / postsPerPage)) {
         setCurrentPage(currentPage + 1);
     }
     };
-
-    useEffect(() => {
-        const fetchBlogPosts = async () => {
-        const posts = await getPosts() || [] 
-
-        setBlogPosts(posts);
-    };
-    fetchBlogPosts();
-    }, []);
 
     const filteredPosts = posts.filter(
         (post: { title: string; category: string; isBlog:boolean })  => {
@@ -73,7 +64,7 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
             </p>
             <div className="relative w-full mb-4">
                 <input 
-                className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white dark:bg-black text-neutral-900 dark:text-neutral-100"
+                className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white/70 dark:bg-black/30 text-neutral-900 dark:text-neutral-100"
                 type = "text" 
                 placeholder = "Search articles"
                 onChange = {handleChange} 
@@ -81,11 +72,11 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
                 <svg className="absolute right-3 top-3 h-5 w-5 text-neutral-400 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
             {currentPosts.length > 0  ?
-            <SearchList filteredPosts={searchField === '' ? currentPosts : filteredPosts} />      
+            <PostList filteredPosts={searchField === '' ? currentPosts : filteredPosts} />      
             : <div>Loading...</div> }
-                <Paginate
+                <Pagination
                 postsPerPage={postsPerPage}
-                totalPosts={blogPosts.length}
+                totalPosts={posts.length}
                 paginate={paginate}
                 previousPage={previousPage}
                 nextPage={nextPage}
