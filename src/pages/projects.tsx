@@ -63,8 +63,8 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
             A few projects I have worked on recently.
         </p>
 
-        <div className="flex flex-wrap space-x-4 mt-6 items-center justify-start space-y-2">
-                <span className=" text-sm text-neutral-600 dark:text-neutral-400">Filters:</span>
+        <div className="flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2">
+                <span className="hidden sm:block text-sm text-neutral-600 dark:text-neutral-400">Filters:</span>
             {tags.map((tag:{name:string}, index:string) => (
                 <button 
                     key={index}
