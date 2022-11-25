@@ -16,7 +16,7 @@ const Paginate = ({ postsPerPage, totalPosts, previousPage, nextPage, paginate, 
                 <li
                     key={number}
                     onClick={() => paginate(number)}
-                    className={` py-1 px-3 cursor-pointer ${currentPage === number ? ' rounded-full bg-lime-500 hover:bg-lime-600 drop-shadow-lg dark:text-gray-900 text-gray-100' : 'text-gray-600 dark:text-gray-400'}`}
+                    className={` py-1 px-3 cursor-pointer ${currentPage === number ? ' rounded-full bg-lime-500 hover:bg-lime-600 drop-shadow-lg dark:text-neutral-900 text-neutral-100' : 'text-neutral-600 dark:text-neutral-400'}`}
                 >{number}
                 </li>
                 ))}

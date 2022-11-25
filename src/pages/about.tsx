@@ -32,7 +32,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             />
 
             <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorder}`} >
-                <h1 className={`text-4xl font-bold lg:text-6xl text-gray-900  dark:text-gray-100 mb-6 font-gochi tracking-widest ${styles.highlight}`}>
+                <h1 className={`text-4xl font-bold lg:text-6xl text-neutral-900  dark:text-neutral-100 mb-6 font-gochi tracking-wider ${styles.highlight}`}>
                     {about.title}
                 </h1>
 
@@ -48,7 +48,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                             width={250}
                             height={250}
                         />
-                        <Link href='mailto:amrimuvti@gmail.com' className="w-8/12 flex items-center justify-center space-x-2  py-2.5 bg-lime-500 dark:text-gray-900 text-gray-100 font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out" >
+                        <Link href='mailto:amrimuvti@gmail.com' className="w-8/12 flex items-center justify-center space-x-2  py-2.5 bg-lime-500 dark:text-neutral-900 text-neutral-100 font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out" >
                         <p>Let's collaborate</p>
                         <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
                         </Link>

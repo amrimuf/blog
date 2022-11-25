@@ -35,15 +35,15 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
             description={post.headline}
             />
 
-            <nav className="lg:w-10/12 mx-auto rounded-full hidden text-sm sm:block px-2 py-1 dark:text-gray-100">
+            <nav className="lg:w-10/12 mx-auto rounded-full hidden text-sm sm:block px-2 py-1 dark:text-neutral-100">
             <ol className="list-reset flex">
                 <li><Link href="/" className="text-lime-500 hover:underline">Home</Link></li>
                 <li><span className="text-gray-500 mx-2 ">/</span></li>
                 <li><Link href={`/${prevUrl}`} className="text-lime-500 hover:underline capitalize">{prevUrl}</Link></li>
                 <li><span className="text-gray-500 mx-2">/</span></li>
-                <li className="text-gray-600 dark:text-gray-400">{post.category}</li>
+                <li className="text-neutral-600 dark:text-neutral-400">{post.category}</li>
                 <li><span className="text-gray-500 mx-2">/</span></li>
-                <li className="text-gray-600 dark:text-gray-400">{post.title}</li>
+                <li className="text-neutral-600 dark:text-neutral-400">{post.title}</li>
             </ol>
             </nav>
             
@@ -76,13 +76,13 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                         <i className='bi bi-chevron-left hover:text-lime-500 bi-hover-bold' ></i>
                         <div className='w-[100px] sm:w-[300px]'>
                             <div className='text-lime-500'>PREVIOUS</div> 
-                            <div className='truncate text-gray-600 dark:text-gray-400 '>{prevTitle}</div>
+                            <div className='truncate text-neutral-600 dark:text-neutral-400 '>{prevTitle}</div>
                         </div>
                     </Link>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12 text-right' href={`/${nextSlug}`}>
                         <div className='w-[100px] sm:w-[270px]'>
                             <div className='text-lime-500'>NEXT</div>
-                            <div className='truncate text-gray-600 dark:text-gray-400'>{nextTitle}</div>
+                            <div className='truncate text-neutral-600 dark:text-neutral-400'>{nextTitle}</div>
                         </div>
                         <i className='bi bi-chevron-right hover:text-lime-500  bi-hover-bold'></i>
                     </Link>

@@ -66,10 +66,10 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
         templateTitle='Projects'
         description='A few projects I have worked on recently.'
         />
-        <h1 className='text-2xl font-bold lg:text-5xl text-gray-900 dark:text-gray-100' data-fade='0'>
+        <h1 className='text-2xl font-bold lg:text-5xl text-neutral-900 dark:text-neutral-100' data-fade='0'>
             Projects
         </h1>
-        <p className='mt-2 text-gray-600 dark:text-gray-400' data-fade='1'>
+        <p className='mt-2 text-neutral-600 dark:text-neutral-400' data-fade='1'>
             A few projects I have worked on recently.
         </p>
         <input
@@ -81,12 +81,12 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
         />
         
         <div className="flex flex-wrap space-x-4 mt-6 items-center justify-start space-y-2">
-                <span className=" text-sm text-gray-600 dark:text-gray-400">Filters:</span>
+                <span className=" text-sm text-neutral-600 dark:text-neutral-400">Filters:</span>
             {tags.map((tag:any, index:any) => (
                 <button 
                     key={index}
                     onClick={() => toggleTag(tag.name)}
-                    className={checkTagged(tag.name) ? "border-2 border px-2 rounded-3xl border-lime-500 bg-lime-500 text-gray-100 dark:text-gray-900 font-medium shadow-md dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
+                    className={checkTagged(tag.name) ? "border-2 border px-2 rounded-3xl border-lime-500 bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-md dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
                 >
                     {tag.name}
                 </button>

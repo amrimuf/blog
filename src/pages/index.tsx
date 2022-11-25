@@ -13,7 +13,7 @@ export default function home({ posts, about }: InferGetServerSidePropsType<typeo
     <Layout>
         <Seo/>
         <Hero {...about}/>
-        <h1 className='text-2xl font-bold text-gray-900 lg:text-5xl dark:text-gray-100 lg:mt-12 pb-2 sm:pb-6 ' data-fade='0'>
+        <h1 className='text-2xl font-bold text-neutral-900 lg:text-5xl dark:text-neutral-100 lg:mt-12 pb-2 sm:pb-6 ' data-fade='0'>
             Featured Posts
         </h1>
         
@@ -29,7 +29,7 @@ export default function home({ posts, about }: InferGetServerSidePropsType<typeo
             type="button"
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
-            className="flex mx-auto mt-6 px-6 py-2.5 bg-lime-500 dark:text-gray-900 text-gray-100 font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out"
+            className="flex mx-auto mt-6 px-6 py-2.5 bg-lime-500 dark:text-neutral-900 text-neutral-100 font-medium text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out"
         ><Link href='/blog'>View all posts</Link></button>
         
     </Layout>

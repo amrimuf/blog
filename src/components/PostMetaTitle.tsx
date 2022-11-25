@@ -13,7 +13,7 @@ export default function PostMetaTitle({ category, title, date, center, slug }: P
   const dateMoment = moment(date).format("DD MMM YYYY")
   return (
     <div className={`${center ? 'flex w-10/12 md:w-full flex-col items-center mb-6' : ''}`}>
-      <div className="flex items-center text-gray-600 space-x-4 dark:text-gray-400">
+      <div className="flex items-center text-neutral-600 space-x-4 dark:text-neutral-400">
         <div className="uppercase">
           {category}
         </div>
@@ -22,7 +22,7 @@ export default function PostMetaTitle({ category, title, date, center, slug }: P
           {dateMoment}
         </div>
       </div>
-      <h2 className={`text-2xl mt-4 font-bold text-gray-900 dark:text-gray-100 ${center ? 'sm:text-5xl text-center' : ''}`}>
+      <h2 className={`text-2xl mt-4 font-bold text-zinc-900 dark:text-zinc-100 ${center ? 'sm:text-5xl text-center' : ''}`}>
         <Link href={`/${slug}`} legacyBehavior><a>{title}</a></Link>
       </h2>
     </div>

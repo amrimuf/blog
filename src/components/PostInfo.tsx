@@ -23,7 +23,7 @@ export default function PostInfo({
         title={title}
         slug={slug}
       />
-      <p className="text-gray-600 mt-5 dark:text-gray-400">
+      <p className="text-neutral-600 mt-5 dark:text-neutral-400">
         {headline}        
       </p>
     </div>
