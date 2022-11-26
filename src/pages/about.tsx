@@ -78,16 +78,6 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                 </div>
                 
             </div>
-            <style>
-            {`
-                .link {
-                    font-weight:normal;
-                }
-                .link:hover {
-                    color:#84cc16;
-                }
-            `}
-            </style>
         </Layout>
     );
 }

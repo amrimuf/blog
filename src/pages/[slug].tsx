@@ -72,6 +72,16 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                                 {children}
                             </a>
                         ),
+                        img: ({src, width, height}) => (
+                            <img src={src} width={width} height={height} className='mx-auto'>
+                            </img>
+                        ),
+                        Asset: {
+                            image: () => <div><div className='border border-8'></div></div>,
+                            'image/png': () => {
+                            return <div className='border border-8'><div className='border border-8'></div></div>;
+                        },
+                        },
                     }}
                     />        
                 </article>
@@ -93,17 +103,6 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                     </Link>
                 </div>
             </div>
-            <style>{`
-                .bi-hover-bold:hover {
-                    -webkit-text-stroke: 1px;
-                }
-                .link {
-                    font-weight:normal;
-                }
-                .link:hover {
-                    color:#84cc16;
-                }
-            `}</style>
         </Layout>
     );
 }
