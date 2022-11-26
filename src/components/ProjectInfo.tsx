@@ -13,14 +13,15 @@ type ProjectInfoType = {
     thumbnail: {
         url:string
     }
+    nolink: string
 };
 
 export default function ProjectInfo({...projectInfo}: ProjectInfoType) {
     return (
         <div className='w-full md:w-10/12 flex flex-col space-y-2 py-6'>
-            <div className="flex flex-row gap-2 items-center">
-                <h1 className='font-bold text-3xl text-neutral-900 dark:text-neutral-100'>{projectInfo.title}</h1>
-                {projectInfo.post ? <i className="bi bi-box-arrow-up-right"></i> : ''}
+            <div className="flex flex-row gap-4 items-center">
+                <h1 className='font-bold text-xl sm:text-3xl text-neutral-900 dark:text-neutral-100'>{projectInfo.title}</h1>
+                {projectInfo.post || projectInfo.nolink ?  <i className="bi bi-box-arrow-up-right"></i> : ''}
             </div>
             <hr className="border-black/20 w-full mx-auto mt-10 md:hidden dark:border-white/20" />
             <div className="text-neutral-600 dark:text-neutral-400">

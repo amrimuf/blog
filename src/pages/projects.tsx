@@ -6,6 +6,7 @@ import Seo from "../components/Seo";
 import { getProjects, getTags } from "../../services";
 import {  useEffect, useState } from "react";
 import React from "react";
+import styles from '../styles/styles.module.css'
 
 export default function Projects({projects, tags}:InferGetServerSidePropsType<typeof getServerSideProps>) {
 
@@ -81,9 +82,9 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
         </div>
         
 
-        <div className="mt-4 flex flex-col gap-6">
+        <div className="mt-4 grid sm:grid-cols-2 gap-6">
         {filteredProjects.map((project:any) => (
-                <div key={project.id} className="w-full">
+                <div key={project.id} className={`bg-white/60 dark:bg-black/30 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
                     <ProjectCard {...project}/>
                 </div>
         ))}
