@@ -5,7 +5,7 @@ const graphqlAPI:string = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT!;
 export const getPosts = async () => {
     const query = gql `
     query Posts {
-        posts(where: {isBlog: true}) {
+        posts(where: {isBlog: true} orderBy:createdAt_DESC) {
             id
             category
             title
@@ -58,7 +58,7 @@ export const getPost = async (slug:string) => {
 export const getProjects = async() => {
     const query = gql `
     query Projects {
-        projects {
+        projects(orderBy:createdAt_DESC) {
             title,
             post {
                 slug
