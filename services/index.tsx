@@ -45,7 +45,9 @@ export const getPost = async (slug:string) => {
             json
             references {
                 ... on Asset {
+                    id
                     url
+                    mimeType
                     width
                     height
                 }

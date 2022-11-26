@@ -18,6 +18,6 @@
     }
 
     .content {
-        @apply wysiwyg md:wysiwyg-lg lg:wysiwyg-xl dark:wysiwyg-dark;
+        @apply wysiwyg md:wysiwyg-lg lg:wysiwyg-xl dark:wysiwyg-dark wysiwyg-a:text-lime-500 wysiwyg-a:no-underline hover:wysiwyg-a:underline wysiwyg-video:mx-auto wysiwyg-video:border wysiwyg-video:border-4 wysiwyg-video:border-lime-500 wysiwyg-img:mx-auto
     }
 }

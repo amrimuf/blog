@@ -62,24 +62,24 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                     content={post.content.json.children}
                     references={post.content.references}
                     renderers={{
-                        a: ({ children, href, openInNewTab }) => (
-                            <a
-                                href={href}
-                                target={openInNewTab ? '_blank' : '_self'}
-                                className='no-underline hover:underline text-lime-500 dark:text-lime-500'
-                                rel="noreferrer"
-                            >
-                                {children}
-                            </a>
-                        ),
-                        img: ({src, width, height}) => (
-                            <img src={src} width={width} height={height} className='mx-auto'>
-                            </img>
-                        ),
+                    //     a: ({ children, href, openInNewTab }) => (
+                    //         <a
+                    //             href={href}
+                    //             target={openInNewTab ? '_blank' : '_self'}
+                    //             className='no-underline hover:underline text-lime-500 dark:text-lime-500'
+                    //             rel="noreferrer"
+                    //         >
+                    //             {children}
+                    //         </a>
+                    //     ),
+                    //     img: ({src, width, height}) => (
+                    //         <img src={src} width={width} height={height} className='mx-auto'>
+                    //         </img>
+                    //     ),
                         Asset: {
-                            image: () => <div><div className='border border-8'></div></div>,
-                            'image/png': () => {
-                            return <div className='border border-8'><div className='border border-8'></div></div>;
+                            // image: () => <div></div>,
+                            'image/png': ({url, width, height}) => {
+                            return <img src={url} width={width} height={height}></img>;
                         },
                         },
                     }}
