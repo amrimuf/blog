@@ -4,6 +4,7 @@ import { InferGetServerSidePropsType } from "next";
 import React from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import styles from '../styles/styles.module.css';
+import { RichText } from '@graphcms/rich-text-react-renderer';
 import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
 import {HiHeart} from 'react-icons/hi'
 
@@ -12,20 +13,6 @@ import Seo from "../components/Seo";
 import { getAbout } from "../../services";
 
 export default function About({about}:InferGetServerSidePropsType<typeof getServerSideProps>) {
-
-    const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
-    const content = about.content.html
-
-    React.useEffect(() => {
-		// Updating a state causes a re-render
-		setInitialRenderComplete(true);
-	}, []);
-    if (!initialRenderComplete) {
-		// Returning null will prevent the component from rendering, so the content will simply be missing from
-		// the server HTML and also wont render during the first client-side render.
-		return null;
-	} else {
-
     return (
         <Layout>
             <Seo
@@ -70,7 +57,24 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                         </div>
                     </div>
 
-                    <div className="content mt-4 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" dangerouslySetInnerHTML={{ __html: content }}></div>
+                    <div className="content mt-4 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6">
+                    <RichText
+                    content={about.content.json.children}
+                    references={about.content.references}
+                    renderers={{
+                        a: ({ children, href, openInNewTab }) => (
+                            <a
+                                href={href}
+                                target={openInNewTab ? '_blank' : '_self'}
+                                className='no-underline hover:underline text-lime-500 dark:text-lime-500'
+                                rel="noreferrer"
+                            >
+                                {children}
+                            </a>
+                        ),
+                    }}
+                    />   
+                    </div>
                 </div>
                 
             </div>
@@ -87,7 +91,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
         </Layout>
     );
 }
-}
+
 
 export async function getServerSideProps() {
     const abouts = await getAbout() || [] 

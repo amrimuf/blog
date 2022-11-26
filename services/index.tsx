@@ -42,7 +42,14 @@ export const getPost = async (slug:string) => {
             url
         }
         content {
-            html
+            json
+            references {
+                ... on Asset {
+                    url
+                    width
+                    height
+                }
+            }
         }
         createdAt
         isBlog
@@ -89,7 +96,14 @@ export const getAbout = async() => {
                 url
             }
             content {
-                html
+                json
+                references {
+                    ... on Asset {
+                        url
+                        width
+                        height
+                    }
+                }
             }
             githubLink
             linkedinLink

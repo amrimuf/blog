@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import React from 'react';
+import { RichText } from '@graphcms/rich-text-react-renderer';
 
 import Layout from '../components/Layout';
 import PostMetaTitle from '../components/PostMetaTitle';
@@ -12,21 +13,7 @@ import styles from '../styles/styles.module.css'
 
 export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetServerSidePropsType<typeof getServerSideProps>) {
 
-    const content = post.content.html
-
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
-
-    const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
-
-    React.useEffect(() => {
-		// Updating a state causes a re-render
-		setInitialRenderComplete(true);
-	}, []);
-    if (!initialRenderComplete) {
-		// Returning null will prevent the component from rendering, so the content will simply be missing from
-		// the server HTML and also wont render during the first client-side render.
-		return null;
-	} else {
 
     return (
         <Layout>
@@ -70,7 +57,24 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
             </div>
 
             <div className="md:w-10/12 w-full mx-auto">
-                <article className='content mx-auto bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700' dangerouslySetInnerHTML={{ __html: content }}></article>
+                <article className='content mx-auto bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700' >
+                <RichText
+                    content={post.content.json.children}
+                    references={post.content.references}
+                    renderers={{
+                        a: ({ children, href, openInNewTab }) => (
+                            <a
+                                href={href}
+                                target={openInNewTab ? '_blank' : '_self'}
+                                className='no-underline hover:underline text-lime-500 dark:text-lime-500'
+                                rel="noreferrer"
+                            >
+                                {children}
+                            </a>
+                        ),
+                    }}
+                    />        
+                </article>
                 
                 <div className='flex justify-between'>
                     <Link className='inline-flex items-center justify-between space-x-2 text-sm lg:text-lg font-semibold rounded py-2 mt-4 mt-12' href={`/${prevSlug}`}>
@@ -103,7 +107,7 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
         </Layout>
     );
 }
-}
+
 
 export async function getServerSideProps({params}:any) {
     const post = await getPost(params.slug) || [] 
