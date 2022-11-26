@@ -70,6 +70,7 @@ export const getProjects = async() => {
             tags {
                 name
             }
+            nolink
         }
     }`
 

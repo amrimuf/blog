@@ -19,11 +19,12 @@ type ProjectInfoType = {
     post: {
         slug: string
     }
+    nolink: string
 };
 
 export default function ProjectCard({ ...projectInfo }: ProjectInfoType) {
     return (
-        <Link href={`${projectInfo.post.slug}`}>
+        <Link href={`${projectInfo.post ? projectInfo.post.slug : projectInfo.nolink}`}>
             <article className={`flex bg-white/60 dark:bg-black/30 justify-center items-center px-6 space-x-6 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
                 <Image
                 src={projectInfo.thumbnail.url}
