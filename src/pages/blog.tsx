@@ -17,6 +17,12 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+    const pageNumbers = [];
+
+    for (let i = 1; i <= Math.ceil(posts.length / postsPerPage); i++) {
+        pageNumbers.push(i);
+    }
+
     const paginate = (pageNumber:number) => {
         setCurrentPage(pageNumber);
     };
@@ -75,12 +81,12 @@ export default function Blog({ posts }: InferGetServerSidePropsType<typeof getSe
             <PostList filteredPosts={searchField === '' ? currentPosts : filteredPosts} />      
             : <div>Loading...</div> }
                 <Pagination
-                postsPerPage={postsPerPage}
-                totalPosts={posts.length}
+                pageNumbers={pageNumbers}
                 paginate={paginate}
                 previousPage={previousPage}
                 nextPage={nextPage}
                 currentPage={currentPage}
+                searchField={searchField}
                 />
         </Layout>
     );

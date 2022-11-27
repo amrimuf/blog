@@ -1,23 +1,18 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 type PaginationType = {
-    postsPerPage: number;
-    totalPosts: number;
+    pageNumbers: number[];
     previousPage: any;
     nextPage: any;
     paginate: any;
     currentPage: number;
+    searchField: any;
 }
 
-const Pagination = ({ postsPerPage, totalPosts, previousPage, nextPage, paginate, currentPage }:PaginationType) => {
-    const pageNumbers = [];
-
-    for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-        pageNumbers.push(i);
-    }
+const Pagination = ({ pageNumbers, previousPage, nextPage, paginate, currentPage, searchField }:PaginationType) => {
 
     return (
-            <ul className="flex flex-row gap-4 justify-center items-center mt-8">
+            <ul className={`${pageNumbers.length < 2 || searchField !== '' ? 'hidden' : 'flex flex-row gap-4 justify-center items-center mt-8'}`}>
                 <li onClick={previousPage}>
                     <i className="bi bi-caret-left-fill text-lime-500 text-2xl hover:text-lime-600 cursor-pointer"></i>
                 </li>
