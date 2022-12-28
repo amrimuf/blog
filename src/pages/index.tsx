@@ -6,7 +6,7 @@ import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 import styles from '../styles/styles.module.css'
-import { getProfile, getPosts } from '../../services';
+import { getProfile, getFeaturedPosts } from '../../services';
 
 export default function home({ posts, profile }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
@@ -30,14 +30,14 @@ export default function home({ posts, profile }: InferGetServerSidePropsType<typ
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
             className="flex mx-auto mt-6 btn-primary"
-        ><Link href='/blog'>View all posts</Link></button>
+        ><Link href='/blog/1'>View all posts</Link></button>
         
     </Layout>
     );
 }
 
 export async function getServerSideProps() {
-    const posts = await getPosts() || [] 
+    const posts = await getFeaturedPosts() || [] 
     const profile = await getProfile()
 
     return {

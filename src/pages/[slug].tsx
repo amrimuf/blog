@@ -6,7 +6,7 @@ import { RichText } from '@graphcms/rich-text-react-renderer';
 import Layout from '../components/Layout';
 import PostMetaTitle from '../components/PostMetaTitle';
 import Seo from '../components/Seo';
-import { getPost, getPosts } from '../../services';
+import { getPost, getNextPrevPosts } from '../../services';
 import Link from 'next/link';
 import { InferGetServerSidePropsType } from 'next';
 import styles from '../styles/styles.module.css'
@@ -110,8 +110,8 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
 
 export async function getServerSideProps({params}:any) {
     const post = await getPost(params.slug) || [] 
-    const posts = await getPosts()
-
+    const posts = await getNextPrevPosts()
+    
     const index = posts.findIndex(function(post:any) {
         return post.slug === params.slug;
     });

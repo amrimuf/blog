@@ -14,8 +14,110 @@ export const getPosts = async () => {
             thumbnail {
                 url
             }
-            content {
-                html
+            createdAt
+            publishedAt
+            updatedAt
+            featured
+            isBlog
+        }
+    }`
+
+    const result = await request(graphqlAPI, query);
+
+    return result.posts;
+}
+
+export const getFilteredPosts = async (keyword:string) => {
+    const query = gql `
+    query Posts($keyword: String) {
+        posts(where: {isBlog: true, AND: {_search: $keyword}} orderBy:createdAt_DESC) {
+            id
+            category
+            title
+            slug
+            headline
+            thumbnail {
+                url
+            }
+            createdAt
+            publishedAt
+            updatedAt
+            featured
+            isBlog
+        }
+    }`
+
+    const result = await request(graphqlAPI, query, { keyword });
+
+    return result.posts;
+}
+
+export const getPaginatePosts = async (postsPerPage: number, endPost: number) => {
+    const query = gql `
+    query Posts($postsPerPage: Int!, $endPost: Int) {
+        posts(first: $postsPerPage, skip: $endPost where: {isBlog: true} orderBy:createdAt_DESC) {
+            id
+            category
+            title
+            slug
+            headline
+            thumbnail {
+                url
+            }
+            createdAt
+            publishedAt
+            updatedAt
+            featured
+            isBlog
+        }
+    }`
+
+    const result = await request(graphqlAPI, query, { postsPerPage, endPost });
+
+    return result.posts;
+}
+
+export const getPageSize = async () => {
+    const query = gql `
+    query Posts {
+        postsConnection(where: {isBlog: true}) {
+            pageInfo {
+                pageSize
+            }
+        }
+    }`
+
+    const result = await request(graphqlAPI, query);
+
+    return result.postsConnection;
+}
+
+export const getNextPrevPosts = async () => {
+    const query = gql `
+    query Posts {
+        posts(where: {isBlog: true} orderBy:createdAt_DESC) {
+            id
+            title
+            slug
+        }
+    }`
+
+    const result = await request(graphqlAPI, query);
+
+    return result.posts;
+}
+
+export const getFeaturedPosts = async () => {
+    const query = gql `
+    query Posts {
+        posts(where: {isBlog: true, AND: {featured: true}} orderBy:createdAt_DESC) {
+            id
+            category
+            title
+            slug
+            headline
+            thumbnail {
+                url
             }
             createdAt
             publishedAt

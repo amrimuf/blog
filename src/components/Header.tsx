@@ -20,7 +20,7 @@ export default function Header() {
   const navPaths =['', 'blog', 'projects', 'about']
 
   return (
-    <header className={`sticky top-0 z-20 py-2 bg-white shadow-lg dark:bg-black dark:shadow-lime-700 ${styles.handDrawnLineBot} `}>
+    <header className={`sticky top-0 z-20 py-2 bg-white dark:bg-black ${styles.handDrawnLineBot} `}>
       <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
         <button
             aria-label="Toggle Dark Mode"
@@ -57,19 +57,18 @@ export default function Header() {
 
         <div className="space-x-8 hidden md:block">
           {navPaths.map((navPath, index) => 
-                  <Link key={index} href={`/${navPath}`} className={`text-base  ${
-                    router.asPath === `/${navPath}`
+                  <Link key={index} href={navPath !== 'blog' ? `/${navPath}` : `/${navPath}/1`} className={`text-base  ${
+                    router.asPath.split('/')[1] === `${navPath}`
                     ? "text-neutral-900 dark:text-neutral-100 font-bold"
                     : "text-neutral-600 dark:text-neutral-400 font-normal"
                   }`}>
                     <span className='capitalize'>{navPath === '' ? 'Home' : navPath}</span>{" "}
-                  {router.asPath === `/${navPath}` && (
+                  {router.asPath.split('/')[1] === `${navPath}` && (
                     <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
                   )}
               </Link>
           )}
         </div>
-
         <div className='md:hidden flex space-x-4'>
         <Link href="/" className='text-neutral-900 dark:text-neutral-100'>Home</Link>
           <div 
@@ -102,7 +101,7 @@ export default function Header() {
           </div>
           <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-neutral-900 dark:text-neutral-100">
             <li className="border-b-2 border-lime-500 my-8 uppercase">
-              <Link href="/blog">Blog</Link>
+              <Link href="/blog/1">Blog</Link>
             </li>
             <li className="border-b-2 border-lime-400 my-8 uppercase">
               <Link href="/projects">Projects</Link>
