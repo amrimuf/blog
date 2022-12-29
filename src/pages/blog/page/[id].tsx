@@ -20,7 +20,7 @@ export default function Blog({ posts, postsPerPage, pageSize, currentPage, filte
     useEffect(() => {
     const timeout = setTimeout(() => {
         setIsLoading(false);
-    }, 3000);
+    }, 8000);
     
     return () => clearTimeout(timeout);
     },[isLoading]);
