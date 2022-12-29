@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useState, useEffect } from "react";
 import { InferGetServerSidePropsType } from "next";
 
 import Layout from "../../../components/Layout";
@@ -15,15 +15,26 @@ export default function Blog({ posts, postsPerPage, pageSize, currentPage, filte
         pageNumbers.push(i);
     }
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+    const timeout = setTimeout(() => {
+        setIsLoading(false);
+    }, 3000);
+    
+    return () => clearTimeout(timeout);
+    },[isLoading]);
+
     const [searchField, setSearchField] = useState("");
     const router = useRouter();
     const handleChange = (e: {target: {value: string}} ) => {
         e.target.value !== '' ?
         router.push(
             `/blog/page/search?q=${e.target.value}`,
-        ) : router.push('1')
+        ) 
+        : router.push('1')
         setSearchField(e.target.value) 
-        
+        setIsLoading(true)
     };
 
     return (     
@@ -50,7 +61,7 @@ export default function Blog({ posts, postsPerPage, pageSize, currentPage, filte
             {posts.length > 0  ?
             <PostList 
                 filteredPosts={ searchField == '' ? posts : filteredPosts} 
-                searchField={searchField}
+                isLoading={isLoading}
             />      
             : <div>Loading...</div> }
             <div className={searchField !== '' ? 'hidden' :'block'}>
