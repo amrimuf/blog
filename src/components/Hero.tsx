@@ -28,7 +28,7 @@ export default function Hero({...about}){
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
                         className="btn-primary"
-                    ><Link href='/blog/1'>Read the blog</Link></button>
+                    ><Link href='/blog/page/1'>Read the blog</Link></button>
                     <button
                         type="button"
                         data-mdb-ripple="true"

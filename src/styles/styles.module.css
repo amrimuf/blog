@@ -27,7 +27,7 @@
 
 .handDrawnBorderCircle {
     border-radius: 255px 225px 255px 255px/225px 255px 225px 255px;
-    border: solid 4px #84cc16;
+    border: solid 3px #84cc16;
     overflow:hidden;
 }
 

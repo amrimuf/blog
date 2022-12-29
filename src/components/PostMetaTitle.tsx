@@ -25,7 +25,7 @@ export default function PostMetaTitle({ category, title, date, center, slug, fea
         </div>
       </div>
       <h2 className={`text-2xl mt-4 font-bold text-neutral-900 dark:text-neutral-100 ${center ? 'sm:text-5xl text-center' : ''}`}>
-        <Link href={`/${slug}`} legacyBehavior><a>{title}</a></Link>
+        <Link href={`/blog/${slug}`} legacyBehavior><a>{title}</a></Link>
       </h2>
     </div>
   );

@@ -24,7 +24,7 @@ type ProjectInfoType = {
 export default function ProjectCard({ ...projectInfo }: ProjectInfoType) {
     return (
         <Link 
-        href={`${projectInfo.post ? projectInfo.post.slug : projectInfo.nolink}`}
+        href={`${projectInfo.post ? `blog/${projectInfo.post.slug}` : projectInfo.nolink}`}
             rel="noreferrer noopener"
             target="_blank"
         >

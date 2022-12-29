@@ -57,7 +57,7 @@ export default function Header() {
 
         <div className="space-x-8 hidden md:block">
           {navPaths.map((navPath, index) => 
-                  <Link key={index} href={navPath !== 'blog' ? `/${navPath}` : `/${navPath}/1`} className={`text-base  ${
+                  <Link key={index} href={ `/${navPath}`} className={`text-base  ${
                     router.asPath.split('/')[1] === `${navPath}`
                     ? "text-neutral-900 dark:text-neutral-100 font-bold"
                     : "text-neutral-600 dark:text-neutral-400 font-normal"
@@ -101,7 +101,7 @@ export default function Header() {
           </div>
           <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-neutral-900 dark:text-neutral-100">
             <li className="border-b-2 border-lime-500 my-8 uppercase">
-              <Link href="/blog/1">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
             <li className="border-b-2 border-lime-400 my-8 uppercase">
               <Link href="/projects">Projects</Link>
