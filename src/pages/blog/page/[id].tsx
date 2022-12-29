@@ -27,9 +27,9 @@ export default function Blog({ posts, postsPerPage, pageSize, currentPage, filte
         setIsLoading(false)
     }, [filteredPosts]);
 
-    const [searchField, setSearchField] = useState('');
+    const [searchField, setSearchField] = useState(router.query.q ? router.query.q : '' );
 
-    const handleChange = async (e: {target: {value: string}} ) => {
+    const handleChange = (e: {target: {value: string}} ) => {
         e.target.value !== '' ?
         router.push(
             `/blog/page/search?q=${e.target.value}`,
