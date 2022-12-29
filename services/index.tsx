@@ -27,10 +27,10 @@ export const getPosts = async () => {
     return result.posts;
 }
 
-export const getFilteredPosts = async (keyword:string) => {
+export const getFilteredPosts = async (id:string[]) => {
     const query = gql `
-    query Posts($keyword: String) {
-        posts(where: {isBlog: true, AND: {_search: $keyword}} orderBy:createdAt_DESC) {
+    query Posts($id: [ID]) {
+        posts(where: {isBlog: true, AND: {id_in: $id}} orderBy:createdAt_DESC) {
             id
             category
             title
@@ -47,7 +47,7 @@ export const getFilteredPosts = async (keyword:string) => {
         }
     }`
 
-    const result = await request(graphqlAPI, query, { keyword });
+    const result = await request(graphqlAPI, query, { id });
 
     return result.posts;
 }
