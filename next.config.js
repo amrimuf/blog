@@ -18,6 +18,11 @@ const nextConfig = {
         destination: '/blog/page/1',
         permanent: false,
       },
+      {
+        source: '/blog/page',
+        destination: '/blog/page/1',
+        permanent: false,
+      },
     ]
   },
 }
