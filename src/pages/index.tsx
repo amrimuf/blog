@@ -30,7 +30,7 @@ export default function home({ posts, profile }: InferGetServerSidePropsType<typ
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
             className="flex mx-auto mt-6 btn-primary"
-        ><Link href='/page/1'>View all posts</Link></button>
+        ><Link href='/blog/page/1'>View all posts</Link></button>
         
     </Layout>
     );
