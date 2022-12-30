@@ -36,7 +36,7 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
         setSelectedFilters([]);
     }
     
-    // useEffect(() => {
+    useEffect(() => {
         if (selectedFilters.length == 0) {
             const projects = async () => {
                 const data = await getProjects(tags)
@@ -44,7 +44,7 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
             }
             projects()
         }
-    // })
+    }, [])
 
     return (
     <Layout>
