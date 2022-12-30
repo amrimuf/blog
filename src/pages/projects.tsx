@@ -13,11 +13,14 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
 
     const [filteredProjects, setFilteredProjects] = useState<string[]>([])
     const [selectedFilters, setSelectedFilters] = useState<string[]>([])
+    const [isLoading, setIsLoading] = useState(false);
 
     const toggleTag = (tag: string) => {
+        setIsLoading(true)
         const tagsArr: string[] = selectedFilters
         const projects = async () => {
             const data = await getProjects(tagsArr.length !== 0 ? tagsArr : tags)
+            setIsLoading(false)
             setFilteredProjects(data)
         }
         
@@ -37,9 +40,11 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
     }
     
     useEffect(() => {
+        setIsLoading(true)
         if (selectedFilters.length == 0) {
             const projects = async () => {
                 const data = await getProjects(tags)
+                setIsLoading(false)
                 setFilteredProjects(data)
             }
             projects()
@@ -78,7 +83,7 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
         
 
         <div className="mt-4 grid sm:grid-cols-2 gap-6">
-        {filteredProjects.map((project:any) => (
+        {isLoading ? <span>Loading...</span> : filteredProjects.map((project:any) => (
                 <div key={project.id} className={`bg-white/60 dark:bg-black/30 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
                     <ProjectCard {...project}/>
                 </div>
