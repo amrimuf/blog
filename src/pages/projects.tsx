@@ -17,7 +17,7 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
     const toggleTag = (tag: string) => {
         const tagsArr: string[] = selectedFilters
         const projects = async () => {
-            const data = await getProjects(tagsArr)
+            const data = await getProjects(tagsArr.length !== 0 ? tagsArr : tags)
             setFilteredProjects(data)
         }
         
@@ -44,7 +44,7 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
             }
             projects()
         }
-    }, [])
+    }, [selectedFilters])
 
     return (
     <Layout>
