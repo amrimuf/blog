@@ -61,8 +61,9 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
 
         <div className="flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2">
                 <span className="hidden sm:block text-sm text-neutral-600 dark:text-neutral-400">Filters:</span>
-            {tags.sort().map((tag:any) => (
+            {tags.sort().map((tag:any, index:any) => (
                 <button 
+                    key={index}
                     onClick={() => toggleTag(tag)}
                     className={isTagged(tag) ? "px-2 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
                 >
