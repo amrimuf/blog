@@ -7,50 +7,45 @@ import { getProjects, getTags } from "../../services";
 import {  useEffect, useState } from "react";
 import React from "react";
 import styles from '../styles/styles.module.css'
+import { useRouter } from "next/router";
 
-export default function Projects({projects, tags}:InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Projects({ tags }:InferGetServerSidePropsType<typeof getServerSideProps>) {
 
-    const [filteredProjects, setFilteredProjects] = useState(() => [...projects])
-
-    const [selectedFilters, setSelectedFilters] = useState('')
-
-    useEffect(() => {
-        const results = projects.filter(
-            (project:any)  => {
-                return (
-                project.tags[0].name
-                .includes(selectedFilters.toLowerCase()) ||
-                selectedFilters
-                    .toLowerCase()
-                    .split(' ')
-                    .some((selectedFilter) => project.tags.some((projectTag:any) => projectTag.name.toLowerCase() === selectedFilter)
-                )); 
-            }
-        )
-        setFilteredProjects(results);
-    }, [projects, selectedFilters])
-
-    const clearSelectedFilters = () => setSelectedFilters('');
+    const [filteredProjects, setFilteredProjects] = useState<string[]>([])
+    const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
     const toggleTag = (tag: string) => {
-        if (selectedFilters.includes(tag)) {
-            setSelectedFilters((s) =>
-                s
-                .split(' ')
-                .filter((t) => t !== tag)
-                ?.join(' ')
-            );
-        } else {
-            setSelectedFilters((s) => (s !== '' ? `${s.trim()} ${tag}` : tag));
+        const tagsArr: string[] = selectedFilters
+        const projects = async () => {
+            const data = await getProjects(tagsArr)
+            setFilteredProjects(data)
         }
-        };
+        
+        tagsArr.includes(tag) ? tagsArr.splice(tagsArr.indexOf(tag), 1) : tagsArr.push(tag)
+        projects()
+        setSelectedFilters(tagsArr)
+    };
 
     const isTagged = (tag: string) => {
         return (
-            selectedFilters.toLowerCase().split(' ').includes(tag)
+            selectedFilters.includes(tag)
         );
     };
+
+    const handleClear = () => {
+        setSelectedFilters([]);
+    }
     
+    useEffect(() => {
+        if (selectedFilters.length == 0) {
+            const projects = async () => {
+                const data = await getProjects(tags)
+                setFilteredProjects(data)
+            }
+            projects()
+        }
+    })
+
     return (
     <Layout>
         <Seo
@@ -66,17 +61,16 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
 
         <div className="flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2">
                 <span className="hidden sm:block text-sm text-neutral-600 dark:text-neutral-400">Filters:</span>
-            {tags.map((tag:{name:string}, index:string) => (
+            {tags.sort().map((tag:any) => (
                 <button 
-                    key={index}
-                    onClick={() => toggleTag(tag.name.toLowerCase())}
-                    className={isTagged(tag.name.toLowerCase()) ? "px-2 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
+                    onClick={() => toggleTag(tag)}
+                    className={isTagged(tag) ? "px-2 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700" : "ring-1 ring-lime-500 px-2 rounded-3xl border-black dark:border-white"}
                 >
-                    {tag.name}
+                    {tag}
                 </button>
             ))}
             <button
-                onClick={() => clearSelectedFilters()}
+                onClick={() => handleClear()}
                 className='dark:bg-white bg-black hover:scale-[1.02] hover:shadow-md shadow dark:shadow-white/20 text-white duration-150 ease-in-out dark:text-black rounded-full px-4 py-2'
                 >Reset all filters</button>
         </div>
@@ -93,11 +87,12 @@ export default function Projects({projects, tags}:InferGetServerSidePropsType<ty
     );
 }
 
-export async function getServerSideProps() {
-    const projects = await getProjects() || [] 
-    const tags = await getTags() 
-
+export async function getServerSideProps(req:any) {
+    const fetchTags = await getTags() 
+    const tags: any[] = []
+    fetchTags.map((tag:any) => tags.push(tag.name))
+    
     return {
-        props: { projects, tags }
+        props: { tags }
     }
 }

@@ -166,10 +166,10 @@ export const getPost = async (slug:string) => {
     return result.post;
 }
 
-export const getProjects = async() => {
+export const getProjects = async(tag:string[]) => {
     const query = gql `
-    query Projects {
-        projects(orderBy:createdAt_DESC) {
+    query Projects($tag: [String]) {
+        projects(orderBy:createdAt_DESC where: {tags_some: {name_in: $tag}}) {
             title,
             post {
                 slug
@@ -185,7 +185,7 @@ export const getProjects = async() => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result = await request(graphqlAPI, query, { tag });
 
     return result.projects
 }
