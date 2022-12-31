@@ -11,24 +11,39 @@ import { useRouter } from "next/router";
 export default function Blog({ pageNumbers, currentPage, posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
+    const [isTyping, setIsTyping] = useState(false);
     
     // new posts loaded
     useEffect(()=> {
         setIsLoading(false)
     }, [posts]);
+    
 
     const [searchField, setSearchField] = useState(router.query.q ? router.query.q : '' );
 
     const handleChange = (e: {target: {value: string}} ) => {
-        e.target.value !== '' ?
-        // fetch data based on this url
-        router.push(
-            `/blog/page/search?q=${e.target.value}`,
-        ) 
-        : router.push('1')
-
+        if (e.target.value == '') {
+            setIsTyping(false)
+            router.push('1')
+            setIsLoading(true)
+        } else {
+            setIsTyping(true)
+        }
+        
+        
         setSearchField(e.target.value) 
+    };
+
+
+    const handleKeyUp = (e: React.KeyboardEvent<HTMLElement>) => {
+        if (e.key == 'Enter') {
+            router.push(`/blog/page/search?q=${searchField}`,
+        
+        ) 
         setIsLoading(true)
+        setIsTyping(false)
+        }
+        // console.log(event.code);
     };
 
     return (     
@@ -50,16 +65,19 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
                 placeholder = "Search articles"
                 value={searchField}
                 onChange = {handleChange} 
+                onKeyUp = {handleKeyUp}
                 />
                 <svg className="absolute right-3 top-3 h-5 w-5 text-neutral-400 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
 
             {!isLoading ?
+            !isTyping ?
             <PostList 
                 posts={posts} 
                 isLoading={isLoading}
-            />      
-            : <div>Loading...</div> }
+            /> 
+            : <span>Press enter to see the results.</span>
+            : <span>Loading...</span> }
 
             <div className={ searchField.length !== 0 || router.query.q || pageNumbers.length < 2 ? 'hidden' :'blok'}>
                 <Pagination
@@ -68,7 +86,6 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
                     setIsLoading={setIsLoading}
                 />
             </div>
-
         </Layout>
     );
 }
@@ -96,6 +113,6 @@ export async function getServerSideProps(req:any) {
     const filteredPosts = await getFilteredPosts(postsId) || []
 
     return {
-        props: { pageNumbers , currentPage, posts: req.query.q ? filteredPosts : paginatedPosts }
+        props: { pageNumbers, currentPage, posts: req.query.q ? filteredPosts : paginatedPosts }
     }
 }

@@ -19,7 +19,7 @@ type PostType = {
 export default function PostCard({ post }: PostType) {
     return (
         <article className='-mx-4 lg:items-center items-start'>
-            <Link href={`/${post.slug}`} >
+            <Link href={`/blog/${post.slug}`} >
                 <Image 
                 src={post.thumbnail.url} 
                 alt={`${post.title} thumbnail`} 
