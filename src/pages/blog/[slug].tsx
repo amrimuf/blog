@@ -2,13 +2,13 @@ import Image from 'next/image';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import React from 'react';
 import { RichText } from '@graphcms/rich-text-react-renderer';
+import { InferGetServerSidePropsType } from 'next';
 
 import Layout from '../../components/Layout';
 import PostMetaTitle from '../../components/PostMetaTitle';
 import Seo from '../../components/Seo';
 import { getPost, getNextPrevPosts } from '../../../services';
 import Link from 'next/link';
-import { InferGetServerSidePropsType } from 'next';
 import styles from '../../styles/styles.module.css'
 
 export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetServerSidePropsType<typeof getServerSideProps>) {

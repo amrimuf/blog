@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from '../styles/styles.module.css'
 
-export default function Hero({...about}){
+export default function Hero({...profile}){
     return (
         <article className={`flex items-center justify-center layout mb-8 bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderHero}`}>
             <div className="w-full sm:w-8/12 sm:pr-8 text-neutral-900 dark:text-neutral-100">
@@ -16,7 +16,7 @@ export default function Hero({...about}){
                 My name is <span className={styles.highlight}>Amri</span>
                 </h1>
                 <p className='mt-4 max-w-4xl text-neutral-600 dark:text-neutral-400 md:mt-6'>
-                {about.headline}
+                {profile.headline}
                 </p>
                 <div
                 data-fade='5'
@@ -28,7 +28,7 @@ export default function Hero({...about}){
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
                         className="btn-primary"
-                    ><Link href='/blog/page/1'>Read the blog</Link></button>
+                    ><Link href='/blog/'>Read the blog</Link></button>
                     <button
                         type="button"
                         data-mdb-ripple="true"
@@ -38,11 +38,11 @@ export default function Hero({...about}){
                 </div>
             </div>
             <Image 
-                alt={about.title} 
+                alt={profile.title} 
                 width={200}
                 height={200} 
-                src={about.image.url}
-                blurDataURL={`/_next/image?url=${about.image.url}&w=16&q=1`} placeholder='blur' 
+                src={profile.image.url}
+                blurDataURL={`/_next/image?url=${profile.image.url}&w=16&q=1`} placeholder='blur' 
                 className={`hidden sm:block profile-image ${styles.handDrawnBorderImage}`}/>
         </article>
     )

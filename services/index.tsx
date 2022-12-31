@@ -52,7 +52,7 @@ export const getFilteredPosts = async (id:string[]) => {
     return result.posts;
 }
 
-export const getPaginatePosts = async (postsPerPage: number, endPost: number) => {
+export const getPaginatedPosts = async (postsPerPage: number, endPost: number) => {
     const query = gql `
     query Posts($postsPerPage: Int!, $endPost: Int) {
         posts(first: $postsPerPage, skip: $endPost where: {isBlog: true} orderBy:createdAt_DESC) {

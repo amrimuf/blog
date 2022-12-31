@@ -1,40 +1,32 @@
-import { SetStateAction, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { InferGetServerSidePropsType } from "next";
 
 import Layout from "../../../components/Layout";
 import Seo from "../../../components/Seo";
 import PostList from "../../../components/PostList";
-import { getPosts, getPaginatePosts, getPageSize, getFilteredPosts } from '../../../../services';
+import { getPosts, getPaginatedPosts, getPageSize, getFilteredPosts } from '../../../../services';
 import Pagination from "../../../components/Pagination";
 import { useRouter } from "next/router";
 
-export default function Blog({ posts, postsPerPage, pageSize, currentPage, filteredPosts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Blog({ pageNumbers, currentPage, posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(pageSize.pageInfo.pageSize / postsPerPage); i++) {
-        pageNumbers.push(i);
-    }
-
-    const [isLoading, setIsLoading] = useState(false);
-
-      // loading new posts
-    useEffect(()=> {
-        setIsLoading(true);
-    }, [router.query?.id]);
+    const [isLoading, setIsLoading] = useState(true);
     
     // new posts loaded
     useEffect(()=> {
         setIsLoading(false)
-    }, [filteredPosts]);
+    }, [posts]);
 
     const [searchField, setSearchField] = useState(router.query.q ? router.query.q : '' );
 
     const handleChange = (e: {target: {value: string}} ) => {
         e.target.value !== '' ?
+        // fetch data based on this url
         router.push(
             `/blog/page/search?q=${e.target.value}`,
         ) 
         : router.push('1')
+
         setSearchField(e.target.value) 
         setIsLoading(true)
     };
@@ -61,18 +53,22 @@ export default function Blog({ posts, postsPerPage, pageSize, currentPage, filte
                 />
                 <svg className="absolute right-3 top-3 h-5 w-5 text-neutral-400 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-            {posts.length > 0  ?
+
+            {!isLoading ?
             <PostList 
-                filteredPosts={ searchField !== '' ? filteredPosts : posts} 
+                posts={posts} 
                 isLoading={isLoading}
             />      
             : <div>Loading...</div> }
-            <div className={ searchField !== '' ? 'hidden' :'blok'}>
+
+            <div className={ searchField.length !== 0 || router.query.q || pageNumbers.length < 2 ? 'hidden' :'blok'}>
                 <Pagination
                     pageNumbers={pageNumbers}
                     currentPage={currentPage}
-                    />
+                    setIsLoading={setIsLoading}
+                />
             </div>
+
         </Layout>
     );
 }
@@ -81,19 +77,25 @@ export async function getServerSideProps(req:any) {
     const postsPerPage = 3
     const currentPage = parseInt(req.params.id)
     const endPost = currentPage * postsPerPage - postsPerPage
-    const posts = await getPaginatePosts(postsPerPage, endPost) || [] 
+    const paginatedPosts = await getPaginatedPosts(postsPerPage, endPost) || [] 
     const pageSize = await getPageSize()
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(pageSize.pageInfo.pageSize / postsPerPage); i++) {
+        pageNumbers.push(i);
+    }
 
-    const allPosts = await getPosts() || [] 
-    const results = allPosts.filter((post:any) => {
-        return ( post.title.toLowerCase().split(" ").some((word:any) => req.query.q?.toLowerCase().split(" ").some((query:any) => query === word || word.includes(query)))
-        )
-    })
+    // back here if "some" can be done in the hygraph query
     const postsId: string[] = []
-    results.map((result:any) => postsId.push(result.id))
+    if (req.query.q) {
+        const allPosts = await getPosts() || [] 
+        allPosts.filter((post:{title:string}) => {
+            return (post.title.toLowerCase().split(" ").some((word:string) => req.query.q.toLowerCase().split(" ").some((query:string) => query === word || word.includes(query)))
+            )
+        }).map((result:{id:string}) => postsId.push(result.id))
+    }
     const filteredPosts = await getFilteredPosts(postsId) || []
 
     return {
-        props: { posts, postsPerPage, pageSize, currentPage, filteredPosts }
+        props: { pageNumbers , currentPage, posts: req.query.q ? filteredPosts : paginatedPosts }
     }
 }
