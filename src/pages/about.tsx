@@ -21,8 +21,8 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             />
 
             <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorder}`} >
-                <h1 className={`text-[42px] font-bold lg:text-6xl text-neutral-900 dark:text-neutral-100 mb-6 sm:m-0 font-gochi tracking-[4px] ${styles.highlight}`}>
-                    {about.title}
+                <h1 className={`text-[42px] font-bold lg:text-6xl text-neutral-900 dark:text-neutral-100 mb-6 sm:m-0 font-gochi tracking-[4px] `}>
+                    <span className={styles.highlight}>Amri</span> Mufti
                 </h1>
 
                 <div className="flex flex-col md:flex-row-reverse items-center md:justify-between md:items-start">
