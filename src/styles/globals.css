@@ -14,7 +14,7 @@
     }
 
     .profile-image {
-        @apply object-cover sm:h-80 sm:w-60 sm:shadow-md dark:shadow-lime-700;
+        @apply object-cover h-80 w-60 sm:shadow-md dark:shadow-lime-700;
     }
 
     .thumbnail {
