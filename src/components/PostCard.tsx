@@ -23,8 +23,8 @@ export default function PostCard({ post }: PostType) {
                 <Image 
                 src={post.thumbnail.url} 
                 alt={`${post.title} thumbnail`} 
-                width={500} 
-                height={500} 
+                width='100'
+                height='0' 
                 className="thumbnail"
                 blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`}
                 placeholder='blur'/>

@@ -11,8 +11,8 @@ export default function FeaturedPostCard({...post}) {
               <Image 
               src={post.thumbnail.url}
               alt={`${post.title} thumbnail`} 
-              width={800} 
-              height={800} 
+              width='150'
+              height='0'
               className="thumbnail"
               blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`}
               placeholder='blur'

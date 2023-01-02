@@ -33,7 +33,7 @@ export default function ProjectCard({ ...projectInfo }: ProjectInfoType) {
                 src={projectInfo.thumbnail.url}
                 blurDataURL={`/_next/image?url=${projectInfo.thumbnail.url}&w=16&q=1`}
                 placeholder='blur'
-                alt={projectInfo.title} width={500} height={500} className="md:block w-full rounded hidden object-cover h-16 w-16" />
+                alt={projectInfo.title} width={50} height={50} className="md:block w-full rounded hidden object-cover h-16 w-16" />
                 <ProjectInfo
                     {...projectInfo}
                 />
