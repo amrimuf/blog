@@ -6,25 +6,25 @@ import PostInfo from './PostInfo';
 export default function FeaturedPostCard({...post}) {  
   return (
     <article>
-      <div className="-mx-4 lg:items-center items-start">
-          <Link href={`/blog/${post.slug}`}>
-              <Image 
-              src={post.thumbnail.url}
-              alt={`${post.title} thumbnail`} 
-              width='150'
-              height='0'
-              className="thumbnail"
-              blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`}
-              placeholder='blur'
-              />
-          </Link>
-        <div className="w-full px-4">
-          <PostInfo
-              {...post}
+      <Link href={`/blog/${post.slug}`}>
+        <div className="-mx-4 lg:items-center items-start">       
+          <Image 
+          src={post.thumbnail.url}
+          alt={`${post.title} thumbnail`} 
+          width='500'
+          height='500'
+          className="thumbnail"
+          blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`}
+          placeholder='blur'
           />
+          <div className="w-full px-4">
+            <PostInfo
+                {...post}
+            />
+          </div>
         </div>
-      </div>
-      <hr className="border-black/10 w-11/12 mx-auto mt-10 md:hidden dark:border-white/10" />
+        <hr className="border-black/10 w-11/12 mx-auto mt-10 md:hidden dark:border-white/10" />
+      </Link>
     </article>
   );
 }

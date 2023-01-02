@@ -53,8 +53,8 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                     <Image 
                         src={post.thumbnail.url} 
                         alt={post.title} 
-                        width={200} 
-                        height={200} 
+                        width='500'
+                        height='500'
                         blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`} 
                         placeholder='blur' 
                         className={`object-cover h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} />

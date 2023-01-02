@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from '../styles/styles.module.css'
 
-export default function Hero({...profile}){
+export default function Hero({blur_data_url, profile}:any){
     return (
         <article className={`flex items-center justify-center layout mb-8 bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderHero}`}>
             <div className="w-full sm:w-8/12 sm:pr-8 text-neutral-900 dark:text-neutral-100">
@@ -39,10 +39,11 @@ export default function Hero({...profile}){
             </div>
             <Image 
                 alt={profile.title} 
-                width={100}
-                height={100} 
+                width='500'
+                height='500'
                 src={profile.image.url}
-                blurDataURL={`/_next/image?url=${profile.image.url}&w=16&q=1`} placeholder='blur' 
+                blurDataURL={blur_data_url} 
+                placeholder='blur' 
                 className={`hidden sm:block profile-image ${styles.handDrawnBorderImage}`}/>
         </article>
     )

@@ -2,7 +2,7 @@ import PostMetaTitle from './PostMetaTitle';
 
 export default function PostInfo({...postInfo}) {
   return (
-    <div className=''>
+    <div>
       <PostMetaTitle 
         category={postInfo.category} 
         date={postInfo.createdAt}

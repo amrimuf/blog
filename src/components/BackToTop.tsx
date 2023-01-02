@@ -16,7 +16,7 @@ export default function BackToTop() {
 
     return (
         <button
-        className={`flex justify-center items-center fixed bottom-[20px] right-[25px] pointer-cursor dark:bg-black shadow-lime-400/20 shadow-lg bg-white backdrop-blur-lg opacity-50 hover:opacity-70 transition-[opacity, transform] duration-300 ease-in-out ${styles.handDrawnBorderCircle} ${toTopButton ? 'rotate-0': 'rotate-180'}`}
+        className={`flex justify-center items-center fixed bottom-[20px] right-[25px] pointer-cursor dark:bg-black shadow-lime-400/20 shadow-lg bg-white backdrop-blur-lg lg:opacity-80 hover:opacity-100 transition-[opacity, transform] duration-300 ease-in-out ${styles.handDrawnBorderCircle} ${toTopButton ? 'rotate-0': 'rotate-180'}`}
         onClick={() =>
             window.scrollTo({
             top: toTopButton ? 0 : document.body.scrollHeight,

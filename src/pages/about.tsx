@@ -34,8 +34,8 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                             alt="Profile"
                             priority={true}
                             className={`profile-image mb-6 ${styles.handDrawnBorderImage}`}
-                            width={100}
-                            height={100}
+                            width='500'
+                            height='500'
                         />
                         <Link href='mailto:amrimuvti@gmail.com' className=" flex mx-auto items-center gap-2 btn-primary" >
                         <p>Let's collaborate</p>
