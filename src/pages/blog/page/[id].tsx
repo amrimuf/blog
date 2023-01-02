@@ -8,6 +8,7 @@ import { getPosts, getPaginatedPosts, getPageSize, getFilteredPosts } from '../.
 import Pagination from "../../../components/Pagination";
 import { useRouter } from "next/router";
 import NotFoundPage from "../../404"
+import { getPlaiceholder } from "plaiceholder";
 
 export default function Blog({ pageNumbers, currentPage, posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
@@ -98,7 +99,18 @@ export async function getServerSideProps(req:any) {
     const postsPerPage = 3
     const currentPage = parseInt(req.params.id)
     const endPost = currentPage * postsPerPage - postsPerPage
-    const paginatedPosts = await getPaginatedPosts(postsPerPage, endPost) || [] 
+    const rawPaginatedPosts = await getPaginatedPosts(postsPerPage, endPost) || [] 
+    const paginatedPosts = await Promise.all(
+        rawPaginatedPosts.map(async (post:any) => {
+            const { base64 } = await getPlaiceholder(post.thumbnail.url);
+            return {
+            ...post,
+            blurDataURL: base64,
+            };
+        })
+        ).then((values) => values);
+
+
     const pageSize = await getPageSize()
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(pageSize.pageInfo.pageSize / postsPerPage); i++) {
@@ -114,7 +126,16 @@ export async function getServerSideProps(req:any) {
             )
         }).map((result:{id:string}) => postsId.push(result.id))
     }
-    const filteredPosts = await getFilteredPosts(postsId) || []
+    const rawFilteredPosts = await getFilteredPosts(postsId) || []
+    const filteredPosts = await Promise.all(
+        rawFilteredPosts.map(async (post:any) => {
+            const { base64 } = await getPlaiceholder(post.thumbnail.url);
+            return {
+            ...post,
+            blurDataURL: base64,
+            };
+        })
+        ).then((values) => values);
 
     return {
         props: { pageNumbers, currentPage, posts: req.query.q ? filteredPosts : paginatedPosts }

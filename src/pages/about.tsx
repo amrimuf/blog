@@ -11,6 +11,7 @@ import {HiHeart} from 'react-icons/hi'
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 import { getAbout } from "../../services";
+import { getPlaiceholder } from "plaiceholder";
 
 export default function About({about}:InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
@@ -29,7 +30,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                     <div className="flex flex-col items-center">
                         <Image
                             src={about.image.url}
-                            blurDataURL={`/_next/image?url=${about.image.url}&w=16&q=1`}
+                            blurDataURL={about.blurDataURL}
                             placeholder='blur' 
                             alt="Profile"
                             priority={true}
@@ -84,7 +85,17 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
 
 
 export async function getServerSideProps() {
-    const abouts = await getAbout() || [] 
+    const rawAbouts = await getAbout() || [] 
+    const abouts = await Promise.all(
+        rawAbouts.map(async (about:any) => {
+            const { base64 } = await getPlaiceholder(about.image.url);
+            return {
+            ...about,
+            blurDataURL: base64,
+            };
+        })
+        ).then((values) => values);
+
 
     return {
         props: { 

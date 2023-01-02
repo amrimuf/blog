@@ -15,6 +15,7 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
 
     const fetchProjects = async () => {
         setIsLoading(true)
+        //back here if plaiceholder can work on client side
         const data = await getProjects(selectedFilters.length !== 0 ? selectedFilters : tags)
         setIsLoading(false)
         setProjects(data)
@@ -75,7 +76,7 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
     );
 }
 
-export async function getServerSideProps(req:any) {
+export async function getServerSideProps() {
     const tagsObj = await getTags() 
     const tags: string[] = []
     tagsObj.map((tag: {name: string}) => tags.push(tag.name))

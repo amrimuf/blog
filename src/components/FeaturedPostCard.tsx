@@ -14,7 +14,7 @@ export default function FeaturedPostCard({...post}) {
           width='500'
           height='500'
           className="thumbnail"
-          blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`}
+          blurDataURL={post.blurDataURL}
           placeholder='blur'
           />
           <div className="w-full px-4">

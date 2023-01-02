@@ -11,8 +11,9 @@ import { getPost, getNextPrevPosts } from '../../../services';
 import Link from 'next/link';
 import styles from '../../styles/styles.module.css'
 import NotFoundPage from '../404'
+import { getPlaiceholder } from 'plaiceholder';
 
-export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetServerSidePropsType<typeof getServerSideProps>) {
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
 
@@ -55,7 +56,7 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
                         alt={post.title} 
                         width='500'
                         height='500'
-                        blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`} 
+                        blurDataURL={blurDataURL} 
                         placeholder='blur' 
                         className={`object-cover h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} />
                 </div>
@@ -112,9 +113,14 @@ export default function Detail({ post, prevSlug, prevTitle, nextSlug, nextTitle 
 }
 }
 
+const getPlaiceholderBase64 = async (image_adress: string) => {
+    const { base64 } = await getPlaiceholder(image_adress)
+    return base64
+}
 
 export async function getServerSideProps({params}:any) {
     const post = await getPost(params.slug) || [] 
+    const blurDataURL = await getPlaiceholderBase64(post.thumbnail.url)
     const posts = await getNextPrevPosts()
     
     const index = posts.findIndex(function(post:any) {
@@ -128,6 +134,6 @@ export async function getServerSideProps({params}:any) {
     let nextTitle = posts[(index+1)%len].title;    
 
     return {
-        props: { post, prevSlug, prevTitle, nextSlug, nextTitle }
+        props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }
     }
 }

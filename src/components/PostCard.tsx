@@ -13,6 +13,7 @@ type PostType = {
         category: string;
         createdAt: string;
         headline: string;
+        blurDataURL:string;
     }
 }
 
@@ -26,7 +27,7 @@ export default function PostCard({ post }: PostType) {
                 width='500'
                 height='500' 
                 className="thumbnail"
-                blurDataURL={`/_next/image?url=${post.thumbnail.url}&w=16&q=1`}
+                blurDataURL={post.blurDataURL}
                 placeholder='blur'/>
                 <div className="w-full px-4">
                     <PostInfo

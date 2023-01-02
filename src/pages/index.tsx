@@ -9,12 +9,11 @@ import styles from '../styles/styles.module.css'
 import { getProfile, getFeaturedPosts } from '../../services';
 import { getPlaiceholder } from 'plaiceholder'
 
-export default function home({ blur_data_url, posts, profile }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function home({ posts, profile }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
     <Layout>
         <Seo/>
         <Hero 
-        blur_data_url={blur_data_url}
         profile={profile}
         />
         <h1 className='text-2xl font-bold text-neutral-900 lg:text-5xl dark:text-neutral-100 lg:mt-12 pb-2 sm:pb-6 ' data-fade='0'>
@@ -40,20 +39,33 @@ export default function home({ blur_data_url, posts, profile }: InferGetServerSi
     );
 }
 
-const getPlaiceholderBase64 = async (image_adress: string) => {
-    const { base64 } = await getPlaiceholder(image_adress)
-    return base64
-}
-
 export async function getServerSideProps() {
-    const posts = await getFeaturedPosts() || [] 
-    const profile = await getProfile()
-    const blur_data_url = await getPlaiceholderBase64(profile[0].image.url)
+    const featuredPosts = await getFeaturedPosts() || [] 
+    const rawProfile = await getProfile()
+
+    const posts = await Promise.all(
+    featuredPosts.map(async (post:any) => {
+        const { base64 } = await getPlaiceholder(post.thumbnail.url);
+        return {
+        ...post,
+        blurDataURL: base64,
+        };
+    })
+    ).then((values) => values);
+
+    const profile = await Promise.all(
+        rawProfile.map(async (prof:any) => {
+            const { base64 } = await getPlaiceholder(prof.image.url);
+            return {
+            ...prof,
+            blurDataURL: base64,
+            };
+        })
+        ).then((values) => values);
 
     return {
         props: { 
             posts,
-            blur_data_url,
             profile: profile.length > 0 ? profile[0] : {}
         }
     }
