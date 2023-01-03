@@ -18,7 +18,8 @@ type ProjectInfoType = {
     post: {
         slug: string
     }
-    nolink: string
+    nolink: string;
+    blurDataURL: string;
 };
 
 export default function ProjectCard({ ...projectInfo }: ProjectInfoType) {
@@ -31,7 +32,7 @@ export default function ProjectCard({ ...projectInfo }: ProjectInfoType) {
             <article className='flex items-center gap-8 px-4'>
                 <Image
                 src={projectInfo.thumbnail.url}
-                blurDataURL={`/_next/image?url=${projectInfo.thumbnail.url}&w=16&q=1`}
+                blurDataURL={projectInfo.blurDataURL}
                 placeholder='blur'
                 alt={projectInfo.title} width='250' height='250'className="md:block w-full rounded hidden object-cover h-16 w-16" />
                 <ProjectInfo

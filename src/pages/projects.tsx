@@ -5,9 +5,10 @@ import Layout from "../components/Layout";
 import ProjectCard from "../components/ProjectCard";
 import Seo from "../components/Seo";
 import styles from '../styles/styles.module.css'
-import { getProjects, getTags } from "../../services";
+import { getProjects, getProjectsURL, getTags } from "../../services";
+import { getPlaiceholder } from "plaiceholder";
 
-export default function Projects({ tags }:InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Projects({ tags, projectsURL }:InferGetServerSidePropsType<typeof getServerSideProps>) {
 
     const [projects, setProjects] = useState<string[]>([])
     const [selectedFilters, setSelectedFilters] = useState<string[]>([])
@@ -16,7 +17,15 @@ export default function Projects({ tags }:InferGetServerSidePropsType<typeof get
     const fetchProjects = async () => {
         setIsLoading(true)
         //back here if plaiceholder can work on client side
-        const data = await getProjects(selectedFilters.length !== 0 ? selectedFilters : tags)
+        const rawData = await getProjects(selectedFilters.length !== 0 ? selectedFilters : tags)
+
+        const data = rawData.map((e:any,i:any) => {
+            let temp = projectsURL.find(element => element.id  === e.id)
+            if (temp.blurDataURL) {
+                e.blurDataURL = temp.blurDataURL
+            }
+            return e
+        })
         setIsLoading(false)
         setProjects(data)
     }
@@ -80,8 +89,18 @@ export async function getServerSideProps() {
     const tagsObj = await getTags() 
     const tags: string[] = []
     tagsObj.map((tag: {name: string}) => tags.push(tag.name))
-    
+    const rawProjectsURL = await getProjectsURL()
+    const projectsURL = await Promise.all(
+        rawProjectsURL.map(async (project:any) => {
+            const { base64 } = await getPlaiceholder(project.thumbnail.url);
+            return {
+            id: project.id,
+            blurDataURL: base64,
+            };
+        })
+        ).then((values) => values);
+        
     return {
-        props: { tags }
+        props: { tags, projectsURL }
     }
 }
