@@ -17,9 +17,9 @@ export default function home({ posts, projects, profile }: InferGetServerSidePro
         <Hero 
         profile={profile}
         />
-        <h1 className='text-2xl font-bold text-neutral-900 md:text-4xl dark:text-neutral-100 mt-8 pb-2 sm:pb-6 ' data-fade='0'>
+        <h3 className='mt-8 pb-2 sm:pb-6 '>
             Featured Posts
-        </h1>
+        </h3>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
             {posts.map((post:any) => (
@@ -36,9 +36,9 @@ export default function home({ posts, projects, profile }: InferGetServerSidePro
             className="flex mx-auto mt-6 btn-primary"
         ><Link href='/blog'>View all posts</Link></button>
 
-        <h1 className='text-2xl font-bold text-neutral-900 md:text-4xl dark:text-neutral-100 mt-8 pb-2 sm:pb-6 ' data-fade='0'>
+        <h3 className='mt-8 pb-2 sm:pb-6 '>
             Recent Projects
-        </h1>
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
             {projects.map((project:any) => (
             <div key={project.id} className={`w-full px-4 rounded-xl pb-6 bg-white/70 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderPosts}`}>

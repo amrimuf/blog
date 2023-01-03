@@ -16,17 +16,15 @@ export default function PostMetaTitle({ category, title, date, center, slug, fea
   return (
     <div className={`${center ? 'flex w-10/12 md:w-full flex-col items-center mb-6' : ''}`}>
       <div className="flex items-center gap-4">
-        <div className={`text-neutral-700 ${center ? 'text-neutral-600 dark:text-neutral-400 capitalize' : `text-neutral-700 text-lg bg-lime-400 absolute top-5 rotate-3 right-5 px-2 ${styles.shadow}`}`}>
+        <div className={` ${center ? 'capitalize' : `text-neutral-700 dark:text-neutral-700 text-lg bg-lime-400 absolute top-5 rotate-3 right-5 px-2 ${styles.paperShadow}`}`}>
           {category}
         </div>
-        <span className='text-lime-500 font-extrabold'>{featured ? <p>&#10008;</p> : <p>&#10007;</p>}</span>
-        <div className='text-neutral-600 dark:text-neutral-400'>
-          {dateMoment}
-        </div>
+        <span className='text-lime-500 font-extrabold'>{featured ? <span>&#10008;</span> : <span>&#10007;</span>}</span>
+        <p>{dateMoment}</p>
       </div>
-      <h2 className={`text-2xl mt-4 font-bold text-neutral-900 dark:text-neutral-100 ${center ? 'sm:text-5xl text-center' : ''}`}>
+      <h1 className={`mt-4 ${center ? 'large-title' : 'small-title'}`}>
         {title}
-      </h2>
+      </h1>
     </div>
   );
 }

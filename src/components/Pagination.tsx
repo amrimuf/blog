@@ -21,7 +21,7 @@ const Pagination = ({ pageNumbers, currentPage, setIsLoading }:PaginationType) =
                 <Link href={`/blog/page/${number}`} key={number}>
                 <button
                     onClick={() => setIsLoading(true)}
-                    className={` py-1 px-3 cursor-pointer ${currentPage === number ? ' rounded-full bg-lime-500 shadow-md shadow-lime-500/60 dark:text-neutral-900 text-neutral-100 focus:bg-lime-500' : 'text-neutral-600 dark:text-neutral-400'}`}
+                    className={` py-1 px-3 cursor-pointer ${currentPage === number ? ' rounded-full bg-lime-500 shadow-md shadow-lime-500/60 dark:text-neutral-900 text-neutral-100 focus:bg-lime-500' : ''}`}
                 >
                     {number}
                 </button>

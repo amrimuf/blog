@@ -57,10 +57,10 @@ export default function Header() {
 
         <div className="space-x-8 hidden md:block">
           {navPaths.map((navPath, index) => 
-                  <Link key={index} href={ `/${navPath}`} className={`text-base  ${
+                  <Link key={index} href={ `/${navPath}`} className={`  ${
                     router.asPath.split('/')[1] === `${navPath}`
                     ? "text-neutral-900 dark:text-neutral-100 font-bold"
-                    : "text-neutral-600 dark:text-neutral-400 font-normal"
+                    : ""
                   }`}>
                     <span className='capitalize'>{navPath === '' ? 'Home' : navPath}</span>{" "}
                   {router.asPath.split('/')[1] === `${navPath}` && (
@@ -70,7 +70,7 @@ export default function Header() {
           )}
         </div>
         <div className='md:hidden flex space-x-4'>
-        <Link href="/" className='text-neutral-900 dark:text-neutral-100'>Home</Link>
+        <Link href="/">Home</Link>
           <div 
             className="HAMBURGER-ICON space-y-2 my-auto"
             onClick={() => setNavOpen((prev) => !prev)}
@@ -99,7 +99,7 @@ export default function Header() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </div>
-          <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-neutral-900 dark:text-neutral-100">
+          <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
             <li className="border-b-2 border-lime-500 my-8 uppercase">
               <Link href="/blog">Blog</Link>
             </li>

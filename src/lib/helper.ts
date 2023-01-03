@@ -15,7 +15,7 @@ export function classNames(...classes: string[]): string {
         templateTitle,
         description,
         banner,
-        logo = 'https://og.amrimuf.link/images/logo.jpg',
+        logo = 'https://amri.tech/favicon/large-og.png',
         isBlog = false,
     }: OpenGraphType): string {
         const ogLogo = encodeURIComponent(logo);
@@ -28,10 +28,10 @@ export function classNames(...classes: string[]): string {
         if (isBlog) {
         const ogBanner = banner ? encodeURIComponent(banner.trim()) : undefined;
     
-        return `https://og.amrimuf.link/api/blog?templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
+        return `https://og.clarence.link/api/blog?templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
         }
     
-        return `https://og.amrimuf.link/api/gradient?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
+        return `https://og.clarence.link/api/gradient?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
         ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''
         }`;
     }

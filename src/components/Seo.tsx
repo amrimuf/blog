@@ -9,7 +9,7 @@ const defaultMeta = {
     description:
         'An online portfolio and blog by Amri Mufti.',
     url: 'https://amri.tech',
-    image: '/favicon/large-og.png',
+    image: 'https://amri.tech/favicon/large-og.png',
     type: 'website',
     robots: 'follow, index',
 };

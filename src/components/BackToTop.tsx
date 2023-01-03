@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import styles from '../styles/styles.module.css'
+import {FaChevronUp} from 'react-icons/fa'
 
 export default function BackToTop() {
     const [toTopButton, setToTopButton] = useState(false)
@@ -25,7 +25,7 @@ export default function BackToTop() {
         }
         aria-label='Back to top'
         >
-            <i className="bi bi-chevron-up mx-[11px] my-[6px] text-lime-500" style={{ fontSize:18, WebkitTextStroke:2 }}></i>
+            <FaChevronUp className="text-lime-500 m-3 text-lg" />
         </button>
     )
 }

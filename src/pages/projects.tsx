@@ -49,15 +49,15 @@ export default function Projects({ tags, projectsURL }:InferGetServerSidePropsTy
         templateTitle='Projects'
         description='A few projects I have worked on recently.'
         />
-        <h1 className='text-2xl font-bold lg:text-5xl text-neutral-900 dark:text-neutral-100' data-fade='0'>
+        <h1>
             Projects
         </h1>
-        <p className='mt-2 text-neutral-600 dark:text-neutral-400' data-fade='1'>
+        <p className='mt-2'>
             A few projects I have worked on recently.
         </p>
 
         <div className="flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2">
-                <span className="hidden sm:block text-sm text-neutral-600 dark:text-neutral-400">Filters:</span>
+                <span className="hidden sm:block">Filters:</span>
                 {tags.sort().map((tag:any, index:any) => (
                     <button 
                         key={index}

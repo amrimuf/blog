@@ -22,7 +22,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
             />
 
             <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorder}`} >
-                <h1 className={`text-[42px] font-bold lg:text-6xl text-neutral-900 dark:text-neutral-100 mb-6 sm:m-0 font-gochi tracking-[4px] `}>
+                <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]">
                     <span className={styles.highlight}>Amri</span> Mufti
                 </h1>
 
@@ -39,7 +39,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
                             height='500'
                         />
                         <Link href='mailto:amrimuvti@gmail.com' className=" flex mx-auto items-center gap-2 btn-primary" >
-                        <p>Let's collaborate</p>
+                        Let's collaborate
                         <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
                         </Link>
                         <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-xl">

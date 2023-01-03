@@ -14,7 +14,7 @@ export default function Custom404() {
                 size={60}
                 className='text-lime-500'
             />
-            <h1 className='text-2xl font-bold lg:text-5xl mt-6'>Page Not Found</h1>
+            <h1 className='text-neutral-100'>Page Not Found</h1>
             <Link className='mt-4 hover:underline underline-offset-8 decoration-lime-500' href='/'>
                 Back to Home
             </Link>

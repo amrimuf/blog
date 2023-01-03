@@ -10,7 +10,7 @@ export default function PostInfo({...postInfo}) {
         slug={postInfo.slug}
         featured={postInfo.featured}
       />
-      <p className="text-neutral-600 mt-5 dark:text-neutral-400">
+      <p className="mt-5">
         {postInfo.headline}        
       </p>
     </div>

@@ -5,24 +5,21 @@ import styles from '../styles/styles.module.css'
 export default function Hero({profile}:any){
     return (
         <article className={`flex items-center justify-center layout bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderHero}`}>
-            <div className="w-full sm:w-8/12 sm:pr-8 text-neutral-900 dark:text-neutral-100">
-                <h2 className='text-3xl font-bold sm:text-5xl ' data-fade='1'>
+            <div className="w-full sm:w-8/12 sm:pr-8">
+                <h2>
                 Yoo!
                 </h2>
                 <h1
-                className='mt-1 text-[32px] sm:text-6xl font-gochi'
-                data-fade='2'
+                className='mt-1 text-[32px] sm:text-6xl font-gochi font-medium'
                 >
                 My name is <span className={styles.highlight}>Amri</span>
                 </h1>
-                <p className='mt-4 max-w-4xl text-neutral-600 dark:text-neutral-400 md:mt-6'>
+                <p className='mt-4 max-w-4xl md:mt-6'>
                 {profile.headline}
                 </p>
                 <div
-                data-fade='5'
-                className='mt-8 flex flex-wrap mx-auto gap-4 md:!text-lg justify-center lg:justify-start'
+                className='mt-8 flex flex-wrap mx-auto gap-4 justify-center lg:justify-start'
                 >
-                    {/* <Link href='/blog'>Read the blog</Link> */}
                     <button
                         type="button"
                         data-mdb-ripple="true"

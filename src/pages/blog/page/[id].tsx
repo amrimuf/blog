@@ -56,15 +56,15 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
                 templateTitle='Blog'
                 description='Thoughts and tutorials about web development and programming.'
                 />
-                <h1 className='text-2xl font-bold text-neutral-900 lg:text-5xl dark:text-neutral-100' data-fade='0'>
+                <h1>
                     Blog
                 </h1>
-                <p className='mt-2 text-neutral-600 dark:text-neutral-400 mb-6' data-fade='1'>
+                <p className='mt-2 mb-6'>
                 Thoughts and tutorials about web development and programming.
                 </p>
                 <div className="relative w-full mb-4">
                     <input 
-                    className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white/70 dark:bg-black/30 text-neutral-900 dark:text-neutral-100"
+                    className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white/70 dark:bg-black/30"
                     type = "text" 
                     placeholder = "Search articles"
                     value={searchField}
