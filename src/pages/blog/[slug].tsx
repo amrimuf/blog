@@ -2,18 +2,18 @@ import Image from 'next/image';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import React from 'react';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { InferGetServerSidePropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 
 import Layout from '../../components/Layout';
 import PostMetaTitle from '../../components/PostMetaTitle';
 import Seo from '../../components/Seo';
-import { getPost, getNextPrevPosts } from '../../../services';
+import { getPost, getNextPrevPosts, getPosts } from '../../../services';
 import Link from 'next/link';
 import styles from '../../styles/styles.module.css'
 import NotFoundPage from '../404'
 import { getPlaiceholder } from 'plaiceholder';
 
-export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
 
@@ -120,7 +120,7 @@ const getPlaiceholderBase64 = async (image_adress: string) => {
     return base64
 }
 
-export async function getServerSideProps({params}:any) {
+export async function getStaticProps({params}:any) {
     const post = await getPost(params.slug) || [] 
     const blurDataURL = await getPlaiceholderBase64(post.thumbnail.url)
     const posts = await getNextPrevPosts()
@@ -136,6 +136,19 @@ export async function getServerSideProps({params}:any) {
     let nextTitle = posts[(index+1)%len].title;    
 
     return {
-        props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }
+        props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }, revalidate: 120
     }
+}
+
+export async function getStaticPaths() {
+    const table = await getPosts().then((res: any) => res);
+    return {
+        paths: table.map((row: any) => ({
+        params: {
+            id: row._id,
+            slug: row.slug,
+        },
+        })),
+        fallback: "blocking",
+    };
 }

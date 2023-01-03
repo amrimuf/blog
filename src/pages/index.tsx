@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { InferGetServerSidePropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 
 import FeaturedPostCard from "../components/FeaturedPostCard";
 import Hero from "../components/Hero";
@@ -10,7 +10,7 @@ import { getProfile, getFeaturedPosts, getFeaturedProjects } from '../../service
 import { getPlaiceholder } from 'plaiceholder'
 import ProjectCard from "../components/ProjectCard";
 
-export default function home({ posts, projects, profile }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function home({ posts, projects, profile }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
     <Layout>
         <Seo/>
@@ -57,7 +57,7 @@ export default function home({ posts, projects, profile }: InferGetServerSidePro
     );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const featuredPosts = await getFeaturedPosts() || [] 
     const rawProfile = await getProfile()
 
@@ -97,6 +97,7 @@ export async function getServerSideProps() {
             posts,
             projects,
             profile: profile.length > 0 ? profile[0] : {}
-        }
+        },
+        revalidate: 120
     }
 }

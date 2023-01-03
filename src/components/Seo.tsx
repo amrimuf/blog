@@ -40,7 +40,6 @@ export default function Seo(props: SeoProps) {
         banner: props.banner,
         isBlog: props.isBlog,
     });
-    console.log(meta.image)
 
     return (
         <Head>

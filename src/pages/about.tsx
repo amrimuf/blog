@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { InferGetServerSidePropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 import React from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import styles from '../styles/styles.module.css';
@@ -13,7 +13,7 @@ import Seo from "../components/Seo";
 import { getAbout } from "../../services";
 import { getPlaiceholder } from "plaiceholder";
 
-export default function About({about}:InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function About({about}:InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <Layout>
             <Seo
@@ -84,7 +84,7 @@ export default function About({about}:InferGetServerSidePropsType<typeof getServ
 }
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const rawAbouts = await getAbout() || [] 
     const abouts = await Promise.all(
         rawAbouts.map(async (about:any) => {
@@ -100,6 +100,7 @@ export async function getServerSideProps() {
     return {
         props: { 
             about: abouts.length > 0 ? abouts[0] : {} 
-        }
+        },
+        revalidate: 120
     }
 }

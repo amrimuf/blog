@@ -64,7 +64,7 @@ export default function Header() {
                   }`}>
                     <span className='capitalize'>{navPath === '' ? 'Home' : navPath}</span>{" "}
                   {router.asPath.split('/')[1] === `${navPath}` && (
-                    <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 14, WebkitTextStroke:1}}></i>
+                    <i className="bi bi-arrow-down inline-block h-3 w-3 text-lime-500" style={{ fontSize: 15, WebkitTextStroke:1.5}}></i>
                   )}
               </Link>
           )}

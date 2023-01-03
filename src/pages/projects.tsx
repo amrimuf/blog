@@ -1,4 +1,4 @@
-import { InferGetServerSidePropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 import {  useEffect, useState } from "react";
 
 import Layout from "../components/Layout";
@@ -8,7 +8,7 @@ import styles from '../styles/styles.module.css'
 import { getProjects, getProjectsURL, getTags } from "../../services";
 import { getPlaiceholder } from "plaiceholder";
 
-export default function Projects({ tags, projectsURL }:InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Projects({ tags, projectsURL }:InferGetStaticPropsType<typeof getStaticProps>) {
 
     const [projects, setProjects] = useState<string[]>([])
     const [selectedFilters, setSelectedFilters] = useState<string[]>([])
@@ -20,7 +20,7 @@ export default function Projects({ tags, projectsURL }:InferGetServerSidePropsTy
         const rawData = await getProjects(selectedFilters.length !== 0 ? selectedFilters : tags)
 
         const data = rawData.map((e:any,i:any) => {
-            let temp = projectsURL.find(element => element.id  === e.id)
+            let temp = projectsURL.find((element: { id: any; }) => element.id  === e.id)
             if (temp.blurDataURL) {
                 e.blurDataURL = temp.blurDataURL
             }
@@ -85,7 +85,7 @@ export default function Projects({ tags, projectsURL }:InferGetServerSidePropsTy
     );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const tagsObj = await getTags() 
     const tags: string[] = []
     tagsObj.map((tag: {name: string}) => tags.push(tag.name))
@@ -101,6 +101,6 @@ export async function getServerSideProps() {
         ).then((values) => values);
         
     return {
-        props: { tags, projectsURL }
+        props: { tags, projectsURL }, revalidate: 120
     }
 }
