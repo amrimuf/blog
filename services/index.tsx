@@ -194,7 +194,7 @@ export const getProjects = async(tag:string[]) => {
 export const getFeaturedProjects = async() => {
     const query = gql `
     query Projects() {
-        projects(orderBy:createdAt_DESC where: {featured: true}) {
+        projects(orderBy:createdAt_DESC first:4) {
             id,
             title,
             post {

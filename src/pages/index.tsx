@@ -17,7 +17,7 @@ export default function home({ posts, projects, profile }: InferGetServerSidePro
         <Hero 
         profile={profile}
         />
-        <h1 className='text-2xl font-bold text-neutral-900 lg:text-5xl dark:text-neutral-100 lg:mt-12 pb-2 sm:pb-6 ' data-fade='0'>
+        <h1 className='text-2xl font-bold text-neutral-900 md:text-4xl dark:text-neutral-100 mt-8 pb-2 sm:pb-6 ' data-fade='0'>
             Featured Posts
         </h1>
         
@@ -34,10 +34,10 @@ export default function home({ posts, projects, profile }: InferGetServerSidePro
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
             className="flex mx-auto mt-6 btn-primary"
-        ><Link href='/blog/page/1'>View all posts</Link></button>
+        ><Link href='/blog'>View all posts</Link></button>
 
-        <h1 className='text-2xl font-bold text-neutral-900 lg:text-5xl dark:text-neutral-100 lg:mt-12 pb-2 sm:pb-6 ' data-fade='0'>
-            Featured Projects
+        <h1 className='text-2xl font-bold text-neutral-900 md:text-4xl dark:text-neutral-100 mt-8 pb-2 sm:pb-6 ' data-fade='0'>
+            Recent Projects
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
             {projects.map((project:any) => (
@@ -46,6 +46,12 @@ export default function home({ posts, projects, profile }: InferGetServerSidePro
             </div>
             ))}
         </div>
+        <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            className="flex mx-auto mt-6 btn-primary"
+        ><Link href='/projects'>View all projects</Link></button>
         
     </Layout>
     );
