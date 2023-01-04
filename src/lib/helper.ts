@@ -15,7 +15,7 @@ export function classNames(...classes: string[]): string {
         templateTitle,
         description,
         banner,
-        logo = 'https://media.graphassets.com/ukmUMV6MSOGs2UXqAZTH',
+        logo = 'https://amri.tech/assets/logo.jpg',
         isBlog = false,
     }: OpenGraphType): string {
         const ogLogo = encodeURIComponent(logo);
