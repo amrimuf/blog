@@ -12,7 +12,6 @@ export default async function generalHandler(req: NextRequest) {
     try {
     const { searchParams } = new URL(req.url);
 
-    const logo = searchParams.get('logo') ?? 'https://amri.tech/favicon/large-og.png';
     const templateTitle = searchParams.get('templateTitle');
     const siteName = searchParams.get('siteName');
     const description = searchParams.get('description');
@@ -28,7 +27,7 @@ export default async function generalHandler(req: NextRequest) {
             <div>HMMMM?</div>
             <div>{templateTitle}</div>
             <div>{siteName}</div>
-            <img src={logo} tw='h-24'></img>
+            <img src='https://amri.tech/favicon/large-og.png' tw='h-24'></img>
             {/* <div>{description}</div> */}
         </div>
     ),
