@@ -15,7 +15,7 @@ export default async function generalHandler(req: NextRequest) {
     const templateTitle = searchParams.get('templateTitle');
     const siteName = searchParams.get('siteName');
     const description = searchParams.get('description');
-    const logo = 'https://amri.tech/favicon/large-og.png'
+    const logo = 'https://img.freepik.com/free-vector/creative-barbecue-logo-template_23-2149017951.jpg'
 
     const alexandriaRegular = await alexandriaFontLoader("Regular");
     const alexandriaLight = await alexandriaFontLoader("Light");
