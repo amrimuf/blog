@@ -23,12 +23,21 @@ export default async function generalHandler(req: NextRequest) {
 
     return new ImageResponse(
     (
-        <div tw='flex'>
-            <div>HMMMM?</div>
-            <div>{templateTitle}</div>
-            <div>{siteName}</div>
-            <img src='https://amri.tech/favicon/large-og.png' tw='h-24'></img>
-            {/* <div>{description}</div> */}
+        <div tw='flex flex-col items-center w-full h-full justify-center bg-white'>
+            {/* <img tw='rounded-md' src={logo} height='150px' width='150px'></img> */}
+            <h1 tw='text-5xl leading-tight' style={{ fontFamily: "Alexandria-Bold" }}>{templateTitle}</h1>
+            <p tw='-mt-2 text-lg text-neutral-900' style={{ fontFamily: "Alexandria-Regular" }}>{siteName}</p>
+            <p tw='text-2xl text-neutral-500' style={{ fontFamily: "Alexandria-Light" }}>{description}</p>
+            <span
+                style={{
+                    width: 1200,
+                    height: 20,
+                    background: '#84cc16',
+                    bottom:0,
+                    left:0,
+                    position: 'absolute',
+                }}
+                />        
         </div>
     ),
     {

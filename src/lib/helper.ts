@@ -31,7 +31,7 @@ export function classNames(...classes: string[]): string {
         return `https://amri.tech/api/blog?siteName=${ogSiteName}&templateTitle=${ogTemplateTitle}&logo=${ogLogo}&banner=${ogBanner}`;
         }
         
-        return `https://amri.tech/api/general?siteName=${ogSiteName}&description=${ogDesc}&templateTitle=${ogTemplateTitle}&logo=${ogLogo}`
+        return `https://amri.tech/api/general?siteName=${ogSiteName}&description=${ogDesc}&templateTitle=${ogTemplateTitle}`
     }
     
     /**
