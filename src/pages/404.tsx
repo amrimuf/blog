@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Seo from "../components/Seo"
+import Seo from "@/components/Seo"
 import { MdOutlineSentimentVeryDissatisfied } from 'react-icons/md';
 
 export default function Custom404() {

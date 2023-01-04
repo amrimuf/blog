@@ -1,6 +1,6 @@
 import moment from 'moment';
-import styles from '../styles/styles.module.css'
-import { PostMetaTitleType } from '../lib/types'
+import styles from '@/styles/styles.module.css'
+import { PostMetaTitleType } from '@/lib/types'
 
 export default function PostMetaTitle({ ...postMeta }: PostMetaTitleType) {
   const dateMoment = moment(postMeta.date).format("MMM DD, YYYY")

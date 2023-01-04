@@ -3,14 +3,14 @@ import Link from "next/link";
 import { InferGetStaticPropsType } from "next";
 import React from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import styles from '../styles/styles.module.css';
+import styles from '@/styles/styles.module.css';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
 import {HiHeart} from 'react-icons/hi'
 
-import Layout from "../components/Layout";
-import Seo from "../components/Seo";
-import { getAbout } from "../../services";
+import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
+import { getAbout } from "@/services";
 import { getPlaiceholder } from "plaiceholder";
 
 export default function About({about}:InferGetStaticPropsType<typeof getStaticProps>) {

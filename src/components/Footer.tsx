@@ -1,6 +1,6 @@
 import Link from "next/link";
 import moment from 'moment';
-import styles from '../styles/styles.module.css'
+import styles from '@/styles/styles.module.css'
 import { SiInstagram, SiTwitter, SiGithub, SiLinkedin } from 'react-icons/si'
 
 

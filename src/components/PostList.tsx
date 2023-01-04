@@ -1,6 +1,6 @@
 import PostCard from './PostCard';
-import styles from '../styles/styles.module.css'
-import { Post } from '../lib/types';
+import styles from '@/styles/styles.module.css'
+import { Post } from '@/lib/types';
 
 export default function PostList({ posts }: {posts: Post[]}) {
 

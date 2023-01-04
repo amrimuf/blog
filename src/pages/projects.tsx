@@ -1,13 +1,13 @@
 import { InferGetStaticPropsType } from "next";
 import {  useEffect, useState } from "react";
 
-import Layout from "../components/Layout";
-import ProjectCard from "../components/ProjectCard";
-import Seo from "../components/Seo";
-import styles from '../styles/styles.module.css'
-import { getProjects, getTags } from "../../services";
+import Layout from "@/components/Layout";
+import ProjectCard from "@/components/ProjectCard";
+import Seo from "@/components/Seo";
+import styles from '@/styles/styles.module.css'
+import { getProjects, getTags } from "@/services";
 import { getPlaiceholder } from "plaiceholder";
-import { Project } from "../lib/types";
+import { Project } from "@/lib/types";
 
 export default function Projects({ tags, allProjects }:InferGetStaticPropsType<typeof getStaticProps>) {
 

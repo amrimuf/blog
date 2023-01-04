@@ -4,15 +4,15 @@ import React from 'react';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
-import Layout from '../../components/Layout';
-import PostMetaTitle from '../../components/PostMetaTitle';
-import Seo from '../../components/Seo';
-import { getPost, getNextPrevPosts, getPosts } from '../../../services';
+import Layout from '@/components/Layout';
+import PostMetaTitle from '@/components/PostMetaTitle';
+import Seo from '@/components/Seo';
+import { getPost, getNextPrevPosts, getPosts } from '@/services';
 import Link from 'next/link';
-import styles from '../../styles/styles.module.css'
-import NotFoundPage from '../404'
+import styles from '@/styles/styles.module.css'
+import NotFoundPage from '@/pages/404'
 import { getPlaiceholder } from 'plaiceholder';
-import { Post } from '../../lib/types';
+import { Post } from '@/lib/types';
 
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
 

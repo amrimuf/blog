@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { About } from "../lib/types";
-import styles from '../styles/styles.module.css'
+import { About } from "@/lib/types";
+import styles from '@/styles/styles.module.css'
 
 export default function Hero({profile}:{profile:About}){
     return (

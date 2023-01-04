@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { InferGetStaticPropsType } from "next";
 
-import FeaturedPostCard from "../components/FeaturedPostCard";
-import Hero from "../components/Hero";
-import Layout from "../components/Layout";
-import Seo from "../components/Seo";
-import styles from '../styles/styles.module.css'
-import { getProfile, getFeaturedPosts, getFeaturedProjects } from '../../services';
+import FeaturedPostCard from "@/components/FeaturedPostCard";
+import Hero from "@/components/Hero";
+import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
+import styles from '@/styles/styles.module.css'
+import { getProfile, getFeaturedPosts, getFeaturedProjects } from '@/services';
 import { getPlaiceholder } from 'plaiceholder'
-import ProjectCard from "../components/ProjectCard";
-import { About, Post, Project } from '../lib/types'
+import ProjectCard from "@/components/ProjectCard";
+import { About, Post, Project } from '@/lib/types'
 
 
 export default function home({ posts, projects, profile }: InferGetStaticPropsType<typeof getStaticProps>) {

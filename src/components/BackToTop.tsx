@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import styles from '../styles/styles.module.css'
+import styles from '@/styles/styles.module.css'
 import {FaChevronUp} from 'react-icons/fa'
 
 export default function BackToTop() {

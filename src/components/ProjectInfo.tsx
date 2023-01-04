@@ -1,4 +1,4 @@
-import { Project } from "../lib/types";
+import { Project } from "@/lib/types";
 
 export default function ProjectInfo({...projectInfo}: Project) {
     return (

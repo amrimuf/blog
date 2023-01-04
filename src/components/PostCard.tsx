@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Post } from '../lib/types';
+import { Post } from '@/lib/types';
 
 import PostInfo from './PostInfo';
 

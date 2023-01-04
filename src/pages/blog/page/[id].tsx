@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 
-import Layout from "../../../components/Layout";
-import Seo from "../../../components/Seo";
-import PostList from "../../../components/PostList";
-import { getPosts, getPaginatedPosts, getPageSize, getFilteredPosts } from '../../../../services';
-import Pagination from "../../../components/Pagination";
+import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
+import PostList from "@/components/PostList";
+import { getPosts, getPaginatedPosts, getPageSize, getFilteredPosts } from '@/services';
+import Pagination from "@/components/Pagination";
 import { useRouter } from "next/router";
-import NotFoundPage from "../../404"
+import NotFoundPage from "@/pages/404"
 import { getPlaiceholder } from "plaiceholder";
-import { Post } from "../../../lib/types";
+import { Post } from "@/lib/types";
 
 export default function Blog({ pageNumbers, currentPage, posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTheme } from "next-themes";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import styles from '../styles/styles.module.css'
+import styles from '@/styles/styles.module.css'
 
 export default function Header() {
   const router = useRouter();
