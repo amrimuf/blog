@@ -8,8 +8,7 @@ export const config = {
 const alexandriaFontLoader = (weight: string) =>
         fetch(`https://amri.tech/font/Alexandria-${weight}.ttf`.toString()).then((res) => res.arrayBuffer())
 
-
-export default async function handler(req: NextRequest) {
+export default async function generalHandler(req: NextRequest) {
     try {
     const { searchParams } = new URL(req.url);
 

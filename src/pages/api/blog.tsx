@@ -1,6 +1,5 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import styles from '@/styles/styles.module.css'
 
 export const config = {
     runtime: "experimental-edge"
@@ -9,7 +8,7 @@ export const config = {
 const alexandriaFontLoader = (weight: string) =>
         fetch(`https://amri.tech/font/Alexandria-${weight}.ttf`.toString()).then((res) => res.arrayBuffer())
 
-export default async function handler(req: NextRequest) {
+export default async function blogHandler(req: NextRequest) {
     try {
     const { searchParams } = new URL(req.url);
 

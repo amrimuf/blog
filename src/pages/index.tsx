@@ -15,7 +15,9 @@ import { About, Post, Project } from '@/lib/types'
 export default function home({ posts, projects, profile }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
     <Layout>
-        <Seo/>
+        <Seo
+            templateTitle="Amri Mufti"
+        />
         <Hero 
         profile={profile}
         />

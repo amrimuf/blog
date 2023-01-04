@@ -41,8 +41,6 @@ export default function Seo(props: SeoProps) {
         isBlog: props.isBlog,
     });
 
-    console.log(meta.image)
-
     return (
         <Head>
         <title>{meta.title}</title>
