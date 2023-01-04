@@ -15,7 +15,7 @@ export default async function generalHandler(req: NextRequest) {
     const templateTitle = searchParams.get('templateTitle');
     const siteName = searchParams.get('siteName');
     const description = searchParams.get('description');
-    const logo = 'https://img.freepik.com/free-vector/creative-barbecue-logo-template_23-2149017951.jpg'
+    const logo = 'https://media.graphassets.com/ukmUMV6MSOGs2UXqAZTH'
 
     const alexandriaRegular = await alexandriaFontLoader("Regular");
     const alexandriaLight = await alexandriaFontLoader("Light");
@@ -25,9 +25,7 @@ export default async function generalHandler(req: NextRequest) {
     return new ImageResponse(
     (
         <div tw='flex flex-col items-center w-full h-full justify-center bg-white'>
-            <div tw='flex'>
-                <img tw='rounded-md h-32 w-32' src={logo}></img>
-            </div>
+            <img tw='rounded-md h-32 w-32' src={logo}></img>
             <h1 tw='text-5xl leading-tight' style={{ fontFamily: "Alexandria-Bold" }}>{templateTitle}</h1>
             <p tw='-mt-2 text-lg text-neutral-900' style={{ fontFamily: "Alexandria-Regular" }}>{siteName}</p>
             <p tw='text-2xl text-neutral-500' style={{ fontFamily: "Alexandria-Light" }}>{description}</p>

@@ -15,7 +15,7 @@ export function classNames(...classes: string[]): string {
         templateTitle,
         description,
         banner,
-        logo = 'https://amri.tech/favicon/large-og.png',
+        logo = 'https://media.graphassets.com/ukmUMV6MSOGs2UXqAZTH',
         isBlog = false,
     }: OpenGraphType): string {
         const ogLogo = encodeURIComponent(logo);
@@ -28,7 +28,7 @@ export function classNames(...classes: string[]): string {
         if (isBlog) {
         const ogBanner = banner ? encodeURIComponent(banner.trim()) : undefined;
     
-        return `https://amri.tech/api/blog?siteName=${ogSiteName}&templateTitle=${ogTemplateTitle}&logo=${ogLogo}&banner=${ogBanner}`;
+        return `https://amri.tech/api/blog?siteName=${ogSiteName}&templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
         }
         
         return `https://amri.tech/api/general?siteName=${ogSiteName}&description=${ogDesc}&templateTitle=${ogTemplateTitle}`
