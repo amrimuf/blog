@@ -5,44 +5,38 @@ import Layout from "../components/Layout";
 import ProjectCard from "../components/ProjectCard";
 import Seo from "../components/Seo";
 import styles from '../styles/styles.module.css'
-import { getProjects, getProjectsURL, getTags } from "../../services";
+import { getProjects, getTags } from "../../services";
 import { getPlaiceholder } from "plaiceholder";
 import { Project } from "../lib/types";
 
-export default function Projects({ tags, projectsURL }:InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Projects({ tags, allProjects }:InferGetStaticPropsType<typeof getStaticProps>) {
 
-    const [projects, setProjects] = useState<Project[]>([])
+    const [projects, setProjects] = useState<Project[]>(allProjects)
     const [selectedFilters, setSelectedFilters] = useState<string[]>([])
-    const [isLoading, setIsLoading] = useState(false);
 
-    const fetchProjects = async () => {
-        setIsLoading(true)
-        //back here if plaiceholder can work on client side
-        const rawData = await getProjects(selectedFilters.length !== 0 ? selectedFilters : tags)
-
-        const data = rawData.map((e:Project,i:number) => {
-            let temp = projectsURL.find((element: { id: string; }) => element.id  === e.id)
-            if (temp.blurDataURL) {
-                e.blurDataURL = temp.blurDataURL
-            }
-            return e
-        })
-        setIsLoading(false)
-        setProjects(data)
-    }
-
-    const handleToggleTag = (tag: string) => {        
+    const handleToggleTag = (tag: string) => { 
+        const fetchProjects = async () => {
+            const data =  allProjects.filter(
+                (project:Project)  => {
+                    return (
+                    selectedFilters
+                        .some((selectedFilter) => project.tags.some((tag:{name:string}) => tag.name.toLowerCase() === selectedFilter.toLowerCase())
+                    )); 
+                }
+            )
+            setProjects(data)
+        }
+        
         // select/unselect filter
         selectedFilters.includes(tag) ? selectedFilters.splice(selectedFilters.indexOf(tag), 1) : selectedFilters.push(tag)
 
-        fetchProjects()
+        selectedFilters.length !== 0 ? fetchProjects() : setProjects(allProjects)
     };
 
-    useEffect(() => {
-        if (selectedFilters.length == 0) {
-            fetchProjects()
-        }
-    }, [selectedFilters])
+    const handleClear = () => {
+        setProjects(allProjects)
+        setSelectedFilters([])
+    }
 
     return (
     <Layout>
@@ -69,14 +63,14 @@ export default function Projects({ tags, projectsURL }:InferGetStaticPropsType<t
                     </button>
                 ))}
             <button
-                onClick={() => setSelectedFilters([])}
+                onClick={() => handleClear()}
                 className='dark:bg-white bg-black hover:scale-[1.02] hover:shadow-md shadow dark:shadow-white/20 text-white duration-150 ease-in-out dark:text-black rounded-full px-4 py-2'
                 >Reset all filters</button>
         </div>
         
 
         <div className="mt-4 grid sm:grid-cols-2 gap-6">
-            {isLoading ? <span>Loading...</span> : projects.map((project:Project) => (
+            {projects.map((project:Project) => (
                     <div key={project.id} className={`bg-white/60 dark:bg-black/30 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
                         <ProjectCard {...project}/>
                     </div>
@@ -90,18 +84,18 @@ export async function getStaticProps() {
     const tagsObj = await getTags() 
     const tags: string[] = []
     tagsObj.map((tag: {name: string}) => tags.push(tag.name))
-    const rawProjectsURL = await getProjectsURL()
-    const projectsURL = await Promise.all(
-        rawProjectsURL.map(async (project:Project) => {
+    const rawProjects = await getProjects()
+    const allProjects = await Promise.all(
+        rawProjects.map(async (project:Project) => {
             const { base64 } = await getPlaiceholder(project.thumbnail.url);
             return {
-            id: project.id,
+            ...project,
             blurDataURL: base64,
             };
         })
         ).then((values) => values);
         
     return {
-        props: { tags, projectsURL }, revalidate: 120
+        props: { tags, allProjects }, revalidate: 120
     }
 }

@@ -166,10 +166,10 @@ export const getPost = async (slug:string) => {
     return result.post;
 }
 
-export const getProjects = async(tag:string[]) => {
+export const getProjects = async() => {
     const query = gql `
-    query Projects($tag: [String]) {
-        projects(orderBy:createdAt_DESC where: {tags_some: {name_in: $tag}}) {
+    query Projects() {
+        projects(orderBy:createdAt_DESC) {
             id,
             title,
             post {
@@ -186,7 +186,7 @@ export const getProjects = async(tag:string[]) => {
         }
     }`
 
-    const result = await request(graphqlAPI, query, { tag });
+    const result = await request(graphqlAPI, query);
 
     return result.projects
 }
@@ -209,22 +209,6 @@ export const getFeaturedProjects = async() => {
             }
             nolink
             featured
-        }
-    }`
-
-    const result = await request(graphqlAPI, query);
-
-    return result.projects
-}
-
-export const getProjectsURL = async() => {
-    const query = gql `
-    query Projects() {
-        projects(orderBy:createdAt_DESC) {
-            id,
-            thumbnail {
-                url
-            }
         }
     }`
 
