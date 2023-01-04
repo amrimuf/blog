@@ -15,7 +15,7 @@ export default async function generalHandler(req: NextRequest) {
     const templateTitle = searchParams.get('templateTitle');
     const siteName = searchParams.get('siteName');
     const description = searchParams.get('description');
-    const logo = 'https://media.graphassets.com/ukmUMV6MSOGs2UXqAZTH'
+    const logo = 'https://amri.tech/assets/basic.png'
 
     const alexandriaRegular = await alexandriaFontLoader("Regular");
     const alexandriaLight = await alexandriaFontLoader("Light");
