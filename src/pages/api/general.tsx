@@ -24,7 +24,10 @@ export default async function generalHandler(req: NextRequest) {
 
     return new ImageResponse(
     (
-        <div>HMMMM?</div>
+        <div tw='flex'>
+            <div>HMMMM?</div>
+            <div>{templateTitle}</div>
+        </div>
     ),
     {
         width: 1200,
