@@ -27,6 +27,9 @@ export default async function generalHandler(req: NextRequest) {
         <div tw='flex'>
             <div>HMMMM?</div>
             <div>{templateTitle}</div>
+            <div>{siteName}</div>
+            <img src={logo} tw='h-24'></img>
+            <div>{description}</div>
         </div>
     ),
     {
