@@ -15,6 +15,7 @@ export default async function generalHandler(req: NextRequest) {
     const templateTitle = searchParams.get('templateTitle');
     const siteName = searchParams.get('siteName');
     const description = searchParams.get('description');
+    const logo = 'https://amri.tech/favicon/large-og.png'
 
     const alexandriaRegular = await alexandriaFontLoader("Regular");
     const alexandriaLight = await alexandriaFontLoader("Light");
@@ -24,7 +25,9 @@ export default async function generalHandler(req: NextRequest) {
     return new ImageResponse(
     (
         <div tw='flex flex-col items-center w-full h-full justify-center bg-white'>
-            {/* <img tw='rounded-md' src={logo} height='150px' width='150px'></img> */}
+            <div tw='flex'>
+                <img tw='rounded-md h-32 w-32' src={logo}></img>
+            </div>
             <h1 tw='text-5xl leading-tight' style={{ fontFamily: "Alexandria-Bold" }}>{templateTitle}</h1>
             <p tw='-mt-2 text-lg text-neutral-900' style={{ fontFamily: "Alexandria-Regular" }}>{siteName}</p>
             <p tw='text-2xl text-neutral-500' style={{ fontFamily: "Alexandria-Light" }}>{description}</p>
