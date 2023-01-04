@@ -28,10 +28,10 @@ export function classNames(...classes: string[]): string {
         if (isBlog) {
         const ogBanner = banner ? encodeURIComponent(banner.trim()) : undefined;
     
-        return `https://og-image.vercel.app/${ogTemplateTitle}.png?theme=dark&md=0&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg&images=${ogLogo}`;
+        return `https://amri.tech/api/blog?siteName=${ogSiteName}&templateTitle=${ogTemplateTitle}&logo=${ogLogo}&banner=${ogBanner}`;
         }
-    
-        return `https://og-image.vercel.app/${ogSiteName}.png?theme=dark&md=0&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg&images=${ogLogo}`
+        
+        return `https://amri.tech/api/general?siteName=${ogSiteName}&description=${ogDesc}&templateTitle=${ogTemplateTitle}&logo=${ogLogo}`
     }
     
     /**

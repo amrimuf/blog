@@ -5,7 +5,7 @@ import { openGraph } from '@/lib/helper';
 
 const defaultMeta = {
     title: 'Amri Mufti',
-    siteName: 'https://amri.tech',
+    siteName: 'amri.tech',
     description:
         'An online portfolio and blog by Amri Mufti.',
     url: 'https://amri.tech',
@@ -40,6 +40,8 @@ export default function Seo(props: SeoProps) {
         banner: props.banner,
         isBlog: props.isBlog,
     });
+
+    console.log(meta.image)
 
     return (
         <Head>
