@@ -2,7 +2,7 @@ import Image from 'next/image';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import React from 'react';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { InferGetStaticPropsType } from 'next';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
 import Layout from '../../components/Layout';
 import PostMetaTitle from '../../components/PostMetaTitle';
@@ -12,6 +12,7 @@ import Link from 'next/link';
 import styles from '../../styles/styles.module.css'
 import NotFoundPage from '../404'
 import { getPlaiceholder } from 'plaiceholder';
+import { Post } from '../../lib/types';
 
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
 
@@ -120,13 +121,14 @@ const getPlaiceholderBase64 = async (image_adress: string) => {
     return base64
 }
 
-export async function getStaticProps({params}:any) {
-    const post = await getPost(params.slug) || [] 
+export async function getStaticProps({params}: GetStaticPropsContext<{ slug: string }>) {
+    const { slug } = params as { slug: string };
+    const post = await getPost(slug) || [] 
     const blurDataURL = await getPlaiceholderBase64(post.thumbnail.url)
     const posts = await getNextPrevPosts()
     
-    const index = posts.findIndex(function(post:any) {
-        return post.slug === params.slug;
+    const index = posts.findIndex(function(post:Post) {
+        return post.slug === slug;
     });
 
     const len = posts.length
@@ -141,11 +143,11 @@ export async function getStaticProps({params}:any) {
 }
 
 export async function getStaticPaths() {
-    const table = await getPosts().then((res: any) => res);
+    const table = await getPosts().then((res: Post[]) => res);
     return {
-        paths: table.map((row: any) => ({
+        paths: table.map((row: Post) => ({
         params: {
-            id: row._id,
+            id: row.id,
             slug: row.slug,
         },
         })),

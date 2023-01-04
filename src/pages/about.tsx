@@ -87,7 +87,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
 export async function getStaticProps() {
     const rawAbouts = await getAbout() || [] 
     const abouts = await Promise.all(
-        rawAbouts.map(async (about:any) => {
+        rawAbouts.map(async (about:{image:{url:string}}) => {
             const { base64 } = await getPlaiceholder(about.image.url);
             return {
             ...about,

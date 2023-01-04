@@ -1,23 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Post } from '../lib/types';
 
 import PostInfo from './PostInfo';
 
-type PostType = {
-    post: {
-        slug: string;
-        thumbnail: {
-            url: string
-        };
-        title: string;
-        category: string;
-        createdAt: string;
-        headline: string;
-        blurDataURL:string;
-    }
-}
-
-export default function PostCard({ post }: PostType) {
+export default function PostCard({ post }: {post: Post}) {
     return (
         <article className='-mx-4 lg:items-center items-start'>
             <Link href={`/blog/${post.slug}`} >

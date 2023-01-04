@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { About } from "../lib/types";
 import styles from '../styles/styles.module.css'
 
-export default function Hero({profile}:any){
+export default function Hero({profile}:{profile:About}){
     return (
         <article className={`flex items-center justify-center layout bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderHero}`}>
             <div className="w-full sm:w-8/12 sm:pr-8">

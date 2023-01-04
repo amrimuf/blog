@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { InferGetServerSidePropsType } from "next";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 
 import Layout from "../../../components/Layout";
 import Seo from "../../../components/Seo";
@@ -9,6 +9,7 @@ import Pagination from "../../../components/Pagination";
 import { useRouter } from "next/router";
 import NotFoundPage from "../../404"
 import { getPlaiceholder } from "plaiceholder";
+import { Post } from "../../../lib/types";
 
 export default function Blog({ pageNumbers, currentPage, posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
@@ -78,7 +79,6 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
                 !isTyping ?
                 <PostList 
                     posts={posts} 
-                    isLoading={isLoading}
                 /> 
                 : <span>Press enter to see the results.</span>
                 : <span>Loading...</span> }
@@ -95,13 +95,15 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
     }
 }
 
-export async function getServerSideProps(req:any) {
+export async function getServerSideProps({params, query}:GetServerSidePropsContext) {
+    const { id } = params as { id: string };
+    const { q } = query as { q: string };
     const postsPerPage = 3
-    const currentPage = parseInt(req.params.id)
+    const currentPage = parseInt(id)
     const endPost = currentPage * postsPerPage - postsPerPage
     const rawPaginatedPosts = await getPaginatedPosts(postsPerPage, endPost) || [] 
     const paginatedPosts = await Promise.all(
-        rawPaginatedPosts.map(async (post:any) => {
+        rawPaginatedPosts.map(async (post:Post) => {
             const { base64 } = await getPlaiceholder(post.thumbnail.url);
             return {
             ...post,
@@ -119,16 +121,16 @@ export async function getServerSideProps(req:any) {
 
     // back here if "some" can be done in the hygraph query
     const postsId: string[] = []
-    if (req.query.q) {
+    if (q) {
         const allPosts = await getPosts() || [] 
         allPosts.filter((post:{title:string}) => {
-            return (post.title.toLowerCase().split(" ").some((word:string) => req.query.q.toLowerCase().split(" ").some((query:string) => query === word || word.includes(query)))
+            return (post.title.toLowerCase().split(" ").some((word:string) => q.toLowerCase().split(" ").some((query:string) => query === word || word.includes(query)))
             )
         }).map((result:{id:string}) => postsId.push(result.id))
     }
     const rawFilteredPosts = await getFilteredPosts(postsId) || []
     const filteredPosts = await Promise.all(
-        rawFilteredPosts.map(async (post:any) => {
+        rawFilteredPosts.map(async (post:Post) => {
             const { base64 } = await getPlaiceholder(post.thumbnail.url);
             return {
             ...post,
@@ -138,6 +140,6 @@ export async function getServerSideProps(req:any) {
         ).then((values) => values);
 
     return {
-        props: { pageNumbers, currentPage, posts: req.query.q ? filteredPosts : paginatedPosts }
+        props: { pageNumbers, currentPage, posts: q ? filteredPosts : paginatedPosts }
     }
 }

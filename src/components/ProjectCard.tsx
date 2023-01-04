@@ -2,27 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import ProjectInfo from './ProjectInfo';
+import { Project } from '../lib/types'
 
-type ProjectInfoType = {
-    category: string;
-    createdAt: string;
-    title: string;
-    headline: string;
-    slug: string;
-    author: string;
-    description:string;
-    tags: string[]
-    thumbnail: {
-        url:string
-    }
-    post: {
-        slug: string
-    }
-    nolink: string;
-    blurDataURL: string;
-};
-
-export default function ProjectCard({ ...projectInfo }: ProjectInfoType) {
+export default function ProjectCard({ ...projectInfo }: Project) {
     return (
         <Link 
         href={`${projectInfo.post ? `blog/${projectInfo.post.slug}` : projectInfo.nolink}`}

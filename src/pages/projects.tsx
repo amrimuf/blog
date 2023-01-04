@@ -7,10 +7,11 @@ import Seo from "../components/Seo";
 import styles from '../styles/styles.module.css'
 import { getProjects, getProjectsURL, getTags } from "../../services";
 import { getPlaiceholder } from "plaiceholder";
+import { Project } from "../lib/types";
 
 export default function Projects({ tags, projectsURL }:InferGetStaticPropsType<typeof getStaticProps>) {
 
-    const [projects, setProjects] = useState<string[]>([])
+    const [projects, setProjects] = useState<Project[]>([])
     const [selectedFilters, setSelectedFilters] = useState<string[]>([])
     const [isLoading, setIsLoading] = useState(false);
 
@@ -19,8 +20,8 @@ export default function Projects({ tags, projectsURL }:InferGetStaticPropsType<t
         //back here if plaiceholder can work on client side
         const rawData = await getProjects(selectedFilters.length !== 0 ? selectedFilters : tags)
 
-        const data = rawData.map((e:any,i:any) => {
-            let temp = projectsURL.find((element: { id: any; }) => element.id  === e.id)
+        const data = rawData.map((e:Project,i:number) => {
+            let temp = projectsURL.find((element: { id: string; }) => element.id  === e.id)
             if (temp.blurDataURL) {
                 e.blurDataURL = temp.blurDataURL
             }
@@ -58,7 +59,7 @@ export default function Projects({ tags, projectsURL }:InferGetStaticPropsType<t
 
         <div className="flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2">
                 <span className="hidden sm:block">Filters:</span>
-                {tags.sort().map((tag:any, index:any) => (
+                {tags.sort().map((tag:string, index:number) => (
                     <button 
                         key={index}
                         onClick={() => handleToggleTag(tag)}
@@ -75,7 +76,7 @@ export default function Projects({ tags, projectsURL }:InferGetStaticPropsType<t
         
 
         <div className="mt-4 grid sm:grid-cols-2 gap-6">
-            {isLoading ? <span>Loading...</span> : projects.map((project:any) => (
+            {isLoading ? <span>Loading...</span> : projects.map((project:Project) => (
                     <div key={project.id} className={`bg-white/60 dark:bg-black/30 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
                         <ProjectCard {...project}/>
                     </div>
@@ -91,7 +92,7 @@ export async function getStaticProps() {
     tagsObj.map((tag: {name: string}) => tags.push(tag.name))
     const rawProjectsURL = await getProjectsURL()
     const projectsURL = await Promise.all(
-        rawProjectsURL.map(async (project:any) => {
+        rawProjectsURL.map(async (project:Project) => {
             const { base64 } = await getPlaiceholder(project.thumbnail.url);
             return {
             id: project.id,
