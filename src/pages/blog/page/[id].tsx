@@ -96,7 +96,7 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
 }
 
 export async function getServerSideProps({params, query, res}:GetServerSidePropsContext) {
-    res.setHeader('Cache-Control', `s-maxage=60, stale-while-revalidate`)
+    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120')
     const { id } = params as { id: string };
     const { q } = query as { q: string };
     const postsPerPage = 3
