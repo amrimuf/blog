@@ -28,10 +28,10 @@ export function openGraph({
     if (isBlog) {
     const ogBanner = banner ? encodeURIComponent(banner.trim()) : undefined;
 
-    return `https://www.amri.tech/api/blog?siteName=${ogSiteName}&templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
+    return `https://amri.tech/api/blog?siteName=${ogSiteName}&templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
     }
     
-    return `https://www.amri.tech/api/general?siteName=${ogSiteName}&description=${ogDesc}${ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''}`
+    return `https://amri.tech/api/general?siteName=${ogSiteName}&description=${ogDesc}${ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''}`
 }
 
 /**
