@@ -52,12 +52,6 @@ export default function Seo(props: SeoProps) {
         <meta property='og:description' content={meta.description} />
         <meta property='og:title' content={meta.title} />
         <meta property='og:image' content='https://thepracticaldev.s3.amazonaws.com/i/6hqmcjaxbgbon8ydw93z.png' />
-        <meta property='og:image:url' content={meta.image} />
-        <meta property='og:image:secure_url' content={meta.image} />
-        <meta property="og:image:type" content="image/png" /> 
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="A title and description" />
         {/* Twitter */}
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@amrimuf' />
