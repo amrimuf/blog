@@ -30,7 +30,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                 banner={post.thumbnail.url}
                 />
 
-                <nav className="lg:w-10/12 mx-auto rounded-full hidden sm:block px-2 py-1">
+                <nav className="lg:w-10/12 mx-auto rounded-full hidden sm:block px-2 py-1" data-fade='0'>
                 <ol className="list-reset flex">
                     <li><Link href="/" className="text-lime-500 hover:underline">Home</Link></li>
                     <li><span className="text-gray-500 mx-2 ">/</span></li>
