@@ -31,8 +31,6 @@ export default function Seo(props: SeoProps) {
         ? `${props.templateTitle} | ${meta.title}`
         : meta.title;
 
-    // Use siteName if there is templateTitle
-    // but show full title if there is none
     meta.image = openGraph({
         description: meta.description,
         siteName: props.templateTitle ? meta.siteName : meta.title,
@@ -40,7 +38,7 @@ export default function Seo(props: SeoProps) {
         banner: props.banner,
         isBlog: props.isBlog,
     });
-
+    console.log(meta.image)
     return (
         <Head>
         <title>{meta.title}</title>

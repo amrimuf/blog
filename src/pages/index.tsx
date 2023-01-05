@@ -16,9 +16,7 @@ export default function home({ posts, projects, profile }: InferGetStaticPropsTy
 
     return (
     <Layout>
-        <Seo
-            templateTitle="Amri Mufti"
-        />
+        <Seo/>
         <Hero 
         profile={profile}
         />
