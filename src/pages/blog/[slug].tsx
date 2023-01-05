@@ -61,10 +61,12 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         height='500'
                         blurDataURL={blurDataURL} 
                         placeholder='blur' 
-                        className={`object-cover h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} />
+                        className={`object-cover h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} 
+                        data-fade='2'
+                        />
                 </div>
 
-                <div className="md:w-10/12 w-full mx-auto">
+                <div className="md:w-10/12 w-full mx-auto" data-fade='3'>
                     <article className='content mx-auto bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700' >
                     <RichText
                         content={post.content.json.children}
