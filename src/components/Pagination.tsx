@@ -1,4 +1,4 @@
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import {BsCaretLeftFill, BsCaretRightFill} from 'react-icons/bs'
 import Link from 'next/link';
 
 type PaginationType = {
@@ -13,7 +13,7 @@ const Pagination = ({ pageNumbers, currentPage, setIsLoading }:PaginationType) =
         <div className={'flex flex-row gap-4 justify-center items-center mt-8'}>
             <Link href={ currentPage !== 1 ? `/blog/page/${currentPage-1}` : `/blog/page/${currentPage}`}>
                 <button onClick={() => setIsLoading(true)}>
-                    <i className="bi bi-caret-left-fill text-lime-500 text-2xl hover:text-lime-600 cursor-pointer"></i>
+                    <BsCaretLeftFill className='text-lime-500 text-2xl hover:text-lime-600 cursor-pointer'/>
                 </button>
             </Link>
 
@@ -30,7 +30,7 @@ const Pagination = ({ pageNumbers, currentPage, setIsLoading }:PaginationType) =
 
             <Link href={pageNumbers.length !== currentPage ?`/blog/page/${currentPage+1}` : `/blog/page/${currentPage}`}>
                 <button onClick={() => setIsLoading(true)}>
-                    <i className="bi bi-caret-right-fill text-lime-500 text-2xl hover:text-lime-600 cursor-pointer"></i>
+                    <BsCaretRightFill className='text-lime-500 text-2xl hover:text-lime-600 cursor-pointer'/>
                 </button>
             </Link>
         </div>

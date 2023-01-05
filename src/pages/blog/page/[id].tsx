@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import {RiLoader4Line} from 'react-icons/ri'
 
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -10,6 +11,7 @@ import { useRouter } from "next/router";
 import NotFoundPage from "@/pages/404"
 import { getPlaiceholder } from "plaiceholder";
 import { Post } from "@/lib/types";
+import { GoSearch } from "react-icons/go";
 
 export default function Blog({ pageNumbers, currentPage, posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
@@ -72,8 +74,8 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
                     onChange = {handleChange} 
                     onKeyUp = {handleKeyUp}
                     />
-                    <svg className="absolute right-3 top-3 h-5 w-5 text-neutral-400 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
+                    <GoSearch className="absolute right-3 top-3 h-5 w-5 text-neutral-400 dark:text-gray-300"/>
+                    </div>
 
                 {!isLoading ?
                 !isTyping ?
@@ -84,11 +86,7 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
                 </section>
                 : <span>Press enter to see the results.</span>
                 : 	<div className="flex justify-center items-center space-x-1" data-fade='3'>
-				<svg fill='none' className="w-6 h-6 animate-spin text-lime-500 " viewBox="0 0 32 32" xmlns='http://www.w3.org/2000/svg'>
-					<path clip-rule='evenodd'
-						d='M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z'
-						fill='currentColor' fill-rule='evenodd' />
-				</svg>
+                <RiLoader4Line className="text-lg animate-spin text-lime-500 "/>
 		<div>Loading...</div>
 	</div>
                 }

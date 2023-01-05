@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { InferGetStaticPropsType } from "next";
 import React from "react";
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import styles from '@/styles/styles.module.css';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
 import {HiHeart} from 'react-icons/hi'
+import {GoMail} from 'react-icons/go'
 
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -43,7 +43,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                             <Link href='mailto:amrimuvti@gmail.com' >
                                 <button  className=" flex mx-auto items-center gap-2 btn-primary">
                                     Let's collaborate
-                                    <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
+                                    <GoMail className="text-xl"/>
                                 </button>
                             </Link>
                         </div>

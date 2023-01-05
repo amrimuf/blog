@@ -25,7 +25,7 @@ export default function BackToTop() {
         }
         aria-label='Back to top'
         >
-            <FaChevronUp className="text-lime-500 m-3 text-lg" />
+            <FaChevronUp className="text-lime-500 m-3 text-lg stroke-[25px]" />
         </button>
     )
 }

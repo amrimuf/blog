@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import React from 'react';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
@@ -13,6 +12,7 @@ import styles from '@/styles/styles.module.css'
 import NotFoundPage from '@/pages/404'
 import { getPlaiceholder } from 'plaiceholder';
 import { Post } from '@/lib/types';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
 
@@ -98,7 +98,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                     
                     <div className='flex justify-between'>
                         <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4 mt-12' href={`/blog/${prevSlug}`}>
-                            <i className='bi bi-chevron-left hover:text-lime-500 bi-hover-bold' ></i>
+                            <BsChevronLeft className='hover:text-lime-500 stroke-1'/>
                             <div className='w-[100px] sm:w-[300px]'>
                                 <div className='text-lime-500 dark:text-lime-500 font-semibold'>PREVIOUS</div> 
                                 <div className='truncate'>{prevTitle}</div>
@@ -109,7 +109,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                                 <div className='text-lime-500 dark:text-lime-500 font-semibold'>NEXT</div>
                                 <div className='truncate'>{nextTitle}</div>
                             </div>
-                            <i className='bi bi-chevron-right hover:text-lime-500 bi-hover-bold'></i>
+                            <BsChevronRight className='hover:text-lime-500 stroke-1'/>
                         </Link>
                     </div>
                 </div>
