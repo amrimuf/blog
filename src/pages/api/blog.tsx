@@ -1,4 +1,4 @@
-import { alexandriaFontLoader } from '@/lib/fontLoader';
+import { alexandriaFontLoader } from '@/lib/helper';
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
