@@ -3,7 +3,7 @@ import { Project } from "@/lib/types";
 export default function ProjectInfo({...projectInfo}: Project) {
     return (
         <div className='w-full md:w-10/12 flex flex-col space-y-2 py-6'>
-            <div className="flex flex-row gap-4 items-center">
+            <div className="flex flex-row gap-4 items-start">
                 <h1 className='small-title'>{projectInfo.title}</h1>
                 {projectInfo.post || projectInfo.nolink ?  <i className="bi bi-box-arrow-up-right"></i> : ''}
             </div>

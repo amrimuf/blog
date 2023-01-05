@@ -23,10 +23,10 @@ export default async function generalHandler(req: NextRequest) {
     return new ImageResponse(
     (
         <div tw='flex flex-col items-center w-full h-full justify-center bg-neutral-900'>
-            <img tw='rounded-md h-32 w-32 mb-4' src={logo}></img>
+            <img tw='rounded-md h-32 w-32 mb-12' src={logo}></img>
             <h1 tw='text-7xl uppercase leading-tight text-neutral-100' style={{ fontFamily: "Alexandria-Bold" }}>{templateTitle}</h1>
-            <p tw='-mt-6 text-lg text-neutral-300' style={{ fontFamily: "Alexandria-Regular" }}>{siteName}</p>
-            <p tw='text-2xl text-neutral-500' style={{ fontFamily: "Alexandria-Light" }}>{description}</p>
+            <p tw='-mt-6 text-2xl text-neutral-300 tracking-widest' style={{ fontFamily: "Alexandria-Regular" }}>{siteName}</p>
+            <p tw='mt-8 text-4xl text-neutral-500' style={{ fontFamily: "Alexandria-Regular" }}>{description}</p>
             <span
                 style={{
                     width: 1200,
