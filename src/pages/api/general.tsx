@@ -1,12 +1,10 @@
+import { alexandriaFontLoader } from '@/lib/fontLoader';
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
 export const config = {
     runtime: "experimental-edge"
 }
-
-const alexandriaFontLoader = (weight: string) =>
-        fetch(`https://amri.tech/font/Alexandria-${weight}.ttf`.toString()).then((res) => res.arrayBuffer())
 
 export default async function generalHandler(req: NextRequest) {
     try {
@@ -24,10 +22,10 @@ export default async function generalHandler(req: NextRequest) {
 
     return new ImageResponse(
     (
-        <div tw='flex flex-col items-center w-full h-full justify-center bg-white'>
-            <img tw='rounded-md h-32 w-32' src={logo}></img>
-            <h1 tw='text-5xl leading-tight' style={{ fontFamily: "Alexandria-Bold" }}>{templateTitle}</h1>
-            <p tw='-mt-2 text-lg text-neutral-900' style={{ fontFamily: "Alexandria-Regular" }}>{siteName}</p>
+        <div tw='flex flex-col items-center w-full h-full justify-center bg-neutral-900'>
+            <img tw='rounded-md h-32 w-32 mb-4' src={logo}></img>
+            <h1 tw='text-7xl uppercase leading-tight text-neutral-100' style={{ fontFamily: "Alexandria-Bold" }}>{templateTitle}</h1>
+            <p tw='-mt-6 text-lg text-neutral-300' style={{ fontFamily: "Alexandria-Regular" }}>{siteName}</p>
             <p tw='text-2xl text-neutral-500' style={{ fontFamily: "Alexandria-Light" }}>{description}</p>
             <span
                 style={{

@@ -1,12 +1,10 @@
+import { alexandriaFontLoader } from '@/lib/fontLoader';
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
 export const config = {
     runtime: "experimental-edge"
 }
-
-const alexandriaFontLoader = (weight: string) =>
-        fetch(`https://amri.tech/font/Alexandria-${weight}.ttf`.toString()).then((res) => res.arrayBuffer())
 
 export default async function blogHandler(req: NextRequest) {
     try {
@@ -23,13 +21,13 @@ export default async function blogHandler(req: NextRequest) {
 
     return new ImageResponse(
     (
-        <div tw='w-full h-full flex py-24 px-18 items-center justify-center bg-white'>
-            <div tw='flex flex-col justify-between h-full w-6/12 text-neutral-900'>
-                <h1 tw='text-5xl leading-tight' style={{ fontFamily: "Alexandria-Bold" }}>{templateTitle}</h1>
-                <p tw='text-xl' style={{ fontFamily: "Alexandria-Light"}}>{siteName}/blog</p>
+        <div tw='w-full h-full flex py-24 px-18 items-center justify-center bg-neutral-900'>
+            <div tw='flex flex-col justify-between h-full w-6/12'>
+                <h1 tw='text-5xl leading-tight text-neutral-100' style={{ fontFamily: "Alexandria-Bold" }}>{templateTitle}</h1>
+                <p tw='text-xl text-neutral-300' style={{ fontFamily: "Alexandria-Light"}}>{siteName}/blog</p>
             </div>
             <div tw='flex h-full'>
-                <img src={banner} tw="ml-40 w-96 h-full rounded-xl"></img>
+                <img src={banner} tw="ml-40 w-96 h-full rounded-xl" style={{ objectFit:'cover' }}></img>
             </div>
             <span
                 style={{

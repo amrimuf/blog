@@ -44,14 +44,14 @@ export default function Projects({ tags, allProjects }:InferGetStaticPropsType<t
         templateTitle='Projects'
         description='A few projects I have worked on recently.'
         />
-        <h1>
+        <h1 data-fade='0'>
             Projects
         </h1>
-        <p className='mt-2'>
+        <p className='mt-2' data-fade='1'>
             A few projects I have worked on recently.
         </p>
 
-        <div className="flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2">
+        <div className="flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2" data-fade='3'>
                 <span className="hidden sm:block">Filters:</span>
                 {tags.sort().map((tag:string, index:number) => (
                     <button 
@@ -69,7 +69,7 @@ export default function Projects({ tags, allProjects }:InferGetStaticPropsType<t
         </div>
         
 
-        <div className="mt-4 grid sm:grid-cols-2 gap-6">
+        <div className="mt-4 grid sm:grid-cols-2 gap-6" data-fade='4'>
             {projects.map((project:Project) => (
                     <div key={project.id} className={`bg-white/60 dark:bg-black/30 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
                         <ProjectCard {...project}/>

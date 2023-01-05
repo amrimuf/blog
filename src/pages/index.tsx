@@ -13,6 +13,7 @@ import { About, Post, Project } from '@/lib/types'
 
 
 export default function home({ posts, projects, profile }: InferGetStaticPropsType<typeof getStaticProps>) {
+
     return (
     <Layout>
         <Seo
@@ -21,41 +22,46 @@ export default function home({ posts, projects, profile }: InferGetStaticPropsTy
         <Hero 
         profile={profile}
         />
-        <h3 className='mt-8 pb-2 sm:pb-6 '>
+
+        
+        <h3 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
             Featured Posts
         </h3>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
-            {posts.map((post:{id:string}) => (
-            <div key={post.id} className={`w-full px-4 rounded-xl pb-6 bg-white/70 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderPosts}`}>
-                <FeaturedPostCard {...post} />
+        <section data-fade="4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
+                {posts.map((post:{id:string}) => (
+                <div key={post.id} className={`w-full px-4 rounded-xl pb-6 bg-white/70 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderPosts}`}>
+                    <FeaturedPostCard {...post} />
+                </div>
+                ))}
             </div>
-            ))}
-        </div>
+            <button
+                type="button"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                className="flex mx-auto mt-6 btn-primary"
+            ><Link href='/blog'>View all posts</Link></button>
+        </section>
 
-        <button
-            type="button"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-            className="flex mx-auto mt-6 btn-primary"
-        ><Link href='/blog'>View all posts</Link></button>
-
-        <h3 className='mt-8 pb-2 sm:pb-6 '>
+        
+        <h3 className='mt-8 pb-2 sm:pb-6 ' data-fade='5'>
             Recent Projects
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
-            {projects.map((project:Project) => (
-            <div key={project.id} className={`w-full px-4 rounded-xl pb-6 bg-white/70 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderPosts}`}>
-                <ProjectCard {...project} />
+        <section data-fade="6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
+                {projects.map((project:Project) => (
+                <div key={project.id} className={`w-full px-4 rounded-xl pb-6 bg-white/70 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderPosts}`}>
+                    <ProjectCard {...project} />
+                </div>
+                ))}
             </div>
-            ))}
-        </div>
-        <button
-            type="button"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-            className="flex mx-auto mt-6 btn-primary"
-        ><Link href='/projects'>View all projects</Link></button>
+            <button
+                type="button"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                className="flex mx-auto mt-6 btn-primary"
+            ><Link href='/projects'>View all projects</Link></button>
+        </section>
         
     </Layout>
     );

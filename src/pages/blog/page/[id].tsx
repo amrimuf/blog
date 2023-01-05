@@ -57,13 +57,13 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
                 templateTitle='Blog'
                 description='Thoughts and tutorials about web development and programming.'
                 />
-                <h1>
+                <h1 data-fade='0'>
                     Blog
                 </h1>
-                <p className='mt-2 mb-6'>
+                <p className='mt-2 mb-6' data-fade='1'>
                 Thoughts and tutorials about web development and programming.
                 </p>
-                <div className="relative w-full mb-4">
+                <div className="relative w-full mb-4" data-fade='2'>
                     <input 
                     className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white/70 dark:bg-black/30"
                     type = "text" 
@@ -77,13 +77,23 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetServer
 
                 {!isLoading ?
                 !isTyping ?
+                <section data-fade='3'>
                 <PostList 
                     posts={posts} 
                 /> 
+                </section>
                 : <span>Press enter to see the results.</span>
-                : <span>Loading...</span> }
+                : 	<div className="flex justify-center items-center space-x-1" data-fade='3'>
+				<svg fill='none' className="w-6 h-6 animate-spin text-lime-500 " viewBox="0 0 32 32" xmlns='http://www.w3.org/2000/svg'>
+					<path clip-rule='evenodd'
+						d='M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z'
+						fill='currentColor' fill-rule='evenodd' />
+				</svg>
+		<div>Loading...</div>
+	</div>
+                }
 
-                <div className={ searchField.length !== 0 || router.query.q || pageNumbers.length < 2 ? 'hidden' :'blok'}>
+                <div className={ searchField.length !== 0 || router.query.q || pageNumbers.length < 2 ? 'hidden' :'blok'} data-fade='4'>
                     <Pagination
                         pageNumbers={pageNumbers}
                         currentPage={currentPage}

@@ -21,8 +21,8 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
             description='Amri Mufti is a web developer.'
             />
 
-            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorder}`} >
-                <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]">
+            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700`} data-fade='0'>
+                <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]" data-fade='1'>
                     <span className={styles.highlight}>Amri</span> Mufti
                 </h1>
 
@@ -37,12 +37,15 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                             className={`profile-image mb-6 ${styles.handDrawnBorderImage}`}
                             width='500'
                             height='500'
+                            data-fade='3'
                         />
-                        <Link href='mailto:amrimuvti@gmail.com' className=" flex mx-auto items-center gap-2 btn-primary" >
-                        Let's collaborate
-                        <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
-                        </Link>
-                        <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-xl">
+                        <div data-fade='4'>
+                            <Link href='mailto:amrimuvti@gmail.com' className=" flex mx-auto items-center gap-2 btn-primary" >
+                            Let's collaborate
+                            <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
+                            </Link>
+                        </div>
+                        <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-xl" data-fade='5'>
                             <HiHeart className="text-lime-500"/>
                             <SiGo/>
                             <SiNodedotjs/>
@@ -58,7 +61,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                         </div>
                     </div>
 
-                    <div className="content mt-4 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6">
+                    <div className="content mt-4 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" data-fade='2'>
                     <RichText
                     content={about.content.json.children}
                     references={about.content.references}
