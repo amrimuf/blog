@@ -9,7 +9,7 @@ const defaultMeta = {
     description:
         'An online portfolio and blog by Amri Mufti.',
     url: 'https://amri.tech',
-    image: 'https://amri.tech/favicon/large-og.png',
+    image: 'https://amri.tech/assets/logo.jpg',
     type: 'website',
     robots: 'follow, index',
 };
@@ -57,6 +57,7 @@ export default function Seo(props: SeoProps) {
         <meta property="og:image:type" content="image/png" /> 
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="A title and description" />
         {/* Twitter */}
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@amrimuf' />
