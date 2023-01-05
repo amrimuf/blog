@@ -51,7 +51,7 @@ export default function Seo(props: SeoProps) {
         <meta property='og:site_name' content={meta.siteName} />
         <meta property='og:description' content={meta.description} />
         <meta property='og:title' content={meta.title} />
-        <meta property='og:image' content={meta.image} />
+        <meta property='og:image' content='https://thepracticaldev.s3.amazonaws.com/i/6hqmcjaxbgbon8ydw93z.png' />
         <meta property='og:image:url' content={meta.image} />
         <meta property='og:image:secure_url' content={meta.image} />
         <meta property="og:image:type" content="image/png" /> 
