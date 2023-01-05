@@ -51,7 +51,7 @@ export default function Seo(props: SeoProps) {
         <meta property='og:site_name' content={meta.siteName} />
         <meta property='og:description' content={meta.description} />
         <meta property='og:title' content={meta.title} />
-        <meta property='og:image' content='https://cdn.hashnode.com/res/hashnode/image/upload/v1644938661983/J7uY6EVhp.png?auto=compress' />
+        <meta property='og:image' content='https://www.amri.tech/api/general?siteName=amri.tech&description=A%20few%20projects%20I%20have%20worked%20on%20recently.&templateTitle=Projects' />
         {/* Twitter */}
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@amrimuf' />
