@@ -40,9 +40,11 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                             data-fade='3'
                         />
                         <div data-fade='4'>
-                            <Link href='mailto:amrimuvti@gmail.com' className=" flex mx-auto items-center gap-2 btn-primary" >
-                            Let's collaborate
-                            <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
+                            <Link href='mailto:amrimuvti@gmail.com' >
+                                <button  className=" flex mx-auto items-center gap-2 btn-primary">
+                                    Let's collaborate
+                                    <i className="bi bi-envelope-at" style={{ fontSize: 18 }}></i>
+                                </button>
                             </Link>
                         </div>
                         <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-xl" data-fade='5'>

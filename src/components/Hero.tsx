@@ -22,18 +22,19 @@ export default function Hero({profile}:{profile:About}){
                 <div
                 className='mt-8 flex flex-wrap mx-auto gap-4 justify-center lg:justify-start' data-fade='4'
                 >
+                    <Link href='/blog/'>
                     <button
                         type="button"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
                         className="btn-primary"
-                    ><Link href='/blog/'>Explore the blog</Link></button>
-                    <button
+                    >Explore the blog</button></Link>
+                    <Link href='/about'><button
                         type="button"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
                         className="btn-secondary"
-                    ><Link href='/about'>Get to know me</Link></button>
+                    >Get to know me</button></Link>
                 </div>
             </div>
             <Image 

@@ -33,12 +33,16 @@ export default function home({ posts, projects, profile }: InferGetStaticPropsTy
                 </div>
                 ))}
             </div>
-            <button
+            <Link href='/blog'>
+                <button
                 type="button"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
                 className="flex mx-auto mt-6 btn-primary"
-            ><Link href='/blog'>View all posts</Link></button>
+                >
+                View all posts
+                </button>
+            </Link>
         </section>
 
         
@@ -53,12 +57,13 @@ export default function home({ posts, projects, profile }: InferGetStaticPropsTy
                 </div>
                 ))}
             </div>
+            <Link href='/projects'>
             <button
                 type="button"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
                 className="flex mx-auto mt-6 btn-primary"
-            ><Link href='/projects'>View all projects</Link></button>
+            >View all projects</button></Link>
         </section>
         
     </Layout>
