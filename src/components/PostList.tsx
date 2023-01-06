@@ -2,9 +2,26 @@ import PostCard from './PostCard';
 import styles from '@/styles/styles.module.css'
 import { Post } from '@/lib/types';
 
-export default function PostList({ posts }: {posts: Post[]}) {
+interface PostList {
+    posts:Post[]
+    isLoading?:boolean
+    isSearching:boolean
+}
 
-    if (posts.length === 0) {  
+export default function PostList({ posts, isLoading, isSearching }: PostList) {
+    if (isLoading || isSearching) {
+        return (
+        <div className="flex justify-center items-center space-x-1" data-fade='3'>
+            <div className="flex justify-center">
+                <span className="circle animate-loader"></span>
+                <span className="circle animate-loader animation-delay-200"></span>
+                <span className="circle animate-loader animation-delay-400"></span>
+            </div>
+        </div>
+        )
+    }
+
+    else if (posts.length === 0) {  
         return <p>Sorry, not found :(</p>
         
     } else {

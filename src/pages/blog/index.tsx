@@ -1,4 +1,4 @@
-import {GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 
 import { getPaginatedPosts, getPageSize } from '@/services';
 import Pagination from "@/components/Pagination";
@@ -9,13 +9,15 @@ import { getPageNumbers } from "@/lib/helper";
 import { useEffect, useState } from "react";
 
 export default function Blog({ pageNumbers, currentPage, posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+
     const [isLoading, setIsLoading] = useState(false);
     
-        // new posts loaded
+       // new posts loaded
         useEffect(()=> {
             setIsLoading(false)
         }, [posts]);
-        return (    
+
+        return (     
             <BlogSearch
                 posts={posts}
                 isLoading={isLoading}
@@ -29,12 +31,11 @@ export default function Blog({ pageNumbers, currentPage, posts }: InferGetStatic
         );
 }
 
-export async function getStaticProps({params}:GetStaticPropsContext) {
+export async function getStaticProps() {
     const pageSize = await getPageSize()
-    const pageNumbers = getPageNumbers(pageSize).pageNumbers;
     const postsPerPage = getPageNumbers(pageSize).postsPerPage
-    const { id } = params as { id: string };
-    const currentPage = parseInt(id)
+    const pageNumbers = getPageNumbers(pageSize).pageNumbers
+    const currentPage = 1
     const endPost = currentPage * postsPerPage - postsPerPage
     const rawPaginatedPosts = await getPaginatedPosts(postsPerPage, endPost) || [] 
     const paginatedPosts = await Promise.all(
@@ -49,21 +50,5 @@ export async function getStaticProps({params}:GetStaticPropsContext) {
 
     return {
         props: { pageNumbers, currentPage, posts: paginatedPosts }
-    }
-}
-
-export async function getStaticPaths() {
-    const pageSize = await getPageSize()
-    const pageNumbers = getPageNumbers(pageSize).pageNumbers
-
-    const paths = Array.from(pageNumbers, (element, index) => ({
-            params: {
-                id: (element).toString(),
-            },
-        }));
-
-    return {
-        paths,
-        fallback: false, // can also be true or 'blocking'
     }
 }
