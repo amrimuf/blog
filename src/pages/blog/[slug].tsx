@@ -9,7 +9,6 @@ import Seo from '@/components/Seo';
 import { getPost, getNextPrevPosts, getPosts } from '@/services';
 import Link from 'next/link';
 import styles from '@/styles/styles.module.css'
-import NotFoundPage from '@/pages/404'
 import { getPlaiceholder } from 'plaiceholder';
 import { Post } from '@/lib/types';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
@@ -18,9 +17,6 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
 
-    if (!post.slug) {
-        return <NotFoundPage/>
-    } else {
         return (
             <Layout>
                 <Seo
@@ -115,7 +111,6 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                 </div>
             </Layout>
         );
-}
 }
 
 const getPlaiceholderBase64 = async (image_adress: string) => {
