@@ -49,6 +49,7 @@ export async function getStaticProps() {
         ).then((values) => values);
 
     return {
-        props: { pageNumbers, currentPage, posts: paginatedPosts }
+        props: { pageNumbers, currentPage, posts: paginatedPosts },
+        revalidate: 120
     }
 }

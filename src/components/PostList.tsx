@@ -22,7 +22,7 @@ export default function PostList({ posts, isLoading, isSearching }: PostList) {
     }
 
     else if (posts.length === 0) {  
-        return <p>Sorry, not found :(</p>
+        return <p className='text-center font-semibold !text-lime-500 text-lg'>Sorry, not found :(</p>
         
     } else {
         return (

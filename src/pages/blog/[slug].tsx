@@ -122,8 +122,9 @@ const getPlaiceholderBase64 = async (image_adress: string) => {
     const { base64 } = await getPlaiceholder(image_adress)
     return base64
 }
-
+// back here error
 export async function getStaticProps({params}: GetStaticPropsContext<{ slug: string }>) {
+    try {
     const { slug } = params as { slug: string };
     const post = await getPost(slug) || [] 
     const blurDataURL = await getPlaiceholderBase64(post.thumbnail.url)
@@ -141,6 +142,9 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
 
     return {
         props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }, revalidate: 120
+    }
+    } catch {
+        return { notFound: true };
     }
 }
 

@@ -9,7 +9,7 @@ type PaginationType = {
 
 const Pagination = ({ pageNumbers, currentPage, setIsLoading }:PaginationType) => {
     return (
-        <div className={pageNumbers.length < 2 ? 'hidden' : 'flex flex-row gap-4 justify-center items-center mt-8'}>
+        <div className={pageNumbers.length < 2 ? 'hidden' : 'flex flex-row gap-4 justify-center items-center mt-8'} data-fade='4'>
             <Link href={ currentPage > 2 ? `/blog/page/${currentPage-1}` : `/blog/`}>
                 <button onClick={() => setIsLoading(true)} >
                     <BsCaretLeftFill className='text-lime-500 text-2xl hover:text-lime-600 cursor-pointer'/>
