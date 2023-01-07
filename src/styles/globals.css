@@ -28,7 +28,7 @@
     }
 
     .btn-secondary {
-        @apply inline-block px-6 py-2.5 border-2 border-lime-500/50 border-dashed font-semibold text-xs leading-tight uppercase rounded-full hover:scale-[1.02] hover:bg-lime-500/10 transition duration-150 ease-in-out;
+        @apply inline-block px-6 py-2.5 border-2 border-lime-500/50 border-dashed font-semibold text-xs leading-tight uppercase rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out;
     }
 
     .profile-image {
@@ -40,7 +40,7 @@
     }
 
     .content {
-        @apply wysiwyg lg:wysiwyg-lg dark:wysiwyg-dark wysiwyg-a:text-lime-500 wysiwyg-a:no-underline hover:wysiwyg-a:underline wysiwyg-video:mx-auto wysiwyg-video:border wysiwyg-video:border-4 wysiwyg-video:border-lime-500 wysiwyg-img:mx-auto;
+        @apply wysiwyg lg:wysiwyg-lg dark:wysiwyg-dark wysiwyg-a:text-lime-500 dark:wysiwyg-a:text-lime-500 wysiwyg-a:no-underline hover:wysiwyg-a:underline wysiwyg-video:mx-auto wysiwyg-video:border wysiwyg-video:border-4 wysiwyg-video:border-lime-500 wysiwyg-img:mx-auto;
     }
 
     .circle {

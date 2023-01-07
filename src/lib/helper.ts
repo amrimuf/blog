@@ -71,7 +71,7 @@ export const alexandriaFontLoader = (weight: string) =>
 fetch(`https://amri.tech/assets/fonts/Alexandria-${weight}.ttf`.toString()).then((res) => res.arrayBuffer())
 
 export const getPageNumbers = (pageSize:{pageInfo:{pageSize:number}}) => {
-    const postsPerPage = 2
+    const postsPerPage = 3
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(pageSize.pageInfo.pageSize / postsPerPage); i++) {
         pageNumbers.push(i);

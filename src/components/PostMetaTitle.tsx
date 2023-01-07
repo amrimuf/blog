@@ -5,7 +5,7 @@ import { PostMetaTitleType } from '@/lib/types'
 export default function PostMetaTitle({ ...postMeta }: PostMetaTitleType) {
   const dateMoment = moment(postMeta.date).format("MMM DD, YYYY")
   return (
-    <div className={`${postMeta.center ? 'flex w-10/12 md:w-full flex-col items-center mb-6' : ''}`}>
+    <div className={`${postMeta.center ? 'flex flex-col items-center mb-6' : ''}`}>
       <div className="flex items-center gap-4" data-fade='0'>
         <div className={` ${postMeta.center ? 'capitalize' : `text-neutral-700 dark:text-neutral-700 text-lg bg-lime-400 absolute -top-40 rotate-3 right-0 px-2 ${styles.paperShadow}`}`}>
           {postMeta.category}
