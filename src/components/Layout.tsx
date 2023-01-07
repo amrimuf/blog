@@ -1,10 +1,10 @@
+import clsx from "clsx";
 import React from "react";
-import BackToTop from "./BackToTop";
 
+import BackToTop from "./BackToTop";
 import Footer from "./Footer";
 import Header from "./Header";
 import useLoaded from '@/hooks/useLoaded';
-import clsx from "clsx";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const isLoaded = useLoaded();

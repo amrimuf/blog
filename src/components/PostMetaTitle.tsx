@@ -13,9 +13,10 @@ export default function PostMetaTitle({ ...postMeta }: PostMetaTitleType) {
         <span className='text-lime-500 font-extrabold'>{postMeta.featured ? <span>&#10008;</span> : <span>&#10007;</span>}</span>
         <p>{dateMoment}</p>
       </div>
-      <h1 className={`mt-4 ${postMeta.center ? 'large-title' : 'small-title'}`} data-fade='1'>
-        {postMeta.title}
-      </h1>
+      {postMeta.center ? 
+        <h1 className='m-4 text-center' data-fade='1'>{postMeta.title}</h1> :
+        <h3 className='mt-4'>{postMeta.title}</h3>
+      }
     </div>
   );
 }

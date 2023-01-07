@@ -8,7 +8,7 @@ import Seo from "./Seo";
 
 interface BlogSearch {
     posts: Post[]
-    children?: JSX.Element
+    children?: React.ReactNode
     isLoading?:boolean
 }
 
@@ -77,11 +77,12 @@ export default function BlogSearch({children, posts, isLoading}:BlogSearch) {
                 posts={posts} 
                 isSearching={isSearching}
                 isLoading={isLoading}
+                searchField={searchField}
             /> 
             </section>
             : <span>Press enter to see the results.</span>}
 
-            <div className={isTyping || isSearching ? 'hidden' : 'blok'}>
+            <div className={isTyping || isSearching ? 'hidden' : 'inline bg-red-500'}>
                 { children }
             </div>
 

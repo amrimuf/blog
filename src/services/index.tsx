@@ -191,7 +191,7 @@ export const getProjects = async() => {
     return result.projects
 }
 
-export const getFeaturedProjects = async() => {
+export const getRecentProjects = async() => {
     const query = gql `
     query Projects() {
         projects(orderBy:createdAt_DESC first:4) {

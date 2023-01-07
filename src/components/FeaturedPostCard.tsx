@@ -2,12 +2,15 @@ import Image from "next/image";
 import Link from 'next/link';
 
 import PostInfo from './PostInfo';
+import styles from '@/styles/styles.module.css'
 
 export default function FeaturedPostCard({...post}) {  
   return (
-    <article>
-      <Link href={`/blog/${post.slug}`}>
-        <div className="-mx-4 lg:items-center items-start">       
+    <Link 
+      href={`/blog/${post.slug}`}
+      className={`card ${styles.handDrawnBorderPosts}`}
+    >
+        <article className="-mx-4 lg:items-center items-start">       
           <Image 
           src={post.thumbnail.url}
           alt={`${post.title} thumbnail`} 
@@ -22,9 +25,8 @@ export default function FeaturedPostCard({...post}) {
                 {...post}
             />
           </div>
-        </div>
+        </article>
         <hr className="border-black/10 w-11/12 mx-auto mt-10 md:hidden dark:border-white/10" />
-      </Link>
-    </article>
+    </Link>
   );
 }

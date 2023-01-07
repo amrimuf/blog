@@ -4,19 +4,18 @@ import {  useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
-import styles from '@/styles/styles.module.css'
 import { getProjects, getTags } from "@/services";
 import { getPlaiceholder } from "plaiceholder";
 import { Project } from "@/lib/types";
 
-export default function Projects({ tags, allProjects }:InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Projects({ tags, projects }:InferGetStaticPropsType<typeof getStaticProps>) {
 
-    const [projects, setProjects] = useState<Project[]>(allProjects)
+    const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects)
     const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
     const handleToggleTag = (tag: string) => { 
         const fetchProjects = async () => {
-            const data =  allProjects.filter(
+            const data =  projects.filter(
                 (project:Project)  => {
                     return (
                     selectedFilters
@@ -24,17 +23,17 @@ export default function Projects({ tags, allProjects }:InferGetStaticPropsType<t
                     )); 
                 }
             )
-            setProjects(data)
+            setFilteredProjects(data)
         }
         
         // select/unselect filter
         selectedFilters.includes(tag) ? selectedFilters.splice(selectedFilters.indexOf(tag), 1) : selectedFilters.push(tag)
 
-        selectedFilters.length !== 0 ? fetchProjects() : setProjects(allProjects)
+        selectedFilters.length !== 0 ? fetchProjects() : setFilteredProjects(projects)
     };
 
     const handleClear = () => {
-        setProjects(allProjects)
+        setFilteredProjects(projects)
         setSelectedFilters([])
     }
 
@@ -70,10 +69,8 @@ export default function Projects({ tags, allProjects }:InferGetStaticPropsType<t
         
 
         <div className="mt-4 grid sm:grid-cols-2 gap-6" data-fade='4'>
-            {projects.map((project:Project) => (
-                    <div key={project.id} className={`bg-white/60 dark:bg-black/30 shadow-md dark:sahdow-lime-700 hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 dark:shadow-lime-700 ${styles.handDrawnBorderProjects}`}>
-                        <ProjectCard {...project}/>
-                    </div>
+            {filteredProjects.map((project:Project) => (
+                <ProjectCard key={project.id} {...project}/>
             ))}
         </div>
     </Layout>
@@ -81,11 +78,12 @@ export default function Projects({ tags, allProjects }:InferGetStaticPropsType<t
 }
 
 export async function getStaticProps() {
-    const tagsObj = await getTags() 
+    const tagsAsObject = await getTags() 
     const tags: string[] = []
-    tagsObj.map((tag: {name: string}) => tags.push(tag.name))
+    tagsAsObject.map((tag: {name: string}) => tags.push(tag.name))
+
     const rawProjects = await getProjects()
-    const allProjects = await Promise.all(
+    const projects = await Promise.all(
         rawProjects.map(async (project:Project) => {
             const { base64 } = await getPlaiceholder(project.thumbnail.url);
             return {
@@ -93,9 +91,12 @@ export async function getStaticProps() {
             blurDataURL: base64,
             };
         })
-        ).then((values) => values);
-        
+    )
+    
+    console.log(tagsAsObject)
+
+
     return {
-        props: { tags, allProjects }, revalidate: 120
+        props: { tags, projects }, revalidate: 120
     }
 }

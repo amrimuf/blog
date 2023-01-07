@@ -6,9 +6,10 @@ interface PostList {
     posts:Post[]
     isLoading?:boolean
     isSearching:boolean
+    searchField: string | string[]
 }
 
-export default function PostList({ posts, isLoading, isSearching }: PostList) {
+export default function PostList({ posts, isLoading, isSearching, searchField }: PostList) {
     if (isLoading || isSearching) {
         return (
         <div className="flex justify-center items-center space-x-1" data-fade='3'>
@@ -22,15 +23,13 @@ export default function PostList({ posts, isLoading, isSearching }: PostList) {
     }
 
     else if (posts.length === 0) {  
-        return <p className='text-center font-semibold !text-lime-500 text-lg'>Sorry, not found :(</p>
+        return <p className='text-center font-semibold !text-lime-500 text-lg'>{searchField ? 'Sorry, not found :(' : 'No posts yet'}</p>
         
     } else {
         return (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
                 {posts.map((post:Post) => (
-                <div key={post.id} className={`w-full px-4 pb-6 bg-white/70 shadow-md hover:shadow-lg hover:scale-[1.02] duration-300 transition-transform eease-in-out dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderPosts}`}>
-                    <PostCard post={post} />
-                </div>
+                    <PostCard key={post.id} post={post} />
                 ))}
             </div>
         );

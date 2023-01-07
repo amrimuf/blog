@@ -1,7 +1,3 @@
-export function classNames(...classes: string[]): string {
-    return classes.filter(Boolean).join(' ');
-}
-
 type OpenGraphType = {
     siteName: string;
     description: string;
@@ -10,6 +6,7 @@ type OpenGraphType = {
     banner?: string;
     isBlog?: boolean;
 };
+
 export function openGraph({
     siteName,
     templateTitle,
@@ -32,6 +29,10 @@ export function openGraph({
     }
     
     return `https://amri.tech/api/general?siteName=${ogSiteName}&description=${ogDesc}${ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''}`
+}
+
+export function classNames(...classes: string[]): string {
+    return classes.filter(Boolean).join(' ');
 }
 
 /**

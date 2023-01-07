@@ -8,16 +8,16 @@ import BlogSearch from "@/components/BlogSearch";
 import { getPageNumbers } from "@/lib/helper";
 import { useEffect, useState } from "react";
 
-export default function Blog({ pageNumbers, currentPage, posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Blog({ pageNumbers, currentPage, paginatedPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
     const [isLoading, setIsLoading] = useState(false);
     
         // new posts loaded
         useEffect(()=> {
             setIsLoading(false)
-        }, [posts]);
+        }, [paginatedPosts]);
         return (    
             <BlogSearch
-                posts={posts}
+                posts={paginatedPosts}
                 isLoading={isLoading}
             >
                 <Pagination
@@ -45,10 +45,10 @@ export async function getStaticProps({params}:GetStaticPropsContext) {
             blurDataURL: base64,
             };
         })
-        ).then((values) => values);
+    )
 
     return {
-        props: { pageNumbers, currentPage, posts: paginatedPosts },
+        props: { pageNumbers, currentPage, paginatedPosts },
         revalidate: 120
     }
 }

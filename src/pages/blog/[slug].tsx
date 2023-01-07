@@ -64,31 +64,10 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
 
                 <div className="md:w-10/12 w-full mx-auto" data-fade='3'>
                     <article className='content mx-auto bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700' >
-                    <RichText
+                        <RichText
                         content={post.content.json.children}
                         references={post.content.references}
-                        renderers={{
-                        //     a: ({ children, href, openInNewTab }) => (
-                        //         <a
-                        //             href={href}
-                        //             target={openInNewTab ? '_blank' : '_self'}
-                        //             className='no-underline hover:underline text-lime-500 dark:text-lime-500'
-                        //             rel="noreferrer"
-                        //         >
-                        //             {children}
-                        //         </a>
-                        //     ),
-                        //     img: ({src, width, height}) => (
-                        //         <img src={src} width={width} height={height} className='mx-auto'>
-                        //         </img>
-                        //     ),
-                            Asset: {
-                                // image: () => <div></div>,
-                                'image/png': ({url, width, height}) => {
-                                return <img src={url} width={width} height={height}></img>;
-                            },
-                            },
-                        }}
+                        // https://github.com/hygraph/rich-text/tree/main/packages/react-renderer
                         />        
                     </article>
                     

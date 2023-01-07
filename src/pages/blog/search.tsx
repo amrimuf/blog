@@ -5,10 +5,10 @@ import { getPlaiceholder } from "plaiceholder";
 import { Post } from "@/lib/types";
 import BlogSearch from "@/components/BlogSearch";
 
-export default function Blog({ posts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Blog({ filteredPosts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
         return (     
             <BlogSearch
-                posts={posts}
+                posts={filteredPosts}
             />
         );
 }
@@ -20,13 +20,12 @@ export async function getServerSideProps({ query, res}:GetServerSidePropsContext
     // back here if "some" can be done in the hygraph query
     // only need postsId
     const postsId: string[] = []
-    if (q) {
-        const allPosts = await getPosts() || [] 
+    const allPosts = await getPosts() || [] 
         allPosts.filter((post:{title:string}) => {
             return (post.title.toLowerCase().split(" ").some((word:string) => q.toLowerCase().split(" ").some((query:string) => query === word || word.includes(query)))
             )
         }).map((result:{id:string}) => postsId.push(result.id))
-    }
+    
     const rawFilteredPosts = await getFilteredPosts(postsId) || []
     const filteredPosts = await Promise.all(
         rawFilteredPosts.map(async (post:Post) => {
@@ -36,9 +35,9 @@ export async function getServerSideProps({ query, res}:GetServerSidePropsContext
             blurDataURL: base64,
             };
         })
-        ).then((values) => values);
+    )
 
     return {
-        props: {  posts: filteredPosts }
+        props: { filteredPosts }
     }
 }

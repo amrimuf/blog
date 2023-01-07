@@ -6,7 +6,7 @@ import styles from '@/styles/styles.module.css';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
 import {HiHeart} from 'react-icons/hi'
-import {GoMail} from 'react-icons/go'
+import {VscMail} from 'react-icons/vsc'
 
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -23,7 +23,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
 
             <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700`} data-fade='0'>
                 <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]" data-fade='1'>
-                    <span className={styles.highlight}>Amri</span> Mufti
+                    <span className={`!inline ${styles.highlight}`}>Amri</span> Mufti
                 </h1>
 
                 <div className="flex flex-col md:flex-row-reverse items-center md:justify-between md:items-start">
@@ -39,12 +39,10 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                             height='500'
                             data-fade='3'
                         />
-                        <div data-fade='4'>
-                            <Link href='mailto:amrimuvti@gmail.com' >
-                                <button  className=" flex mx-auto items-center gap-2 btn-primary">
-                                    Let's collaborate
-                                    <GoMail className="text-xl"/>
-                                </button>
+                        <div className='flex' data-fade='4'>
+                            <Link href='mailto:amrimuvti@gmail.com'  className="flex mx-auto items-center gap-2 btn-primary">
+                                Let's collaborate
+                                <VscMail className="text-xl"/>
                             </Link>
                         </div>
                         <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-xl" data-fade='5'>
@@ -64,22 +62,22 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                     </div>
 
                     <div className="content mt-4 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" data-fade='2'>
-                    <RichText
-                    content={about.content.json.children}
-                    references={about.content.references}
-                    renderers={{
-                        a: ({ children, href, openInNewTab }) => (
-                            <a
-                                href={href}
-                                target={openInNewTab ? '_blank' : '_self'}
-                                className='no-underline hover:underline text-lime-500 dark:text-lime-500'
-                                rel="noreferrer"
-                            >
-                                {children}
-                            </a>
-                        ),
-                    }}
-                    />   
+                        <RichText
+                        content={about.content.json.children}
+                        references={about.content.references}
+                        renderers={{
+                            a: ({ children, href, openInNewTab }) => (
+                                <a
+                                    href={href}
+                                    target={openInNewTab ? '_blank' : '_self'}
+                                    className='no-underline hover:underline text-lime-500 dark:text-lime-500'
+                                    rel="noreferrer"
+                                >
+                                    {children}
+                                </a>
+                            ),
+                        }}
+                        />   
                     </div>
                 </div>
                 
@@ -99,12 +97,11 @@ export async function getStaticProps() {
             blurDataURL: base64,
             };
         })
-        ).then((values) => values);
-
+    ).then((values) => values);
 
     return {
         props: { 
-            about: abouts.length > 0 ? abouts[0] : {} 
+            about: abouts.length > 0 ? abouts[0] : []
         },
         revalidate: 120
     }

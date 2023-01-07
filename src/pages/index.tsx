@@ -1,69 +1,54 @@
 import Link from "next/link";
+import { getPlaiceholder } from 'plaiceholder'
 import { InferGetStaticPropsType } from "next";
 
 import FeaturedPostCard from "@/components/FeaturedPostCard";
 import Hero from "@/components/Hero";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
-import styles from '@/styles/styles.module.css'
-import { getProfile, getFeaturedPosts, getFeaturedProjects } from '@/services';
-import { getPlaiceholder } from 'plaiceholder'
 import ProjectCard from "@/components/ProjectCard";
+import { getProfile, getFeaturedPosts, getRecentProjects } from '@/services';
 import { About, Post, Project } from '@/lib/types'
 
 
-export default function home({ posts, projects, profile }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function home({ featuredPosts, recentProjects, profile }: InferGetStaticPropsType<typeof getStaticProps>) {
 
     return (
     <Layout>
         <Seo/>
-        <Hero 
-        profile={profile}
-        />
-
+        <Hero profile={profile} />
         
-        <h3 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
+        <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
             Featured Posts
-        </h3>
+        </h2>
         <section data-fade="4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
-                {posts.map((post:{id:string}) => (
-                <div key={post.id} className={`w-full px-4 rounded-xl pb-6 bg-white/70 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderPosts}`}>
-                    <FeaturedPostCard {...post} />
-                </div>
+                {featuredPosts.map((post:{id:string}) => (
+                    <FeaturedPostCard key={post.id} {...post} />
                 ))}
             </div>
-            <Link href='/blog'>
-                <button
-                type="button"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
-                className="flex mx-auto mt-6 btn-primary"
-                >
-                View all posts
-                </button>
-            </Link>
+            <div className="flex">
+                <Link href='/blog' className=" mx-auto mt-6 btn-primary">
+                        View all posts
+                </Link>
+            </div>
         </section>
 
         
-        <h3 className='mt-8 pb-2 sm:pb-6 ' data-fade='5'>
+        <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='5'>
             Recent Projects
-        </h3>
+        </h2>
         <section data-fade="6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
-                {projects.map((project:Project) => (
-                <div key={project.id} className={`w-full px-4 rounded-xl pb-6 bg-white/70 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700 ${styles.handDrawnBorderPosts}`}>
-                    <ProjectCard {...project} />
-                </div>
+                {recentProjects.map((project:Project) => (
+                    <ProjectCard key={project.id} {...project} />
                 ))}
             </div>
-            <Link href='/projects'>
-            <button
-                type="button"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
-                className="flex mx-auto mt-6 btn-primary"
-            >View all projects</button></Link>
+            <div className="flex">
+                <Link href='/projects' className="mx-auto mt-6 btn-primary">
+                        View all projects
+                </Link>
+            </div>  
         </section>
         
     </Layout>
@@ -71,18 +56,18 @@ export default function home({ posts, projects, profile }: InferGetStaticPropsTy
 }
 
 export async function getStaticProps() {
-    const featuredPosts = await getFeaturedPosts() || [] 
+    const rawFeaturedPosts = await getFeaturedPosts() || [] 
     const rawProfile = await getProfile()
 
-    const posts = await Promise.all(
-    featuredPosts.map(async (post:Post) => {
-        const { base64 } = await getPlaiceholder(post.thumbnail.url);
-        return {
-        ...post,
-        blurDataURL: base64,
-        };
-    })
-    ).then((values) => values);
+    const featuredPosts = await Promise.all(
+        rawFeaturedPosts.map(async (post:Post) => {
+            const { base64 } = await getPlaiceholder(post.thumbnail.url);
+            return {
+            ...post,
+            blurDataURL: base64,
+            };
+        })
+    )
 
     const profile = await Promise.all(
         rawProfile.map(async (prof:About) => {
@@ -94,9 +79,9 @@ export async function getStaticProps() {
         })
         ).then((values) => values);
 
-    const featuredProjects = await getFeaturedProjects()
-    const projects = await Promise.all(
-        featuredProjects.map(async (project:Project) => {
+    const rawRecentProjects = await getRecentProjects()
+    const recentProjects = await Promise.all(
+        rawRecentProjects.map(async (project:Project) => {
             const { base64 } = await getPlaiceholder(project.thumbnail.url);
             return {
             ...project,
@@ -107,9 +92,9 @@ export async function getStaticProps() {
 
     return {
         props: { 
-            posts,
-            projects,
-            profile: profile.length > 0 ? profile[0] : {}
+            featuredPosts,
+            recentProjects,
+            profile: profile.length > 0 ? profile[0] : []
         },
         revalidate: 120
     }
