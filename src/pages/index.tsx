@@ -14,7 +14,7 @@ import { About, Post, Project } from '@/lib/types'
 export default function home({ featuredPosts, recentProjects, profile }: InferGetStaticPropsType<typeof getStaticProps>) {
 
     return (
-    <>
+    <Layout>
         <Seo/>
         <Hero profile={profile} />
         
@@ -51,7 +51,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
             </div>  
         </section>
         
-    </>
+    </Layout>
     );
 }
 
