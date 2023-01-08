@@ -7,23 +7,23 @@ import { BsArrowDown, BsMoonFill, BsSunFill } from 'react-icons/bs'
 import { VscChromeClose} from 'react-icons/vsc';
 
 export default function Header() {
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const { theme, setTheme } = useTheme();
-  // const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // const [navOpen, setNavOpen] = useState(false)
+  const [navOpen, setNavOpen] = useState(false)
 
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  // const navPaths =['', 'blog', 'projects', 'about']
+  const navPaths =['', 'blog', 'projects', 'about']
 
   return (
     <header className={`sticky top-0 z-20 py-2 bg-white dark:bg-black ${styles.handDrawnLineBot} `}>
-      <div>test</div>
-      {/* <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
+      
+      <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
         <button
             aria-label="Toggle Dark Mode"
             type="button"
@@ -55,7 +55,7 @@ export default function Header() {
         <div className='md:hidden flex space-x-4'>
         <Link href="/">Home</Link>
           <div 
-            className="HAMBURGER-ICON space-y-2 my-auto"
+            className="space-y-2 my-auto"
             onClick={() => setNavOpen((prev) => !prev)}
           >
             <span className="block h-0.5 w-8 bg-gray-600 dark:bg-gray-400"></span>
@@ -66,12 +66,12 @@ export default function Header() {
 
         <div className={navOpen && theme==="dark" ? 'block absolute h-screen w-full top-0 left-0 bg-black z-10 flex flex-col items-center place-content-evenly' : navOpen && theme==="light" ? 'block absolute h-screen w-full top-0 left-0 bg-white z-10 flex flex-col items-center place-content-evenly' : 'hidden'}>
           <div
-            className="CROSS-ICON absolute top-0 right-0 px-8 py-8"
+            className="absolute top-0 right-0 px-8 py-8"
             onClick={() => setNavOpen(false)}
           >
               <VscChromeClose className='text-gray-400 text-3xl'/>
           </div>
-          <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
+          <ul className="flex flex-col items-center justify-between min-h-[250px]">
             <li className="border-b-2 border-lime-500 my-8 uppercase">
               <Link href="/blog">Blog</Link>
             </li>
@@ -83,7 +83,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-      </div> */}
+      </div>
     </header>
   )
 };
