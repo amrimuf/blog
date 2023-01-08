@@ -37,7 +37,7 @@ export default function Hero({profile}:{profile:About}){
                 </div>
             </div>
             <Image 
-                alt={profile.title} 
+                alt='Profile'
                 width='500'
                 height='500'
                 src={profile.image.url}

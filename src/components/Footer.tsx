@@ -15,6 +15,7 @@ export default function Footer() {
               <Link
                 rel="noreferrer noopener"
                 target="_blank"
+                aria-label="Instagram"
                 href='https://www.instagram.com/amri.4521'
                 className="hover:text-lime-500"
               >
@@ -23,6 +24,7 @@ export default function Footer() {
               <Link
                 rel="noreferrer noopener"
                 target="_blank"
+                aria-label="Twitter"
                 href='https://www.twitter.com'
                 className="hover:text-lime-500"
               >
@@ -31,6 +33,7 @@ export default function Footer() {
               <Link
                 rel="noreferrer noopener"
                 target="_blank"
+                aria-label="Github"
                 href='https://www.github.com/amrimuf'
                 className="hover:text-lime-500"
               >
@@ -39,6 +42,7 @@ export default function Footer() {
               <Link
                 rel="noreferrer noopener"
                 target="_blank"
+                aria-label="Linkedin"
                 href='https://www.linkedin.com/in/amrimufti/'
                 className="hover:text-lime-500"
               >
