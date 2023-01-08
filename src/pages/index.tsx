@@ -14,44 +14,45 @@ import { About, Post, Project } from '@/lib/types'
 export default function home({ featuredPosts, recentProjects, profile }: InferGetStaticPropsType<typeof getStaticProps>) {
 
     return (
-    <Layout>
-        <Seo/>
+        <>TEST</>
+    // <Layout>
+    //     <Seo/>
         
         
-        {/* <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
-            Featured Posts
-        </h2>
-        <section data-fade="4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
-                {featuredPosts.map((post:{id:string}) => (
-                    <FeaturedPostCard key={post.id} {...post} />
-                ))}
-            </div>
-            <div className="flex">
-                <Link href='/blog' className=" mx-auto mt-6 btn-primary">
-                        View all posts
-                </Link>
-            </div>
-        </section>
+    //     <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
+    //         Featured Posts
+    //     </h2>
+    //     <section data-fade="4">
+    //         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
+    //             {featuredPosts.map((post:{id:string}) => (
+    //                 <FeaturedPostCard key={post.id} {...post} />
+    //             ))}
+    //         </div>
+    //         <div className="flex">
+    //             <Link href='/blog' className=" mx-auto mt-6 btn-primary">
+    //                     View all posts
+    //             </Link>
+    //         </div>
+    //     </section>
 
         
-        <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='5'>
-            Recent Projects
-        </h2>
-        <section data-fade="6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
-                {recentProjects.map((project:Project) => (
-                    <ProjectCard key={project.id} {...project} />
-                ))}
-            </div>
-            <div className="flex">
-                <Link href='/projects' className="mx-auto mt-6 btn-primary">
-                        View all projects
-                </Link>
-            </div>  
-        </section> */}
+    //     <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='5'>
+    //         Recent Projects
+    //     </h2>
+    //     <section data-fade="6">
+    //         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
+    //             {recentProjects.map((project:Project) => (
+    //                 <ProjectCard key={project.id} {...project} />
+    //             ))}
+    //         </div>
+    //         <div className="flex">
+    //             <Link href='/projects' className="mx-auto mt-6 btn-primary">
+    //                     View all projects
+    //             </Link>
+    //         </div>  
+    //     </section>
         
-    </Layout>
+    // </Layout>
     );
 }
 
