@@ -16,7 +16,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
     return (
     <Layout>
         <Seo/>
-        <Hero profile={profile} />
+        
         
         <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
             Featured Posts
