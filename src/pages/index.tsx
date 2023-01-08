@@ -18,7 +18,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
         <Seo/>
         
         
-        <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
+        {/* <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
             Featured Posts
         </h2>
         <section data-fade="4">
@@ -49,7 +49,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
                         View all projects
                 </Link>
             </div>  
-        </section>
+        </section> */}
         
     </Layout>
     );
