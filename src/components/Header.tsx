@@ -42,7 +42,8 @@ export default function Header() {
           {navPaths.map((navPath, index) => 
               <Link key={index} href={ `/${navPath}`} className={router.asPath.split('/')[1] === navPath ? 'font-bold' : 'font-normal'}>
                 {navPath !== '' ? navPath : 'home'}
-              </Link>
+                <BsArrowDown className={`${router.asPath.split('/')[1] === navPath ? 'stroke-[1.5px] inline-block text-base text-lime-500 ml-1' : 'hidden'}`}/>
+              </Link>           
           )}
         </div>
         <div className='md:hidden flex space-x-4'>
