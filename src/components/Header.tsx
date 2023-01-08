@@ -31,10 +31,10 @@ export default function Header() {
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           >
             {mounted && 
-              theme === "dark" ?
+              (theme === "dark" ?
                   <BsSunFill className='text-xl text-yellow-500'/>
                 : 
-                  <BsMoonFill className='text-xl text-yellow-500'/>
+                  <BsMoonFill className='text-xl text-yellow-500'/>)
             }
         </button>
 
