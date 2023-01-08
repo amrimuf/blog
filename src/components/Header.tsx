@@ -38,17 +38,10 @@ export default function Header() {
             }
         </button> */}
 
-        <div className="space-x-8 hidden md:block">
+        <div className="space-x-8 hidden md:flex capitalize">
           {navPaths.map((navPath, index) => 
-                  <Link key={index} href={ `/${navPath}`} className={`  ${
-                    router.asPath.split('/')[1] === `${navPath}`
-                    ? "text-neutral-900 dark:text-neutral-100 font-bold"
-                    : ""
-                  }`}>
-                    <span className='capitalize'>{navPath === '' ? 'Home' : navPath}</span>{" "}
-                  {router.asPath.split('/')[1] === `${navPath}` && (
-                    <BsArrowDown className='stroke-[1.5px] inline-block text-base text-lime-500'/>
-                  )}
+              <Link key={index} href={ `/${navPath}`} className={router.asPath.split('/')[1] === navPath ? 'font-bold' : 'font-normal'}>
+                {navPath !== '' ? navPath : 'home'}
               </Link>
           )}
         </div>
