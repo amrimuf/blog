@@ -14,7 +14,7 @@ export default function PostMetaTitle({ ...postMeta }: PostMetaTitleType) {
           </div>
           <span className='text-lime-500 font-extrabold'>{postMeta.featured ? <span>&#10008;</span> : <span>&#10007;</span>}</span>
           <Client>
-            {/* <p>{moment(postMeta.date).format("MMM DD, YYYY")}</p> */}
+            <p>{moment(postMeta.date).format("MMM DD, YYYY")}</p>
           </Client>
         </div>
         {postMeta.center ? 
