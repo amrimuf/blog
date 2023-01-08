@@ -27,7 +27,7 @@ export default async function blogHandler(req: NextRequest) {
                 <p tw='text-2xl tracking-widest text-neutral-300' style={{ fontFamily: "Alexandria-Light"}}>{siteName}/blog</p>
             </div>
             <div tw='flex h-full'>
-                <img src={banner} tw="ml-40 w-96 h-full rounded-xl" style={{ objectFit:'cover' }}></img>
+                <img src={banner} tw="ml-40 w-96 h-full rounded-xl" style={{ objectFit:'cover' }} alt="banner"></img>
             </div>
             <span
                 style={{

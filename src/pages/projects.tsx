@@ -92,9 +92,6 @@ export async function getStaticProps() {
             };
         })
     )
-    
-    console.log(tagsAsObject)
-
 
     return {
         props: { tags, projects }, revalidate: 120
