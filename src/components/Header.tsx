@@ -7,23 +7,23 @@ import { BsArrowDown, BsMoonFill, BsSunFill } from 'react-icons/bs'
 import { VscChromeClose} from 'react-icons/vsc';
 
 export default function Header() {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  // const { theme, setTheme } = useTheme();
+  // const [mounted, setMounted] = useState(false);
 
-  const [navOpen, setNavOpen] = useState(false)
+  // const [navOpen, setNavOpen] = useState(false)
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
 
-  const navPaths =['', 'blog', 'projects', 'about']
+  // const navPaths =['', 'blog', 'projects', 'about']
 
   return (
     <header className={`sticky top-0 z-20 py-2 bg-white dark:bg-black ${styles.handDrawnLineBot} `}>
-      
-      <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
+      <div>test</div>
+      {/* <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
         <button
             aria-label="Toggle Dark Mode"
             type="button"
@@ -83,7 +83,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </header>
   )
 };
