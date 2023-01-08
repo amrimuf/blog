@@ -19,12 +19,13 @@ export default function Header() {
   }, []);
 
   const navPaths =['', 'blog', 'projects', 'about']
+  console.log(router.asPath.split('/')[1])
 
   return (
     <header className={`sticky top-0 z-20 py-2 bg-white dark:bg-black ${styles.handDrawnLineBot} `}>
       
       <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
-        {/* <button
+        <button
             aria-label="Toggle Dark Mode"
             type="button"
             className="w-10 h-10 rounded focus:outline-none lg:pl-2"
@@ -36,13 +37,13 @@ export default function Header() {
                 : 
                   <BsMoonFill className='text-xl text-yellow-500'/>)
             }
-        </button> */}
+        </button>
 
         <div className="space-x-8 hidden md:flex capitalize">
           {navPaths.map((navPath, index) => 
               <Link key={index} href={ `/${navPath}`} className={router.asPath.split('/')[1] === navPath ? 'font-bold' : 'font-normal'}>
                 {navPath !== '' ? navPath : 'home'}
-                <BsArrowDown className={`${router.asPath.split('/')[1] === navPath ? 'stroke-[1.5px] inline-block text-base text-lime-500 ml-1' : 'hidden'}`}/>
+                <BsArrowDown className={`${router.asPath.split('/')[1] === navPath ? 'stroke-[1.5px] inline-block text-base text-lime-500 ml-[3px]' : 'hidden'}`}/>
               </Link>           
           )}
         </div>
