@@ -36,7 +36,7 @@ export type Post = {
 
 export type PostMetaTitleType = {
     category: string;
-    date: string;
+    date: string | Date;
     title: string;
     center?: boolean;
     slug:string;
