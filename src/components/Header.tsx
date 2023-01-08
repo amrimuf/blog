@@ -38,7 +38,7 @@ export default function Header() {
             }
         </button> */}
 
-        <div className="space-x-8 hidden md:block">
+        {/* <div className="space-x-8 hidden md:block">
           {navPaths.map((navPath, index) => 
                   <Link key={index} href={ `/${navPath}`} className={`  ${
                     router.asPath.split('/')[1] === `${navPath}`
@@ -51,7 +51,7 @@ export default function Header() {
                   )}
               </Link>
           )}
-        </div>
+        </div> */}
         <div className='md:hidden flex space-x-4'>
         <Link href="/">Home</Link>
           <div 
