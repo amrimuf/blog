@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="max-w-4xl px-4 mx-auto text-neutral-600 dark:text-neutral-400 lg:px-0">
           <div className={`pb-8 mb-2 ${styles.handDrawnLineTop}`}></div>
           <div className="flex flex-col justify-between lg:flex-row items-center">
-            {/* <p>Copyright &copy; {moment().format('y')}  Amri Mufti</p> */}
+            <p>Copyright &copy; {moment().format('y')}  Amri Mufti</p>
             <div className="flex flex-wrap pt-2 sm:space-x-4 space-x-2 font-medium lg:pt-0">
               <Link
                 rel="noreferrer noopener"
