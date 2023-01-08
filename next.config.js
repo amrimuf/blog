@@ -3,8 +3,7 @@ const { withPlaiceholder } = require("@plaiceholder/next");
 
 const nextConfig = {
   reactStrictMode: true,
-  // swcMinify: true,
-  // productionBrowserSourceMaps: true,
+  swcMinify: true,
   images: {
     remotePatterns: [
       {
