@@ -24,7 +24,7 @@ export default function Header() {
     <header className={`sticky top-0 z-20 py-2 bg-white dark:bg-black ${styles.handDrawnLineBot} `}>
       
       <div className="container max-w-4xl mx-auto flex items-center justify-between px-4 lg:px-0">
-        <button
+        {/* <button
             aria-label="Toggle Dark Mode"
             type="button"
             className="w-10 h-10 rounded focus:outline-none lg:pl-2"
@@ -36,7 +36,7 @@ export default function Header() {
                 : 
                   <BsMoonFill className='text-xl text-yellow-500'/>)
             }
-        </button>
+        </button> */}
 
         <div className="space-x-8 hidden md:block">
           {navPaths.map((navPath, index) => 
