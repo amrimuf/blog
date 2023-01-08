@@ -19,7 +19,6 @@ export default function Header() {
   }, []);
 
   const navPaths =['', 'blog', 'projects', 'about']
-  console.log(router.asPath.split('/')[1])
 
   return (
     <header className={`sticky top-0 z-20 py-2 bg-white dark:bg-black ${styles.handDrawnLineBot} `}>
@@ -41,9 +40,9 @@ export default function Header() {
 
         <div className="space-x-8 hidden md:flex capitalize">
           {navPaths.map((navPath, index) => 
-              <Link key={index} href={ `/${navPath}`} className={router.asPath.split('/')[1] === navPath ? 'font-bold' : 'font-normal'}>
+              <Link key={index} href={ `/${navPath}`} className={router.asPath.split('/')[1] === (navPath || null) ? 'font-bold' : 'font-normal'}>
                 {navPath !== '' ? navPath : 'home'}
-                <BsArrowDown className={`${router.asPath.split('/')[1] === navPath ? 'stroke-[1.5px] inline-block text-base text-lime-500 ml-[3px]' : 'hidden'}`}/>
+                <BsArrowDown className={`${router.asPath.split('/')[1] === (navPath || null) ? 'stroke-[1.5px] inline-block text-base text-lime-500 ml-[3px]' : 'hidden'}`}/>
               </Link>           
           )}
         </div>
