@@ -14,6 +14,21 @@ import { getAbout } from "@/services";
 import { getPlaiceholder } from "plaiceholder";
 
 export default function About({about}:InferGetStaticPropsType<typeof getStaticProps>) {
+
+    let skills = [ 
+        {name:"express", svg:<SiExpress/>},
+        {name:"golang", svg:<SiGo/>}, 
+        {name:"nextjs", svg:<SiNextdotjs/>},
+        {name:"docker", svg:<SiDocker/>},
+        {name:"kubernetes", svg:<SiKubernetes/>},
+        {name:"laravel", svg:<SiLaravel/>},
+        {name:"bootsrap", svg:<SiBootstrap/>},
+        {name:"nodedotjs", svg:<SiNodedotjs/>},
+        {name:"postgre", svg:<SiPostgresql/>},
+        {name:"mysql", svg:<SiMysql/>},
+        {name:"tailwind", svg:<SiTailwindcss/>}
+    ]
+
     return (
         <Layout>
             <Seo
@@ -21,12 +36,12 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
             description='Amri Mufti is a web developer.'
             />
 
-            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700`} data-fade='0'>
+            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-[2px] ${styles.handDrawnBorderHero}`} data-fade='0'>
                 <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]" data-fade='1'>
                     <span className={`!inline ${styles.highlight}`}>Amri</span> Mufti
                 </h1>
 
-                <div className="flex flex-col md:flex-row-reverse items-center md:justify-between md:items-start">
+                <div className="flex flex-col md:flex-row-reverse items-center md:justify-between md:items-start mb-4">
                     <div className="flex flex-col items-center">
                         <Image
                             src={about.image.url}
@@ -44,23 +59,9 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                                 Let's collaborate!
                             </Link>
                         </div>
-                        <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-lg" data-fade='5'>
-                            <HiHeart className="text-lime-500"/>
-                            <SiGo/>
-                            <SiNodedotjs/>
-                            <SiExpress/>
-                            <SiDocker/>
-                            <SiKubernetes/>
-                            <SiPostgresql/>
-                            <SiMysql/>
-                            <SiLaravel />
-                            <SiNextdotjs/>
-                            <SiTailwindcss />
-                            <SiBootstrap/>
-                        </div>
                     </div>
 
-                    <div className="content mt-4 md:mt-0 text-gray-800 dark:text-white md:text-left md:w-8/12 md:mr-6" data-fade='2'>
+                    <div className="content mt-4 md:mt-0 md:text-left md:w-8/12 md:mr-6" data-fade='2'>
                         <RichText
                         content={about.content.json.children}
                         references={about.content.references}
@@ -81,6 +82,15 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                     </div>
                 </div>
                 
+            </div>
+
+            <div className={`mt-8 bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-1 ${styles.handDrawnBorderImage}`}>
+                <h3>My skills and knowledge domains</h3>
+                <hr className="border-black/20 mx-auto mt-4 dark:border-white/20" />
+                <div className="flex flex-wrap justify-center items-center gap-4 text-3xl sm:gap-8 sm:text-7xl my-4" >
+                    {skills.map((skill:{name:string; svg:JSX.Element}) => 
+                    skill.svg)}
+                </div>
             </div>
         </Layout>
     );

@@ -24,7 +24,7 @@
 
 @layer components {
     .btn-primary {
-        @apply inline-block px-6 py-2 border-2 border-lime-500  bg-gradient-to-br from-lime-500 font-semibold via-lime-500 to-green-500 dark:text-neutral-900 text-white text-sm leading-tight rounded-full capitalize shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out;
+        @apply inline-block px-6 py-2 border-2 border-lime-500  bg-gradient-to-br from-lime-500 font-medium via-lime-500 to-green-500 dark:text-neutral-900 text-white text-sm leading-tight rounded-full capitalize shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out;
     }
 
     .btn-secondary {
