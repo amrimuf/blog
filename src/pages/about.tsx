@@ -4,8 +4,7 @@ import { InferGetStaticPropsType } from "next";
 import React from "react";
 import styles from '@/styles/styles.module.css';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss, SiGraphql} from 'react-icons/si';
-import Tippy from '@tippyjs/react/headless';
+import {SiGithub} from 'react-icons/si';
 
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -14,21 +13,6 @@ import { getPlaiceholder } from "plaiceholder";
 
 export default function About({about}:InferGetStaticPropsType<typeof getStaticProps>) {
 
-    let skills = [ 
-        {name:"Node.js", svg:<SiNodedotjs/>},
-        {name:"Express", svg:<SiExpress/>},
-        {name:"Next.js", svg:<SiNextdotjs/>},
-        {name:"Laravel", svg:<SiLaravel/>},
-        {name:"PostgreSQL", svg:<SiPostgresql/>},
-        {name:"MySQL", svg:<SiMysql/>},
-        {name:"GraphQL", svg:<SiGraphql/>},
-        {name:"Tailwind CSS", svg:<SiTailwindcss/>},
-        {name:"Bootstrap", svg:<SiBootstrap/>},
-        {name:"Docker", svg:<SiDocker/>},
-        {name:"GoLang", svg:<SiGo/>}, 
-        {name:"Kubernetes", svg:<SiKubernetes/>},
-    ]
-
     return (
         <Layout>
             <Seo
@@ -36,12 +20,12 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
             description='Amri Mufti is a web developer.'
             />
 
-            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-[4px] ${styles.handDrawnBorderHero}`} data-fade='0'>
+            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700`} data-fade='0'>
                 <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]" data-fade='1'>
                     <span className={`!inline ${styles.highlight}`}>Amri</span> Mufti
                 </h1>
 
-                <div className="flex flex-col md:flex-row-reverse items-center md:justify-between md:items-start mb-4">
+                <div className="flex flex-col md:flex-row-reverse items-center md:justify-between md:items-start">
                     <div className="flex flex-col items-center">
                         <Image
                             src={about.image.url}
@@ -54,10 +38,13 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                             height='500'
                             data-fade='3'
                         />
-                        <div className='flex' data-fade='4'>
+                        <div className='flex items-center gap-3' data-fade='4'>
                             <Link href='mailto:amrimuvti@gmail.com'  className="flex mx-auto items-center gap-2 btn-primary">
-                                Let's collaborate!
+                                Contact me
                             </Link>
+                            <Link href='https://github.com/amrimuf' className="btn-secondary !p-1 !border-lime-500" target='_blank' rel="noreferrer noopener">
+                                <SiGithub className="text-2xl"/>
+                            </Link>                            
                         </div>
                     </div>
 
@@ -80,31 +67,6 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                         // already rendered by tailwind typography
                         />   
                     </div>
-                </div>
-                
-            </div>
-
-            <div className={`mt-8 bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-[5px] ${styles.handDrawnBorderImage}`} data-fade='5'>
-                <div className="flex">
-                <h3 className="mx-auto capitalize">tech stacks i use</h3>
-                </div>
-                <hr className="border-black/20 mx-auto mt-4 dark:border-white/20" />
-                <div className="flex flex-wrap justify-center items-center gap-4 text-3xl sm:gap-8 sm:text-7xl my-4 " >
-                    {skills.map((skill:{name:string; svg:JSX.Element}) => 
-                    <Tippy 
-                    key={skill.name}
-                    placement="bottom"
-                    delay={500}
-                    render={attrs => (
-                        <div className="dark:text-neutral-900 text-neutral-900 bg-lime-500 p-2 shadow-lg font-medium shadow-xl dark:shadow-lime-500/20"
-                        {...attrs}
-                        >
-                            {skill.name}
-                        </div>
-                    )}>
-                        <button>{skill.svg}</button>
-                    </Tippy>
-                    )}
                 </div>
             </div>
         </Layout>
