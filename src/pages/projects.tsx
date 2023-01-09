@@ -63,7 +63,7 @@ export default function Projects({ tags, projects }:InferGetStaticPropsType<type
                 ))}
             <button
                 onClick={() => handleClear()}
-                className='dark:bg-white bg-black hover:scale-[1.02] hover:shadow-md shadow dark:shadow-white/20 text-white duration-150 ease-in-out dark:text-black rounded-full px-4 py-2'
+                className='dark:bg-neutral-50 bg-neutral-900 hover:scale-[1.02] hover:shadow-md shadow dark:shadow-white/20 text-white duration-150 ease-in-out dark:text-neutral-900 text-neutral-50 rounded-full px-4 py-2'
                 >Reset all filters</button>
         </div>
         

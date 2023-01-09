@@ -6,7 +6,7 @@ import styles from '@/styles/styles.module.css';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
 import {HiHeart} from 'react-icons/hi'
-import {AiOutlineMail} from 'react-icons/ai'
+import {FiMail} from 'react-icons/fi'
 
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -41,8 +41,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                         />
                         <div className='flex' data-fade='4'>
                             <Link href='mailto:amrimuvti@gmail.com'  className="flex mx-auto items-center gap-2 btn-primary">
-                                Let's collaborate
-                                <AiOutlineMail className="text-lg"/>
+                                Let's collaborate!
                             </Link>
                         </div>
                         <div className="w-full sm:w-10/12 mt-6 flex flex-row gap-2 flex-wrap justify-center text-gray-600 dark:text-gray-400 text-sm sm:text-lg" data-fade='5'>

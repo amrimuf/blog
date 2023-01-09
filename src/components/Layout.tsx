@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <Header />      
-      <main className="min-h-screen dark:bg-lime-900/10 w-full px-4 pb-12 bg-lime-200/10">
+      <main className="min-h-screen dark:bg-neutral-900 w-full px-4 pb-12 bg-lime-200/10">
           <div className={clsx("container max-w-4xl mx-auto antialiased pt-8", isLoaded && 'fade-in-start')}>      
             {children}
           </div>
