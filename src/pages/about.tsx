@@ -4,7 +4,7 @@ import { InferGetStaticPropsType } from "next";
 import React from "react";
 import styles from '@/styles/styles.module.css';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
+import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss, SiGraphql} from 'react-icons/si';
 import Tippy from '@tippyjs/react/headless';
 
 import Layout from "@/components/Layout";
@@ -21,6 +21,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
         {name:"Laravel", svg:<SiLaravel/>},
         {name:"PostgreSQL", svg:<SiPostgresql/>},
         {name:"MySQL", svg:<SiMysql/>},
+        {name:"GraphQL", svg:<SiGraphql/>},
         {name:"Tailwind CSS", svg:<SiTailwindcss/>},
         {name:"Bootstrap", svg:<SiBootstrap/>},
         {name:"Docker", svg:<SiDocker/>},
@@ -35,7 +36,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
             description='Amri Mufti is a web developer.'
             />
 
-            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-[2px] ${styles.handDrawnBorderHero}`} data-fade='0'>
+            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-[4px] ${styles.handDrawnBorderHero}`} data-fade='0'>
                 <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]" data-fade='1'>
                     <span className={`!inline ${styles.highlight}`}>Amri</span> Mufti
                 </h1>
@@ -83,7 +84,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                 
             </div>
 
-            <div className={`mt-8 bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-[3px] ${styles.handDrawnBorderImage}`}>
+            <div className={`mt-8 bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-[5px] ${styles.handDrawnBorderImage}`} data-fade='5'>
                 <div className="flex">
                 <h3 className="mx-auto capitalize">tech stacks i use</h3>
                 </div>
