@@ -24,11 +24,11 @@
 
 @layer components {
     .btn-primary {
-        @apply inline-block px-6 py-2.5 bg-gradient-to-br from-lime-500 via-lime-500 to-green-500 dark:text-neutral-900 text-white tracking-widest font-bold text-xs leading-tight uppercase rounded-full shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out;
+        @apply inline-block px-4 py-2 bg-gradient-to-br from-lime-500 font-semibold via-lime-500 to-green-500 dark:text-neutral-900 text-white text-xs md:text-sm leading-tight rounded-full capitalize shadow-md dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-lg transition duration-150 ease-in-out;
     }
 
     .btn-secondary {
-        @apply inline-block px-6 py-2.5 border-2 border-lime-500/50 border-dashed font-semibold text-xs leading-tight uppercase rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out;
+        @apply inline-block px-4 py-2 border-2 border-lime-500/50 border-dashed font-medium text-xs md:text-sm leading-tight capitalize rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out;
     }
 
     .profile-image {

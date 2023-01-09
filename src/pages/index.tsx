@@ -18,7 +18,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
         <Seo/>
         <Hero profile={profile} />
         
-        <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='3'>
+        <h2 className='mt-12 md:mt-8 pb-2 sm:pb-6 ' data-fade='3'>
             Featured Posts
         </h2>
         <section data-fade="4">
@@ -35,7 +35,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
         </section>
 
         
-        <h2 className='mt-8 pb-2 sm:pb-6 ' data-fade='5'>
+        <h2 className='mt-12 md:mt-8 pb-2 sm:pb-6 ' data-fade='5'>
             Recent Projects
         </h2>
         <section data-fade="6">
