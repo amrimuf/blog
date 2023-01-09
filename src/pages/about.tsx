@@ -5,8 +5,7 @@ import React from "react";
 import styles from '@/styles/styles.module.css';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import {SiNextdotjs, SiGo, SiExpress, SiDocker, SiKubernetes, SiLaravel, SiBootstrap, SiNodedotjs, SiPostgresql, SiMysql, SiTailwindcss} from 'react-icons/si';
-import {HiHeart} from 'react-icons/hi'
-import {FiMail} from 'react-icons/fi'
+import Tippy from '@tippyjs/react/headless';
 
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -16,17 +15,17 @@ import { getPlaiceholder } from "plaiceholder";
 export default function About({about}:InferGetStaticPropsType<typeof getStaticProps>) {
 
     let skills = [ 
-        {name:"express", svg:<SiExpress/>},
-        {name:"golang", svg:<SiGo/>}, 
-        {name:"nextjs", svg:<SiNextdotjs/>},
-        {name:"docker", svg:<SiDocker/>},
-        {name:"kubernetes", svg:<SiKubernetes/>},
-        {name:"laravel", svg:<SiLaravel/>},
-        {name:"bootsrap", svg:<SiBootstrap/>},
-        {name:"nodedotjs", svg:<SiNodedotjs/>},
-        {name:"postgre", svg:<SiPostgresql/>},
-        {name:"mysql", svg:<SiMysql/>},
-        {name:"tailwind", svg:<SiTailwindcss/>}
+        {name:"Node.js", svg:<SiNodedotjs/>},
+        {name:"Express", svg:<SiExpress/>},
+        {name:"Next.js", svg:<SiNextdotjs/>},
+        {name:"Laravel", svg:<SiLaravel/>},
+        {name:"PostgreSQL", svg:<SiPostgresql/>},
+        {name:"MySQL", svg:<SiMysql/>},
+        {name:"Tailwind CSS", svg:<SiTailwindcss/>},
+        {name:"Bootstrap", svg:<SiBootstrap/>},
+        {name:"Docker", svg:<SiDocker/>},
+        {name:"GoLang", svg:<SiGo/>}, 
+        {name:"Kubernetes", svg:<SiKubernetes/>},
     ]
 
     return (
@@ -84,12 +83,26 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                 
             </div>
 
-            <div className={`mt-8 bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-1 ${styles.handDrawnBorderImage}`}>
-                <h3>My skills and knowledge domains</h3>
+            <div className={`mt-8 bg-white/50 p-6 rounded-xl shadow-lg dark:bg-black/30 dark:shadow-lime-700 !border-[3px] ${styles.handDrawnBorderImage}`}>
+                <div className="flex">
+                <h3 className="mx-auto capitalize">tech stacks i use</h3>
+                </div>
                 <hr className="border-black/20 mx-auto mt-4 dark:border-white/20" />
-                <div className="flex flex-wrap justify-center items-center gap-4 text-3xl sm:gap-8 sm:text-7xl my-4" >
+                <div className="flex flex-wrap justify-center items-center gap-4 text-3xl sm:gap-8 sm:text-7xl my-4 " >
                     {skills.map((skill:{name:string; svg:JSX.Element}) => 
-                    skill.svg)}
+                    <Tippy 
+                    placement="bottom"
+                    delay={500}
+                    render={attrs => (
+                        <div className="dark:text-neutral-900 text-neutral-900 bg-lime-500 p-2 shadow-lg font-medium shadow-xl dark:shadow-lime-500/20"
+                        {...attrs}
+                        >
+                            {skill.name}
+                        </div>
+                    )}>
+                        <button>{skill.svg}</button>
+                    </Tippy>
+                    )}
                 </div>
             </div>
         </Layout>
