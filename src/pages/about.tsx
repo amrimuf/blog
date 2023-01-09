@@ -91,6 +91,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                 <div className="flex flex-wrap justify-center items-center gap-4 text-3xl sm:gap-8 sm:text-7xl my-4 " >
                     {skills.map((skill:{name:string; svg:JSX.Element}) => 
                     <Tippy 
+                    key={skill.name}
                     placement="bottom"
                     delay={500}
                     render={attrs => (
