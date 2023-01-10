@@ -42,7 +42,7 @@ export default function Header() {
           {navPaths.map((navPath, index) => 
               <Link key={index} href={ `/${navPath}`} className={router.asPath.split('/')[1] === navPath || router.pathname === `/${navPath}` ? 'font-bold dark:text-neutral-50 text-neutral-900' : 'font-normal'}>
                 {navPath !== '' ? navPath : 'home'}
-                <BsArrowDown className={`${router.asPath.split('/')[1] === navPath || router.pathname === `/${navPath}` ? 'stroke-[1.5px] inline-block text-base text-lime-500 ml-[3px]' : 'hidden'}`}/>
+                <BsArrowDown className={`${router.asPath.split('/')[1] === navPath || router.pathname === `/${navPath}` ? 'stroke-[1.5px] inline-block text-base text-lime-500 ml-[3px] rotate-1' : 'hidden'}`}/>
               </Link>           
           )}
         </div>
