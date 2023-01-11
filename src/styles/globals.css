@@ -40,7 +40,7 @@
     }
 
     .content {
-        @apply wysiwyg lg:wysiwyg-lg dark:wysiwyg-dark hover:wysiwyg-a:!text-lime-500 wysiwyg-a:font-medium wysiwyg-a:decoration-dotted wysiwyg-a:decoration-lime-500 wysiwyg-a:decoration-2 wysiwyg-a:underline-offset-4 wysiwyg-a:font-normal wysiwyg-video:mx-auto wysiwyg-video:border wysiwyg-video:border-4 wysiwyg-video:border-lime-500 wysiwyg-img:mx-auto;
+        @apply wysiwyg lg:wysiwyg-lg dark:wysiwyg-dark hover:wysiwyg-a:!text-lime-500 wysiwyg-a:font-medium wysiwyg-a:decoration-dotted wysiwyg-a:decoration-lime-500 wysiwyg-a:decoration-2 wysiwyg-a:underline-offset-[3px] wysiwyg-a:font-normal wysiwyg-video:mx-auto wysiwyg-video:border wysiwyg-video:border-4 wysiwyg-video:border-lime-500 wysiwyg-img:mx-auto;
     }
 
     .circle {
