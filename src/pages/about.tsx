@@ -20,7 +20,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
             description='Amri Mufti is a web developer.'
             />
 
-            <div className={`items-center md:items-start flex flex-col bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700`} data-fade='0'>
+            <div className={`items-center md:items-start flex flex-col p-6`} data-fade='0'>
                 <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]" data-fade='1'>
                     <span className={`!inline ${styles.highlight}`}>Amri</span> Mufti
                 </h1>

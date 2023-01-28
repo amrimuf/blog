@@ -63,7 +63,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                 </div>
 
                 <div className="md:w-10/12 w-full mx-auto" data-fade='3'>
-                    <article className='content mx-auto bg-white/50 p-6 rounded-xl shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700' >
+                    <article className='content mx-auto' >
                         <RichText
                         content={post.content.json.children}
                         references={post.content.references}

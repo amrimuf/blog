@@ -6,7 +6,7 @@ import { About } from "@/lib/types";
 export default function Hero({profile}:{profile:About}){
     return (
         <section 
-        className={`flex items-center justify-center layout bg-white/50 p-6 shadow-xl sm:shadow-2xl dark:bg-black/30 dark:shadow-lime-700 md:rotate-[0.2deg] ${styles.handDrawnBorderHero}`} 
+        className={`flex items-center justify-center layout bg-white/50 p-6 shadow-md dark:bg-black/30 dark:shadow-lime-700 md:rotate-[0.2deg] ${styles.handDrawnBorderHero}`} 
         data-fade='0'
         >
             <div className="w-full sm:w-8/12 sm:pr-8">
