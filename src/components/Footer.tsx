@@ -16,7 +16,7 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 target="_blank"
                 aria-label="Instagram"
-                href='https://www.instagram.com/amri.4521'
+                href='https://www.instagram.com/amrimuf'
                 className="hover:text-lime-500"
               >
                 <SiInstagram/>
@@ -25,7 +25,7 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 target="_blank"
                 aria-label="Twitter"
-                href='https://www.twitter.com'
+                href='https://www.twitter.com/amrimuf'
                 className="hover:text-lime-500"
               >
                 <SiTwitter/>
