@@ -50,7 +50,7 @@ export default function Projects({ tags, projects }:InferGetStaticPropsType<type
             A few projects I have worked on recently.
         </p>
 
-        <div className="flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2" data-fade='3'>
+        <div className={`${filteredProjects.length > 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2" : 'hidden'}`} data-fade='3'>
                 <span className="hidden sm:block">Filters:</span>
                 {tags.sort().map((tag:string, index:number) => (
                     <button 
@@ -67,12 +67,14 @@ export default function Projects({ tags, projects }:InferGetStaticPropsType<type
                 >Reset all filters</button>
         </div>
         
-
-        <div className="mt-4 grid sm:grid-cols-2 gap-6" data-fade='4'>
-            {filteredProjects.map((project:Project) => (
-                <ProjectCard key={project.id} {...project}/>
-            ))}
-        </div>
+        {filteredProjects.length > 0 ? 
+            <div className="mt-4 grid sm:grid-cols-2 gap-6" data-fade='4'>
+                {filteredProjects.map((project:Project) => (
+                    <ProjectCard key={project.id} {...project}/>
+                ))}
+            </div>
+            : <p className="font-semibold !text-lime-500 text-lg mt-6" data-fade='4'>My first project - coming soon!</p>
+        }
     </Layout>
     );
 }

@@ -35,7 +35,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
         </section>
 
         
-        <h2 className='mt-12 md:mt-8 pb-2 sm:pb-6 ' data-fade='5'>
+        <h2 className={` ${featuredPosts.length > 1 ? 'mt-12 md:mt-8 pb-2 sm:pb-6 ' : 'hidden'}`} data-fade='5'>
             Recent Projects
         </h2>
         <section data-fade="6">
@@ -45,7 +45,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
                 ))}
             </div>
             <div className="flex">
-                <Link href='/projects' className="mx-auto mt-6 btn-primary">
+                <Link href='/projects' className={` ${featuredPosts.length > 1 ? "mx-auto mt-6 btn-primary" : 'hidden'}`}>
                         View all projects
                 </Link>
             </div>  
