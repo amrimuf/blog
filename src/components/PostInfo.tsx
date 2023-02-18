@@ -5,7 +5,7 @@ export default function PostInfo({...postInfo}) {
     <div>
       <PostMetaTitle 
         category={postInfo.category} 
-        date={postInfo.createdAt}
+        date={postInfo.updatedAt}
         title={postInfo.title}
         slug={postInfo.slug}
         featured={postInfo.featured}

@@ -11,7 +11,7 @@ export default function PostMetaTitle({ ...postMeta }: PostMetaTitleType) {
             {postMeta.category}
           </div>
           <span className='text-lime-500 font-extrabold'>{postMeta.featured ? <span>&#10008;</span> : <span>&#10007;</span>}</span>
-          <p>{moment(postMeta.date).format("MMM DD, YYYY")}</p>
+          <p><span className={postMeta.center ? 'italic' : 'hidden'}>Updated: </span>{moment(postMeta.date).format("MMM DD, YYYY")}</p>
         </div>
         {postMeta.center ? 
           <h1 className='m-4 text-center' data-fade='1'>{postMeta.title}</h1> :

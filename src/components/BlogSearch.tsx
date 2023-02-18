@@ -59,11 +59,11 @@ export default function BlogSearch({children, posts, isLoading}:BlogSearch) {
         <p className='mt-2 mb-6' data-fade='1'>
         Thoughts and tutorials about web development and programming.
         </p>
-        <div className="relative w-full mb-4" data-fade='2'>
+        <div className={`${ posts.length !== 0 || searchField.length !== 0 ? 'relative w-full mb-4' : 'hidden'}`} data-fade='2'>
             <input 
             className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white/70 dark:bg-black/30"
             type = "text" 
-            placeholder = "Search articles"
+            placeholder = "Search posts"
             value={searchField}
             onChange = {handleChange} 
             onKeyUp = {handleKeyUp}

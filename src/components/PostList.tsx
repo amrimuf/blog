@@ -1,6 +1,7 @@
 import PostCard from './PostCard';
-import styles from '@/styles/styles.module.css'
 import { Post } from '@/lib/types';
+
+import clsx from "clsx";
 
 interface PostList {
     posts:Post[]
@@ -23,7 +24,7 @@ export default function PostList({ posts, isLoading, isSearching, searchField }:
     }
 
     else if (posts.length === 0) {  
-        return <p className='text-center font-semibold !text-lime-500 text-lg'>{searchField ? 'Sorry, not found :(' : 'No posts yet'}</p>
+        return <p className={clsx(searchField ? 'text-center' : 'text-left','font-semibold !text-lime-500 text-lg')}>{searchField ? 'Sorry, no results found :(' : 'My first post - coming soon!'}</p>
         
     } else {
         return (

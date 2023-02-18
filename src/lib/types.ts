@@ -1,7 +1,7 @@
 export type Project = {
     id: string;
     category: string;
-    createdAt: string;
+    createdAt: string | Date;
     title: string;
     headline: string;
     slug: string;

@@ -18,7 +18,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
         <Seo/>
         <Hero profile={profile} />
         
-        <h2 className='mt-12 md:mt-8 pb-2 sm:pb-6 ' data-fade='3'>
+        <h2 className={`${featuredPosts.length > 0 ? 'mt-12 md:mt-8 pb-2 sm:pb-6' : 'hidden'} `} data-fade='3'>
             Featured Posts
         </h2>
         <section data-fade="4">
@@ -28,7 +28,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
                 ))}
             </div>
             <div className="flex">
-                <Link href='/blog' className=" mx-auto mt-6 btn-primary">
+                <Link href='/blog' className={`${featuredPosts.length > 0 ? 'mx-auto mt-6 btn-primary' : 'hidden'}`}>
                         View all posts
                 </Link>
             </div>
