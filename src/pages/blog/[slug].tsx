@@ -12,6 +12,7 @@ import styles from '@/styles/styles.module.css'
 import { getPlaiceholder } from 'plaiceholder';
 import { Post } from '@/lib/types';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import clsx from 'clsx';
 
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
 
@@ -42,7 +43,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                     <div className="flex justify-center -mx-4 flex-wrap mt-6">
                         <PostMetaTitle
                         category={post.category}
-                        date={post.createdAt}
+                        date={post.updatedAt}
                         title={post.title}
                         slug={post.slug}
                         featured={post.featured}
@@ -71,7 +72,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         />        
                     </article>
                     
-                    <div className='flex justify-between'>
+                    <div className={prevTitle == post.title && nextTitle == post.title ? 'hidden' : 'flex justify-between'}>
                         <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4 mt-12' href={`/blog/${prevSlug}`}>
                             <BsChevronLeft className='hover:text-lime-500 stroke-1'/>
                             <div className='w-[100px] sm:w-[300px]'>
@@ -102,7 +103,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
     const { slug } = params as { slug: string };
     const post = await getPost(slug) || [] 
     const blurDataURL = await getPlaiceholderBase64(post.thumbnail.url)
-    const posts = await getNextPrevPosts()
+    const posts = await getNextPrevPosts() || []
     
     const index = posts.findIndex(function(post:Post) {
         return post.slug === slug;

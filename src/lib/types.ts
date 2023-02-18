@@ -32,6 +32,7 @@ export type Post = {
     headline: string;
     blurDataURL:string;
     featured: boolean
+    isBlog: boolean
 }
 
 export type PostMetaTitleType = {

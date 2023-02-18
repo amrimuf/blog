@@ -95,8 +95,9 @@ export const getPageSize = async () => {
 export const getNextPrevPosts = async () => {
     const query = gql `
     query Posts {
-        posts(where: {isBlog: true} orderBy:createdAt_DESC) {
+        posts( orderBy:createdAt_DESC) {
             id
+            isBlog
             title
             slug
         }

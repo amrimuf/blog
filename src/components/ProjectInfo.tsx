@@ -1,6 +1,5 @@
 import { BsBoxArrowUpRight } from 'react-icons/bs'
 
-import styles from '@/styles/styles.module.css'
 import { Project } from "@/lib/types";
 
 export default function ProjectInfo({...projectInfo}: Project) {
