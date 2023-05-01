@@ -1,3 +1,5 @@
+import { deploymentURL } from '@/constant/env';
+
 type OpenGraphType = {
     siteName: string;
     description: string;
@@ -12,7 +14,7 @@ export function openGraph({
     templateTitle,
     description,
     banner,
-    logo = 'https://amri.tech/assets/logo.jpg',
+    logo = `${deploymentURL}/assets/logo.jpg`,
     isBlog = false,
 }: OpenGraphType): string {
     const ogLogo = encodeURIComponent(logo);
@@ -25,10 +27,10 @@ export function openGraph({
     if (isBlog) {
     const ogBanner = banner ? encodeURIComponent(banner.trim()) : undefined;
 
-    return `https://amri.tech/api/blog?siteName=${ogSiteName}&templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
+    return `${deploymentURL}/api/blog?siteName=${ogSiteName}&templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
     }
     
-    return `https://amri.tech/api/general?siteName=${ogSiteName}&description=${ogDesc}${ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''}`
+    return `${deploymentURL}/api/general?siteName=${ogSiteName}&description=${ogDesc}${ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''}`
 }
 
 export function classNames(...classes: string[]): string {
@@ -68,7 +70,7 @@ export function getFromLocalStorage(key: string) {
  */
 
 export const alexandriaFontLoader = (weight: string) =>
-fetch(`https://amri.tech/assets/fonts/Alexandria-${weight}.ttf`.toString()).then((res) => res.arrayBuffer())
+fetch(`${deploymentURL}/assets/fonts/Alexandria-${weight}.ttf`.toString()).then((res) => res.arrayBuffer())
 
 export const getPageNumbers = (pageSize:{pageInfo:{pageSize:number}}) => {
     const postsPerPage = 3

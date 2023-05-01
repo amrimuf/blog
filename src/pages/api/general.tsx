@@ -1,4 +1,5 @@
 import { alexandriaFontLoader } from '@/lib/helper';
+import { deploymentURL } from '@/constant/env';
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
@@ -13,7 +14,7 @@ export default async function generalHandler(req: NextRequest) {
     const templateTitle = searchParams.get('templateTitle');
     const siteName = searchParams.get('siteName');
     const description = searchParams.get('description');
-    const logo = 'https://amri.tech/assets/logo.jpg'
+    const logo = `${deploymentURL}/assets/logo.jpg`
 
     const alexandriaRegular = await alexandriaFontLoader("Regular");
     const alexandriaLight = await alexandriaFontLoader("Light");

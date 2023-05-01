@@ -1,4 +1,5 @@
 import { alexandriaFontLoader } from '@/lib/helper';
+import { deploymentURL } from '@/constant/env';
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
@@ -12,7 +13,7 @@ export default async function blogHandler(req: NextRequest) {
 
     const siteName = searchParams.get('siteName');
     const templateTitle = searchParams.get('templateTitle');
-    const banner = searchParams.get('banner') ?? 'https://amri.tech/assets/logo.jpg';
+    const banner = searchParams.get('banner') ?? `${deploymentURL}/assets/logo.jpg`;
     
     const alexandriaRegular = await alexandriaFontLoader("Regular");
     const alexandriaLight = await alexandriaFontLoader("Light");
