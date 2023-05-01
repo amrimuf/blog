@@ -47,7 +47,7 @@ export default function Header() {
           )}
         </div>
         <div className='md:hidden flex space-x-4'>
-        <Link href="/">Home</Link>
+          <Link href="/">Home</Link>
           <div 
             className="space-y-2 my-auto"
             onClick={() => setNavOpen((prev) => !prev)}
@@ -58,7 +58,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className={navOpen && theme==="dark" ? 'block absolute h-screen w-full top-0 left-0 bg-black z-10 flex flex-col items-center place-content-evenly' : navOpen && theme==="light" ? 'block absolute h-screen w-full top-0 left-0 bg-white z-10 flex flex-col items-center place-content-evenly' : 'hidden'}>
+        <div className={`fixed inset-y-0 right-0 w-full bg-white dark:bg-black transform transition-transform duration-300 ease-in-out flex flex-col items-center place-content-evenly ${navOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div
             className="absolute top-0 right-0 px-8 py-8"
             onClick={() => setNavOpen(false)}
