@@ -5,10 +5,10 @@ import { openGraph } from '@/lib/helper';
 
 const defaultMeta = {
     title: 'Amri Mufti',
-    siteName: 'amri.tech',
+    siteName: 'amrimuf.com',
     description:
         'An online portfolio and blog by Amri Mufti.',
-    url: 'https://amri.tech',
+    url: 'https://amrimuf.com',
     image: '',
     type: 'website',
     robots: 'follow, index',
