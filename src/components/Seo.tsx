@@ -44,7 +44,6 @@ export default function Seo(props: SeoProps) {
         <title>{meta.title}</title>
         <meta name='robots' content={meta.robots} />
         <meta name="google-site-verification" content="obI8oiiDbKE9XYp2gflhj_2xkvx6sJyUmP4DG1wuE3g" />
-        <meta name="google-site-verification" content="bGowv0j2Cj7dcmmuZtnvMaEIcphVSSfWtQobXqs32uk" />
         <meta content={meta.description} name='description' />
         <meta property='og:url' content={`${meta.url}${router.asPath}`} />
         <link rel='canonical' href={`${meta.url}${router.asPath}`} />
