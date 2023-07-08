@@ -3,12 +3,14 @@ import { useRouter } from 'next/router';
 
 import { openGraph } from '@/lib/helper';
 
+import { deploymentURL } from '@/constant/env';
+
 const defaultMeta = {
     title: 'Amri Mufti',
     siteName: 'amrimuf.com',
     description:
         'An online portfolio and blog by Amri Mufti.',
-    url: 'https://amrimuf.com',
+    url: deploymentURL,
     image: '',
     type: 'website',
     robots: 'follow, index',
