@@ -157,6 +157,7 @@ export const getPost = async (slug:string) => {
             }
         }
         createdAt
+        updatedAt
         isBlog
         featured
         }
