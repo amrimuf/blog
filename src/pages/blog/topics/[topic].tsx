@@ -5,9 +5,7 @@ import Seo from "@/components/Seo";
 import { getPostsByTopic, getTopics } from "@/services";
 import { getPlaiceholder } from "plaiceholder";
 import { Post, Topic } from "@/lib/types";
-import PostCard from "@/components/PostCard";
 import BlogLayout from "@/components/BlogLayout";
-import Pagination from "@/components/Pagination";
 
 export default function home({ posts, topics,topic }: InferGetStaticPropsType<typeof getStaticProps>) {
 
@@ -42,7 +40,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext<{ topic: 
                 topics,
                 topic
             },
-            revalidate: 60
+            revalidate: 120
         };
     } catch {
         return { notFound: true };

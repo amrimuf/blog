@@ -60,10 +60,10 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
         <h1 data-fade='0'>
             Blog
         </h1>
-        <p className='mt-2 mb-6' data-fade='1'>
+        <p className='mt-2' data-fade='1'>
         Notes and tips on all things web dev and programming!
         </p>
-        <div className="flex flex-wrap gap-2 items-center justify-center sm:justify-start space-y-2 mb-5" data-fade='2'>
+        <div className={ posts.length !== 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start mb-5" : "hidden"} data-fade='2'>
             {topics.sort().map((t:Topic, index:number) => (
                 <Link 
                     href={`${deploymentURL + '/blog/topics/' + t.slug}`}

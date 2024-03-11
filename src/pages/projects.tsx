@@ -50,7 +50,7 @@ export default function Projects({ tags, projects }:InferGetStaticPropsType<type
         Some of the cool projects I've been tinkering with lately!
         </p>
 
-        <div className={`${filteredProjects.length > 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2" : 'hidden'}`} data-fade='3'>
+        <div className={`${filteredProjects.length > 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start" : 'hidden'}`} data-fade='3'>
                 {tags.sort().map((tag:string, index:number) => (
                     <button 
                         key={index}

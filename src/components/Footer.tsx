@@ -1,7 +1,7 @@
 import Link from "next/link";
 import moment from 'moment';
 import styles from '@/styles/styles.module.css'
-import { SiInstagram, SiTwitter, SiGithub, SiLinkedin } from 'react-icons/si'
+import { SiInstagram, SiTwitter, SiGithub, SiLinkedin, SiX } from 'react-icons/si'
 
 
 export default function Footer() {
@@ -24,11 +24,11 @@ export default function Footer() {
               <Link
                 rel="noreferrer noopener"
                 target="_blank"
-                aria-label="Twitter"
-                href='https://www.twitter.com/amrimuf'
+                aria-label="X"
+                href='https://www.x.com/amrimuf'
                 className="hover:text-lime-500"
               >
-                <SiTwitter/>
+                <SiX/>
               </Link>
               <Link
                 rel="noreferrer noopener"

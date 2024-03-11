@@ -11,7 +11,7 @@ export default function ProjectInfo({...projectInfo}: Project) {
             : ''}
             <hr className="border-black/20 w-full mx-auto mt-10 md:hidden dark:border-white/20" />
             <p>{projectInfo.description}</p>
-            <div className="flex flex-wrap justify-start gap-2">
+            <div className="flex flex-wrap justify-start gap-2 mt-2">
                 {projectInfo.tags.map((tag:{name:string},index:number) => 
                 <button 
                     key={index} 

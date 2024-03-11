@@ -29,7 +29,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
             </div>
             <div className="flex">
                 <Link href='/blog' className={`${featuredPosts.length > 0 ? 'mx-auto mt-6 btn-primary' : 'hidden'}`}>
-                        View all blogs
+                        Show all posts
                 </Link>
             </div>
         </section>
@@ -46,7 +46,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
             </div>
             <div className="flex">
                 <Link href='/projects' className={` ${recentProjects.length > 0 ? "mx-auto mt-6 btn-primary" : 'hidden'}`}>
-                        View all projects
+                        Show all projects
                 </Link>
             </div>  
         </section>

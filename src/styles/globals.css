@@ -32,11 +32,11 @@
     }
 
     .label {
-        @apply ring-1 ring-lime-500 italic px-2 rounded-full mt-2 hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out
+        @apply ring-1 ring-lime-500 italic px-2 rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out
     }
 
     .label-off {
-        @apply ring-1 ring-neutral-300 dark:ring-neutral-700 italic px-2 rounded-full mt-2
+        @apply ring-1 ring-neutral-300 dark:ring-neutral-700 italic px-2 rounded-full
     }
     
     .label-selected {

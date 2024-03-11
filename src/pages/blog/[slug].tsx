@@ -32,7 +32,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                     <li><span className="text-gray-500 mx-2 ">/</span></li>
                     <li><Link href={`/${prevUrl}`} className="text-lime-500 hover:underline capitalize">{prevUrl}</Link></li>
                     <li><span className="text-gray-500 mx-2">/</span></li>
-                    <li>{post.category}</li>
+                    <li className='capitalize'>{post.category}</li>
                     <li><span className="text-gray-500 mx-2">/</span></li>
                     <li>{post.title}</li>
                 </ol>

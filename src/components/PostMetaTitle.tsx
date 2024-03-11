@@ -34,7 +34,7 @@ useEffect(() => {
           <span className='text-lime-500 font-extrabold'>{postMeta.featured ? <span>&#10008;</span> : <span>&#10007;</span>}</span>
           <p><span className={postMeta.center ? 'italic' : 'hidden'}>Updated: </span>{moment(postMeta.date).format("MMM DD, YYYY")}</p>
         </div>
-        <div className="flex flex-wrap justify-start gap-2"  data-fade='0'>
+        <div className="flex flex-wrap justify-start gap-2 mt-2"  data-fade='0'>
           {postMeta.topics.map((t:{name:string,slug:string},index:number) => 
           <Link
               href={`${deploymentURL + '/blog/topics/' + t.slug}`}
