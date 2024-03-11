@@ -48,7 +48,7 @@
     }
 
     .content-image {
-        @apply rounded h-auto w-auto mb-6
+        @apply rounded mb-6 w-auto
     }
 
     .thumbnail {
