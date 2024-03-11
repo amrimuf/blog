@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
@@ -15,6 +15,11 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import ShareButtons from '@/components/Share';
 
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
         return (
@@ -65,11 +70,43 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                 </div>                
                 <div className="md:w-10/12 w-full mx-auto" data-fade='3'>
                     <article className='content mx-auto' >
-                        <RichText
+                    {isClient && (<RichText
                         content={post.content.json.children}
                         references={post.content.references}
+                        renderers={{
+                            h2: ({ children }) => <h2 className='m-0 mb-2'>{children}</h2>,
+                            h3: ({ children }) => <h3 className='m-0'>{children}</h3>,
+                            code: ({ children }) => <div className="bg-neutral-100 dark:bg-black rounded-md p-4 overflow-x-auto">
+                            {children}
+                            </div>,
+                            img: ({ src, altText, height, width }) => (
+                                <Image
+                                    src={src!}
+                                    alt={altText!}
+                                    height={height}
+                                    width={width}
+                                    blurDataURL={blurDataURL}
+                                    objectFit="cover"
+                                />
+                            ),
+                            // Asset: {
+                            //     image: ({ url, alt, caption, width, height, blurDataUrl }) => {
+                            //         return (
+                            //             <Image
+                            //                 src={url}
+                            //                 alt={alt}
+                            //                 width={width}
+                            //                 height={height}
+                            //                 placeholder={blurDataUrl ? 'blur' : 'empty'}
+                            //                 blurDataURL={blurDataUrl}
+                            //             />
+                            //         );
+                            //     },
+                            // },
+                        }}
                         // https://github.com/hygraph/rich-text/tree/main/packages/react-renderer
-                        />        
+                        />
+                    )}        
                     </article>
 
                     <ShareButtons post={post} />
@@ -115,7 +152,26 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
     let prevSlug = posts[(index+len-1)%len].slug;
     let prevTitle = posts[(index+len-1)%len].title;
     let nextSlug = posts[(index+1)%len].slug;    
-    let nextTitle = posts[(index+1)%len].title;    
+    let nextTitle = posts[(index+1)%len].title;
+    
+    // interface Asset {
+    //     id: string;
+    //     url: string;
+    //     mimeType: string;
+    //     width: number;
+    //     height: number;
+    // }
+
+    // const images = post.content.references.filter((asset:Asset) =>
+    //     asset.mimeType.includes('image')
+    // );
+
+    // await Promise.all(
+    //     images.map(async (image:any) => {
+    //         const { base64 } = await getPlaiceholder(image.url);
+    //         image.blurDataUrl = base64;
+    //     })
+    // );
 
     return {
         props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }, revalidate: 120
