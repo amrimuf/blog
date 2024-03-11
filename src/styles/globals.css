@@ -47,6 +47,10 @@
         @apply object-cover h-80 w-60 sm:shadow-md dark:shadow-lime-700;
     }
 
+    .content-image {
+        @apply object-cover h-64 w-auto rounded mb-6 sm:h-auto
+    }
+
     .thumbnail {
         @apply object-cover h-40 w-full mb-4 rounded-t-lg;
     }

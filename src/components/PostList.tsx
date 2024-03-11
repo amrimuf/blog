@@ -28,7 +28,7 @@ export default function PostList({ posts, isLoading, isSearching, searchField }:
         
     } else {
         return (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                 {posts.map((post:Post) => (
                     <PostCard key={post.id} post={post} />
                 ))}

@@ -64,7 +64,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         height='500'
                         blurDataURL={blurDataURL} 
                         placeholder='blur' 
-                        className={`object-cover h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} 
+                        className={`content-image ${styles.handDrawnBorderImage}`} 
                         data-fade='2'
                         />
                 </div>                
@@ -89,6 +89,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                                             height={height}
                                             placeholder={blurDataUrl ? 'blur' : 'empty'}
                                             blurDataURL={blurDataUrl}
+                                            className={`content-image ${styles.handDrawnBorderImage}`} 
                                         />
                                     );
                                 },
