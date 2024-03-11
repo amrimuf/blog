@@ -24,7 +24,7 @@ export default function PostList({ posts, isLoading, isSearching, searchField }:
     }
 
     else if (posts.length === 0) {  
-        return <p className={clsx(searchField ? 'text-center' : 'text-left','font-semibold !text-lime-500 text-lg')}>{searchField ? 'Sorry, no results found :(' : 'My first post - coming soon!'}</p>
+        return <p className={clsx(searchField ? 'text-center' : 'text-left','font-semibold !text-lime-500 text-lg mt-2')}>{searchField ? 'Sorry, no results found :(' : 'My first post - coming soon!'}</p>
         
     } else {
         return (

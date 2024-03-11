@@ -63,7 +63,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
         <p className='mt-2' data-fade='1'>
         Notes and tips on all things web dev and programming!
         </p>
-        <div className={ posts.length !== 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start mb-5" : "hidden"} data-fade='2'>
+        <div className={ posts.length !== 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start" : "hidden"} data-fade='2'>
             {topics.sort().map((t:Topic, index:number) => (
                 <Link 
                     href={`${deploymentURL + '/blog/topics/' + t.slug}`}
@@ -76,7 +76,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
             <Link href={`${deploymentURL + '/blog'}`} className='btn-primary'
                 >Show all</Link>
         </div>
-        <div className={`${ posts.length !== 0 || searchField.length !== 0 ? 'relative w-full mb-4' : 'hidden'}`} data-fade='2'>
+        <div className={`${ posts.length !== 0 || searchField.length !== 0 ? 'relative w-full my-4' : 'hidden'}`} data-fade='2'>
             <input 
             className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white/70 dark:bg-black/30"
             type = "text" 
