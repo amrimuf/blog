@@ -7,9 +7,9 @@ import styles from '@/styles/styles.module.css'
 
 export default function PostCard({ post }: {post: Post}) {
     return (
-        <Link href={`/blog/${post.slug}`} className={`card ${styles.handDrawnBorderPosts}`}>
+        <div className={`card ${styles.handDrawnBorderPosts}`}>
                 <article className='-mx-4 lg:items-center items-start'>
-                        <Image 
+                        <Link href={`/blog/${post.slug}`}><Image 
                         src={post.thumbnail.url} 
                         alt={`${post.title} thumbnail`} 
                         width='500'
@@ -17,6 +17,7 @@ export default function PostCard({ post }: {post: Post}) {
                         className="thumbnail"
                         blurDataURL={post.blurDataURL}
                         placeholder='blur'/>
+                        </Link>
                         <div className="w-full px-4">
                             <PostInfo
                                 {...post}
@@ -24,6 +25,6 @@ export default function PostCard({ post }: {post: Post}) {
                         </div>
                         <hr className="border-black/20 w-11/12 mx-auto mt-10 md:hidden dark:border-white/20" />
                 </article>
-            </Link>
+            </div>
     );
 }

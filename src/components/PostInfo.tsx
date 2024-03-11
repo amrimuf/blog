@@ -10,6 +10,7 @@ export default function PostInfo({...postInfo}) {
         slug={postInfo.slug}
         featured={postInfo.featured}
         content={postInfo.content.json.children}
+        topics={postInfo.topics}
       />
       <p className="mt-5">
         {postInfo.headline}        

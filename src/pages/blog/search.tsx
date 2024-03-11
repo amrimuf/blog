@@ -1,14 +1,15 @@
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 
-import { getPosts, getFilteredPosts } from '@/services';
+import { getPosts, getFilteredPosts, getTopics } from '@/services';
 import { getPlaiceholder } from "plaiceholder";
 import { Post } from "@/lib/types";
-import BlogSearch from "@/components/BlogSearch";
+import BlogLayout from "@/components/BlogLayout";
 
-export default function Blog({ filteredPosts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Blog({ filteredPosts, topics }: InferGetServerSidePropsType<typeof getServerSideProps>) {
         return (     
-            <BlogSearch
+            <BlogLayout
                 posts={filteredPosts}
+                topics={topics}
             />
         );
 }
@@ -36,8 +37,9 @@ export async function getServerSideProps({ query, res}:GetServerSidePropsContext
             };
         })
     )
+    const topics = await getTopics() 
 
     return {
-        props: { filteredPosts }
+        props: { filteredPosts, topics }
     }
 }

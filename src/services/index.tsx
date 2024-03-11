@@ -19,6 +19,10 @@ export const getPosts = async () => {
             updatedAt
             featured
             isBlog
+            topics {
+                name
+                slug
+            }
         }
     }`
 
@@ -41,9 +45,16 @@ export const getFilteredPosts = async (id:string[]) => {
             }
             createdAt
             publishedAt
+            content {
+                json
+            }
             updatedAt
             featured
             isBlog
+            topics {
+                name
+                slug
+            }
         }
     }`
 
@@ -72,6 +83,10 @@ export const getPaginatedPosts = async (postsPerPage: number, endPost: number) =
             updatedAt
             featured
             isBlog
+            topics {
+                name
+                slug
+            }
         }
     }`
 
@@ -131,6 +146,10 @@ export const getFeaturedPosts = async () => {
             updatedAt
             featured
             isBlog
+            topics {
+                name
+                slug
+            }
         }
     }`
 
@@ -166,6 +185,10 @@ export const getPost = async (slug:string) => {
         updatedAt
         isBlog
         featured
+        topics {
+            name
+            slug
+        }
         }
     }`
 
@@ -281,4 +304,50 @@ export const getTags = async() => {
     const result = await request(graphqlAPI, query);
 
     return result.tags
+}
+
+export const getTopics = async() => {
+    const query = gql `
+    query Topics {
+        topics {
+            name
+            slug
+        }
+    }`
+
+    const result = await request(graphqlAPI, query);
+
+    return result.topics
+}
+
+export const getPostsByTopic = async (slug:string) => {
+    const query = gql `
+    query Posts($slug: String!) {
+        posts(where: {topics_some: {slug: $slug}, isBlog: true} orderBy: createdAt_DESC) {
+            id
+            category
+            title
+            slug
+            headline
+            thumbnail {
+                url
+            }
+            createdAt
+            publishedAt
+            content {
+                json
+            }
+            updatedAt
+            featured
+            isBlog
+            topics {
+                name
+                slug
+            }
+        }
+    }`
+
+    const result = await request(graphqlAPI, query, { slug });
+
+    return result.posts;
 }

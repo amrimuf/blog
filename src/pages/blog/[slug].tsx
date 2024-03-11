@@ -48,6 +48,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         featured={post.featured}
                         content={post.content.json.children}
                         center
+                        topics={post.topics}
                         />
                     </div>
 

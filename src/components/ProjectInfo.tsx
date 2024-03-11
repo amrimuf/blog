@@ -15,7 +15,7 @@ export default function ProjectInfo({...projectInfo}: Project) {
                 {projectInfo.tags.map((tag:{name:string},index:number) => 
                 <div 
                     key={index} 
-                    className="ring-1 ring-lime-500 italic px-2 rounded-full mt-2">{tag.name}
+                    className="label">{tag.name}
                 </div>)}
             </div>
         </div>

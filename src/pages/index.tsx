@@ -29,7 +29,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
             </div>
             <div className="flex">
                 <Link href='/blog' className={`${featuredPosts.length > 0 ? 'mx-auto mt-6 btn-primary' : 'hidden'}`}>
-                        View all posts
+                        View all blogs
                 </Link>
             </div>
         </section>

@@ -20,6 +20,11 @@ export type Project = {
     blurDataURL: string;
 };
 
+export interface Topic {
+    name: string,
+    slug: string
+}
+
 export type Post = {
     id: string;
     slug: string;
@@ -33,6 +38,7 @@ export type Post = {
     blurDataURL:string;
     featured: boolean
     isBlog: boolean
+    topics: Topic[]
 }
 
 export interface Paragraph {
@@ -52,6 +58,7 @@ export type PostMetaTitleType = {
     slug:string;
     featured:boolean;
     content: Content[]
+    topics: Topic[]
 };
 
 export type About = {

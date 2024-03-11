@@ -1,14 +1,14 @@
 import { InferGetStaticPropsType } from "next";
 
-import { getPaginatedPosts, getPageSize } from '@/services';
+import { getPaginatedPosts, getPageSize, getTopics } from '@/services';
 import Pagination from "@/components/Pagination";
 import { getPlaiceholder } from "plaiceholder";
 import { Post } from "@/lib/types";
-import BlogSearch from "@/components/BlogSearch";
+import BlogLayout from "@/components/BlogLayout";
 import { getPageNumbers } from "@/lib/helper";
 import { useEffect, useState } from "react";
 
-export default function Blog({ pageNumbers, currentPage, paginatedPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Blog({ pageNumbers, currentPage, paginatedPosts, topics }: InferGetStaticPropsType<typeof getStaticProps>) {
 
     const [isLoading, setIsLoading] = useState(false);
     
@@ -18,20 +18,23 @@ export default function Blog({ pageNumbers, currentPage, paginatedPosts }: Infer
         }, [paginatedPosts]);
 
         return (     
-            <BlogSearch
+            <BlogLayout
                 posts={paginatedPosts}
                 isLoading={isLoading}
+                topics={topics}
             >
                 <Pagination
                     pageNumbers={pageNumbers}
                     currentPage={currentPage}
                     setIsLoading={setIsLoading}
             />
-            </BlogSearch>
+            </BlogLayout>
         );
 }
 
 export async function getStaticProps() {
+    const topics = await getTopics() 
+
     const pageSize = await getPageSize()
     const postsPerPage = getPageNumbers(pageSize).postsPerPage
     const pageNumbers = getPageNumbers(pageSize).pageNumbers
@@ -49,7 +52,7 @@ export async function getStaticProps() {
     )
 
     return {
-        props: { pageNumbers, currentPage, paginatedPosts },
+        props: { pageNumbers, currentPage, paginatedPosts, topics },
         revalidate: 120
     }
 }
