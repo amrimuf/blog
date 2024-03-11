@@ -25,8 +25,8 @@ useEffect(() => {
     }, [postMeta.content]);
 
   return (
-      <div className={`${postMeta.center ? 'flex flex-col items-center mb-6 mx-4' : ''}`}>
-        <div className="flex items-center gap-2" data-fade='0'>
+      <div className={`${postMeta.center ? 'flex flex-col items-center mb-6 mx-2' : ''}`}>
+        <div className={clsx(postMeta.center? "justify-center" : "", "flex flex-wrap items-center gap-2")} data-fade='0'>
           <div className={` ${postMeta.center ? 'capitalize' : `text-neutral-700 dark:text-neutral-700 text-lg bg-lime-400 absolute -top-40 rotate-3 right-0 px-2 ${styles.paperShadow}`}`}>
             {postMeta.category}
           </div>
