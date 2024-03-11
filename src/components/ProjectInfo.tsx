@@ -13,10 +13,10 @@ export default function ProjectInfo({...projectInfo}: Project) {
             <p>{projectInfo.description}</p>
             <div className="flex flex-wrap justify-start gap-2">
                 {projectInfo.tags.map((tag:{name:string},index:number) => 
-                <div 
+                <button 
                     key={index} 
-                    className="label">{tag.name}
-                </div>)}
+                    className="label-off">{tag.name}
+                </button>)}
             </div>
         </div>
     );

@@ -73,7 +73,7 @@ export const alexandriaFontLoader = (weight: string) =>
 fetch(`${deploymentURL}/assets/fonts/Alexandria-${weight}.ttf`.toString()).then((res) => res.arrayBuffer())
 
 export const getPageNumbers = (pageSize:{pageInfo:{pageSize:number}}) => {
-    const postsPerPage = 1
+    const postsPerPage = 6
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(pageSize.pageInfo.pageSize / postsPerPage); i++) {
         pageNumbers.push(i);
