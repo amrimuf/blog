@@ -79,30 +79,20 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                             code: ({ children }) => <div className="bg-neutral-100 dark:bg-black rounded-md p-4 overflow-x-auto">
                             {children}
                             </div>,
-                            img: ({ src, altText, height, width }) => (
-                                <Image
-                                    src={src!}
-                                    alt={altText!}
-                                    height={height}
-                                    width={width}
-                                    blurDataURL={blurDataURL}
-                                    objectFit="cover"
-                                />
-                            ),
-                            // Asset: {
-                            //     image: ({ url, alt, caption, width, height, blurDataUrl }) => {
-                            //         return (
-                            //             <Image
-                            //                 src={url}
-                            //                 alt={alt}
-                            //                 width={width}
-                            //                 height={height}
-                            //                 placeholder={blurDataUrl ? 'blur' : 'empty'}
-                            //                 blurDataURL={blurDataUrl}
-                            //             />
-                            //         );
-                            //     },
-                            // },
+                            Asset: {
+                                image: ({ url, alt, caption, width, height, blurDataUrl }) => {
+                                    return (
+                                        <Image
+                                            src={url}
+                                            alt={alt}
+                                            width={width}
+                                            height={height}
+                                            placeholder={blurDataUrl ? 'blur' : 'empty'}
+                                            blurDataURL={blurDataUrl}
+                                        />
+                                    );
+                                },
+                            },
                         }}
                         // https://github.com/hygraph/rich-text/tree/main/packages/react-renderer
                         />
@@ -154,24 +144,24 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
     let nextSlug = posts[(index+1)%len].slug;    
     let nextTitle = posts[(index+1)%len].title;
     
-    // interface Asset {
-    //     id: string;
-    //     url: string;
-    //     mimeType: string;
-    //     width: number;
-    //     height: number;
-    // }
+    interface Asset {
+        id: string;
+        url: string;
+        mimeType: string;
+        width: number;
+        height: number;
+    }
 
-    // const images = post.content.references.filter((asset:Asset) =>
-    //     asset.mimeType.includes('image')
-    // );
+    const images = post.content.references.filter((asset:Asset) =>
+        asset.mimeType.includes('image')
+    );
 
-    // await Promise.all(
-    //     images.map(async (image:any) => {
-    //         const { base64 } = await getPlaiceholder(image.url);
-    //         image.blurDataUrl = base64;
-    //     })
-    // );
+    await Promise.all(
+        images.map(async (image:any) => {
+            const { base64 } = await getPlaiceholder(image.url);
+            image.blurDataUrl = base64;
+        })
+    );
 
     return {
         props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }, revalidate: 120
