@@ -13,6 +13,8 @@ export const getPosts = async () => {
             headline
             thumbnail {
                 url
+                width
+                height
             }
             createdAt
             publishedAt
@@ -42,6 +44,8 @@ export const getFilteredPosts = async (id:string[]) => {
             headline
             thumbnail {
                 url
+                width
+                height
             }
             createdAt
             publishedAt
@@ -74,6 +78,8 @@ export const getPaginatedPosts = async (postsPerPage: number, endPost: number) =
             headline
             thumbnail {
                 url
+                width
+                height
             }
             content {
                 json
@@ -137,6 +143,8 @@ export const getFeaturedPosts = async () => {
             headline
             thumbnail {
                 url
+                width
+                height
             }
             content {
                 json
@@ -168,6 +176,8 @@ export const getPost = async (slug:string) => {
         headline
         thumbnail {
             url
+            width
+            height
         }
         content {
             json
@@ -209,6 +219,8 @@ export const getProjects = async() => {
             description,
             thumbnail {
                 url
+                width
+                height
             }
             tags {
                 name
@@ -234,6 +246,8 @@ export const getRecentProjects = async() => {
             description,
             thumbnail {
                 url
+                width
+                height
             }
             tags {
                 name
@@ -331,6 +345,8 @@ export const getPostsByTopic = async (slug:string) => {
             headline
             thumbnail {
                 url
+                width
+                height
             }
             createdAt
             publishedAt

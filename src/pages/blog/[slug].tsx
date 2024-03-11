@@ -60,8 +60,8 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                     <Image 
                         src={post.thumbnail.url} 
                         alt={post.title} 
-                        width='500'
-                        height='500'
+                        width={post.thumbnail.width}
+                        height={post.thumbnail.height}
                         blurDataURL={blurDataURL} 
                         placeholder='blur' 
                         className={`content-image ${styles.handDrawnBorderImage}`} 
@@ -102,7 +102,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
 
                     <ShareButtons post={post} />
 
-                    <div className={prevTitle == post.title && nextTitle == post.title ? 'hidden' : 'flex justify-between'}>
+                    <div className={prevTitle == post.title && nextTitle == post.title ? 'hidden' : 'flex flex-wrap justify-between'}>
                         <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4' href={`/blog/${prevSlug}`}>
                             <BsChevronLeft className='hover:text-lime-500 stroke-1'/>
                             <div className='w-[100px] sm:w-[300px]'>
