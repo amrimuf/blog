@@ -51,13 +51,13 @@ export default function BlogSearch({children, posts, isLoading}:BlogSearch) {
         <Layout>
         <Seo
         templateTitle='Blog'
-        description='Thoughts and tutorials about web development and programming.'
+        description='Notes and tips on all things web dev and programming!'
         />
         <h1 data-fade='0'>
             Blog
         </h1>
         <p className='mt-2 mb-6' data-fade='1'>
-        Thoughts and tutorials about web development and programming.
+        Notes and tips on all things web dev and programming!
         </p>
         <div className={`${ posts.length !== 0 || searchField.length !== 0 ? 'relative w-full mb-4' : 'hidden'}`} data-fade='2'>
             <input 

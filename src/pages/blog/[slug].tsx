@@ -12,12 +12,11 @@ import styles from '@/styles/styles.module.css'
 import { getPlaiceholder } from 'plaiceholder';
 import { Post } from '@/lib/types';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-import clsx from 'clsx';
+import ShareButtons from '@/components/Share';
 
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
-
         return (
             <Layout>
                 <Seo
@@ -47,6 +46,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         title={post.title}
                         slug={post.slug}
                         featured={post.featured}
+                        content={post.content.json.children}
                         center
                         />
                     </div>
@@ -61,8 +61,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         className={`object-cover h-64 w-auto rounded mb-6 ${styles.handDrawnBorderImage}`} 
                         data-fade='2'
                         />
-                </div>
-
+                </div>                
                 <div className="md:w-10/12 w-full mx-auto" data-fade='3'>
                     <article className='content mx-auto' >
                         <RichText
@@ -71,16 +70,18 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         // https://github.com/hygraph/rich-text/tree/main/packages/react-renderer
                         />        
                     </article>
-                    
+
+                    <ShareButtons post={post} />
+
                     <div className={prevTitle == post.title && nextTitle == post.title ? 'hidden' : 'flex justify-between'}>
-                        <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4 mt-12' href={`/blog/${prevSlug}`}>
+                        <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4' href={`/blog/${prevSlug}`}>
                             <BsChevronLeft className='hover:text-lime-500 stroke-1'/>
                             <div className='w-[100px] sm:w-[300px]'>
                                 <div className='text-lime-500 dark:text-lime-500 font-semibold'>PREVIOUS</div> 
                                 <div className='truncate'>{prevTitle}</div>
                             </div>
                         </Link>
-                        <Link className='inline-flex items-center justify-between space-x-2  rounded py-2 mt-4 mt-12 text-right' href={`/blog/${nextSlug}`}>
+                        <Link className='inline-flex items-center justify-between space-x-2  rounded py-2 mt-4 text-right' href={`/blog/${nextSlug}`}>
                             <div className='w-[100px] sm:w-[270px]'>
                                 <div className='text-lime-500 dark:text-lime-500 font-semibold'>NEXT</div>
                                 <div className='truncate'>{nextTitle}</div>

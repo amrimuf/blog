@@ -35,6 +35,15 @@ export type Post = {
     isBlog: boolean
 }
 
+export interface Paragraph {
+    text: string;
+}
+
+export interface Content {
+    type: string;
+    children: Paragraph[];
+}
+
 export type PostMetaTitleType = {
     category: string;
     date: string | Date;
@@ -42,6 +51,7 @@ export type PostMetaTitleType = {
     center?: boolean;
     slug:string;
     featured:boolean;
+    content: Content[]
 };
 
 export type About = {

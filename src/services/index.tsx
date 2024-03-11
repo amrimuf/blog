@@ -64,6 +64,9 @@ export const getPaginatedPosts = async (postsPerPage: number, endPost: number) =
             thumbnail {
                 url
             }
+            content {
+                json
+            }
             createdAt
             publishedAt
             updatedAt
@@ -119,6 +122,9 @@ export const getFeaturedPosts = async () => {
             headline
             thumbnail {
                 url
+            }
+            content {
+                json
             }
             createdAt
             publishedAt

@@ -41,13 +41,13 @@ export default function Projects({ tags, projects }:InferGetStaticPropsType<type
     <Layout>
         <Seo
         templateTitle='Projects'
-        description='A few projects I have worked on recently.'
+        description="Some of the cool projects I\'ve been tinkering with lately!"
         />
         <h1 data-fade='0'>
             Projects
         </h1>
         <p className='mt-2' data-fade='1'>
-            A few projects I have worked on recently.
+        Some of the cool projects I've been tinkering with lately!
         </p>
 
         <div className={`${filteredProjects.length > 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start space-y-2" : 'hidden'}`} data-fade='3'>

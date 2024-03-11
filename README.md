@@ -12,23 +12,19 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Folder Structure
+Below is the structured folder layout of this project:
+- **public**
+  - **assets**: Contains static assets like images, fonts, or other files that are served publicly.
+  - **favicon**: Holds favicon-related files such as `.ico` files for different platforms.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **src**
+  - **components**: Stores React components that are reusable across different parts of the application.
+  - **constant**: Contains constant values, configurations, or enums used throughout the application.
+  - **context**: Holds React context providers and related context files for managing state at a higher level in the component tree.
+  - **hooks**: Contains custom React hooks that encapsulate reusable logic, allowing sharing logic across different components.
+  - **lib**: Stores utility functions, helper classes, or third-party libraries used across the application.
+  - **pages**: Contains the pages of the application. Each file in this directory corresponds to a route in the app.
+    - **api**: Contains API routes, implemented using Next.js API routes feature.
+  - **services**: Contains modules responsible for interacting with external services such as APIs or databases (GraphQL).
+  - **styles**: Holds global or shared stylesheets, CSS modules, or other styling-related files for the application.
