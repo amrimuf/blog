@@ -65,7 +65,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         height={post.thumbnail.height}
                         blurDataURL={blurDataURL} 
                         placeholder='blur' 
-                        className={clsx(post.isBlog ? 'content-image' : 'h-32 sm:h-64 w-auto', styles.handDrawnBorderImage)} 
+                        className={clsx(post.isBlog ? 'content-image' : 'max-h-40 sm:max-h-64 w-auto', styles.handDrawnBorderImage)} 
                         data-fade='2'
                         />
                 </div>                
@@ -81,11 +81,11 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                             {children}
                             </div>,
                             Asset: {
-                                image: ({ url, alt, caption, width, height, blurDataUrl }) => {
+                                image: ({ url, alt, caption, width, height, blurDataUrl, fileName }) => {
                                     return (
                                         <Image
                                             src={url}
-                                            alt={alt}
+                                            alt={fileName}
                                             width={width}
                                             height={height}
                                             placeholder={blurDataUrl ? 'blur' : 'empty'}
@@ -152,6 +152,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
         mimeType: string;
         width: number;
         height: number;
+        filName: string;
     }
 
     const images = post.content.references.filter((asset:Asset) =>

@@ -47,7 +47,7 @@ useEffect(() => {
           )}
         </div>
         {postMeta.center ? 
-          <h1 className='my-4 text-center' data-fade='1'>{postMeta.title}</h1> :
+          <h1 className='mb-0 mt-4 text-center md:my-4' data-fade='1'>{postMeta.title}</h1> :
           <Link href={`/blog/${postMeta.slug}`}><h3 className='mt-4'>{postMeta.title}</h3></Link>
         }
       </div>

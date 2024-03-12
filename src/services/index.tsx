@@ -188,6 +188,7 @@ export const getPost = async (slug:string) => {
                     mimeType
                     width
                     height
+                    fileName
                 }
             }
         }
