@@ -42,6 +42,10 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
         setSearchField(e.target.value) 
     };
 
+    const handleFilter = (topicSlug:string) => {
+        setIsSearching(true)
+        router.push(`${deploymentURL}/blog/topics/${topicSlug}`)
+    };
 
     const handleKeyUp = (e: React.KeyboardEvent<HTMLElement>) => {
         if (e.key == 'Enter') {
@@ -65,13 +69,13 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
         </p>
         <div className={ posts.length !== 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start" : "hidden"} data-fade='2'>
             {topics.sort().map((t:Topic, index:number) => (
-                <Link 
-                    href={`${deploymentURL + '/blog/topics/' + t.slug}`}
+                <button 
+                    onClick={() => handleFilter(t.slug)}
                     key={index}
                     className={ t.slug == slug ? "label-selected" : "label"}
                 >
                     {t.name}
-                </Link>
+                </button>
             ))}
             <Link href={`${deploymentURL + '/blog'}`} className='btn-primary'
                 >Show all</Link>

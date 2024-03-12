@@ -10,7 +10,7 @@ import { getPost, getNextPrevPosts, getPosts } from '@/services';
 import Link from 'next/link';
 import styles from '@/styles/styles.module.css'
 import { getPlaiceholder } from 'plaiceholder';
-import { Post } from '@/lib/types';
+import { Asset, Post } from '@/lib/types';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import ShareButtons from '@/components/Share';
 import clsx from 'clsx';
@@ -65,7 +65,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         height={post.thumbnail.height}
                         blurDataURL={blurDataURL} 
                         placeholder='blur' 
-                        className={clsx(post.isBlog ? 'content-image' : 'max-h-40 sm:max-h-64 w-auto', styles.handDrawnBorderImage)} 
+                        className={clsx(post.isBlog ? 'content-image' : 'max-h-40 sm:max-h-64 w-auto', 'mb-6', styles.handDrawnBorderImage)} 
                         data-fade='2'
                         />
                 </div>                
@@ -145,15 +145,6 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
     let prevTitle = posts[(index+len-1)%len].title;
     let nextSlug = posts[(index+1)%len].slug;    
     let nextTitle = posts[(index+1)%len].title;
-    
-    interface Asset {
-        id: string;
-        url: string;
-        mimeType: string;
-        width: number;
-        height: number;
-        filName: string;
-    }
 
     const images = post.content.references.filter((asset:Asset) =>
         asset.mimeType.includes('image')

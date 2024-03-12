@@ -32,7 +32,7 @@
     }
 
     .label {
-        @apply ring-1 ring-lime-500 italic px-2 rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out
+        @apply ring-1 ring-lime-500 italic px-2 rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out focus:bg-lime-500/20
     }
 
     .label-off {
@@ -48,7 +48,7 @@
     }
 
     .content-image {
-        @apply object-cover rounded mb-6 max-w-full max-h-full
+        @apply object-cover rounded max-w-full max-h-full
     }
 
     .thumbnail {

@@ -20,6 +20,15 @@ export type Project = {
     blurDataURL: string;
 };
 
+export interface Asset {
+    id: string;
+    url: string;
+    mimeType: string;
+    width: number;
+    height: number;
+    filName: string;
+}
+
 export interface Topic {
     name: string,
     slug: string
