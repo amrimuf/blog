@@ -77,7 +77,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
                     {t.name}
                 </button>
             ))}
-            <button  onClick={() => handleFilter('')} className='btn-primary'
+            <button  onClick={() => router.pathname !== '/blog' ? handleFilter('') : ''} className='btn-primary'
                 >Show all</button>
         </div>
         <div className={`${ posts.length !== 0 || searchField.length !== 0 ? 'relative w-full my-4' : 'hidden'}`} data-fade='2'>
