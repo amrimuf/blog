@@ -13,6 +13,7 @@ import { getPlaiceholder } from 'plaiceholder';
 import { Post } from '@/lib/types';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import ShareButtons from '@/components/Share';
+import clsx from 'clsx';
 
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
     const [isClient, setIsClient] = useState(false);
@@ -64,7 +65,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         height={post.thumbnail.height}
                         blurDataURL={blurDataURL} 
                         placeholder='blur' 
-                        className={`content-image ${styles.handDrawnBorderImage}`} 
+                        className={clsx(post.isBlog ? 'content-image' : 'h-32 sm:h-64 w-auto', styles.handDrawnBorderImage)} 
                         data-fade='2'
                         />
                 </div>                
