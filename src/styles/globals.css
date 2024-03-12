@@ -57,9 +57,11 @@
 
     .content {
         @apply 
-        /* font */
+        /* heading */
         wysiwyg-h2:mb-2 wysiwyg-h2:m-0
         wysiwyg-h3:mb-2 wysiwyg-h3:m-0
+        wysiwyg-p:m-0 wysiwyg-p:mb-6
+        /* font */
         wysiwyg lg:wysiwyg-lg max-w-none 
         dark:wysiwyg-dark hover:wysiwyg-a:!text-lime-500 
         /* link */
@@ -72,6 +74,9 @@
         /* code block */
         wysiwyg-pre:bg-neutral-900 wysiwyg-pre:text-lime-500
         dark:wysiwyg-pre:bg-black dark:wysiwyg-pre:text-lime-500
+        wysiwyg-pre:m-0 wysiwyg-pre:mb-6
+
+        wysiwyg-blockquote:border-l-lime-500
         ;
     }
 
