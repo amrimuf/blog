@@ -28,7 +28,7 @@ export const getPosts = async () => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.posts;
 }
@@ -62,7 +62,7 @@ export const getFilteredPosts = async (id:string[]) => {
         }
     }`
 
-    const result = await request(graphqlAPI, query, { id });
+    const result: any = await request(graphqlAPI, query, { id });
 
     return result.posts;
 }
@@ -96,7 +96,7 @@ export const getPaginatedPosts = async (postsPerPage: number, endPost: number) =
         }
     }`
 
-    const result = await request(graphqlAPI, query, { postsPerPage, endPost });
+    const result: any = await request(graphqlAPI, query, { postsPerPage, endPost });
 
     return result.posts;
 }
@@ -111,7 +111,7 @@ export const getPageSize = async () => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.postsConnection;
 }
@@ -127,7 +127,7 @@ export const getNextPrevPosts = async () => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.posts;
 }
@@ -161,7 +161,7 @@ export const getFeaturedPosts = async () => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.posts;
 }
@@ -203,7 +203,7 @@ export const getPost = async (slug:string) => {
         }
     }`
 
-    const result = await request(graphqlAPI, query, { slug });
+    const result: any = await request(graphqlAPI, query, { slug });
 
     return result.post;
 }
@@ -230,7 +230,7 @@ export const getProjects = async() => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.projects
 }
@@ -258,7 +258,7 @@ export const getRecentProjects = async() => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.projects
 }
@@ -287,7 +287,7 @@ export const getAbout = async() => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.abouts
 }
@@ -303,7 +303,7 @@ export const getProfile = async() => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.abouts
 }
@@ -316,7 +316,7 @@ export const getTags = async() => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.tags
 }
@@ -330,7 +330,7 @@ export const getTopics = async() => {
         }
     }`
 
-    const result = await request(graphqlAPI, query);
+    const result: any = await request(graphqlAPI, query);
 
     return result.topics
 }
@@ -364,7 +364,7 @@ export const getPostsByTopic = async (slug:string) => {
         }
     }`
 
-    const result = await request(graphqlAPI, query, { slug });
+    const result: any = await request(graphqlAPI, query, { slug });
 
     return result.posts;
 }
