@@ -21,7 +21,7 @@ export default function ProjectCard({ ...projectInfo }: Project) {
                 alt={projectInfo.title} 
                 width='250' 
                 height='250'
-                className="md:block w-full rounded hidden object-cover h-16 w-16" />
+                className="md:block rounded hidden object-cover h-16 w-16" />
                 <ProjectInfo
                     {...projectInfo}
                 />
