@@ -2,6 +2,7 @@ import PostCard from './PostCard';
 import { Post } from '@/lib/types';
 
 import clsx from "clsx";
+import { useRouter } from 'next/router';
 
 interface PostList {
     posts:Post[]
@@ -11,6 +12,7 @@ interface PostList {
 }
 
 export default function PostList({ posts, isLoading, isSearching, searchField }: PostList) {
+    const router = useRouter()
     if (isLoading || isSearching) {
         return (
         <div className="flex justify-center items-center space-x-1" data-fade='3'>
@@ -24,7 +26,7 @@ export default function PostList({ posts, isLoading, isSearching, searchField }:
     }
 
     else if (posts.length === 0) {  
-        return <p className={clsx(searchField ? 'text-center' : 'text-left','font-semibold !text-lime-500 text-lg mt-2')}>{searchField ? 'Sorry, no results found :(' : 'My first post - coming soon!'}</p>
+        return <p className={clsx(router.pathname !== '/blog' ? 'text-center' : 'text-left','font-semibold !text-lime-500 text-lg mt-2')}>{router.pathname !== '/blog' ? 'Sorry, no results found :(' : 'My first post - coming soon!'}</p>
         
     } else {
         return (
