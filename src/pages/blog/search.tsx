@@ -16,7 +16,7 @@ export default function Blog({ filteredPosts, topics }: InferGetServerSidePropsT
 
 export async function getServerSideProps({ query, res}:GetServerSidePropsContext) {
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120')
-    const { q } = query as { q: string };
+    const { q, t } = query as { q: string, t:string };
 
     // !!!back here if "some" can be done in the hygraph query
     // only need postsId
@@ -31,7 +31,7 @@ export async function getServerSideProps({ query, res}:GetServerSidePropsContext
             )
         }).map((result:{id:string}) => postsId.push(result.id))
     
-    const rawFilteredPosts = await getFilteredPosts(postsId) || []
+    const rawFilteredPosts = await getFilteredPosts(postsId, t ?? '') || []
     const filteredPosts = await Promise.all(
         rawFilteredPosts.map(async (post:Post) => {
             const { base64 } = await getPlaiceholder(post.thumbnail.url);

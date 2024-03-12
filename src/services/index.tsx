@@ -33,10 +33,10 @@ export const getPosts = async () => {
     return result.posts;
 }
 
-export const getFilteredPosts = async (id:string[]) => {
+export const getFilteredPosts = async (id:string[], t:string) => {
     const query = gql `
-    query Posts($id: [ID]) {
-        posts(where: {isBlog: true, AND: {id_in: $id}} orderBy:createdAt_DESC) {
+    query Posts($id: [ID], $t: String) {
+        posts(where: {isBlog: true, AND: {id_in: $id, topics_some: {name_contains: $t}}} orderBy:createdAt_DESC) {
             id
             category
             title
@@ -62,7 +62,7 @@ export const getFilteredPosts = async (id:string[]) => {
         }
     }`
 
-    const result: any = await request(graphqlAPI, query, { id });
+    const result: any = await request(graphqlAPI, query, { id, t });
 
     return result.posts;
 }

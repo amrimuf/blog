@@ -29,6 +29,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
     
 
     const [searchField, setSearchField] = useState(router.query.q ? router.query.q : '' );
+    const [selectedTopic, setSelectedTopic] = useState(router.query.t ? router.query.t : router.query.topic);
 
     const handleChange = (e: {target: {value: string}} ) => {
         if (e.target.value == '') {
@@ -41,15 +42,26 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
         }
         setSearchField(e.target.value) 
     };
+    
 
     const handleFilter = (topicSlug:string) => {
         setIsSearching(true)
-        router.push( router.asPath.split('/').pop() != topicSlug && topicSlug ? `${deploymentURL}/blog/topics/${topicSlug}` : '/blog')
+        setSelectedTopic(topicSlug)
+            if (selectedTopic != topicSlug && topicSlug ) {
+                if (searchField && topicSlug) {
+                    router.push(`/blog/search?q=${searchField}&t=${topicSlug}`)
+                } else {
+                    router.push(`${deploymentURL}/blog/topics/${topicSlug}`)
+                }
+            } else {
+                router.push('/blog')
+            }
+        
     };
 
     const handleKeyUp = (e: React.KeyboardEvent<HTMLElement>) => {
         if (e.key == 'Enter') {
-            router.push(`/blog/search?q=${searchField}`,
+            router.push(`/blog/search?q=${searchField}${selectedTopic ? '&t=' + selectedTopic : '' }`,
         ) 
         setIsSearching(true)
         setIsTyping(false)
@@ -61,8 +73,8 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
         templateTitle='Blog'
         description='Notes and tips on all things web dev and programming!'
         />
-        <h1 data-fade='0'>
-            Blog
+        <h1 className='capitalize' data-fade='0'>
+            Blog{selectedTopic? `: ${selectedTopic}` : ''}
         </h1>
         <p className='mt-2' data-fade='1'>
         Notes and tips on all things web dev and programming!
@@ -72,7 +84,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
                 <button 
                     onClick={() => handleFilter(t.slug)}
                     key={index}
-                    className={ t.slug == slug ? "label-selected" : "label"}
+                    className={ t.slug == slug || router.query.t == t.slug ? "label-selected" : "label"}
                 >
                     {t.name}
                 </button>
