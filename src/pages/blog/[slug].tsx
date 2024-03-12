@@ -165,7 +165,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
     );
 
     return {
-        props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }, revalidate: 120
+        props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }, revalidate: false
     }
     } catch {
         return { notFound: true };
