@@ -44,7 +44,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
 
     const handleFilter = (topicSlug:string) => {
         setIsSearching(true)
-        router.push(`${deploymentURL}/blog/topics/${topicSlug}`)
+        router.push( router.asPath.split('/').pop() != topicSlug && topicSlug ? `${deploymentURL}/blog/topics/${topicSlug}` : '/blog')
     };
 
     const handleKeyUp = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -77,8 +77,8 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
                     {t.name}
                 </button>
             ))}
-            <Link href={`${deploymentURL + '/blog'}`} className='btn-primary'
-                >Show all</Link>
+            <button  onClick={() => handleFilter('')} className='btn-primary'
+                >Show all</button>
         </div>
         <div className={`${ posts.length !== 0 || searchField.length !== 0 ? 'relative w-full my-4' : 'hidden'}`} data-fade='2'>
             <input 
