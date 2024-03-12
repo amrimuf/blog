@@ -75,9 +75,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         content={post.content.json.children}
                         references={post.content.references}
                         renderers={{
-                            h2: ({ children }) => <h2 className='m-0 mb-2'>{children}</h2>,
-                            h3: ({ children }) => <h3 className='m-0'>{children}</h3>,
-                            code: ({ children }) => <div className="bg-neutral-100 dark:bg-black rounded-md p-4 overflow-x-auto">
+                            code: ({ children }) => <div className="bg-neutral-900 dark:bg-black dark:text-lime-500 text-lime-500 rounded-md p-4 overflow-x-auto">
                             {children}
                             </div>,
                             Asset: {
@@ -96,6 +94,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                                 },
                             },
                         }}
+                        // check out tailwind.config.js (dark) and global.css (light)
                         // https://github.com/hygraph/rich-text/tree/main/packages/react-renderer
                         />
                     )}        

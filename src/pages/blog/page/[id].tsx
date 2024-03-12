@@ -31,6 +31,7 @@ export default function Blog({ pageNumbers, currentPage, paginatedPosts, topics 
 }
 
 export async function getStaticProps({params}:GetStaticPropsContext) {
+    try {
     const pageSize = await getPageSize()
     const pageNumbers = getPageNumbers(pageSize).pageNumbers;
     const postsPerPage = getPageNumbers(pageSize).postsPerPage
@@ -47,11 +48,14 @@ export async function getStaticProps({params}:GetStaticPropsContext) {
             };
         })
     )
-    const topics = await getTopics() 
+    const topics = await getTopics() || [] 
 
     return {
         props: { pageNumbers, currentPage, paginatedPosts, topics },
         revalidate: 120
+    }
+    } catch {
+        return { notFound: true };
     }
 }
 
