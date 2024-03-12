@@ -26,6 +26,7 @@ export async function getServerSideProps({ query, res}:GetServerSidePropsContext
         allPosts.filter((post:{title:string,headline:string,category:string,topics:Topic[]}) => {
             return (post.title.toLowerCase().split(" ").some((word:string) => q.toLowerCase().split(" ").some((query:string) => query === word || word.includes(query)))
             || post.headline.toLowerCase().split(" ").some((word:string) => q.toLowerCase().split(" ").some((query:string) => query === word || word.includes(query)))
+            || post.category.toLowerCase().split(" ").some((word:string) => q.toLowerCase().split(" ").some((query:string) => query === word || word.includes(query)))
             || post.topics.some((word:{name:string}) => q.toLowerCase().split(" ").some((query:string) => query === word.name || word.name.includes(query)))
             )
         }).map((result:{id:string}) => postsId.push(result.id))
