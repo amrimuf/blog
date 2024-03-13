@@ -33,7 +33,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
             await Prism.highlightAll();
         };
         highlight()
-    }, [post]); 
+    }, [post, isClient]); 
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
         return (
