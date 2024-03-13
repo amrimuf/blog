@@ -117,16 +117,16 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
                 >Show all</button>
         </div>
 
-        <div className={`${ posts.length !== 0 || router.pathname !== '/blog' ? 'relative w-full my-4' : 'hidden'}`} data-fade='2'>
+        <div className={`${ posts.length !== 0 || router.pathname !== '/blog' ? 'w-full my-4 flex' : 'hidden'}`} data-fade='2'>
             <input 
-            className="px-4 py-2 border-2 border-lime-500 dark:border-lime-500 block w-full rounded-full bg-white/70 dark:bg-black/30"
+            className="px-4 py-2 border-2 focus:outline-none focus:border-dashed border-r-0 border-lime-500 dark:border-lime-500 block w-full rounded-l-full bg-white/70 dark:bg-black/30"
             type = "text" 
             placeholder = "Search posts"
             value={searchField}
             onChange = {handleChange} 
             onKeyUp = {handleKeyUp}
             />
-            <button onClick={() => router.pathname !== '/blog' || searchField ? handleSearch(searchField): ''} className="flex gap-x-2 items-center absolute right-0 top-0 btn-primary sm:text-base"><GoSearch className=" h-5 w-5"/> Search</button>
+            <button onClick={() => router.pathname !== '/blog' || searchField ? handleSearch(searchField): ''} className="flex gap-x-2 items-center rounded-l-none btn-primary sm:text-base"><GoSearch className="h-5 w-5 stroke-[1.5px]"/></button>
         </div>
             {/* {!isTyping ? */}
             <section data-fade='3'>
