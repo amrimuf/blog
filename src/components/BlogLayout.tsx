@@ -126,7 +126,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
             onChange = {handleChange} 
             onKeyUp = {handleKeyUp}
             />
-            <button onClick={() => router.pathname !== '/blog' || searchField ? handleSearch(searchField): ''} className="flex gap-x-2 items-center absolute right-0 top-0 btn-primary text-base"><GoSearch className=" h-5 w-5"/> Search</button>
+            <button onClick={() => router.pathname !== '/blog' || searchField ? handleSearch(searchField): ''} className="flex gap-x-2 items-center absolute right-0 top-0 btn-primary sm:text-base"><GoSearch className=" h-5 w-5"/> Search</button>
         </div>
             {/* {!isTyping ? */}
             <section data-fade='3'>
