@@ -1,7 +1,5 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 
-import Layout from "@/components/Layout";
-import Seo from "@/components/Seo";
 import { getPostsByTopic, getTopics } from "@/services";
 import { getPlaiceholder } from "plaiceholder";
 import { Post, Topic } from "@/lib/types";
