@@ -15,12 +15,21 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import ShareButtons from '@/components/Share';
 import clsx from 'clsx';
 
+import Prism from 'prismjs';
+// import "prismjs/components/prism-jsx";
+import 'prismjs/plugins/line-numbers/prism-line-numbers';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
         setIsClient(true);
+
+        Prism.highlightAll();
     }, []);
+
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
         return (
@@ -78,6 +87,16 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                             code: ({ children }) => <div className="bg-neutral-900 dark:bg-black dark:text-lime-500 text-lime-500 rounded-md p-4 overflow-x-auto">
                             {children}
                             </div>,
+                            // back here: add dynamic language
+                            code_block: ({ children }) => {
+                                return (
+                                    <span className='mb-6'>
+                                    <pre className="line-numbers language-javascript">
+                                        <code>{children}</code>
+                                    </pre>
+                                    </span>
+                                );
+                            },
                             Asset: {
                                 image: ({ url, alt, caption, width, height, blurDataUrl, fileName }) => {
                                     return (

@@ -76,9 +76,9 @@
         wysiwyg-video:mx-auto wysiwyg-video:border wysiwyg-video:border-4 
         wysiwyg-video:border-lime-500 wysiwyg-img:mx-auto 
         /* code block */
-        wysiwyg-pre:bg-neutral-900 wysiwyg-pre:text-lime-500
-        dark:wysiwyg-pre:bg-black dark:wysiwyg-pre:text-lime-500
-        wysiwyg-pre:m-0 wysiwyg-pre:mb-6
+        /* wysiwyg-pre:bg-neutral-900 dark:wysiwyg-pre:bg-black  */
+        /* wysiwyg-pre:text-lime-500 dark:wysiwyg-pre:text-lime-500 */
+        /* wysiwyg-pre:m-0 wysiwyg-pre:mb-6 */
 
         wysiwyg-blockquote:border-l-lime-500
         ;
