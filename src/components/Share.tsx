@@ -57,7 +57,7 @@ const ShareButton: React.FC<{ post: Post }> = ({ post }) => {
             </div>
             )}
             <button onClick={handleToggleDropdown} className="text-base btn-primary flex items-center font-semibold">
-                Share <span className="ml-2"></span><PiShareFatFill />
+                Share this post <span className="ml-2"></span><PiShareFatFill />
             </button>
         </div>        
     );

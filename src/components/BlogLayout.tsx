@@ -103,19 +103,6 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
         <p className='mt-2' data-fade='1'>
         Notes and tips on all things web dev and programming!
         </p>
-        <div className={ topics.length !== 0 ? "flex flex-wrap gap-2 mt-6 items-center justify-center sm:justify-start" : "hidden"} data-fade='2'>
-            {topics.sort().map((t:Topic, index:number) => (
-                <button 
-                    onClick={() => handleFilter(t.slug)}
-                    key={index}
-                    className={ t.slug == slug || router.query.t == t.slug ? "label-selected" : "label"}
-                >
-                    {t.name}
-                </button>
-            ))}
-            <button  onClick={() => router.pathname !== '/blog' ? handleFilter('') : ''} className='btn-primary'
-                >Show all</button>
-        </div>
 
         <div className={`${ posts.length !== 0 || router.pathname !== '/blog' ? 'w-full my-4 flex' : 'hidden'}`} data-fade='2'>
             <input 
@@ -128,6 +115,20 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
             />
             <button onClick={() => router.pathname !== '/blog' || searchField ? handleSearch(searchField): ''} className="flex gap-x-2 items-center rounded-l-none btn-primary sm:text-base"><GoSearch className="h-5 w-5 stroke-[1.5px]"/></button>
         </div>
+        <div className={ topics.length !== 0 ? "flex flex-wrap gap-2 mb-6 items-center justify-center sm:justify-start" : "hidden"} data-fade='2'>
+            {topics.sort().map((t:Topic, index:number) => (
+                <button 
+                    onClick={() => handleFilter(t.slug)}
+                    key={index}
+                    className={ t.slug == slug || router.query.t == t.slug ? "label-selected" : "label"}
+                >
+                    {t.name}
+                </button>
+            ))}
+            <button  onClick={() => router.pathname !== '/blog' ? handleFilter('') : ''} className='btn-primary'
+                >Show all posts</button>
+        </div>
+        
             {/* {!isTyping ? */}
             <section data-fade='3'>
             <PostList 

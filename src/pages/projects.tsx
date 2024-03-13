@@ -63,7 +63,7 @@ export default function Projects({ tags, projects }:InferGetStaticPropsType<type
             <button
                 onClick={() => handleClear()}
                 className='btn-primary'
-                >Show All</button>
+                >Show All projects</button>
         </div>
         
         {filteredProjects.length > 0 ? 
