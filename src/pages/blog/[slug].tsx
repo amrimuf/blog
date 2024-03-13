@@ -24,15 +24,16 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
     const [isClient, setIsClient] = useState(false);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         setIsClient(true);
     }, []);
-
-    useLayoutEffect(() => {
-        if (isClient) {
-            Prism.highlightAll();
-        }
-    }, [isClient]);
+    
+    useEffect(() => {
+        const highlight = async () => {
+            await Prism.highlightAll();
+        };
+        highlight()
+    }, [post]); 
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
         return (
@@ -91,8 +92,8 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                             // back here: add dynamic language
                             code_block: ({ children }) => {
                                 return (
-                                    <pre className="line-numbers language-javascript">
-                                        <code>{children}</code>
+                                    <pre className="line-numbers">
+                                        <code className='language-javascript'>{children}</code>
                                     </pre>
                                 );
                             },
