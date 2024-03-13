@@ -23,11 +23,11 @@ export default function Blog({ pageNumbers, currentPage, paginatedPosts, topics 
                 isLoading={isLoading}
                 topics={topics}
             >
-                <Pagination
+                {/* <Pagination
                     pageNumbers={pageNumbers}
                     currentPage={currentPage}
                     setIsLoading={setIsLoading}
-            />
+            /> */}
             </BlogLayout>
         );
 }
