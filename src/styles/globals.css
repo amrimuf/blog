@@ -59,6 +59,11 @@
         @apply text-xs -mt-4 flex justify-end italic
     }
 
+    /* override prismjs theme */
+    .content pre[class*="language-"].line-numbers {
+        @apply mb-6 bg-black
+    }
+
     .content {
         @apply 
         /* heading */
