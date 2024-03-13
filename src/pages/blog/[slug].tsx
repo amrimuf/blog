@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-
+import { renderToString } from 'react-dom/server';
 import Layout from '@/components/Layout';
 import PostMetaTitle from '@/components/PostMetaTitle';
 import Seo from '@/components/Seo';
@@ -16,7 +17,11 @@ import ShareButtons from '@/components/Share';
 import clsx from 'clsx';
 
 import Prism from 'prismjs';
-// import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-go";
+import "prismjs/components/prism-python"
+import "prismjs/components/prism-php"
+import 'prismjs/components/prism-markup-templating';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
@@ -91,9 +96,11 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         renderers={{
                             // back here: add dynamic language
                             code_block: ({ children }) => {
+                                const lang = renderToString(<>{children}</>).substring(renderToString(<>{children}</>).indexOf('#') + 1).split(/\s+/)[0]
+                                const result = renderToString(<>{children}</>).replace(new RegExp(`^.*#${lang}.*$`, 'gm'), '') 
                                 return (
-                                    <pre className="line-numbers">
-                                        <code className='language-javascript'>{children}</code>
+                                    <pre className={`line-numbers`}>
+                                        <code className={clsx('language' + '-' + lang)}>{result}</code>
                                     </pre>
                                 );
                             },
