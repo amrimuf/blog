@@ -21,6 +21,10 @@ import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-go";
 import "prismjs/components/prism-python"
 import "prismjs/components/prism-php"
+import "prismjs/components/prism-cshtml"
+import "prismjs/components/prism-json"
+import "prismjs/components/prism-java"
+import "prismjs/components/prism-rust"
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 import 'prismjs/themes/prism-tomorrow.css';
@@ -97,10 +101,13 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                             // back here: add dynamic language
                             code_block: ({ children }) => {
                                 const lang = renderToString(<>{children}</>).substring(renderToString(<>{children}</>).indexOf('#') + 1).split(/\s+/)[0]
-                                const result = renderToString(<>{children}</>).replace(new RegExp(`^.*#${lang}.*$`, 'gm'), '') 
+                                const excludedRegex = new RegExp(`^.*${`#${lang}`}.*$`, 'gm'); // Create a regular expression to match the entire line containing the exclusion string
+                                const lines = renderToString(<>{children}</>).split('\n'); // Split the string into lines
+                                const filteredLines = lines.filter(line => !excludedRegex.test(line)); // Filter out lines containing the exclusion string
+                                const result = filteredLines.join('\n'); // Join the remaining lines back together
                                 return (
                                     <pre className={`line-numbers`}>
-                                        <code className={clsx('language' + '-' + lang)}>{result}</code>
+                                        <code className={clsx('language' + '-' + lang)}><div dangerouslySetInnerHTML={{ __html: result }} /></code>
                                     </pre>
                                 );
                             },
