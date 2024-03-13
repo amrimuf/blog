@@ -32,9 +32,13 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
     const [selectedTopic, setSelectedTopic] = useState(router.query.t ? router.query.t : router.query.topic);
 
     const handleChange = (e: {target: {value: string}} ) => {
-        if (e.target.value == '') {
+        if (e.target.value == '' && router.pathname !== '/blog') {
             setIsTyping(false)
-            router.push('/blog')
+            if (selectedTopic) {
+                router.push(`${deploymentURL}/blog/topics/${selectedTopic}`)
+            } else {
+                router.push('/blog')
+            }
             setIsSearching(true)
         } else {
             setIsSearching(false)
@@ -47,22 +51,42 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
     const handleFilter = (topicSlug:string) => {
         setIsSearching(true)
         setSelectedTopic(topicSlug)
+            // select different topics
             if (selectedTopic != topicSlug && topicSlug ) {
                 if (searchField && topicSlug) {
                     router.push(`/blog/search?q=${searchField}&t=${topicSlug}`)
                 } else {
                     router.push(`${deploymentURL}/blog/topics/${topicSlug}`)
                 }
+            // select the same topic
             } else {
-                router.push('/blog')
+                if (searchField && topicSlug) {
+                    router.push(`/blog/search?q=${searchField}`)
+                    setSelectedTopic('')
+                } else {
+                    router.push('/blog')
+                }
             }
         
     };
 
+    const handleSearch = (searchField:string[] | string) => {
+        if (selectedTopic) {
+            router.push(`/blog/search?q=${searchField}&t=${selectedTopic}`) 
+        } else {
+            router.push(`/blog/search?q=${searchField}`)
+        }
+        setIsSearching(true)
+        setIsTyping(false)
+    };
+
     const handleKeyUp = (e: React.KeyboardEvent<HTMLElement>) => {
         if (e.key == 'Enter') {
-            router.push(`/blog/search?q=${searchField}${selectedTopic ? '&t=' + selectedTopic : '' }`,
-        ) 
+            if (selectedTopic) {
+                router.push(`/blog/search?q=${searchField}&t=${selectedTopic}`) 
+            } else {
+                router.push(`/blog/search?q=${searchField}`)
+            }
         setIsSearching(true)
         setIsTyping(false)
         }
@@ -74,7 +98,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
         description='Notes and tips on all things web dev and programming!'
         />
         <h1 className='capitalize' data-fade='0'>
-            Blog{selectedTopic? `: ${selectedTopic}` : ''}
+            Blog<span className={selectedTopic ? 'uppercase' :'hidden'}>: {selectedTopic} </span>
         </h1>
         <p className='mt-2' data-fade='1'>
         Notes and tips on all things web dev and programming!
@@ -102,18 +126,17 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
             onChange = {handleChange} 
             onKeyUp = {handleKeyUp}
             />
-            <GoSearch className="absolute right-3 top-3 h-5 w-5 text-neutral-400 dark:text-gray-300"/>
+            <button onClick={() => router.pathname !== '/blog' || searchField ? handleSearch(searchField): ''} className="flex gap-x-2 items-center absolute right-0 top-0 btn-primary text-base"><GoSearch className=" h-5 w-5"/> Search</button>
         </div>
-            {!isTyping ?
+            {/* {!isTyping ? */}
             <section data-fade='3'>
             <PostList 
                 posts={posts} 
                 isSearching={isSearching}
                 isLoading={isLoading}
-                searchField={searchField}
             /> 
             </section>
-            : <span>Press enter to see the results.</span>}
+            {/* : <span>Press enter or click search button to see the results.</span>} */}
 
             <div className={isTyping || isSearching ? 'hidden' : 'inline bg-red-500'}>
                 { children }

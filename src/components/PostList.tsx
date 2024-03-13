@@ -8,11 +8,42 @@ interface PostList {
     posts:Post[]
     isLoading?:boolean
     isSearching:boolean
-    searchField: string | string[]
 }
 
-export default function PostList({ posts, isLoading, isSearching, searchField }: PostList) {
+export default function PostList({ posts, isLoading, isSearching }: PostList) {
     const router = useRouter()
+    const query = router.query.q
+    const topic = router.query.t
+
+    let className;
+    let text;
+
+    if (router.pathname !== '/blog') {
+        className = 'text-center';
+        text = (
+            <p>
+                Oops! No results found
+                {query && (
+                    <>
+                        {' for '}
+                        <b>{query}</b>
+                    </>
+                )}
+                {topic && (
+                    <>
+                        {' on '}
+                        <b>{topic}</b>
+                        {' topic'}
+                    </>
+                )}
+                {' :('}
+            </p>
+        );
+    } else {
+        className = 'text-left font-semibold';
+        text = 'My first post — coming soon!';
+    }
+
     if (isLoading || isSearching) {
         return (
         <div className="flex justify-center items-center space-x-1" data-fade='3'>
@@ -26,7 +57,7 @@ export default function PostList({ posts, isLoading, isSearching, searchField }:
     }
 
     else if (posts.length === 0) {  
-        return <p className={clsx(router.pathname !== '/blog' ? 'text-center' : 'text-left','font-semibold !text-lime-500 text-lg mt-2')}>{router.pathname !== '/blog' ? 'Sorry, no results found :(' : 'My first post - coming soon!'}</p>
+        return <div className={clsx(className, '!text-lime-500 text-lg mt-2')}>{text}</div>;
         
     } else {
         return (
