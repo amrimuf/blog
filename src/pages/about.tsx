@@ -21,13 +21,13 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
             description='Amri Mufti is a web developer.'
             />
 
-            <div className='items-center md:items-start flex flex-col p-6' data-fade='0'>
+            <div className='items-center md:items-start flex flex-col' data-fade='0'>
                 <h1 className="text-[42px] lg:text-6xl mb-6 font-gochi tracking-[4px]" data-fade='1'>
                     <span className={`!inline ${styles.highlight}`}>Amri</span> Mufti
                 </h1>
 
                 {/* back here: change layout */}
-                <div>
+                <div data-fade='4'>
                     <div className="md:float-right flex flex-col items-center md:ml-6 md:mb-16 mb-20 relative">
                         <Image
                             src={about.image.url}
@@ -50,7 +50,6 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                     </div>
 
                     <RichText
-                    data-fade='2'
                     content={about.content.json.children}
                     references={about.content.references}
                     // already rendered by tailwind typography
