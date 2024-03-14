@@ -38,8 +38,8 @@ export default function Hero({profile}:{profile:About}){
             </div>
             <Image 
                 alt='Profile'
-                width='500'
-                height='500'
+                width={profile.image.width}
+                height={profile.image.height}
                 src={profile.image.url}
                 blurDataURL={profile.blurDataURL} 
                 placeholder='blur' 

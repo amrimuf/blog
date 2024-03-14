@@ -30,13 +30,13 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                 <div data-fade='4'>
                     <div className="md:float-right flex flex-col items-center md:ml-6 md:mb-16 mb-20 relative">
                         <Image
-                            src={about.image.url}
-                            blurDataURL={about.blurDataURL}
                             alt="Profile"
-                            priority={true}
-                            className={`profile-image ${styles.handDrawnBorderImage}`}
                             width={about.image.width}
                             height={about.image.height}
+                            src={about.image.url}
+                            blurDataURL={about.blurDataURL}
+                            placeholder='blur' 
+                            className={`profile-image ${styles.handDrawnBorderImage}`}
                             data-fade='3'
                         />
                         <div className='absolute -bottom-14 flex items-center gap-3' data-fade='4'>

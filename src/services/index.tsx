@@ -307,6 +307,8 @@ export const getProfile = async() => {
             headline
             image {
                 url
+                width
+                height
             }
         }
     }`

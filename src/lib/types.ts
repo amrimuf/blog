@@ -73,6 +73,8 @@ export type PostMetaTitleType = {
 export type About = {
     image: {
         url: string
+        width: number
+        height: number
     }
     headline:string,
     title:string,
