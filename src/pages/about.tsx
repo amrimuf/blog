@@ -10,6 +10,7 @@ import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
 import { getAbout } from "@/services";
 import { getPlaiceholder } from "plaiceholder";
+import RunningText from "@/components/RunningText";
 
 export default function About({about}:InferGetStaticPropsType<typeof getStaticProps>) {
 
@@ -20,25 +21,25 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
             description='Amri Mufti is a web developer.'
             />
 
-            <div className={`items-center md:items-start flex flex-col p-6`} data-fade='0'>
-                <h1 className="text-[42px] lg:text-6xl mb-6 sm:m-0 font-gochi tracking-[4px]" data-fade='1'>
+            <div className='items-center md:items-start flex flex-col p-6' data-fade='0'>
+                <h1 className="text-[42px] lg:text-6xl mb-6 font-gochi tracking-[4px]" data-fade='1'>
                     <span className={`!inline ${styles.highlight}`}>Amri</span> Mufti
                 </h1>
 
-                <div className="flex flex-col md:flex-row-reverse items-center md:justify-between md:items-start">
-                    <div className="flex flex-col items-center">
+                {/* back here: change layout */}
+                <div>
+                    <div className="md:float-right flex flex-col items-center md:ml-6 md:mb-16 mb-20 relative">
                         <Image
                             src={about.image.url}
                             blurDataURL={about.blurDataURL}
-                            placeholder='blur' 
                             alt="Profile"
                             priority={true}
-                            className={`profile-image mb-6 ${styles.handDrawnBorderImage}`}
-                            width='500'
-                            height='500'
+                            className={`profile-image ${styles.handDrawnBorderImage}`}
+                            width={about.image.width}
+                            height={about.image.height}
                             data-fade='3'
                         />
-                        <div className='flex items-center gap-3' data-fade='4'>
+                        <div className='absolute -bottom-14 flex items-center gap-3' data-fade='4'>
                             <Link href='mailto:amrimuvti@gmail.com'  className="flex mx-auto items-center gap-2 btn-primary">
                                 Contact me
                             </Link>
@@ -48,26 +49,14 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                         </div>
                     </div>
 
-                    <div className="content mt-4 md:mt-0 md:text-left md:w-8/12 md:mr-6" data-fade='2'>
-                        <RichText
-                        content={about.content.json.children}
-                        references={about.content.references}
-                        // renderers={{
-                        //     a: ({ children, href, openInNewTab }) => (
-                        //         <a
-                        //             href={href}
-                        //             target={openInNewTab ? '_blank' : '_self'}
-                        //             className='no-underline hover:underline text-lime-500 dark:text-lime-500'
-                        //             rel="noreferrer"
-                        //         >
-                        //             {children}
-                        //         </a>
-                        //     ),
-                        // }}
-                        // already rendered by tailwind typography
-                        />   
-                    </div>
+                    <RichText
+                    data-fade='2'
+                    content={about.content.json.children}
+                    references={about.content.references}
+                    // already rendered by tailwind typography
+                    />   
                 </div>
+                {/* <RunningText/> */}
             </div>
         </Layout>
     );

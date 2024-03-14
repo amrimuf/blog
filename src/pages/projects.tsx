@@ -78,6 +78,7 @@ export default function Projects({ tags, projects }:InferGetStaticPropsType<type
     );
 }
 
+// back here: ssg -> cs
 export async function getStaticProps() {
     const tagsAsObject = await getTags() 
     const tags: string[] = []

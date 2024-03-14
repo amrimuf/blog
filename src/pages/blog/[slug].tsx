@@ -126,6 +126,17 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                                     );
                                 },
                             },
+                            // back here: style embed post
+                            embed: {
+                                Post: ({ title, headline, slug }) => {
+                                    return (
+                                    <div className={clsx(styles.handDrawnBorderProjects, 'p-4 mb-6')}>
+                                        <h3><Link href={slug}>{title}</Link></h3>
+                                        <p>{headline}</p>
+                                    </div>
+                                    );
+                                },
+                                },
                         }}
                         // check out tailwind.config.js (dark) and global.css (light)
                         // https://github.com/hygraph/rich-text/tree/main/packages/react-renderer
@@ -179,7 +190,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
     let nextTitle = posts[(index+1)%len].title;
 
     const images = post.content.references.filter((asset:Asset) =>
-        asset.mimeType.includes('image')
+        asset.mimeType && asset.mimeType.includes('image')
     );
 
     await Promise.all(
@@ -192,7 +203,8 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
     return {
         props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }, revalidate: 120
     }
-    } catch {
+    } catch (error){
+        console.log(error)
         return { notFound: true };
     }
 }

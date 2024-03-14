@@ -190,6 +190,12 @@ export const getPost = async (slug:string) => {
                     height
                     fileName
                 }
+                ... on Post {
+                    id
+                    title
+                    headline
+                    slug
+                }
             }
         }
         createdAt
@@ -271,6 +277,8 @@ export const getAbout = async() => {
             headline
             image {
                 url
+                width
+                height
             }
             content {
                 json
