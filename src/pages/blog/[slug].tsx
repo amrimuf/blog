@@ -102,7 +102,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                     <article className='content mx-auto' >
                         
                     <ScrollToAnchor isClient={isClient}/>
-                    <div className="bg-lime-50 dark:bg-black/20 p-4 mb-6 rounded-md">
+                    <div className={tOC.length > 0 ? "bg-lime-50 dark:bg-black/20 p-4 mb-6 rounded-md" : "hidden"}>
                         <h2 className="text-lg font-semibold mb-2">Table of Contents</h2>
                         <ul >
                         {tOC.map((item, index) => (
