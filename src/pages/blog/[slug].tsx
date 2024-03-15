@@ -60,9 +60,9 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
 
     const router = useRouter();
 
-    const handleNavigationClick = (e: { preventDefault: () => void; currentTarget: { href: Url; }; }) => {
+    const handleNavigationClick = async (e: { preventDefault: () => void; currentTarget: { href: Url; }; }) => {
         e.preventDefault();
-        router.push(e.currentTarget.href);
+        await router.push(e.currentTarget.href);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
