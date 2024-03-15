@@ -2,6 +2,7 @@ import { request, gql } from "graphql-request";
 
 const graphqlAPI:string = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT!;
 
+// back here: result types
 export const getPosts = async () => {
     const query = gql `
     query Posts {

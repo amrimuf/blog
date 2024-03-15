@@ -46,9 +46,9 @@ const ShareButton: React.FC<{ post: Post }> = ({ post }) => {
     ];
     
     return (
-        <div className="relative flex justify-end">
+        <div className="flex">
             {isOpen && (
-            <div className="absolute z-10 right-0 top-0 mt-14 bg-white border border-lime-500 rounded shadow-md dark:bg-black">
+            <div className="absolute right-0 top-0 mt-14 bg-white border border-lime-500 rounded shadow-md dark:bg-black">
                 {shareOptions.map(option => (
                 <button key={option.label} onClick={option.onClick} className="block w-full text-left px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-900 border-lime-500 border-t flex items-center">
                 {option.icon} <span className="ml-2">{option.label}</span>
@@ -56,8 +56,9 @@ const ShareButton: React.FC<{ post: Post }> = ({ post }) => {
                 ))}
             </div>
             )}
-            <button onClick={handleToggleDropdown} className="text-base btn-primary flex items-center font-semibold">
-                Share this post <span className="ml-2"></span><PiShareFatFill />
+            <button onClick={handleToggleDropdown} className="btn-primary ">
+                <span className='hidden sm:block sm:flex sm:items-center sm:gap-2'>Share this post <PiShareFatFill /></span>
+                <span className='block sm:hidden flex items-center gap-2'>Share <PiShareFatFill /></span>
             </button>
         </div>        
     );

@@ -70,12 +70,15 @@ export type PostMetaTitleType = {
     topics: Topic[]
 };
 
+export interface ImageType {
+    url: string
+    width: number
+    height: number
+    blurDataUrl?: string
+}
+
 export type About = {
-    image: {
-        url: string
-        width: number
-        height: number
-    }
+    image: ImageType
     headline:string,
     title:string,
     blurDataURL:string

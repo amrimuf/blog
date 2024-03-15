@@ -11,8 +11,8 @@ import { getPost, getNextPrevPosts, getPosts } from '@/services';
 import Link from 'next/link';
 import styles from '@/styles/styles.module.css'
 import { getPlaiceholder } from 'plaiceholder';
-import { Asset, Post } from '@/lib/types';
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { Asset, ImageType, Post } from '@/lib/types';
+import { BsChevronLeft, BsChevronRight, BsArrowLeft } from 'react-icons/bs';
 import ShareButtons from '@/components/Share';
 import clsx from 'clsx';
 
@@ -29,8 +29,10 @@ import 'prismjs/components/prism-markup-templating';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import Breadcrumb from '@/components/Breadcrumb';
+import ScrollToAnchor from '@/components/ScrollToAnchor';
 
-export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }:InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle, tOC }:InferGetStaticPropsType<typeof getStaticProps>) {
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -38,13 +40,22 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
     }, []);
     
     useEffect(() => {
-        const highlight = async () => {
-            await Prism.highlightAll();
-        };
-        highlight()
-    }, [post, isClient]); 
+        if (isClient) {
+            const highlight = async () => {
+                await Prism.highlightAll();
+            };
+            highlight();
+        }
+    }, [isClient]);     
 
     const prevUrl = post.isBlog != false ? 'blog' : 'projects'
+    // const breadcrumbs = [
+    //     { title: 'Home', href: '/' },
+    //     { title: prevUrl, href: `/${prevUrl}` },
+    //     { title: post.category },
+    //     { title: post.title },
+    // ];
+
         return (
             <Layout>
                 <Seo
@@ -53,20 +64,17 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                 isBlog
                 banner={post.thumbnail.url}
                 />
-
-                <nav className="lg:w-10/12 mx-auto rounded-full hidden sm:block px-2 py-1" data-fade='0'>
-                <ol className="list-reset flex">
-                    <li><Link href="/" className="text-lime-500 hover:underline">Home</Link></li>
-                    <li><span className="text-gray-500 mx-2 ">/</span></li>
-                    <li><Link href={`/${prevUrl}`} className="text-lime-500 hover:underline capitalize">{prevUrl}</Link></li>
-                    <li><span className="text-gray-500 mx-2">/</span></li>
-                    <li className='capitalize'>{post.category}</li>
-                    <li><span className="text-gray-500 mx-2">/</span></li>
-                    <li>{post.title}</li>
-                </ol>
-                </nav>
+                {/* <Breadcrumb items={breadcrumbs} /> */}
+                <div className='flex relative z-10 justify-between md:w-10/12 mx-auto gap-y-4 flex-wrap' data-fade='0'>
+                    <Link href={`/${prevUrl}`}>
+                        <button className='btn-secondary flex gap-2 items-center'>
+                            <BsArrowLeft/>
+                            <span className='hidden sm:block'>back to {prevUrl}</span>
+                        </button></Link>
+                    <ShareButtons post={post} />
+                </div> 
                 
-                <div className="md:w-10/12 w-full mx-auto flex items-center flex-col">
+                <div className="md:w-10/12 w-full mx-auto flex items-center flex-col relative">
                     <div className="flex justify-center -mx-4 flex-wrap mt-6">
                         <PostMetaTitle
                         category={post.category}
@@ -79,7 +87,6 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         topics={post.topics}
                         />
                     </div>
-
                     <Image 
                         src={post.thumbnail.url} 
                         alt={post.title} 
@@ -90,14 +97,35 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         className={clsx(post.isBlog ? 'content-image' : 'max-h-40 sm:max-h-64 w-auto', 'mb-6', styles.handDrawnBorderImage)} 
                         data-fade='2'
                         />
-                </div>                
+                </div>               
                 <div className="md:w-10/12 w-full mx-auto" data-fade='3'>
                     <article className='content mx-auto' >
+                        
+                    <ScrollToAnchor isClient={isClient}/>
+                    <div className="bg-lime-50 dark:bg-black/20 p-4 mb-6 rounded-md">
+                        <h2 className="text-lg font-semibold mb-2">Table of Contents</h2>
+                        <ul >
+                        {tOC.map((item, index) => (
+                            // back here: handle other headings
+                            <li key={index} className={clsx(item.type == 'heading-two' ? '-ml-6' : 'ml-2', 'list-none')}>
+                                <Link
+                                    href={`#${item.slug}`}
+                                >
+                                    {item.text}
+                                </Link>
+                            </li>
+                        ))}
+                        </ul>
+                    </div>
+
                     {/* trick hydration err */}
                     {isClient && (<RichText
                         content={post.content.json.children}
                         references={post.content.references}
                         renderers={{
+                            h1: ({children}) => {return <h1 id={renderToString(<>{children}</>).toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')} >{children}</h1>},
+                            h2: ({children}) => {return <h2 id={renderToString(<>{children}</>).toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')} >{children}</h2>},
+                            h3: ({children}) => {return <h3 id={renderToString(<>{children}</>).toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')} >{children}</h3>},
                             // back here: add dynamic language
                             code_block: ({ children }) => {
                                 const lang = renderToString(<>{children}</>).substring(renderToString(<>{children}</>).indexOf('#') + 1).split(/\s+/)[0]
@@ -141,10 +169,8 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                         // check out tailwind.config.js (dark) and global.css (light)
                         // https://github.com/hygraph/rich-text/tree/main/packages/react-renderer
                         />
-                    )}        
+                    )}       
                     </article>
-
-                    <ShareButtons post={post} />
 
                     <div className={prevTitle == post.title && nextTitle == post.title ? 'hidden' : 'flex flex-wrap justify-between'}>
                         <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4' href={`/blog/${prevSlug}`}>
@@ -183,6 +209,27 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
         return post.slug === slug;
     });
 
+    interface tOCItem {
+        type: string;
+        slug: string;
+        text: string;
+    }
+
+    interface ContentItem {
+        type: string;
+        children: { text: string }[];
+    }
+
+    const tOC: tOCItem[] = [];
+    post.content.json.children.forEach((c: ContentItem) => {
+        if (c.type.includes('heading')) {
+            const type = c.type
+            const text = c.children[0].text;
+            const slug = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+            tOC.push({ type, slug, text });
+        }
+    });
+    
     const len = posts.length
     let prevSlug = posts[(index+len-1)%len].slug;
     let prevTitle = posts[(index+len-1)%len].title;
@@ -194,14 +241,14 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ slug: str
     );
 
     await Promise.all(
-        images.map(async (image:any) => {
+        images.map(async (image:ImageType) => {
             const { base64 } = await getPlaiceholder(image.url);
             image.blurDataUrl = base64;
         })
     );
 
     return {
-        props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle }, revalidate: 120
+        props: { post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle, tOC }, revalidate: 120
     }
     } catch (error){
         console.log(error)
