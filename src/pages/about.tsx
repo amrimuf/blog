@@ -27,7 +27,7 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                 </h1>
 
                 {/* back here: change layout */}
-                <div data-fade='4'>
+                <div data-fade='1'>
                     <div className="md:float-right flex flex-col items-center md:ml-6 md:mb-16 mb-20 relative">
                         <Image
                             alt="Profile"
@@ -37,9 +37,9 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                             blurDataURL={about.blurDataURL}
                             placeholder='blur' 
                             className={`profile-image ${styles.handDrawnBorderImage}`}
-                            data-fade='3'
+                            data-fade='2'
                         />
-                        <div className='absolute -bottom-14 flex items-center gap-3' data-fade='4'>
+                        <div className='absolute -bottom-14 flex items-center gap-3' data-fade='3'>
                             <Link href='mailto:amrimuvti@gmail.com'  className="flex mx-auto items-center gap-2 btn-primary">
                                 Contact me
                             </Link>
