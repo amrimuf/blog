@@ -30,7 +30,7 @@
     "react-dom": "18.2.0",
     "react-fast-marquee": "^1.6.4",
     "react-icons": "^5.0.1",
-    "sharp": "^0.33.2",
+    "sharp": "^0.32.6",
     "typescript": "4.8.4"
   },
   "devDependencies": {
