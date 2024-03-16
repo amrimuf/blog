@@ -3,6 +3,7 @@ import { request, gql } from "graphql-request";
 const graphqlAPI:string = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT!;
 
 // back here: result types
+// https://github.com/vercel/next.js/blob/canary/examples/cms-graphcms/lib/graphcms.js
 export const getPosts = async () => {
     const query = gql `
     query Posts {
