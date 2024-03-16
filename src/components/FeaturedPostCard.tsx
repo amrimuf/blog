@@ -27,7 +27,7 @@ export default function FeaturedPostCard({...post}) {
             />
           </div>
         </article>
-        <hr className="border-black/10 w-11/12 mx-auto mt-10 md:hidden dark:border-white/10" />
+        {/* <hr className="border-black/10 w-11/12 mx-auto mt-10 md:hidden dark:border-white/10" /> */}
     </div>
   );
 }

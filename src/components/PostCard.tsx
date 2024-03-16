@@ -23,7 +23,7 @@ export default function PostCard({ post }: {post: Post}) {
                                 {...post}
                             />
                         </div>
-                        <hr className="border-black/20 w-11/12 mx-auto mt-10 md:hidden dark:border-white/20" />
+                        {/* <hr className="border-black/20 w-11/12 mx-auto mt-10 md:hidden dark:border-white/20" /> */}
                 </article>
             </div>
     );
