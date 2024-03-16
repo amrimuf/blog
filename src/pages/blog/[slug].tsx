@@ -57,11 +57,12 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
     //     { title: post.title },
     // ];
 
-    const isBrowser = () => typeof window !== 'undefined';
-    function scrollToTop() {
-        if (!isBrowser()) return;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // workaround scroll up for "next": "^13.5.6"
+    // const isBrowser = () => typeof window !== 'undefined';
+    // function scrollToTop() {
+    //     if (!isBrowser()) return;
+    //     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // }
     
         return (
             <Layout>
@@ -162,6 +163,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                                 },
                             },
                             // back here: style embed post
+                            // embedded posts should be published first
                             embed: {
                                 Post: ({ title, headline, slug }) => {
                                     return (
@@ -180,14 +182,14 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                     </article>
 
                     <div className={prevTitle == post.title && nextTitle == post.title ? 'hidden' : 'flex flex-wrap justify-between'}>
-                        <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4' onClick={scrollToTop} href={`/blog/${prevSlug}`}>
+                        <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4' href={`/blog/${prevSlug}`}>
                             <BsChevronLeft className='hover:text-lime-500 stroke-1'/>
                             <div className='w-[100px] sm:w-[300px]'>
                                 <div className='text-lime-500 dark:text-lime-500 font-semibold'>PREVIOUS</div> 
                                 <div className='truncate'>{prevTitle}</div>
                             </div>
                         </Link>
-                        <Link className='inline-flex items-center justify-between space-x-2  rounded py-2 mt-4 text-right' onClick={scrollToTop} href={`/blog/${nextSlug}`}>
+                        <Link className='inline-flex items-center justify-between space-x-2  rounded py-2 mt-4 text-right' href={`/blog/${nextSlug}`}>
                             <div className='w-[100px] sm:w-[270px]'>
                                 <div className='text-lime-500 dark:text-lime-500 font-semibold'>NEXT</div>
                                 <div className='truncate'>{nextTitle}</div>
