@@ -32,7 +32,7 @@ export default function BlogLayout({children, posts, isLoading, topics, slug}:Bl
     const [selectedTopic, setSelectedTopic] = useState(router.query.t ? router.query.t : router.query.topic);
 
     const handleChange = (e: {target: {value: string}} ) => {
-        if (e.target.value == '' && router.pathname !== '/blog') {
+        if (e.target.value == '' && router.pathname !== '/blog' && router.query.q) {
             setIsTyping(false)
             if (selectedTopic) {
                 router.push(`${deploymentURL}/blog/topics/${selectedTopic}`)

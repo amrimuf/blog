@@ -31,8 +31,7 @@ import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import Breadcrumb from '@/components/Breadcrumb';
 import ScrollToAnchor from '@/components/ScrollToAnchor';
-import { useRouter } from 'next/router';
-import { Url } from 'next/dist/shared/lib/router/router';
+import router, { useRouter } from 'next/router';
 
 export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlug, nextTitle, tOC }:InferGetStaticPropsType<typeof getStaticProps>) {
     const [isClient, setIsClient] = useState(false);
@@ -44,7 +43,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
     useEffect(() => {
         if (isClient) {
             const highlight = async () => {
-                await Prism.highlightAll();
+                Prism.highlightAll();
             };
             highlight();
         }
@@ -58,14 +57,12 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
     //     { title: post.title },
     // ];
 
-    const router = useRouter();
-
-    const handleNavigationClick = async (e: { preventDefault: () => void; currentTarget: { href: Url; }; }) => {
-        e.preventDefault();
-        await router.push(e.currentTarget.href);
+    const isBrowser = () => typeof window !== 'undefined';
+    function scrollToTop() {
+        if (!isBrowser()) return;
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
+    }
+    
         return (
             <Layout>
                 <Seo
@@ -75,7 +72,7 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                 banner={post.thumbnail.url}
                 />
                 {/* <Breadcrumb items={breadcrumbs} /> */}
-                <div className='flex relative z-10 justify-between md:w-10/12 mx-auto gap-y-4 flex-wrap' data-fade='0'>
+                <div className='flex relative z-10 justify-between md:w-10/12 mx-auto gap-y-4 flex-wrap' id='top' data-fade='0'>
                     <Link href={`/${prevUrl}`}>
                         <button className='btn-secondary flex gap-2 items-center'>
                             <BsArrowLeft/>
@@ -183,14 +180,14 @@ export default function Detail({ post, blurDataURL, prevSlug, prevTitle, nextSlu
                     </article>
 
                     <div className={prevTitle == post.title && nextTitle == post.title ? 'hidden' : 'flex flex-wrap justify-between'}>
-                        <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4' onClick={handleNavigationClick} href={`/blog/${prevSlug}`}>
+                        <Link className='inline-flex items-center justify-between space-x-2 rounded py-2 mt-4' onClick={scrollToTop} href={`/blog/${prevSlug}`}>
                             <BsChevronLeft className='hover:text-lime-500 stroke-1'/>
                             <div className='w-[100px] sm:w-[300px]'>
                                 <div className='text-lime-500 dark:text-lime-500 font-semibold'>PREVIOUS</div> 
                                 <div className='truncate'>{prevTitle}</div>
                             </div>
                         </Link>
-                        <Link className='inline-flex items-center justify-between space-x-2  rounded py-2 mt-4 text-right' onClick={handleNavigationClick} href={`/blog/${nextSlug}`}>
+                        <Link className='inline-flex items-center justify-between space-x-2  rounded py-2 mt-4 text-right' onClick={scrollToTop} href={`/blog/${nextSlug}`}>
                             <div className='w-[100px] sm:w-[270px]'>
                                 <div className='text-lime-500 dark:text-lime-500 font-semibold'>NEXT</div>
                                 <div className='truncate'>{nextTitle}</div>
