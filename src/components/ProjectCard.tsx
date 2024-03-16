@@ -11,7 +11,7 @@ export default function ProjectCard({ ...projectInfo }: Project) {
         href={`${projectInfo.post ? `blog/${projectInfo.post.slug}` : projectInfo.nolink}`}
         rel="noreferrer noopener"
         target="_blank"
-        className={`card ${styles.handDrawnBorderPosts}`}
+        className={`card pb-3 ${styles.handDrawnBorderPosts}`}
         >
             <article className='flex items-center gap-8 px-4'>
                 <Image
