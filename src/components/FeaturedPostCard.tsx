@@ -4,6 +4,7 @@ import Link from 'next/link';
 import PostInfo from './PostInfo';
 import styles from '@/styles/styles.module.css'
 
+// back here: combine with post card
 export default function FeaturedPostCard({...post}) {  
   return (
     <div 

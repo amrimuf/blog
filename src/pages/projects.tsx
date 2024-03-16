@@ -67,7 +67,7 @@ export default function Projects({ tags, projects }:InferGetStaticPropsType<type
         </div>
         
         {filteredProjects.length > 0 ? 
-            <div className="mt-4 grid sm:grid-cols-2 gap-6" data-fade='4'>
+            <div className="mt-4 grid sm:grid-cols-2 gap-6 items-start" data-fade='4'>
                 {filteredProjects.map((project:Project) => (
                     <ProjectCard key={project.id} {...project}/>
                 ))}

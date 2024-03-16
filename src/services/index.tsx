@@ -6,7 +6,7 @@ const graphqlAPI:string = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT!;
 export const getPosts = async () => {
     const query = gql `
     query Posts {
-        posts(where: {isBlog: true} orderBy:createdAt_DESC) {
+        posts(where: {isBlog: true} orderBy:updatedAt_DESC) {
             id
             category
             title
@@ -37,7 +37,7 @@ export const getPosts = async () => {
 export const getFilteredPosts = async (id:string[], t:string) => {
     const query = gql `
     query Posts($id: [ID], $t: String) {
-        posts(where: {isBlog: true, AND: {id_in: $id, topics_some: {name_contains: $t}}} orderBy:createdAt_DESC) {
+        posts(where: {isBlog: true, AND: {id_in: $id, topics_some: {name_contains: $t}}} orderBy:updatedAt_DESC) {
             id
             category
             title
@@ -71,7 +71,7 @@ export const getFilteredPosts = async (id:string[], t:string) => {
 export const getPaginatedPosts = async (postsPerPage: number, endPost: number) => {
     const query = gql `
     query Posts($postsPerPage: Int!, $endPost: Int) {
-        posts(first: $postsPerPage, skip: $endPost where: {isBlog: true} orderBy:createdAt_DESC) {
+        posts(first: $postsPerPage, skip: $endPost where: {isBlog: true} orderBy:updatedAt_DESC) {
             id
             category
             title
@@ -120,7 +120,7 @@ export const getPageSize = async () => {
 export const getNextPrevPosts = async () => {
     const query = gql `
     query Posts {
-        posts( orderBy:createdAt_DESC) {
+        posts( orderBy:updatedAt_DESC) {
             id
             isBlog
             title
@@ -136,7 +136,7 @@ export const getNextPrevPosts = async () => {
 export const getFeaturedPosts = async () => {
     const query = gql `
     query Posts {
-        posts(where: {isBlog: true, AND: {featured: true}} orderBy:createdAt_DESC) {
+        posts(where: {isBlog: true, AND: {featured: true}} orderBy:updatedAt_DESC) {
             id
             category
             title

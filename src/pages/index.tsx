@@ -22,7 +22,8 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
             Featured Posts
         </h2>
         <section data-fade="4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
+            {/* back here: combine with post list */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full items-start">
                 {featuredPosts.map((post:{id:string}) => (
                     <FeaturedPostCard key={post.id} {...post} />
                 ))}
@@ -39,7 +40,7 @@ export default function home({ featuredPosts, recentProjects, profile }: InferGe
             Recent Projects
         </h2>
         <section data-fade="6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8 w-full items-start">
                 {recentProjects.map((project:Project) => (
                     <ProjectCard key={project.id} {...project} />
                 ))}
