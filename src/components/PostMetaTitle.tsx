@@ -18,7 +18,7 @@ useEffect(() => {
 
     setWordCount(words.length);
 
-    const averageReadingSpeed = 400; 
+    const averageReadingSpeed = 300; 
     const estimatedReadTime = Math.ceil(words.length / averageReadingSpeed);
     setReadTime(estimatedReadTime);
 

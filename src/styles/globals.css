@@ -60,7 +60,7 @@
     }
 
     .caption {
-        @apply text-xs -mt-4 flex justify-end italic
+        @apply text-xs -mt-4 flex justify-center italic
     }
 
     /* override prismjs theme */
