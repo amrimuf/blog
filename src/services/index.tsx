@@ -38,7 +38,15 @@ export const getPosts = async () => {
 export const getFilteredPosts = async (id:string[], t:string) => {
     const query = gql `
     query Posts($id: [ID], $t: String) {
-        posts(where: {isBlog: true, AND: {id_in: $id, topics_some: {name_contains: $t}}} orderBy:updatedAt_DESC) {
+        posts(where: {isBlog: true, AND: [
+            { id_in: $id }
+            {
+                OR: [
+                    { topics_some: { name_contains: $t } }
+                    { topics_none: {} }
+                ]
+                }
+            ]} orderBy:updatedAt_DESC) {
             id
             category
             title
