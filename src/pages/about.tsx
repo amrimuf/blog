@@ -4,7 +4,7 @@ import { InferGetStaticPropsType } from "next";
 import React from "react";
 import styles from '@/styles/styles.module.css';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import {SiGithub} from 'react-icons/si';
+import {SiGithub, SiLinkedin} from 'react-icons/si';
 
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -43,8 +43,8 @@ export default function About({about}:InferGetStaticPropsType<typeof getStaticPr
                             <Link href='mailto:amrimuvti@gmail.com'  className="flex mx-auto items-center gap-2 btn-primary">
                                 Contact me
                             </Link>
-                            <Link href='https://github.com/amrimuf' className="btn-secondary !p-1 !border-lime-500" target='_blank' rel="noreferrer noopener">
-                                <SiGithub className="text-2xl"/>
+                            <Link href={`https://linkedin.com/in/${about.linkedinLink}`} className="btn-secondary !rounded-md !p-1 !border-lime-500" target='_blank' rel="noreferrer noopener">
+                                <SiLinkedin className="text-xl"/>
                             </Link>                            
                         </div>
                     </div>
@@ -74,6 +74,7 @@ export async function getStaticProps() {
         })
     ).then((values) => values);
 
+    console.log(abouts)
     return {
         props: { 
             about: abouts.length > 0 ? abouts[0] : []
