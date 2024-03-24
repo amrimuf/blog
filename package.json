@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@graphcms/rich-text-react-renderer": "^0.6.1",
-    "@next/third-parties": "^14.1.4",
     "@plaiceholder/next": "^2.5.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tippyjs/react": "^4.2.6",
