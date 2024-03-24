@@ -1,4 +1,5 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export default class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext) {
@@ -14,6 +15,7 @@ export default class MyDocument extends Document {
                 <Main />
                 <NextScript />
             </body>
+            <GoogleTagManager gtmId="G-82P19X1H2Y" />
         </Html>
         )
     }
