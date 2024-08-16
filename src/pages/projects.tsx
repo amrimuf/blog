@@ -68,23 +68,24 @@ export default function Projects({
 					<button
 						key={index}
 						onClick={() => handleToggleTag(tag)}
-						className={
+						className={`flex gap-1 items-center ${
 							selectedFilters.includes(tag)
 								? "label-selected"
 								: "label"
-						}
+						}`}
 					>
-						{tag} (
-						{
-							projects.filter((project: Project) =>
-								project.tags.some(
-									(t: { name: string }) =>
-										t.name.toLowerCase() ===
-										tag.toLowerCase()
-								)
-							).length
-						}
-						)
+						{tag}
+						<span className="px-1 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 text-xs">
+							{
+								projects.filter((project: Project) =>
+									project.tags.some(
+										(t: { name: string }) =>
+											t.name.toLowerCase() ===
+											tag.toLowerCase()
+									)
+								).length
+							}
+						</span>
 					</button>
 				))}
 				<button onClick={() => handleClear()} className="btn-primary">
