@@ -37,7 +37,7 @@
 	}
 
 	.label {
-		@apply ring-1 ring-lime-500 italic pl-2 pr-1 rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out focus:bg-lime-500/20;
+		@apply ring-1 ring-lime-500 italic rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out focus:bg-lime-500/20;
 	}
 
 	.label-off {
@@ -45,7 +45,7 @@
 	}
 
 	.label-selected {
-		@apply pl-2 pr-1 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700;
+		@apply rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700;
 	}
 
 	.profile-image {
