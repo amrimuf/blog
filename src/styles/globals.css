@@ -1,76 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    html {
-        @apply scroll-smooth;
-    }
-    h1 {
-        @apply text-2xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50
-    }
-    h2 {
-        @apply text-xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-50
-    }
-    h3 {
-        @apply text-lg sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50
-    }
-    body, div {
-        @apply text-sm sm:text-base text-neutral-700 dark:text-neutral-300 
-    }
+	html {
+		@apply scroll-smooth;
+	}
+	h1 {
+		@apply text-2xl sm:text-5xl font-bold text-neutral-900 dark:text-neutral-50;
+	}
+	h2 {
+		@apply text-xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-50;
+	}
+	h3 {
+		@apply text-lg sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50;
+	}
+	body,
+	div {
+		@apply text-sm sm:text-base text-neutral-700 dark:text-neutral-300;
+	}
 }
 
 @layer components {
-    .btn-primary {
-        @apply inline-block px-6 py-2 border-2 border-lime-500  bg-gradient-to-br from-lime-500 font-medium via-lime-500 to-green-500 dark:text-neutral-900 text-white text-sm leading-tight rounded-full capitalize shadow-sm dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-md transition duration-150 ease-in-out;
-    }
+	.btn-primary {
+		@apply inline-block px-6 py-2 border-2 border-lime-500  bg-gradient-to-br from-lime-500 font-medium via-lime-500 to-green-500 dark:text-neutral-900 text-white text-sm leading-tight rounded-full capitalize shadow-sm dark:shadow-lime-700 hover:scale-[1.02] hover:shadow-md transition duration-150 ease-in-out;
+	}
 
-    .btn-secondary {
-        @apply inline-block px-6 py-2 border-2 border-lime-500/50 border-dashed font-semibold text-sm leading-tight capitalize rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out;
-    }
+	.btn-secondary {
+		@apply inline-block px-6 py-2 border-2 border-lime-500/50 border-dashed font-semibold text-sm leading-tight capitalize rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out;
+	}
 
-    .btn-social {
-        @apply btn-secondary text-2xl !border-lime-500 !p-2
-    }
+	.btn-social {
+		@apply btn-secondary text-2xl !border-lime-500 !p-2;
+	}
 
-    .label {
-        @apply ring-1 ring-lime-500 italic px-2 rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out focus:bg-lime-500/20;
-    }
+	.label {
+		@apply ring-1 ring-lime-500 italic pl-2 pr-1 rounded-full hover:scale-[1.02] hover:bg-lime-500/20 transition duration-150 ease-in-out focus:bg-lime-500/20;
+	}
 
-    .label-off {
-        @apply ring-1 ring-neutral-300 dark:ring-neutral-700 italic px-2 rounded-full;
-    }
-    
-    .label-selected {
-        @apply px-2 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700;
-    }
+	.label-off {
+		@apply ring-1 ring-neutral-300 dark:ring-neutral-700 italic px-2 rounded-full;
+	}
 
-    .profile-image {
-        @apply object-cover max-w-48 sm:shadow-md dark:shadow-lime-700;
-    }
+	.label-selected {
+		@apply pl-2 pr-1 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 font-medium shadow-sm dark:shadow-lime-700;
+	}
 
-    .content-image {
-        @apply object-cover rounded max-w-full max-h-full;
-    }
+	.profile-image {
+		@apply object-cover max-w-48 sm:shadow-md dark:shadow-lime-700;
+	}
 
-    .thumbnail {
-        @apply object-cover h-40 w-full mb-4 rounded-t-lg;
-    }
+	.content-image {
+		@apply object-cover rounded max-w-full max-h-full;
+	}
 
-    .caption {
-        @apply text-xs -mt-4 flex justify-center italic
-    }
+	.thumbnail {
+		@apply object-cover h-40 w-full mb-4 rounded-t-lg;
+	}
 
-    /* override prismjs theme */
-    .content pre[class*="language-"].line-numbers {
-        @apply mb-6 bg-black
-    }
+	.caption {
+		@apply text-xs -mt-4 flex justify-center italic;
+	}
 
-    .content {
-        @apply 
-        /* heading */
+	/* override prismjs theme */
+	.content pre[class*="language-"].line-numbers {
+		@apply mb-6 bg-black;
+	}
+
+	.content {
+		@apply /* heading */
         wysiwyg-h2:mb-2 wysiwyg-h2:m-0
         wysiwyg-h3:mb-2 wysiwyg-h3:m-0
         wysiwyg-p:m-0 wysiwyg-p:mb-6
@@ -89,56 +89,55 @@
         /* wysiwyg-pre:text-lime-500 dark:wysiwyg-pre:text-lime-500 */
         /* wysiwyg-pre:m-0 wysiwyg-pre:mb-6 */
 
-        wysiwyg-blockquote:border-l-lime-500
-        ;
-    }
+        wysiwyg-blockquote:border-l-lime-500;
+	}
 
-    .circle {
-        @apply w-3 h-3 my-6 mx-1 bg-lime-500 rounded-full;
-    }
+	.circle {
+		@apply w-3 h-3 my-6 mx-1 bg-lime-500 rounded-full;
+	}
 
-    .card {
-        @apply w-full px-4 pb-6 bg-white/50 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700
-    }
+	.card {
+		@apply w-full px-4 pb-6 bg-white/50 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out dark:bg-black/30 dark:shadow-lime-700;
+	}
 }
 
 @layer utilities {
-    .animation-delay-200 {
-        animation-delay: 0.2s;
-    }
-    .animation-delay-400 {
-        animation-delay: 0.4s;
-    }
+	.animation-delay-200 {
+		animation-delay: 0.2s;
+	}
+	.animation-delay-400 {
+		animation-delay: 0.4s;
+	}
 
-    [data-fade] {
-        @apply translate-y-10 opacity-0 transition-[transform,opacity] duration-[400ms] ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100;
-    }
+	[data-fade] {
+		@apply translate-y-10 opacity-0 transition-[transform,opacity] duration-[400ms] ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100;
+	}
 
-    .fade-in-start [data-fade] {
-        @apply translate-y-0 opacity-100;
-    }
-    .fade-in-start [data-fade='1'] {
-        transition-delay: 100ms;
-    }
-    .fade-in-start [data-fade='2'] {
-        transition-delay: 200ms;
-    }
-    .fade-in-start [data-fade='3'] {
-        transition-delay: 300ms;
-    }
-    .fade-in-start [data-fade='4'] {
-        transition-delay: 400ms;
-    }
-    .fade-in-start [data-fade='5'] {
-        transition-delay: 500ms;
-    }
-    .fade-in-start [data-fade='6'] {
-        transition-delay: 600ms;
-    }
-    .fade-in-start [data-fade='7'] {
-        transition-delay: 700ms;
-    }
-    .fade-in-start [data-fade='8'] {
-        transition-delay: 800ms;
-    }
+	.fade-in-start [data-fade] {
+		@apply translate-y-0 opacity-100;
+	}
+	.fade-in-start [data-fade="1"] {
+		transition-delay: 100ms;
+	}
+	.fade-in-start [data-fade="2"] {
+		transition-delay: 200ms;
+	}
+	.fade-in-start [data-fade="3"] {
+		transition-delay: 300ms;
+	}
+	.fade-in-start [data-fade="4"] {
+		transition-delay: 400ms;
+	}
+	.fade-in-start [data-fade="5"] {
+		transition-delay: 500ms;
+	}
+	.fade-in-start [data-fade="6"] {
+		transition-delay: 600ms;
+	}
+	.fade-in-start [data-fade="7"] {
+		transition-delay: 700ms;
+	}
+	.fade-in-start [data-fade="8"] {
+		transition-delay: 800ms;
+	}
 }

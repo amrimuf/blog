@@ -68,14 +68,14 @@ export default function Projects({
 					<button
 						key={index}
 						onClick={() => handleToggleTag(tag)}
-						className={`flex gap-1 items-center ${
+						className={`flex items-center ${
 							selectedFilters.includes(tag)
 								? "label-selected"
 								: "label"
 						}`}
 					>
 						{tag}
-						<span className="px-1 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 text-xs">
+						<span className="m-1 px-1 rounded-full bg-lime-500 text-neutral-100 dark:text-neutral-900 text-xs">
 							{
 								projects.filter((project: Project) =>
 									project.tags.some(
