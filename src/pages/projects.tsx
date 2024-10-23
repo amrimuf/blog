@@ -45,6 +45,10 @@ export default function Projects({
 		setSelectedFilters([]);
 	};
 
+	const halfIndex = Math.ceil(filteredProjects.length / 2);
+	const firstHalfFilteredProjects = filteredProjects.slice(0, halfIndex);
+	const secondHalfFilteredProjects = filteredProjects.slice(halfIndex);
+
 	return (
 		<Layout>
 			<Seo
@@ -98,9 +102,16 @@ export default function Projects({
 					className="mt-4 grid sm:grid-cols-2 gap-6 items-start"
 					data-fade="4"
 				>
-					{filteredProjects.map((project: Project) => (
-						<ProjectCard key={project.id} {...project} />
-					))}
+					<div className="flex flex-col gap-6">
+						{firstHalfFilteredProjects.map((project: Project) => (
+							<ProjectCard key={project.id} {...project} />
+						))}
+					</div>
+					<div className="flex flex-col gap-6">
+						{secondHalfFilteredProjects.map((project: Project) => (
+							<ProjectCard key={project.id} {...project} />
+						))}
+					</div>
 				</div>
 			) : (
 				<p
